@@ -1,0 +1,36 @@
+﻿<Window x:Class="ItManager.View.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ItManager"
+        xmlns:vm="clr-namespace:ItManager.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <vm:DataViewModel x:Key="DataViewModel"/>
+        <vm:CompanyViewModel x:Key="CompanyViewModel"/>
+    </Window.Resources>
+    <DockPanel>
+        <DockPanel DataContext="{Binding Source={StaticResource CompanyViewModel}}"
+                   DockPanel.Dock="Left">
+            <TreeView ItemsSource="{Binding Companies}"
+                      Width="200"
+                      Height="300">
+                <TreeView.ItemTemplate>
+                    <DataTemplate>
+                        <TreeViewItem Header="{Binding Name}">
+                            <TreeViewItem Header="Users"/>
+                            <TreeViewItem Header="Technic"/>
+                        </TreeViewItem>
+                    </DataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <Button Width="100"
+                Height="30"
+                Command="{Binding AddCompanyCommand}"/>
+        </DockPanel>
+        <DockPanel DataContext="Editor"></DockPanel>
+    </DockPanel>
+
+</Window>
