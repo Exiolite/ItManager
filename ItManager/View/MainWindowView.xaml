@@ -10,27 +10,59 @@
     <Window.Resources>
         <vm:DataViewModel x:Key="DataViewModel"/>
         <vm:CompanyViewModel x:Key="CompanyViewModel"/>
+        <vm:ComputerViewModel x:Key="ComputerViewModel"/>
     </Window.Resources>
-    <DockPanel>
-        <DockPanel DataContext="{Binding Source={StaticResource CompanyViewModel}}"
-                   DockPanel.Dock="Left">
-            <TreeView ItemsSource="{Binding Companies}"
-                      Width="200"
-                      Height="300">
-                <TreeView.ItemTemplate>
-                    <DataTemplate>
-                        <TreeViewItem Header="{Binding Name}">
-                            <TreeViewItem Header="Users"/>
-                            <TreeViewItem Header="Technic"/>
-                        </TreeViewItem>
-                    </DataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
-            <Button Width="100"
-                Height="30"
-                Command="{Binding AddCompanyCommand}"/>
+    <DockPanel x:Name="Root">
+        <DockPanel x:Name="Menu"
+                   DockPanel.Dock="Top">
+            <Menu>
+                <MenuItem Header="File">
+                    <MenuItem Header="New"/>
+                    <Separator/>
+                    <MenuItem Header="Open"/>
+                    <Separator/>
+                    <MenuItem Header="Save"/>
+                    <MenuItem Header="Save As"/>
+                    <Separator/>
+                </MenuItem>
+                <MenuItem Header="New">
+                    <MenuItem Header="Company"
+                              DataContext="{Binding Source={StaticResource CompanyViewModel}}"
+                              Command="{Binding AddNewCompanyCommand}"/>
+                    <MenuItem Header="Computer"
+                              DataContext="{Binding Source={StaticResource ComputerViewModel}}"
+                              Command="{Binding AddNewComputerCommand}"/>
+                </MenuItem>
+            </Menu>
         </DockPanel>
-        <DockPanel DataContext="Editor"></DockPanel>
+        <DockPanel x:Name="WorkZone">
+            <DockPanel DataContext="{Binding Source={StaticResource CompanyViewModel}}"
+                       DockPanel.Dock="Left">
+                <TreeView ItemsSource="{Binding Companies}"
+                          Width="300">
+                    <TreeView.ItemTemplate>
+                        <DataTemplate>
+                            <TreeViewItem Header="{Binding Name}">
+                                <TreeViewItem Header="Users">
+                                    
+                                </TreeViewItem>
+                                <TreeViewItem Header="Technic">
+                                    <ItemsControl ItemsSource="{Binding Computers}">
+                                        <ItemsControl.Template>
+                                            <ControlTemplate>
+                                                <TreeViewItem Header="{Binding Path=Computer.Name}"/>
+                                            </ControlTemplate>
+                                        </ItemsControl.Template>
+                                    </ItemsControl>
+                                </TreeViewItem>
+                            </TreeViewItem>
+                        </DataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </DockPanel>
+            <DockPanel DataContext="Editor"
+                       Background="AliceBlue"/>
+        </DockPanel>
     </DockPanel>
-
+    
 </Window>

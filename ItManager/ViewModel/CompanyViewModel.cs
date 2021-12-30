@@ -37,22 +37,22 @@ namespace ItManager.ViewModel
         }
         #endregion
 
-        #region AddCompanyCommand
-        private ICommand _addCompanyCommand;
-        public ICommand AddCompanyCommand
+        #region AddNewCompanyCommand
+        private ICommand _addNewCompanyCommand;
+        public ICommand AddNewCompanyCommand
         {
             get
             {
-                if (_addCompanyCommand == null)
-                    _addCompanyCommand = new Command.Command(this.AddCompanyExecuted, this.CanAddCompany, false);
-                return _addCompanyCommand;
+                if (_addNewCompanyCommand == null)
+                    _addNewCompanyCommand = new Command.Command(this.AddNewCompanyExecuted, this.CanAddNewCompany, false);
+                return _addNewCompanyCommand;
             }
         }
-        private void AddCompanyExecuted(object obj)
+        private void AddNewCompanyExecuted(object obj)
         {
             Companies.Add(new Company());
         }
-        private bool CanAddCompany(object arg)
+        private bool CanAddNewCompany(object arg)
         {
             //Predicate
             return true;
