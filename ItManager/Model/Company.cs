@@ -1,12 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace ItManager.Model
 {
     public class Company : INotifyPropertyChanged
     {
-        public Company() { }
-
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string p)
@@ -15,7 +14,7 @@ namespace ItManager.Model
             if (handler != null)
                 handler(this, new PropertyChangedEventArgs(p));
         }
-        #endregion  
+        #endregion
 
         #region NameProperty
         private string _name = "New Company";

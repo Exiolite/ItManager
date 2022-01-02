@@ -1,18 +1,17 @@
-﻿<Window x:Class="ItManager.View.MainWindowView"
+﻿<Window x:Class="ItManager.View.EditorWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ItManager"
         xmlns:vm="clr-namespace:ItManager.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <vm:DataViewModel x:Key="DataViewModel"/>
+        <vm:MainViewModel x:Key="MainViewModel"/>
         <vm:CompanyViewModel x:Key="CompanyViewModel"/>
-        <vm:ComputerViewModel x:Key="ComputerViewModel"/>
     </Window.Resources>
-    <DockPanel x:Name="Root">
+    <DockPanel>
+        <!--#region Menu-->
         <DockPanel x:Name="Menu"
                    DockPanel.Dock="Top">
             <Menu>
@@ -27,42 +26,38 @@
                 </MenuItem>
                 <MenuItem Header="New">
                     <MenuItem Header="Company"
-                              DataContext="{Binding Source={StaticResource CompanyViewModel}}"
+                              DataContext="{Binding Source={StaticResource MainViewModel}}"
                               Command="{Binding AddNewCompanyCommand}"/>
-                    <MenuItem Header="Computer"
-                              DataContext="{Binding Source={StaticResource ComputerViewModel}}"
-                              Command="{Binding AddNewComputerCommand}"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <DockPanel x:Name="WorkZone">
-            <DockPanel DataContext="{Binding Source={StaticResource CompanyViewModel}}"
-                       DockPanel.Dock="Left">
-                <TreeView ItemsSource="{Binding Companies}"
-                          Width="300">
-                    <TreeView.ItemTemplate>
+        <!--#endregion-->
+        <!--#region View-->
+        <DockPanel x:Name="View"
+                   DataContext="{Binding Source={StaticResource MainViewModel}}">
+            <!--#region CompaniesListView-->
+            <DockPanel DockPanel.Dock="Left">
+                <ListView ItemsSource="{Binding Companies}">
+                    <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TreeViewItem Header="{Binding Name}">
-                                <TreeViewItem Header="Users">
-                                    
-                                </TreeViewItem>
-                                <TreeViewItem Header="Technic">
-                                    <ItemsControl ItemsSource="{Binding Computers}">
-                                        <ItemsControl.Template>
-                                            <ControlTemplate>
-                                                <TreeViewItem Header="{Binding Path=Computer.Name}"/>
-                                            </ControlTemplate>
-                                        </ItemsControl.Template>
-                                    </ItemsControl>
-                                </TreeViewItem>
-                            </TreeViewItem>
+                            <StackPanel Orientation="Vertical">
+                                <Button Content="{Binding Path=Company.Name}"
+                                        Click="OnClickCompany"/>
+                            </StackPanel>
                         </DataTemplate>
-                    </TreeView.ItemTemplate>
-                </TreeView>
+                    </ListView.ItemTemplate>
+                </ListView>
             </DockPanel>
-            <DockPanel DataContext="Editor"
-                       Background="AliceBlue"/>
+            <!--#endregion-->
+            <!--#region Editor-->
+            <DockPanel x:Name="EditorWindow">
+                <StackPanel Name="CompanyView"
+                            DataContext="{Binding Source={StaticResource CompanyViewModel}}">
+                    <TextBox Text="{Binding Path=Company.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </DockPanel>
+            <!--#endregion-->
         </DockPanel>
+        <!--#endregion-->
     </DockPanel>
-    
 </Window>

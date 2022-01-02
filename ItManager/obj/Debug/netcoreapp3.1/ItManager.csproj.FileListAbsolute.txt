@@ -1,14 +1,14 @@
-C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.csproj.AssemblyReference.cache
-C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\MainWindowView.g.cs
-C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\App.g.cs
-C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager_MarkupCompile.cache
-C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager_MarkupCompile.lref
 C:\Git\ItManager\ItManager\bin\Debug\netcoreapp3.1\ItManager.exe
 C:\Git\ItManager\ItManager\bin\Debug\netcoreapp3.1\ItManager.deps.json
 C:\Git\ItManager\ItManager\bin\Debug\netcoreapp3.1\ItManager.runtimeconfig.json
 C:\Git\ItManager\ItManager\bin\Debug\netcoreapp3.1\ItManager.runtimeconfig.dev.json
 C:\Git\ItManager\ItManager\bin\Debug\netcoreapp3.1\ItManager.dll
 C:\Git\ItManager\ItManager\bin\Debug\netcoreapp3.1\ItManager.pdb
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\MainWindowView.g.cs
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager_MarkupCompile.cache
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager_MarkupCompile.lref
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\MainWindowView.baml
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.g.resources
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.GeneratedMSBuildEditorConfig.editorconfig
@@ -18,4 +18,4 @@ C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.csproj.CoreCompileI
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.dll
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.pdb
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.genruntimeconfig.cache
-C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.csproj.AssemblyReference.cache
