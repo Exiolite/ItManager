@@ -1,10 +1,9 @@
-﻿using ItManager.Model;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Text.Json;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ItManager.ViewModel
@@ -62,10 +61,37 @@ namespace ItManager.ViewModel
         }
         private void SaveExecuted(object obj)
         {
-            var str = JsonSerializer.Serialize(CompaniesViewModels);
-            File.WriteAllText(str);
+            var saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+                File.WriteAllText(saveFileDialog.FileName, JsonSerializer.Serialize(CompaniesViewModels));
         }
         private bool CanSave(object arg)
+        {
+            //Predicate
+            return true;
+        }
+        #endregion
+        #region OpenCommand()
+        private ICommand openCommand;
+        public ICommand OpenCommand
+        {
+            get
+            {
+                if (openCommand == null)
+                    openCommand = new Command.Command(this.OpenExecute, this.CanOpen, false);
+                return openCommand;
+            }
+        }
+        private void OpenExecute(object obj)
+        {
+            var dlg = new OpenFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                CompaniesViewModels = JsonSerializer.Deserialize<ObservableCollection<CompanyViewModel>>(File.ReadAllText(dlg.FileName));
+            }
+        }
+        private bool CanOpen(object arg)
         {
             //Predicate
             return true;

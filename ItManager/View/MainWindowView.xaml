@@ -10,13 +10,14 @@
         <DockPanel x:Name="Menu"
                    DockPanel.Dock="Top">
             <Menu>
-                <MenuItem Header="File">
+                <MenuItem Header="File"
+                          DataContext="{Binding Source={StaticResource MainViewModel}}">
                     <MenuItem Header="New"/>
                     <Separator/>
-                    <MenuItem Header="Open"/>
+                    <MenuItem Header="Open"
+                              Command="{Binding OpenCommand}"/>
                     <Separator/>
                     <MenuItem Header="Save"
-                              DataContext="{Binding Source={StaticResource MainViewModel}}"
                               Command="{Binding SaveCommand}"/>
                     <MenuItem Header="Save As"/>
                     <Separator/>
