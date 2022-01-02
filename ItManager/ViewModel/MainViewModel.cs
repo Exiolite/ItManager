@@ -19,11 +19,11 @@ namespace ItManager.ViewModel
         #endregion
 
         #region CompaniesProperty
-        private ObservableCollection<CompanyViewModel> _companies = new ObservableCollection<CompanyViewModel>();
-        public ObservableCollection<CompanyViewModel> Companies
+        private ObservableCollection<CompanyViewModel> companiesViewModels = new ObservableCollection<CompanyViewModel>();
+        public ObservableCollection<CompanyViewModel> CompaniesViewModels
         {
-            get { return _companies; }
-            set { _companies = value; NotifyPropertyChanged("Companies"); }
+            get { return companiesViewModels; }
+            set { companiesViewModels = value; NotifyPropertyChanged("CompaniesViewModels"); }
         }
         #endregion
         #region AddNewCompanyCommand()
@@ -39,7 +39,7 @@ namespace ItManager.ViewModel
         }
         private void AddNewCompanyExecuted(object obj)
         {
-            Companies.Add(new CompanyViewModel());
+            CompaniesViewModels.Add(new CompanyViewModel());
         }
         private bool CanAddNewCompany(object arg)
         {

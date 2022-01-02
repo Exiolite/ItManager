@@ -3,16 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:ItManager.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <vm:MainViewModel x:Key="MainViewModel"/>
-        <vm:CompanyViewModel x:Key="CompanyViewModel"/>
-        <DataTemplate x:Key="CompanyTemplate">
-            <TextBlock Text="{Binding Path=Company.Name}"/>
-        </DataTemplate>
-    </Window.Resources>
     <DockPanel>
         <!--#region Menu-->
         <DockPanel x:Name="Menu"
@@ -27,33 +19,74 @@
                     <MenuItem Header="Save As"/>
                     <Separator/>
                 </MenuItem>
-                <MenuItem Header="New">
-                    <MenuItem Header="Company"
+                <MenuItem Header="New Company"
                               DataContext="{Binding Source={StaticResource MainViewModel}}"
                               Command="{Binding AddNewCompanyCommand}"/>
-                </MenuItem>
             </Menu>
         </DockPanel>
         <!--#endregion-->
         <!--#region View-->
-        <DockPanel x:Name="View"
+        <ScrollViewer>
+            <DockPanel x:Name="View"
                    DataContext="{Binding Source={StaticResource MainViewModel}}">
-            <!--#region CompaniesListView-->
-            <DockPanel DockPanel.Dock="Left">
-                <ListView ItemsSource="{Binding Companies}"
-                          ItemTemplate="{Binding Source={StaticResource CompanyTemplate}}"
-                          SelectionChanged="ListView_SelectionChanged"/>
-            </DockPanel>
-            <!--#endregion-->
-            <!--#region Editor-->
-            <DockPanel x:Name="EditorWindow">
-                <StackPanel Name="CompanyView"
+                <!--#region CompaniesListView-->
+                <DockPanel DockPanel.Dock="Left">
+                    <ListView ItemsSource="{Binding CompaniesViewModels}"
+                          SelectionChanged="OnClickCompany"
+                          BorderThickness="0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Company.Name}"
+                                       FontSize="30"
+                                       FontWeight="Light"
+                                       Margin="20"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DockPanel>
+                <!--#endregion-->
+                <!--#region Editor-->
+                <DockPanel x:Name="EditorWindow"
+                       Margin="20">
+                    <StackPanel Name="CompanyView"
                             DataContext="{Binding Source={StaticResource CompanyViewModel}}">
-                    <TextBox Text="{Binding Path=Company.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                </StackPanel>
+                        <TextBox Text="{Binding Path=Company.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="50"
+                             BorderThickness="0"/>
+                        <StackPanel Orientation="Horizontal">
+                            <!--#region Computers-->
+                            <DockPanel Width="300"
+                                   Margin="10">
+                                <StackPanel HorizontalAlignment="Left"
+                                        Orientation="Horizontal"
+                                        DockPanel.Dock="top">
+                                    <TextBlock Text="Computers:"
+                                           FontSize="20"/>
+                                    <TextBlock Width="40"/>
+                                    <Button Content="New Computer"
+                                        Command="{Binding AddNewComputerCommand}"
+                                        Background="Teal"
+                                        Foreground="White"/>
+                                </StackPanel>
+                                <DockPanel>
+                                    <ListView ItemsSource="{Binding Path=Company.Computers}"
+                                              BorderThickness="0"
+                                              MouseDoubleClick="OnComputerDoubleClick">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Name}"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </DockPanel>
+                            </DockPanel>
+                            <!--#endregion-->
+                        </StackPanel>
+                    </StackPanel>
+                </DockPanel>
+                <!--#endregion-->
             </DockPanel>
-            <!--#endregion-->
-        </DockPanel>
+        </ScrollViewer>
         <!--#endregion-->
     </DockPanel>
 </Window>

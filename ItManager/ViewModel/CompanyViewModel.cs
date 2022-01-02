@@ -1,8 +1,10 @@
 ﻿using ItManager.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -29,22 +31,23 @@ namespace ItManager.ViewModel
             set { _company = value; NotifyPropertyChanged("Company"); }
         }
         #endregion
-        #region SetCompany()
-        private ICommand _setCompanyCommand;
-        public ICommand SetCompanyCommand
+
+        #region AddNewComputerCommand()
+        private ICommand addNewComputerCommand;
+        public ICommand AddNewComputerCommand
         {
             get
             {
-                if (_setCompanyCommand == null)
-                    _setCompanyCommand = new Command.Command(this.SetNewCompanyExecuted, this.CanSetNewCompanyCommand, false);
-                return _setCompanyCommand;
+                if (addNewComputerCommand == null)
+                    addNewComputerCommand = new Command.Command(this.AddNewComputerExecuted, this.CanAddNewComputer, false);
+                return addNewComputerCommand;
             }
         }
-        private void SetNewCompanyExecuted(object obj)
+        private void AddNewComputerExecuted(object obj)
         {
-            
+            Company.Computers.Add(new Computer());
         }
-        private bool CanSetNewCompanyCommand(object arg)
+        private bool CanAddNewComputer(object arg)
         {
             //Predicate
             return true;
