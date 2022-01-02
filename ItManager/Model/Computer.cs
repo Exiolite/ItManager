@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace ItManager.Model
 {
@@ -22,6 +23,14 @@ namespace ItManager.Model
         {
             get { return _name; }
             set { _name = value; OnPropertyChanged("Name"); }
+        }
+        #endregion
+        #region TasksProperty
+        private ObservableCollection<Task> tasks = new ObservableCollection<Task>();
+        public ObservableCollection<Task> Tasks
+        {
+            get { return tasks; }
+            set { tasks = value; OnPropertyChanged("Tasks"); }
         }
         #endregion
         #region AnyDeskProperty

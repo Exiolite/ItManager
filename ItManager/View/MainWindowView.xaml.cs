@@ -18,9 +18,9 @@ namespace ItManager.View
             CompanyView.DataContext = (CompanyViewModel)lw.SelectedItem;
         }
 
-        private void OnComputerDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ListView_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var computerWindowView = new ComputerWindowView();
+            var computerWindowView = new ComputerWinowView();
             var c = (ListView)sender;
             computerWindowView.DataContext = (Computer)c.SelectedItem;
             computerWindowView.Show();

@@ -15,7 +15,9 @@
                     <Separator/>
                     <MenuItem Header="Open"/>
                     <Separator/>
-                    <MenuItem Header="Save"/>
+                    <MenuItem Header="Save"
+                              DataContext="{Binding Source={StaticResource MainViewModel}}"
+                              Command="{Binding SaveCommand}"/>
                     <MenuItem Header="Save As"/>
                     <Separator/>
                 </MenuItem>
@@ -71,7 +73,7 @@
                                 <DockPanel>
                                     <ListView ItemsSource="{Binding Path=Company.Computers}"
                                               BorderThickness="0"
-                                              MouseDoubleClick="OnComputerDoubleClick">
+                                              MouseDoubleClick="ListView_MouseDoubleClick">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Name}"/>
