@@ -1,4 +1,4 @@
-﻿<Window x:Class="ItManager.View.EditorWindowView"
+﻿<Window x:Class="ItManager.View.MainWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,6 +9,9 @@
     <Window.Resources>
         <vm:MainViewModel x:Key="MainViewModel"/>
         <vm:CompanyViewModel x:Key="CompanyViewModel"/>
+        <DataTemplate x:Key="CompanyTemplate">
+            <TextBlock Text="{Binding Path=Company.Name}"/>
+        </DataTemplate>
     </Window.Resources>
     <DockPanel>
         <!--#region Menu-->
@@ -37,16 +40,9 @@
                    DataContext="{Binding Source={StaticResource MainViewModel}}">
             <!--#region CompaniesListView-->
             <DockPanel DockPanel.Dock="Left">
-                <ListView ItemsSource="{Binding Companies}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <Button Content="{Binding Path=Company.Name}"
-                                        Click="OnClickCompany"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <ListView ItemsSource="{Binding Companies}"
+                          ItemTemplate="{Binding Source={StaticResource CompanyTemplate}}"
+                          SelectionChanged="ListView_SelectionChanged"/>
             </DockPanel>
             <!--#endregion-->
             <!--#region Editor-->

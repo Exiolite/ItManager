@@ -7,17 +7,21 @@ namespace ItManager.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class EditorWindowView : Window
+    public partial class MainWindowView : Window
     {
-        public EditorWindowView()
+        public MainWindowView()
         {
             InitializeComponent();
         }
-
-        private void OnClickCompany(object sender, RoutedEventArgs e)
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var l = (Control)sender;
-            CompanyView.DataContext = (CompanyViewModel)l.DataContext;
+            
+        }
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var lw = (ListView)sender;
+            CompanyView.DataContext = (CompanyViewModel)lw.SelectedItem;
         }
     }
 }
