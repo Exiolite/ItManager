@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Text.Json;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ItManager.ViewModel
@@ -63,7 +64,9 @@ namespace ItManager.ViewModel
         {
             var saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
-                File.WriteAllText(saveFileDialog.FileName, JsonSerializer.Serialize(CompaniesViewModels));
+            {
+                File.WriteAllBytes(saveFileDialog.FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(CompaniesViewModels), "QWERqwer12341234"));
+            }
         }
         private bool CanSave(object arg)
         {
@@ -88,7 +91,9 @@ namespace ItManager.ViewModel
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
-                CompaniesViewModels = JsonSerializer.Deserialize<ObservableCollection<CompanyViewModel>>(File.ReadAllText(dlg.FileName));
+                var bytes = File.ReadAllBytes(dlg.FileName);
+                var str = RijndaelExample.Decrypt(bytes, "QWERqwer12341234");
+                CompaniesViewModels = JsonSerializer.Deserialize<ObservableCollection<CompanyViewModel>>(str);
             }
         }
         private bool CanOpen(object arg)
