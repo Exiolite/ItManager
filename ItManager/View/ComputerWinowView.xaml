@@ -21,9 +21,9 @@
                                     VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <Button Width="32"
-                                    Height="32"
-                                    Click="OnClickAnyDeskConnect"
-                                    BorderThickness="0"/>
+                            Height="32"
+                            Click="OnClickAnyDeskConnect"
+                            BorderThickness="0"/>
                     <Button Content="Edit"
                             Margin="10"
                             Click="OnEditAnyDesk"/>
