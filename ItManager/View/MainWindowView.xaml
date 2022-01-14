@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="ItManager"
-        WindowState="Maximized">
+        WindowState="Maximized"
+        Width="1920"
+        Height="1080">
     <DockPanel>
         <!--#region Menu-->
         <DockPanel x:Name="Menu"
@@ -14,14 +16,10 @@
                 <MenuItem Header="File"
                           DataContext="{Binding Source={StaticResource MainViewModel}}">
                     <MenuItem Header="New"/>
-                    <Separator/>
                     <MenuItem Header="Open"
                               Command="{Binding OpenCommand}"/>
-                    <Separator/>
-                    <MenuItem Header="Save"
+                    <MenuItem Header="Save As"
                               Command="{Binding SaveCommand}"/>
-                    <MenuItem Header="Save As"/>
-                    <Separator/>
                 </MenuItem>
                 <MenuItem Header="New Company"
                               DataContext="{Binding Source={StaticResource MainViewModel}}"
