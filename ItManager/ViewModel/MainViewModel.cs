@@ -65,7 +65,8 @@ namespace ItManager.ViewModel
             var saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
-                File.WriteAllBytes(saveFileDialog.FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(DomainViewModels), "QWERqwer12341234"));
+                File.WriteAllText(saveFileDialog.FileName, JsonSerializer.Serialize(DomainViewModels));
+                //File.WriteAllBytes(saveFileDialog.FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(DomainViewModels), "QWERqwer12341234"));
             }
         }
         private bool CanSave(object arg)

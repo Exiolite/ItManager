@@ -1,4 +1,4 @@
-﻿<Window x:Class="ItManager.View.ComputerWinowView"
+﻿<Window x:Class="ItManager.View.ServerWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,46 +8,30 @@
         Title="{Binding Name}"
         Width="380"
         ResizeMode="NoResize">
-    <StackPanel x:Name ="computerEditor"
+    <StackPanel x:Name ="serverEditor"
                 Margin="20">
         <TextBox Text="{Binding Name}"
-                                 FontSize="32"
-                                 BorderThickness="0"/>
-        <TextBlock Margin="0"/>
-        <!--#region RemoteControl-->
-        <StackPanel Orientation="Horizontal"
-                                    VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <Button Width="32"
-                            Height="32"
-                            Click="OnClickAnyDeskConnect"
-                            MouseRightButtonDown="OnEditAnyDesk"
-                            BorderThickness="0"
-                            Background="White">
-                    <Image Source="/Resources/AnyDesk.png"/>
-                </Button>
-            </StackPanel>
-        </StackPanel>
-        <!--#endregion-->
+                 FontSize="32"
+                 BorderThickness="0"/>
         <TextBlock Margin="0"/>
         <!--#region Tasks-->
         <StackPanel Orientation="Vertical">
             <DockPanel Background="Teal">
                 <DockPanel DockPanel.Dock="Top"
-                               Margin="5">
+                           Margin="5">
                     <DockPanel DockPanel.Dock="Left">
                         <TextBlock Text="Tasks"
-                                       FontSize="20"
-                                       Foreground="White"/>
+                                   FontSize="20"
+                                   Foreground="White"/>
                     </DockPanel>
                     <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Center">
+                                VerticalAlignment="Center">
                         <Button Content="Add"
-                                    Click="OnClickAddTask"
-                                    BorderThickness="0"
-                                    Background="White"
-                                    Margin="2"
-                                    Width="30"/>
+                                Click="OnClickAddTask"
+                                BorderThickness="0"
+                                Background="White"
+                                Margin="2"
+                                Width="30"/>
                     </StackPanel>
                 </DockPanel>
                 <DockPanel>

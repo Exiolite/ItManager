@@ -18,12 +18,20 @@ namespace ItManager.View
             CompanyView.DataContext = (DomainViewModel)lw.SelectedItem;
         }
 
-        private void ListView_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ComputerDoubleClicked(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var computerWindowView = new ComputerWinowView();
             var c = (ListBox)sender;
             computerWindowView.DataContext = (Computer)c.SelectedItem;
             computerWindowView.Show();
+        }
+
+        private void ServerDoubleClicked(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var serverWindowView = new ServerWindowView();
+            var c = (ListBox)sender;
+            serverWindowView.DataContext = (Server)c.SelectedItem;
+            serverWindowView.Show();
         }
     }
 }

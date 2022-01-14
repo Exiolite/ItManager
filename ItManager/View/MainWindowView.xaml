@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ItManager"
+        WindowState="Maximized">
     <DockPanel>
         <!--#region Menu-->
         <DockPanel x:Name="Menu"
@@ -59,10 +60,11 @@
                                  Background="Teal"
                                  Foreground="White"/>
                     <StackPanel Orientation="Horizontal"
-                                    Margin="0,10,0,0">
+                                    Margin="0,2,0,0">
                         <!--#region Computers-->
                         <DockPanel Width="310"
-                                       Background="Teal">
+                                   Background="Teal"
+                                   Margin="0,0,1,0">
                             <DockPanel HorizontalAlignment="Left"
                                             DockPanel.Dock="top"
                                             Width="300"
@@ -84,7 +86,7 @@
                             <DockPanel>
                                 <ListView ItemsSource="{Binding Path=Domain.Devices.Computers}"
                                               BorderThickness="0"
-                                              MouseDoubleClick="ListView_MouseDoubleClick">
+                                              MouseDoubleClick="ComputerDoubleClicked">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Name}"
@@ -97,13 +99,14 @@
                         <!--#endregion-->
                             <!--#region Computers-->
                             <DockPanel Width="310"
-                                       Background="Teal">
+                                       Background="Teal"
+                                       Margin="1,0,1,0">
                                 <DockPanel HorizontalAlignment="Left"
                                             DockPanel.Dock="top"
                                             Width="300"
                                             Margin="5">
                                     <TextBlock DockPanel.Dock="Left"
-                                               Text="Computers"
+                                               Text="Servers"
                                                FontSize="20"
                                                Foreground="White"/>
                                     <StackPanel HorizontalAlignment="Right"
@@ -111,15 +114,15 @@
                                         <Button Content="Add"
                                                 Margin="2"
                                                 Width="30"
-                                                Command="{Binding AddNewComputerCommand}"
+                                                Command="{Binding AddNewServerCommand}"
                                                 BorderThickness="0"
                                                 Background="White"/>
                                     </StackPanel>
                                 </DockPanel>
                                 <DockPanel>
-                                    <ListView ItemsSource="{Binding Path=Domain.Devices.Computers}"
+                                    <ListView ItemsSource="{Binding Path=Domain.Devices.Servers}"
                                               BorderThickness="0"
-                                              MouseDoubleClick="ListView_MouseDoubleClick">
+                                              MouseDoubleClick="ServerDoubleClicked">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Name}"

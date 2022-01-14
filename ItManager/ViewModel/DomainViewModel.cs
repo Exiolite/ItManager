@@ -46,5 +46,25 @@ namespace ItManager.ViewModel
             return true;
         }
         #endregion
+        #region AddNewServerCommand()
+        private ICommand addNewServerCommand;
+        public ICommand AddNewServerCommand
+        {
+            get
+            {
+                if (addNewServerCommand == null)
+                    addNewServerCommand = new Command.Command(this.AddNewServerExecuted, this.CanAddNewServer, false);
+                return addNewServerCommand;
+            }
+        }
+        private void AddNewServerExecuted(object obj)
+        {
+            Domain.Devices.Servers.Add(new Server());
+        }
+        private bool CanAddNewServer(object arg)
+        {
+            return true;
+        }
+        #endregion
     }
 }
