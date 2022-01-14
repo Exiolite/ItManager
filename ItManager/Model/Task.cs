@@ -7,8 +7,6 @@ namespace ItManager.Model
 {
     public class Task : INotifyPropertyChanged
     {
-        public Task() { }
-
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string p)
@@ -19,20 +17,28 @@ namespace ItManager.Model
         }
         #endregion
 
+        #region IsStartedProperty
+        private bool _isStarted;
+        public bool IsStarted
+        {
+            get { return _isStarted; }
+            set { _isStarted = value; OnPropertyChanged("IsStarted"); }
+        }
+        #endregion
         #region IsCompletedProperty
-        private bool isCompleted = false;
+        private bool _isCompleted = false;
         public bool IsCompleted
         {
-            get { return isCompleted; }
-            set { isCompleted = value; OnPropertyChanged("IsCompleted"); }
+            get { return _isCompleted; }
+            set { _isCompleted = value; OnPropertyChanged("IsCompleted"); }
         }
         #endregion
         #region DescriptionProperty
-        private string description = "No description...";
+        private string _description = "Description";
         public string Description
         {
-            get { return description; }
-            set { description = value; OnPropertyChanged("Description"); }
+            get { return _description; }
+            set { _description = value; OnPropertyChanged("Description"); }
         }
         #endregion
     }

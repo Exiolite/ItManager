@@ -5,8 +5,6 @@ namespace ItManager.Model
 {
     public class Computer : INotifyPropertyChanged
     {
-        public Computer() { }
-
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string p)
@@ -25,12 +23,20 @@ namespace ItManager.Model
             set { _name = value; OnPropertyChanged("Name"); }
         }
         #endregion
+        #region UserIdProperty
+        private int _userId;
+        public int UserId
+        {
+            get { return _userId; }
+            set { _userId = value; OnPropertyChanged("UserId"); }
+        }
+        #endregion
         #region TasksProperty
-        private ObservableCollection<Task> tasks = new ObservableCollection<Task>();
+        private ObservableCollection<Task> _tasks = new ObservableCollection<Task>();
         public ObservableCollection<Task> Tasks
         {
-            get { return tasks; }
-            set { tasks = value; OnPropertyChanged("Tasks"); }
+            get { return _tasks; }
+            set { _tasks = value; OnPropertyChanged("Tasks"); }
         }
         #endregion
         #region AnyDeskProperty

@@ -14,14 +14,14 @@ namespace ItManager.View
 
         private void OnClickCompany(object sender, SelectionChangedEventArgs e)
         {
-            var lw = (ListView)sender;
-            CompanyView.DataContext = (CompanyViewModel)lw.SelectedItem;
+            var lw = (ListBox)sender;
+            CompanyView.DataContext = (DomainViewModel)lw.SelectedItem;
         }
 
         private void ListView_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var computerWindowView = new ComputerWinowView();
-            var c = (ListView)sender;
+            var c = (ListBox)sender;
             computerWindowView.DataContext = (Computer)c.SelectedItem;
             computerWindowView.Show();
         }

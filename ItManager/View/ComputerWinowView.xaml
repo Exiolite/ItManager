@@ -9,11 +9,10 @@
         Width="380"
         ResizeMode="NoResize">
     <DockPanel x:Name ="computerEditor"
-               DockPanel.Dock="Right"
-               Background="Teal">
+               DockPanel.Dock="Right">
         <StackPanel Margin="20">
             <TextBox Text="{Binding Name}"
-                                 FontSize="20"
+                                 FontSize="32"
                                  BorderThickness="0"/>
             <TextBlock Margin="0"/>
             <!--#region RemoteControl-->
@@ -23,48 +22,72 @@
                     <Button Width="32"
                             Height="32"
                             Click="OnClickAnyDeskConnect"
-                            BorderThickness="0"/>
-                    <Button Content="Edit"
-                            Margin="10"
-                            Click="OnEditAnyDesk"/>
+                            MouseRightButtonDown="OnEditAnyDesk"
+                            BorderThickness="0"
+                            Background="White">
+                        <Image Source="/Resources/AnyDesk.png"/>
+                    </Button>
                 </StackPanel>
             </StackPanel>
             <!--#endregion-->
             <TextBlock Margin="0"/>
             <!--#region Tasks-->
             <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Tasks:"
-                                           FontSize="20"
-                                           Foreground="White"/>
-                    <Button Content="Add Task"
-                                        Click="OnClickAddTask"
-                                        Margin="5"/>
-                </StackPanel>
-                <ListView ItemsSource="{Binding Tasks}"
-                                      BorderThickness="0">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Width="310">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <CheckBox IsChecked="{Binding IsCompleted}"
-                                      Grid.Row="0"
-                                      Grid.Column="0"/>
-                                <TextBox Text="{Binding Description}"
+                <DockPanel Background="Teal">
+                    <DockPanel DockPanel.Dock="Top"
+                               Margin="5">
+                        <DockPanel DockPanel.Dock="Left">
+                            <TextBlock Text="Tasks"
+                                       FontSize="20"
+                                       Foreground="White"/>
+                        </DockPanel>
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Center">
+                            <Button Content="Add"
+                                    Click="OnClickAddTask"
+                                    BorderThickness="0"
+                                    Background="White"
+                                    Margin="2"
+                                    Width="30"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel>
+                        <ListView ItemsSource="{Binding Tasks}"
+                          BorderThickness="0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate >
+                                    <DockPanel Width="290"
+                                       Margin="2">
+                                        <DockPanel DockPanel.Dock="Right">
+                                            <StackPanel Orientation="Vertical"
+                                                HorizontalAlignment="Right">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <CheckBox IsChecked="{Binding IsStarted}"
+                                                  Grid.Row="0"
+                                                  Grid.Column="0"/>
+                                                    <TextBlock Text=" Started"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <CheckBox IsChecked="{Binding IsCompleted}"
+                                                      Grid.Row="0"
+                                                      Grid.Column="0"/>
+                                                    <TextBlock Text=" Completed"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBox Text="{Binding Description}"
                                      TextWrapping="Wrap"
                                      BorderThickness="0"
                                      Grid.Row="1"
                                      Grid.Column="0"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                        </DockPanel>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </DockPanel>
+                </DockPanel>
             </StackPanel>
             <!--#endregion-->
         </StackPanel>

@@ -21,29 +21,29 @@ namespace ItManager.ViewModel
         #endregion
 
         #region CompaniesProperty
-        private ObservableCollection<CompanyViewModel> companiesViewModels = new ObservableCollection<CompanyViewModel>();
-        public ObservableCollection<CompanyViewModel> CompaniesViewModels
+        private ObservableCollection<DomainViewModel> _domainViewModels = new ObservableCollection<DomainViewModel>();
+        public ObservableCollection<DomainViewModel> DomainViewModels
         {
-            get { return companiesViewModels; }
-            set { companiesViewModels = value; NotifyPropertyChanged("CompaniesViewModels"); }
+            get { return _domainViewModels; }
+            set { _domainViewModels = value; NotifyPropertyChanged("DomainViewModels"); }
         }
         #endregion
         #region AddNewCompanyCommand()
-        private ICommand _addNewCompanyCommand;
-        public ICommand AddNewCompanyCommand
+        private ICommand _addNewDomainCommand;
+        public ICommand AddNewDomainCommand
         {
             get
             {
-                if (_addNewCompanyCommand == null)
-                    _addNewCompanyCommand = new Command.Command(this.AddNewCompanyExecuted, this.CanAddNewCompany, false);
-                return _addNewCompanyCommand;
+                if (_addNewDomainCommand == null)
+                    _addNewDomainCommand = new Command.Command(this.AddNewDomainExecuted, this.CanAddNewDomain, false);
+                return _addNewDomainCommand;
             }
         }
-        private void AddNewCompanyExecuted(object obj)
+        private void AddNewDomainExecuted(object obj)
         {
-            CompaniesViewModels.Add(new CompanyViewModel());
+            DomainViewModels.Add(new DomainViewModel());
         }
-        private bool CanAddNewCompany(object arg)
+        private bool CanAddNewDomain(object arg)
         {
             //Predicate
             return true;
@@ -65,7 +65,7 @@ namespace ItManager.ViewModel
             var saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
-                File.WriteAllBytes(saveFileDialog.FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(CompaniesViewModels), "QWERqwer12341234"));
+                File.WriteAllBytes(saveFileDialog.FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(DomainViewModels), "QWERqwer12341234"));
             }
         }
         private bool CanSave(object arg)
@@ -93,7 +93,7 @@ namespace ItManager.ViewModel
             {
                 var bytes = File.ReadAllBytes(dlg.FileName);
                 var str = RijndaelExample.Decrypt(bytes, "QWERqwer12341234");
-                CompaniesViewModels = JsonSerializer.Deserialize<ObservableCollection<CompanyViewModel>>(str);
+                DomainViewModels = JsonSerializer.Deserialize<ObservableCollection<DomainViewModel>>(str);
             }
         }
         private bool CanOpen(object arg)

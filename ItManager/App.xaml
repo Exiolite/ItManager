@@ -4,11 +4,10 @@
              xmlns:vm="clr-namespace:ItManager.ViewModel"
              xmlns:m="clr-namespace:ItManager.Model"
              xmlns:v="clr-namespace:ItManager.View"
-             xmlns:local="clr-namespace:ItManager.View"
              StartupUri="View/MainWindowView.xaml">
     <Application.Resources>
         <vm:MainViewModel x:Key="MainViewModel"/>
-        <vm:CompanyViewModel x:Key="CompanyViewModel"/>
+        <vm:DomainViewModel x:Key="CompanyViewModel"/>
         <vm:ComputerViewModel x:Key="ComputerViewModel"/>
         <v:ComputerWinowView x:Key="ComputerWinowView"/>
         <v:AnyDeskWindowView x:Key="AnyDeskWindowView"/>

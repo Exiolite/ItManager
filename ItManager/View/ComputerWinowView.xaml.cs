@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace ItManager.View
 {
-    /// <summary>
-    /// Interaction logic for ComputerEditorView.xaml
-    /// </summary>
     public partial class ComputerWinowView : Window
     {
         public ComputerWinowView()

@@ -4,9 +4,9 @@ using System.Windows.Input;
 
 namespace ItManager.ViewModel
 {
-    public class CompanyViewModel : INotifyPropertyChanged
+    public class DomainViewModel : INotifyPropertyChanged
     {
-        public CompanyViewModel() { }
+        public DomainViewModel() { }
 
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -17,12 +17,12 @@ namespace ItManager.ViewModel
         }
         #endregion
 
-        #region Company
-        private Company _company = new Company();
-        public Company Company
+        #region DomainProperty
+        private Domain _domain = new Domain();
+        public Domain Domain
         {
-            get { return _company; }
-            set { _company = value; NotifyPropertyChanged("Company"); }
+            get { return _domain; }
+            set { _domain = value; NotifyPropertyChanged("Domain"); }
         }
         #endregion
 
@@ -39,11 +39,10 @@ namespace ItManager.ViewModel
         }
         private void AddNewComputerExecuted(object obj)
         {
-            Company.Computers.Add(new Computer());
+            Domain.Devices.Computers.Add(new Computer());
         }
         private bool CanAddNewComputer(object arg)
         {
-            //Predicate
             return true;
         }
         #endregion
