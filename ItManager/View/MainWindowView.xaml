@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:ItManager.View.UserControls"
         mc:Ignorable="d"
         Title="ItManager"
         WindowState="Maximized"
@@ -55,82 +56,11 @@
                                  BorderThickness="0"
                                  Background="Teal"
                                  Foreground="White" />
-                        <StackPanel Orientation="Horizontal"
-                                    Margin="0,2,0,0">
-                            <!--#region Computers-->
-                            <DockPanel Width="310"
-                                       Background="Teal"
-                                       Margin="0,0,1,0">
-                                <DockPanel HorizontalAlignment="Left"
-                                           DockPanel.Dock="top"
-                                           Width="300"
-                                           Margin="5">
-                                    <TextBlock DockPanel.Dock="Left"
-                                               Text="Computers"
-                                               FontSize="20"
-                                               Foreground="White" />
-                                    <StackPanel HorizontalAlignment="Right"
-                                                VerticalAlignment="Center">
-                                        <Button Content="Add"
-                                                Margin="2"
-                                                Width="30"
-                                                Command="{Binding Path=DevicesViewModel.ComputerListViewModels.AddNewComputerCommand}"
-                                                BorderThickness="0"
-                                                Background="White" />
-                                    </StackPanel>
-                                </DockPanel>
-                                <DockPanel>
-                                    <ListView ItemsSource="{Binding Path=DevicesViewModel.ComputerListViewModels.ComputerViewModels}"
-                                              BorderThickness="0"
-                                              MouseDoubleClick="ComputerDoubleClicked">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Path=Computer.Name}"
-                                                           FontSize="20" />
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-                                </DockPanel>
-                            </DockPanel>
-                            <!--#endregion-->
-                            <!--#region Servers-->
-                            <DockPanel Width="310"
-                                       Background="Teal"
-                                       Margin="1,0,1,0">
-                                <DockPanel HorizontalAlignment="Left"
-                                           DockPanel.Dock="top"
-                                           Width="300"
-                                           Margin="5">
-                                    <TextBlock DockPanel.Dock="Left"
-                                               Text="Servers"
-                                               FontSize="20"
-                                               Foreground="White" />
-                                    <StackPanel HorizontalAlignment="Right"
-                                                VerticalAlignment="Center">
-                                        <Button Content="Add"
-                                                Margin="2"
-                                                Width="30"
-                                                Command="{Binding Path=DevicesViewModel.ServersListViewModel.AddNewServerCommand}"
-                                                BorderThickness="0"
-                                                Background="White" />
-                                    </StackPanel>
-                                </DockPanel>
-                                <DockPanel>
-                                    <ListView ItemsSource="{Binding Path=DevicesViewModel.ServersListViewModel.ServerViewModels}"
-                                              BorderThickness="0"
-                                              MouseDoubleClick="ServerDoubleClicked">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding Path=Server.Name}"
-                                                               FontSize="20" />
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-                                </DockPanel>
-                            </DockPanel>
-                            <!--#endregion-->
+                        <StackPanel Orientation="Horizontal">
+                            <uc:ComputersListView DataContext="{Binding Path=DevicesViewModel.ComputerListViewModel}"
+                                                  Width="300" />
+                            <uc:ServersListView DataContext="{Binding Path=DevicesViewModel.ServersListViewModel}"
+                                                Width="300" />
                         </StackPanel>
                     </StackPanel>
                 </DockPanel>

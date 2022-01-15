@@ -15,10 +15,10 @@ namespace ItManager.ViewModel
 
         #region ComputersListViewModelProperty
         private ComputersListViewModel _computersListViewModel = new ComputersListViewModel();
-        public ComputersListViewModel ComputerListViewModels
+        public ComputersListViewModel ComputerListViewModel
         {
             get { return _computersListViewModel; }
-            set { _computersListViewModel = value; NotifyPropertyChanged(nameof(ComputerListViewModels)); }
+            set { _computersListViewModel = value; NotifyPropertyChanged(nameof(ComputerListViewModel)); }
         }
         #endregion
         #region ServerListViewModelProperty

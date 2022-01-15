@@ -42,11 +42,11 @@
                                             HorizontalAlignment="Right"
                                             Margin="5">
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox IsChecked="{Binding Path=Task.IsStarted}"/>
+                                        <CheckBox IsChecked="{Binding Path=Task.IsStarted}" />
                                         <TextBlock Text=" Started   " />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox IsChecked="{Binding Path=Task.IsCompleted}"/>
+                                        <CheckBox IsChecked="{Binding Path=Task.IsCompleted}" />
                                         <TextBlock Text=" Completed   " />
                                     </StackPanel>
                                 </StackPanel>

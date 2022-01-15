@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Git\ItManager\ItManager\App.xaml
-51762692474
+7639463354
 
-31-1278924318
+3348611178
 192-1533232326
-View\AnyDeskWindowView.xaml;View\ComputerWinowView.xaml;View\MainWindowView.xaml;View\ServerWindowView.xaml;View\UserControls\TasksListView.xaml;
+View\AnyDeskWindowView.xaml;View\ComputerWinowView.xaml;View\MainWindowView.xaml;View\ServerWindowView.xaml;View\UserControls\ComputersListView.xaml;View\UserControls\ServersListView.xaml;View\UserControls\TasksListView.xaml;
 
 False
 
