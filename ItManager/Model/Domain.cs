@@ -4,7 +4,7 @@ using System.ComponentModel;
 namespace ItManager.Model
 {
     public class Domain : INotifyPropertyChanged
-    {
+    { 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string p)

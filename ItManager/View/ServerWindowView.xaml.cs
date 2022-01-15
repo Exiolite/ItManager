@@ -1,6 +1,5 @@
-﻿using ItManager.Model;
+﻿using ItManager.ViewModel;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace ItManager.View
 {
@@ -9,13 +8,6 @@ namespace ItManager.View
         public ServerWindowView()
         {
             InitializeComponent();
-        }
-
-        private void OnClickAddTask(object sender, RoutedEventArgs e)
-        {
-            var c = (Control)sender;
-            var pc = (Server)c.DataContext;
-            pc.Tasks.Add(new Task());
         }
     }
 }

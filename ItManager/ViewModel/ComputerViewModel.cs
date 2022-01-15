@@ -5,8 +5,6 @@ namespace ItManager.ViewModel
 {
     public class ComputerViewModel : INotifyPropertyChanged
     {
-        public ComputerViewModel() { }
-
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string p)
@@ -16,12 +14,20 @@ namespace ItManager.ViewModel
         }
         #endregion
 
-        #region Computer
-        private Computer computer;
+        #region ComputerProperty
+        private Computer _computer = new Computer();
         public Computer Computer
         {
-            get { return computer; }
-            set { computer = value; NotifyPropertyChanged("Computer"); }
+            get { return _computer; }
+            set { _computer = value; NotifyPropertyChanged(nameof(Computer)); }
+        }
+        #endregion
+        #region TasksViewModelProperty
+        private TasksListViewModel _tasksListViewModel = new TasksListViewModel();
+        public TasksListViewModel TasksListViewModel
+        {
+            get { return _tasksListViewModel; }
+            set { _tasksListViewModel = value; NotifyPropertyChanged(nameof(TasksListViewModel)); }
         }
         #endregion
     }

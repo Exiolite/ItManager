@@ -22,7 +22,7 @@ namespace ItManager.View
         {
             var computerWindowView = new ComputerWinowView();
             var c = (ListBox)sender;
-            computerWindowView.DataContext = (Computer)c.SelectedItem;
+            computerWindowView.DataContext = (ComputerViewModel)c.SelectedItem;
             computerWindowView.Show();
         }
 
@@ -30,7 +30,7 @@ namespace ItManager.View
         {
             var serverWindowView = new ServerWindowView();
             var c = (ListBox)sender;
-            serverWindowView.DataContext = (Server)c.SelectedItem;
+            serverWindowView.DataContext = (ServerViewModel)c.SelectedItem;
             serverWindowView.Show();
         }
     }

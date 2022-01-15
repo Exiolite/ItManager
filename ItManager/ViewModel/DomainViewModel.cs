@@ -1,13 +1,10 @@
 ﻿using ItManager.Model;
 using System.ComponentModel;
-using System.Windows.Input;
 
 namespace ItManager.ViewModel
 {
     public class DomainViewModel : INotifyPropertyChanged
     {
-        public DomainViewModel() { }
-
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string p)
@@ -22,48 +19,15 @@ namespace ItManager.ViewModel
         public Domain Domain
         {
             get { return _domain; }
-            set { _domain = value; NotifyPropertyChanged("Domain"); }
+            set { _domain = value; NotifyPropertyChanged(nameof(Domain)); }
         }
         #endregion
-
-        #region AddNewComputerCommand()
-        private ICommand addNewComputerCommand;
-        public ICommand AddNewComputerCommand
+        #region DevicesViewModelProperty
+        private DevicesViewModel _devicesViewModel = new DevicesViewModel();
+        public DevicesViewModel DevicesViewModel
         {
-            get
-            {
-                if (addNewComputerCommand == null)
-                    addNewComputerCommand = new Command.Command(this.AddNewComputerExecuted, this.CanAddNewComputer, false);
-                return addNewComputerCommand;
-            }
-        }
-        private void AddNewComputerExecuted(object obj)
-        {
-            Domain.Devices.Computers.Add(new Computer());
-        }
-        private bool CanAddNewComputer(object arg)
-        {
-            return true;
-        }
-        #endregion
-        #region AddNewServerCommand()
-        private ICommand addNewServerCommand;
-        public ICommand AddNewServerCommand
-        {
-            get
-            {
-                if (addNewServerCommand == null)
-                    addNewServerCommand = new Command.Command(this.AddNewServerExecuted, this.CanAddNewServer, false);
-                return addNewServerCommand;
-            }
-        }
-        private void AddNewServerExecuted(object obj)
-        {
-            Domain.Devices.Servers.Add(new Server());
-        }
-        private bool CanAddNewServer(object arg)
-        {
-            return true;
+            get { return _devicesViewModel; }
+            set { _devicesViewModel = value; NotifyPropertyChanged(nameof(DevicesViewModel)); }
         }
         #endregion
     }

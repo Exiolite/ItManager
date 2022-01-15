@@ -1,10 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Text.Json;
-using System.Windows;
 using System.Windows.Input;
 
 namespace ItManager.ViewModel
@@ -20,35 +18,15 @@ namespace ItManager.ViewModel
         }
         #endregion
 
-        #region CompaniesProperty
-        private ObservableCollection<DomainViewModel> _domainViewModels = new ObservableCollection<DomainViewModel>();
-        public ObservableCollection<DomainViewModel> DomainViewModels
+        #region DomainsListViewModelProperty
+        private DomainsListViewModel _domainsListViewModel = new DomainsListViewModel();
+        public DomainsListViewModel DomainsListViewModel
         {
-            get { return _domainViewModels; }
-            set { _domainViewModels = value; NotifyPropertyChanged("DomainViewModels"); }
+            get { return _domainsListViewModel; }
+            set { _domainsListViewModel = value; NotifyPropertyChanged(nameof(DomainsListViewModel)); }
         }
         #endregion
-        #region AddNewCompanyCommand()
-        private ICommand _addNewDomainCommand;
-        public ICommand AddNewDomainCommand
-        {
-            get
-            {
-                if (_addNewDomainCommand == null)
-                    _addNewDomainCommand = new Command.Command(this.AddNewDomainExecuted, this.CanAddNewDomain, false);
-                return _addNewDomainCommand;
-            }
-        }
-        private void AddNewDomainExecuted(object obj)
-        {
-            DomainViewModels.Add(new DomainViewModel());
-        }
-        private bool CanAddNewDomain(object arg)
-        {
-            //Predicate
-            return true;
-        }
-        #endregion
+
         #region SaveCommand()
         private ICommand saveCommand;
         public ICommand SaveCommand
@@ -65,8 +43,8 @@ namespace ItManager.ViewModel
             var saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
-                File.WriteAllText(saveFileDialog.FileName, JsonSerializer.Serialize(DomainViewModels));
-                //File.WriteAllBytes(saveFileDialog.FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(DomainViewModels), "QWERqwer12341234"));
+                //File.WriteAllText(saveFileDialog.FileName, JsonSerializer.Serialize(DomainsListViewModel));
+                File.WriteAllBytes(saveFileDialog.FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(DomainsListViewModel), "QWERqwer12341234"));
             }
         }
         private bool CanSave(object arg)
@@ -94,7 +72,7 @@ namespace ItManager.ViewModel
             {
                 var bytes = File.ReadAllBytes(dlg.FileName);
                 var str = RijndaelExample.Decrypt(bytes, "QWERqwer12341234");
-                DomainViewModels = JsonSerializer.Deserialize<ObservableCollection<DomainViewModel>>(str);
+                DomainsListViewModel = JsonSerializer.Deserialize<DomainsListViewModel>(str);
             }
         }
         private bool CanOpen(object arg)

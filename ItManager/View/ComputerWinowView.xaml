@@ -3,91 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ItManager.View"
+        xmlns:uc="clr-namespace:ItManager.View.UserControls"
         mc:Ignorable="d"
         Title="{Binding Name}"
         Width="380"
-        ResizeMode="NoResize">
-    <StackPanel x:Name ="computerEditor"
-                Margin="20">
-        <TextBox Text="{Binding Name}"
-                                 FontSize="32"
-                                 BorderThickness="0"/>
-        <TextBlock Margin="0"/>
+        ResizeMode="NoResize"
+        DataContext="{Binding Source={StaticResource ComputerViewModel}}">
+    <StackPanel Margin="10">
+        <TextBox Text="{Binding Path=Computer.Name}"
+                 FontSize="32"
+                 BorderThickness="0" />
+        <TextBlock Margin="0" />
         <!--#region RemoteControl-->
         <StackPanel Orientation="Horizontal"
-                                    VerticalAlignment="Center">
+                    VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Button Width="32"
-                            Height="32"
-                            Click="OnClickAnyDeskConnect"
-                            MouseRightButtonDown="OnEditAnyDesk"
-                            BorderThickness="0"
-                            Background="White">
-                    <Image Source="/Resources/AnyDesk.png"/>
+                        Height="32"
+                        Click="OnClickAnyDeskConnect"
+                        MouseRightButtonDown="OnEditAnyDesk"
+                        BorderThickness="0"
+                        Background="White">
+                    <Image Source="/Resources/AnyDesk.png" />
                 </Button>
             </StackPanel>
         </StackPanel>
         <!--#endregion-->
-        <TextBlock Margin="0"/>
-        <!--#region Tasks-->
-        <StackPanel Orientation="Vertical">
-            <DockPanel Background="Teal">
-                <DockPanel DockPanel.Dock="Top"
-                               Margin="5">
-                    <DockPanel DockPanel.Dock="Left">
-                        <TextBlock Text="Tasks"
-                                       FontSize="20"
-                                       Foreground="White"/>
-                    </DockPanel>
-                    <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Center">
-                        <Button Content="Add"
-                                    Click="OnClickAddTask"
-                                    BorderThickness="0"
-                                    Background="White"
-                                    Margin="2"
-                                    Width="30"/>
-                    </StackPanel>
-                </DockPanel>
-                <DockPanel>
-                    <ListView ItemsSource="{Binding Tasks}"
-                          BorderThickness="0">
-                        <ListView.ItemTemplate>
-                            <DataTemplate >
-                                <DockPanel Width="290"
-                                       Margin="2">
-                                    <DockPanel DockPanel.Dock="Right">
-                                        <StackPanel Orientation="Vertical"
-                                                HorizontalAlignment="Right">
-                                            <StackPanel Orientation="Horizontal">
-                                                <CheckBox IsChecked="{Binding IsStarted}"
-                                                  Grid.Row="0"
-                                                  Grid.Column="0"/>
-                                                <TextBlock Text=" Started"/>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <CheckBox IsChecked="{Binding IsCompleted}"
-                                                      Grid.Row="0"
-                                                      Grid.Column="0"/>
-                                                <TextBlock Text=" Completed"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </DockPanel>
-                                    <DockPanel>
-                                        <TextBox Text="{Binding Description}"
-                                     TextWrapping="Wrap"
-                                     BorderThickness="0"
-                                     Grid.Row="1"
-                                     Grid.Column="0"/>
-                                    </DockPanel>
-                                </DockPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </DockPanel>
-            </DockPanel>
-        </StackPanel>
-        <!--#endregion-->
+        <TextBlock Margin="0" />
+        <uc:TasksListView DataContext="{Binding Path=TasksListViewModel}" />
     </StackPanel>
 </Window>

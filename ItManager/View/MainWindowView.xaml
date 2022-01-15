@@ -7,40 +7,38 @@
         Title="ItManager"
         WindowState="Maximized"
         Width="1920"
-        Height="1080">
+        Height="1080"
+        DataContext="{Binding Source={StaticResource MainViewModel}}">
     <DockPanel>
         <!--#region Menu-->
         <DockPanel x:Name="Menu"
                    DockPanel.Dock="Top">
             <Menu Background="White">
-                <MenuItem Header="File"
-                          DataContext="{Binding Source={StaticResource MainViewModel}}">
-                    <MenuItem Header="New"/>
+                <MenuItem Header="File">
+                    <MenuItem Header="New" />
                     <MenuItem Header="Open"
-                              Command="{Binding OpenCommand}"/>
+                              Command="{Binding OpenCommand}" />
                     <MenuItem Header="Save As"
-                              Command="{Binding SaveCommand}"/>
+                              Command="{Binding SaveCommand}" />
                 </MenuItem>
                 <MenuItem Header="New Company"
-                              DataContext="{Binding Source={StaticResource MainViewModel}}"
-                              Command="{Binding AddNewDomainCommand}"/>
+                          Command="{Binding Path=DomainsListViewModel.AddNewDomainCommand}" />
             </Menu>
         </DockPanel>
         <!--#endregion-->
-        <!--#region View-->
-        <DockPanel x:Name="View"
-                   DataContext="{Binding Source={StaticResource MainViewModel}}">
+        <!--#region MainWindow-->
+        <DockPanel>
             <!--#region CompaniesListView-->
-            <ListBox ItemsSource="{Binding DomainViewModels}"
+            <ListBox ItemsSource="{Binding Path=DomainsListViewModel.DomainViewModels}"
                      SelectionChanged="OnClickCompany"
                      BorderThickness="0"
                      DockPanel.Dock="Left">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Path=Domain.Name}"
-                                           FontSize="24"
-                                           FontWeight="Light"
-                                           Margin="5"/>
+                                   FontSize="24"
+                                   FontWeight="Light"
+                                   Margin="5" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -49,82 +47,84 @@
             <ScrollViewer>
                 <DockPanel x:Name="EditorWindow"
                            Margin="20, 0, 0, 0">
-                <StackPanel Name="CompanyView"
-                                DataContext="{Binding Source={StaticResource CompanyViewModel}}">
-                    <TextBox Text="{Binding Path=Domain.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    <StackPanel Name="CompanyView"
+                                DataContext="{Binding Source={StaticResource DomainViewModel}}">
+                        <TextBox Text="{Binding Path=Domain.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  FontSize="24"
                                  Padding="7.5"
                                  BorderThickness="0"
                                  Background="Teal"
-                                 Foreground="White"/>
-                    <StackPanel Orientation="Horizontal"
+                                 Foreground="White" />
+                        <StackPanel Orientation="Horizontal"
                                     Margin="0,2,0,0">
-                        <!--#region Computers-->
-                        <DockPanel Width="310"
-                                   Background="Teal"
-                                   Margin="0,0,1,0">
-                            <DockPanel HorizontalAlignment="Left"
-                                            DockPanel.Dock="top"
-                                            Width="300"
-                                            Margin="5">
-                                <TextBlock DockPanel.Dock="Left"
-                                               Text="Computers"
-                                               FontSize="20"
-                                               Foreground="White"/>
-                                <StackPanel HorizontalAlignment="Right"
-                                                VerticalAlignment="Center">
-                                    <Button Content="Add"
-                                                Margin="2"
-                                                Width="30"
-                                                Command="{Binding AddNewComputerCommand}"
-                                                BorderThickness="0"
-                                                Background="White"/>
-                                </StackPanel>
-                            </DockPanel>
-                            <DockPanel>
-                                <ListView ItemsSource="{Binding Path=Domain.Devices.Computers}"
-                                              BorderThickness="0"
-                                              MouseDoubleClick="ComputerDoubleClicked">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Name}"
-                                                           FontSize="20"/>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </DockPanel>
-                        </DockPanel>
-                        <!--#endregion-->
                             <!--#region Computers-->
                             <DockPanel Width="310"
                                        Background="Teal"
-                                       Margin="1,0,1,0">
+                                       Margin="0,0,1,0">
                                 <DockPanel HorizontalAlignment="Left"
-                                            DockPanel.Dock="top"
-                                            Width="300"
-                                            Margin="5">
+                                           DockPanel.Dock="top"
+                                           Width="300"
+                                           Margin="5">
                                     <TextBlock DockPanel.Dock="Left"
-                                               Text="Servers"
+                                               Text="Computers"
                                                FontSize="20"
-                                               Foreground="White"/>
+                                               Foreground="White" />
                                     <StackPanel HorizontalAlignment="Right"
                                                 VerticalAlignment="Center">
                                         <Button Content="Add"
                                                 Margin="2"
                                                 Width="30"
-                                                Command="{Binding AddNewServerCommand}"
+                                                Command="{Binding Path=DevicesViewModel.ComputerListViewModels.AddNewComputerCommand}"
                                                 BorderThickness="0"
-                                                Background="White"/>
+                                                Background="White" />
                                     </StackPanel>
                                 </DockPanel>
                                 <DockPanel>
-                                    <ListView ItemsSource="{Binding Path=Domain.Devices.Servers}"
+                                    <ListView ItemsSource="{Binding Path=DevicesViewModel.ComputerListViewModels.ComputerViewModels}"
+                                              BorderThickness="0"
+                                              MouseDoubleClick="ComputerDoubleClicked">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Path=Computer.Name}"
+                                                           FontSize="20" />
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </DockPanel>
+                            </DockPanel>
+                            <!--#endregion-->
+                            <!--#region Servers-->
+                            <DockPanel Width="310"
+                                       Background="Teal"
+                                       Margin="1,0,1,0">
+                                <DockPanel HorizontalAlignment="Left"
+                                           DockPanel.Dock="top"
+                                           Width="300"
+                                           Margin="5">
+                                    <TextBlock DockPanel.Dock="Left"
+                                               Text="Servers"
+                                               FontSize="20"
+                                               Foreground="White" />
+                                    <StackPanel HorizontalAlignment="Right"
+                                                VerticalAlignment="Center">
+                                        <Button Content="Add"
+                                                Margin="2"
+                                                Width="30"
+                                                Command="{Binding Path=DevicesViewModel.ServersListViewModel.AddNewServerCommand}"
+                                                BorderThickness="0"
+                                                Background="White" />
+                                    </StackPanel>
+                                </DockPanel>
+                                <DockPanel>
+                                    <ListView ItemsSource="{Binding Path=DevicesViewModel.ServersListViewModel.ServerViewModels}"
                                               BorderThickness="0"
                                               MouseDoubleClick="ServerDoubleClicked">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Name}"
-                                                           FontSize="20"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Path=Server.Name}"
+                                                               FontSize="20" />
+                                                </StackPanel>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
@@ -132,8 +132,8 @@
                             </DockPanel>
                             <!--#endregion-->
                         </StackPanel>
-                </StackPanel>
-            </DockPanel>
+                    </StackPanel>
+                </DockPanel>
             </ScrollViewer>
             <!--#endregion-->
         </DockPanel>

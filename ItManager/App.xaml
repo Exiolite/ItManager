@@ -2,15 +2,16 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:ItManager.ViewModel"
-             xmlns:m="clr-namespace:ItManager.Model"
-             xmlns:v="clr-namespace:ItManager.View"
              StartupUri="View/MainWindowView.xaml">
     <Application.Resources>
-        <vm:MainViewModel x:Key="MainViewModel"/>
-        <vm:DomainViewModel x:Key="CompanyViewModel"/>
-        <vm:ComputerViewModel x:Key="ComputerViewModel"/>
-        <v:ComputerWinowView x:Key="ComputerWinowView"/>
-        <v:AnyDeskWindowView x:Key="AnyDeskWindowView"/>
-        <m:AnyDesk x:Key="AnyDesk"/>
+        <vm:MainViewModel x:Key="MainViewModel" />
+        <vm:DomainViewModel x:Key="DomainViewModel" />
+        <vm:DevicesViewModel x:Key="DevicesViewModel" />
+        <vm:ServersListViewModel x:Key="ServersListViewModel" />
+        <vm:ServerViewModel x:Key="ServerViewModel" />
+        <vm:ComputersListViewModel x:Key="ComputersListViewModel" />
+        <vm:ComputerViewModel x:Key="ComputerViewModel" />
+        <vm:TasksListViewModel x:Key="TasksListViewModel" />
+        <vm:TaskViewModel x:Key="TaskViewModel" />
     </Application.Resources>
 </Application>

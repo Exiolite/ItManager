@@ -23,6 +23,8 @@ C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\ComputerWinowView.g.cs
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\ComputerWinowView.baml
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\AnyDeskWindowView.g.cs
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\AnyDeskWindowView.baml
-C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.csproj.AssemblyReference.cache
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\ServerWindowView.g.cs
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\ServerWindowView.baml
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\TasksListView.baml
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\TasksListView.g.cs
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.csproj.AssemblyReference.cache
