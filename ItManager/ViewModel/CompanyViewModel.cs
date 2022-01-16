@@ -7,6 +7,16 @@ namespace ItManager.ViewModel
 {
     public class CompanyViewModel : INotifyPropertyChanged
     {
+        #region CTOR
+
+        public CompanyViewModel() { }
+        public CompanyViewModel(Company company)
+        {
+            Company = company;
+            DevicesViewModel = new DevicesViewModel(Company.Devices);
+        }
+        #endregion
+
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string p)
@@ -15,13 +25,6 @@ namespace ItManager.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(p));
         }
         #endregion
-
-        public CompanyViewModel() { }
-        public CompanyViewModel(Company company)
-        {
-            Company = company;
-            DevicesViewModel = new DevicesViewModel(Company.Devices);
-        }
 
         #region CompanyProperty
         private Company _company;

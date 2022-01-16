@@ -7,15 +7,7 @@ namespace ItManager.ViewModel
 {
     public class ServersListViewModel : INotifyPropertyChanged
     {
-        #region NotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string p)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(p));
-        }
-        #endregion
-
+        #region CTOR
         public ServersListViewModel() { }
         public ServersListViewModel(ObservableCollection<Server> servers)
         {
@@ -26,6 +18,17 @@ namespace ItManager.ViewModel
                 ServerViewModels.Add(new ServerViewModel(server));
             }
         }
+        #endregion
+
+        #region NotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string p)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(p));
+        }
+        #endregion
+
 
         #region ServersProperty
         private ObservableCollection<Server> _servers;

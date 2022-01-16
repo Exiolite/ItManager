@@ -22,22 +22,25 @@
         <StackPanel>
             <ListView ItemsSource="{Binding ComputerViewModels}"
                       BorderThickness="0"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                      MouseDoubleClick="ListView_MouseDoubleClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Width="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=ActualWidth}">
-                            <Grid.InputBindings>
-                                <MouseBinding Gesture="LeftDoubleClick"
-                                              Command="{Binding OpenInNewWindowCommand}" />
-                            </Grid.InputBindings>
-                            <TextBlock Text="{Binding Path=Computer.Name}"
-                                       FontSize="14" />
-                        </Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding Path=TasksListViewModel.TasksLeftCounter}"
+                                       FontSize="14"
+                                       FontWeight="Bold"
+                                       Padding="2" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=Computer.Name}"
+                                       FontSize="14"
+                                       Padding="2" />
+                        </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Grid Height="2"
-                    Background="Teal" />
+                  Background="Teal" />
         </StackPanel>
     </DockPanel>
 </UserControl>

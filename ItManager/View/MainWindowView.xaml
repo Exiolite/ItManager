@@ -30,7 +30,7 @@
             </MenuItem>
             <MenuItem Header="DataGrids">
                 <MenuItem Header="Computers"
-                          Command="{Binding OpenAllComputersDataGridWindowCommand}"/>
+                          Command="{Binding OpenAllComputersDataGridWindowCommand}" />
             </MenuItem>
         </Menu>
         <DockPanel>
@@ -38,24 +38,22 @@
                                   Width="250"
                                   DockPanel.Dock="Left" />
             <ScrollViewer Margin="5,0,0,0">
-                <DockPanel x:Name="EditorWindow">
-                    <StackPanel Name="CompanyView"
-                                DataContext="{Binding Source={StaticResource CompanyViewModel}}">
-                        <TextBox Text="{Binding Path=Company.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 FontSize="24"
-                                 Padding="7.5"
-                                 BorderThickness="0"
-                                 Background="Teal"
-                                 Foreground="White" />
-                        <StackPanel Orientation="Horizontal"
-                                    Background="White">
-                            <uc:ComputersListView DataContext="{Binding Path=DevicesViewModel.ComputersListViewModel}"
-                                                  Width="200" />
-                            <uc:ServersListView DataContext="{Binding Path=DevicesViewModel.ServersListViewModel}"
-                                                Width="200" />
-                        </StackPanel>
+                <StackPanel x:Name="CompanyView"
+                            DataContext="{Binding Source={StaticResource CompanyViewModel}}">
+                    <TextBox Text="{Binding Path=Company.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="24"
+                             Padding="7.5"
+                             BorderThickness="0"
+                             Background="Teal"
+                             Foreground="White" />
+                    <StackPanel Orientation="Horizontal"
+                                Background="White">
+                        <uc:ComputersListView DataContext="{Binding Path=DevicesViewModel.ComputersListViewModel}"
+                                              Width="200" />
+                        <uc:ServersListView DataContext="{Binding Path=DevicesViewModel.ServersListViewModel}"
+                                            Width="200" />
                     </StackPanel>
-                </DockPanel>
+                </StackPanel>
             </ScrollViewer>
         </DockPanel>
     </DockPanel>

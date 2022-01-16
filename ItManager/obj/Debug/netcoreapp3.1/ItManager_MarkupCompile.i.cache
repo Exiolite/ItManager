@@ -16,5 +16,5 @@ C:\Git\ItManager\ItManager\App.xaml
 192-1533232326
 View\AllComputersDataGridWindowView.xaml;View\AnyDeskWindowView.xaml;View\ComputerWinowView.xaml;View\MainWindowView.xaml;View\ServerWindowView.xaml;View\UserControls\CompaniesListView.xaml;View\UserControls\ComputersListView.xaml;View\UserControls\ServersListView.xaml;View\UserControls\TasksListView.xaml;
 
-False
+True
 

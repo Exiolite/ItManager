@@ -16,23 +16,17 @@
             </Border.ContextMenu>
             <TextBlock Text="Companies"
                        FontSize="24"
-                       Foreground="White" 
-                       Padding="5"/>
+                       Foreground="White"
+                       Padding="5" />
         </Border>
         <StackPanel>
             <ListBox ItemsSource="{Binding CompanyViewModels}"
                      BorderThickness="0"
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                     SelectionChanged="ListBox_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Width="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=ActualWidth}">
-                            <Grid.InputBindings>
-                                <MouseBinding Gesture="LeftClick"
-                                              Command="{Binding SetCompanyAsCurrentCommand}" />
-                            </Grid.InputBindings>
-                            <TextBlock Text="{Binding Path=Company.Name}"
-                                       FontSize="24" />
-                        </Grid>
+                        <TextBlock Text="{Binding Path=Company.Name}"
+                                   FontSize="24" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

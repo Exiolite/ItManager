@@ -7,15 +7,7 @@ namespace ItManager.ViewModel
 {
     public class CompaniesListViewModel : INotifyPropertyChanged
     {
-        #region NotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string p)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(p));
-        }
-        #endregion
-
+        #region CTOR
         public CompaniesListViewModel() { }
         public CompaniesListViewModel(ObservableCollection<Company> companies)
         {
@@ -26,6 +18,17 @@ namespace ItManager.ViewModel
                 CompanyViewModels.Add(new CompanyViewModel(company));
             }
         }
+        #endregion
+
+        #region NotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string p)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(p));
+        }
+        #endregion
+
 
         #region CompaniesProperty
         private ObservableCollection<Company> _companies;

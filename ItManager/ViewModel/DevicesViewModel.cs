@@ -5,6 +5,16 @@ namespace ItManager.ViewModel
 {
     public class DevicesViewModel : INotifyPropertyChanged
     {
+        #region CTOR
+        public DevicesViewModel() { }
+        public DevicesViewModel(Devices devices)
+        {
+            Devices = devices;
+            ComputersListViewModel = new ComputersListViewModel(Devices.Computers);
+            ServersListViewModel = new ServersListViewModel(Devices.Servers);
+        }
+        #endregion
+
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string p)
@@ -13,14 +23,6 @@ namespace ItManager.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(p));
         }
         #endregion
-
-        public DevicesViewModel() { }
-        public DevicesViewModel(Devices devices)
-        {
-            Devices = devices;
-            ComputersListViewModel = new ComputersListViewModel(Devices.Computers);
-            ServersListViewModel = new ServersListViewModel(Devices.Servers);
-        }
 
         #region DevicesProperty
         private Devices _devices;

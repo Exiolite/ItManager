@@ -5,6 +5,14 @@ namespace ItManager.ViewModel
 {
     public class TaskViewModel : INotifyPropertyChanged
     {
+        #region CTOR
+        public TaskViewModel() { }
+        public TaskViewModel(Task task)
+        {
+            Task = task;
+        }
+        #endregion
+
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string p)
@@ -13,12 +21,6 @@ namespace ItManager.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(p));
         }
         #endregion
-
-        public TaskViewModel() { }
-        public TaskViewModel(Task task)
-        {
-            Task = task;
-        }
 
         #region TaskProperty
         private Task _task;

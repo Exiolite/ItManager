@@ -24,10 +24,8 @@ C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\ComputerWinowView.baml
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\AnyDeskWindowView.g.cs
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\AnyDeskWindowView.baml
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\ServerWindowView.g.cs
-C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\ServerWindowView.baml
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\TasksListView.baml
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\TasksListView.g.cs
-C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\ItManager.csproj.AssemblyReference.cache
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\ComputersListView.g.cs
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\ComputersListView.baml
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\ServersListView.g.cs
@@ -36,3 +34,4 @@ C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\CompaniesLi
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\CompaniesListView.g.cs
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\AllComputersDataGridWindowView.g.cs
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\AllComputersDataGridWindowView.baml
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\ServerWindowView.baml

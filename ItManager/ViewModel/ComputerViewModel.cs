@@ -1,12 +1,20 @@
 ﻿using ItManager.Model;
-using ItManager.View;
 using System.ComponentModel;
-using System.Windows.Input;
 
 namespace ItManager.ViewModel
 {
     public class ComputerViewModel : INotifyPropertyChanged
     {
+        #region CTOR
+        public ComputerViewModel() { }
+        public ComputerViewModel(Computer computer)
+        {
+            Computer = computer;
+            TasksListViewModel = new TasksListViewModel(Computer.Tasks);
+            AnyDeskViewModel = new AnyDeskViewModel(Computer.AnyDesk);
+        }
+        #endregion
+
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string p)
@@ -15,14 +23,6 @@ namespace ItManager.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(p));
         }
         #endregion
-
-        public ComputerViewModel() { }
-        public ComputerViewModel(Computer computer)
-        {
-            Computer = computer;
-            TasksListViewModel = new TasksListViewModel(Computer.Tasks);
-            AnyDeskViewModel = new AnyDeskViewModel(Computer.AnyDesk);
-        }
 
         #region ComputerProperty
         private Computer _computer;
@@ -46,29 +46,6 @@ namespace ItManager.ViewModel
         {
             get { return _anyDeskViewModel; }
             set { _anyDeskViewModel = value; NotifyPropertyChanged(nameof(AnyDeskViewModel)); }
-        }
-        #endregion
-        #region OpenInNewWindowCommand()
-        private ICommand _openInNewWindowCommand;
-        public ICommand OpenInNewWindowCommand
-        {
-            get
-            {
-                if (_openInNewWindowCommand == null)
-                    _openInNewWindowCommand = new Command.Command(this.OpenInNewWindowExecute, this.CanOpenInNewWindow, false);
-                return _openInNewWindowCommand;
-            }
-        }
-        private void OpenInNewWindowExecute(object obj)
-        {
-            var computerWindowView = new ComputerWinowView();
-            computerWindowView.DataContext = this;
-            computerWindowView.Show();
-        }
-        private bool CanOpenInNewWindow(object arg)
-        {
-            //Predicate
-            return true;
         }
         #endregion
     }

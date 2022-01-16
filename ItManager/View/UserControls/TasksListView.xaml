@@ -12,9 +12,18 @@
                 <ContextMenu>
                     <MenuItem Header="Add New Task"
                               Command="{Binding AddTaskCommand}" />
+                    <Separator />
+                    <MenuItem Header="Service Templates">
+                        <MenuItem Header="Computer"
+                                  Command="{Binding SetComputerServiceTemplateCommand}" />
+                        <MenuItem Header="Domain Server"
+                                  Command="{Binding SetDomainServerServiceTemplateCommand}" />
+                        <MenuItem Header="HyperV Server"
+                                  Command="{Binding SetHyperVServerServiceTemplateCommand}" />
+                    </MenuItem>
                 </ContextMenu>
             </Border.ContextMenu>
-            <TextBlock Text="Companies"
+            <TextBlock Text="Service"
                        FontSize="24"
                        Foreground="White"
                        Padding="5" />

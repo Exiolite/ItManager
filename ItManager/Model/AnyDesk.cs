@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel;
-using System.Windows.Input;
 
 namespace ItManager.Model
 {
     public class AnyDesk : INotifyPropertyChanged
     {
-        public AnyDesk() { }
-
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string p)

@@ -7,6 +7,15 @@ namespace ItManager.ViewModel
 {
     public class AnyDeskViewModel : INotifyPropertyChanged
     {
+        #region CTOR
+
+        public AnyDeskViewModel() { }
+        public AnyDeskViewModel(AnyDesk anyDesk)
+        {
+            AnyDesk = anyDesk;
+        }
+        #endregion
+
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string p)
@@ -15,12 +24,6 @@ namespace ItManager.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(p));
         }
         #endregion
-
-        public AnyDeskViewModel() { }
-        public AnyDeskViewModel(AnyDesk anyDesk)
-        {
-            AnyDesk = anyDesk;
-        }
 
         #region AnyDeskProperty
         private AnyDesk _anyDesk;

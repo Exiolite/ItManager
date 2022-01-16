@@ -7,6 +7,15 @@ namespace ItManager.ViewModel
 {
     public class ServerViewModel : INotifyPropertyChanged
     {
+        #region CTOR
+        public ServerViewModel() { }
+        public ServerViewModel(Server server)
+        {
+            Server = server;
+            TasksListViewModel = new TasksListViewModel(Server.Tasks);
+        }
+        #endregion
+
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string p)
@@ -15,13 +24,6 @@ namespace ItManager.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(p));
         }
         #endregion
-
-        public ServerViewModel() { }
-        public ServerViewModel(Server server)
-        {
-            Server = server;
-            TasksListViewModel = new TasksListViewModel(Server.Tasks);
-        }
 
         #region ServerProperty
         private Server _server;
@@ -55,7 +57,7 @@ namespace ItManager.ViewModel
         }
         #endregion
 
-        #region TasksViewModelProperty
+        #region TaskViewModelProperty
         private TasksListViewModel _tasksListViewModel;
         public TasksListViewModel TasksListViewModel
         {

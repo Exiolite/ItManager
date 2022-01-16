@@ -14,7 +14,7 @@
                               Command="{Binding AddNewServerCommand}" />
                 </ContextMenu>
             </Border.ContextMenu>
-            <TextBlock Text="Companies"
+            <TextBlock Text="Servers"
                        FontSize="24"
                        Foreground="White"
                        Padding="5" />
@@ -22,17 +22,20 @@
         <StackPanel>
             <ListView ItemsSource="{Binding ServerViewModels}"
                       BorderThickness="0"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                      MouseDoubleClick="ListView_MouseDoubleClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Width="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=ActualWidth}">
-                            <Grid.InputBindings>
-                                <MouseBinding Gesture="LeftDoubleClick"
-                                              Command="{Binding OpenInNewWindowCommand}" />
-                            </Grid.InputBindings>
-                            <TextBlock Text="{Binding Path=Server.Name}"
-                                       FontSize="14" />
-                        </Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding Path=TasksListViewModel.TasksLeftCounter}"
+                                       FontSize="14"
+                                       FontWeight="Bold"
+                                       Padding="2" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=Server.Name}"
+                                       FontSize="14"
+                                       Padding="2" />
+                        </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

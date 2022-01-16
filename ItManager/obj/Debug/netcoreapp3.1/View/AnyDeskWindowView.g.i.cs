@@ -52,7 +52,7 @@ namespace ItManager.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ItManager;V1.0.0.0;component/view/anydeskwindowview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ItManager;component/view/anydeskwindowview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\AnyDeskWindowView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

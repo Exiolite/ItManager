@@ -2,7 +2,6 @@
 using ItManager.View;
 using Microsoft.Win32;
 using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Text.Json;
@@ -12,6 +11,14 @@ namespace ItManager.ViewModel
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        #region CTOR
+        public MainViewModel()
+        {
+            ItManagerData = new ItManagerData();
+            CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
+        }
+        #endregion
+
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string p)
@@ -20,12 +27,6 @@ namespace ItManager.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(p));
         }
         #endregion
-
-        public MainViewModel()
-        {
-            ItManagerData = new ItManagerData();
-            CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
-        }
 
         private string FileName = string.Empty;
 
@@ -150,6 +151,7 @@ namespace ItManager.ViewModel
             return true;
         }
         #endregion
+
         #region OpenAllComputersDataGridWindowCommand()
         private ICommand _openAllComputersDataGridWindowCommand;
         public ICommand OpenAllComputersDataGridWindowCommand

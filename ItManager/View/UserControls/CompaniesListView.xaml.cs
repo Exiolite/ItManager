@@ -1,5 +1,5 @@
-﻿using System.Windows.Controls;
-using System.Windows.Input;
+﻿using ItManager.ViewModel;
+using System.Windows.Controls;
 
 namespace ItManager.View.UserControls
 {
@@ -8,6 +8,11 @@ namespace ItManager.View.UserControls
         public CompaniesListView()
         {
             InitializeComponent();
+        }
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var lw = (ListBox)sender;
+            MainWindowView.Instance.CompanyView.DataContext = (CompanyViewModel)lw.SelectedItem;
         }
     }
 }
