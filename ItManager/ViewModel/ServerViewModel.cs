@@ -16,8 +16,15 @@ namespace ItManager.ViewModel
         }
         #endregion
 
+        public ServerViewModel() { }
+        public ServerViewModel(Server server)
+        {
+            Server = server;
+            TasksListViewModel = new TasksListViewModel(Server.Tasks);
+        }
+
         #region ServerProperty
-        private Server _server = new Server();
+        private Server _server;
         public Server Server
         {
             get { return _server; }
@@ -49,7 +56,7 @@ namespace ItManager.ViewModel
         #endregion
 
         #region TasksViewModelProperty
-        private TasksListViewModel _tasksListViewModel = new TasksListViewModel();
+        private TasksListViewModel _tasksListViewModel;
         public TasksListViewModel TasksListViewModel
         {
             get { return _tasksListViewModel; }

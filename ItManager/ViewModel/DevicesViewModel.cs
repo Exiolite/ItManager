@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using ItManager.Model;
+using System.ComponentModel;
 
 namespace ItManager.ViewModel
 {
@@ -13,16 +14,32 @@ namespace ItManager.ViewModel
         }
         #endregion
 
+        public DevicesViewModel() { }
+        public DevicesViewModel(Devices devices)
+        {
+            Devices = devices;
+            ComputersListViewModel = new ComputersListViewModel(Devices.Computers);
+            ServersListViewModel = new ServersListViewModel(Devices.Servers);
+        }
+
+        #region DevicesProperty
+        private Devices _devices;
+        public Devices Devices
+        {
+            get { return _devices; }
+            set { _devices = value; NotifyPropertyChanged(nameof(Devices)); }
+        }
+        #endregion
         #region ComputersListViewModelProperty
-        private ComputersListViewModel _computersListViewModel = new ComputersListViewModel();
-        public ComputersListViewModel ComputerListViewModel
+        private ComputersListViewModel _computersListViewModel;
+        public ComputersListViewModel ComputersListViewModel
         {
             get { return _computersListViewModel; }
-            set { _computersListViewModel = value; NotifyPropertyChanged(nameof(ComputerListViewModel)); }
+            set { _computersListViewModel = value; NotifyPropertyChanged(nameof(ComputersListViewModel)); }
         }
         #endregion
         #region ServerListViewModelProperty
-        private ServersListViewModel _serversListViewModel = new ServersListViewModel();
+        private ServersListViewModel _serversListViewModel;
         public ServersListViewModel ServersListViewModel
         {
             get { return _serversListViewModel; }

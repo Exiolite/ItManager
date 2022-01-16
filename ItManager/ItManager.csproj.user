@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup />
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Git\ItManager\ItManager\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
   <ItemGroup>
     <ApplicationDefinition Update="App.xaml">
       <SubType>Designer</SubType>
@@ -19,7 +21,7 @@
     <Compile Update="View\UserControls\ComputersListView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\UserControls\DomainsListView.xaml.cs">
+    <Compile Update="View\UserControls\CompaniesListView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UserControls\ServersListView.xaml.cs">
@@ -45,7 +47,7 @@
     <Page Update="View\UserControls\ComputersListView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControls\DomainsListView.xaml">
+    <Page Update="View\UserControls\CompaniesListView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserControls\ServersListView.xaml">

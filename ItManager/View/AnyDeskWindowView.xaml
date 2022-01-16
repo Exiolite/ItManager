@@ -3,17 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ItManager.View"
         mc:Ignorable="d"
         Title="AnyDeskWindowView"
         Width="300"
-        Height="100">
+        Height="100"
+        DataContext="{Binding Source={StaticResource AnyDeskViewModel}}">
     <StackPanel Margin="10">
-        <TextBox Text="{Binding Id}"
+        <TextBox Text="{Binding Path=AnyDesk.Id}"
                  BorderThickness="0"
                  FontSize="15"
                  VerticalAlignment="Center"/>
-        <TextBox Text="{Binding Password}"
+        <TextBox Text="{Binding Path=AnyDesk.Password}"
                  BorderThickness="0"
                  FontSize="15"
                  VerticalAlignment="Center"/>

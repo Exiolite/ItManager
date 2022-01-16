@@ -5,8 +5,8 @@
              StartupUri="View/MainWindowView.xaml">
     <Application.Resources>
         <vm:MainViewModel x:Key="MainViewModel" />
-        <vm:DomainViewModel x:Key="DomainViewModel" />
-        <vm:DomainsListViewModel x:Key="DomainsListViewModel" />
+        <vm:CompanyViewModel x:Key="CompanyViewModel" />
+        <vm:CompaniesListViewModel x:Key="CompaniesListViewModel" />
         <vm:DevicesViewModel x:Key="DevicesViewModel" />
         <vm:ServersListViewModel x:Key="ServersListViewModel" />
         <vm:ServerViewModel x:Key="ServerViewModel" />
@@ -14,5 +14,6 @@
         <vm:ComputerViewModel x:Key="ComputerViewModel" />
         <vm:TasksListViewModel x:Key="TasksListViewModel" />
         <vm:TaskViewModel x:Key="TaskViewModel" />
+        <vm:AnyDeskViewModel x:Key="AnyDeskViewModel" />
     </Application.Resources>
 </Application>

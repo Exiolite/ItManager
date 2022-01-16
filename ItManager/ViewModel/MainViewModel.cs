@@ -1,5 +1,7 @@
-﻿using Microsoft.Win32;
+﻿using ItManager.Model;
+using Microsoft.Win32;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Text.Json;
@@ -18,15 +20,53 @@ namespace ItManager.ViewModel
         }
         #endregion
 
-        #region DomainsListViewModelProperty
-        private DomainsListViewModel _domainsListViewModel = new DomainsListViewModel();
-        public DomainsListViewModel DomainsListViewModel
+        public MainViewModel()
         {
-            get { return _domainsListViewModel; }
-            set { _domainsListViewModel = value; NotifyPropertyChanged(nameof(DomainsListViewModel)); }
+            ItManagerData = new ItManagerData();
+            CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
+        }
+
+        private string FileName = string.Empty;
+
+        #region ItManagerData
+        private ItManagerData _itManagerData;
+        public ItManagerData ItManagerData
+        {
+            get { return _itManagerData; }
+            set { _itManagerData = value; NotifyPropertyChanged(nameof(ItManagerData)); }
+        }
+        #endregion
+        #region CompaniesListViewModelProperty
+        private CompaniesListViewModel _companiesListViewModel;
+        public CompaniesListViewModel CompaniesListViewModel
+        {
+            get { return _companiesListViewModel; }
+            set { _companiesListViewModel = value; NotifyPropertyChanged(nameof(CompaniesListViewModel)); }
         }
         #endregion
 
+        #region NewCommand()
+        private ICommand _newCommand;
+        public ICommand NewCommand
+        {
+            get
+            {
+                if (_newCommand == null)
+                    _newCommand = new Command.Command(this.NewExecuted, this.CanNew, false);
+                return _newCommand;
+            }
+        }
+        private void NewExecuted(object obj)
+        {
+            ItManagerData = new ItManagerData();
+            CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
+        }
+        private bool CanNew(object arg)
+        {
+            //Predicate
+            return true;
+        }
+        #endregion
         #region SaveCommand()
         private ICommand saveCommand;
         public ICommand SaveCommand
@@ -34,22 +74,49 @@ namespace ItManager.ViewModel
             get
             {
                 if (saveCommand == null)
-                    saveCommand = new Command.Command(this.SaveExecuted, this.CanSave, false);
+                    saveCommand = new Command.Command(this.SaveExecute, this.CanSave, false);
                 return saveCommand;
             }
         }
-        private void SaveExecuted(object obj)
+        private void SaveExecute(object obj)
         {
-            var saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                //File.WriteAllText(saveFileDialog.FileName, JsonSerializer.Serialize(DomainsListViewModel));
-                File.WriteAllBytes(saveFileDialog.FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(DomainsListViewModel), "QWERqwer12341234"));
-            }
+            SaveInFileName();
         }
         private bool CanSave(object arg)
         {
             //Predicate
+            return true;
+        }
+
+        private void SaveInFileName()
+        {
+            if (!string.IsNullOrEmpty(FileName))
+                File.WriteAllBytes(FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(ItManagerData), "QWERqwer12341234"));
+        }
+        #endregion
+        #region SaveAsCommand()
+        private ICommand _saveAsCommand;
+        public ICommand SaveAsCommand
+        {
+            get
+            {
+                if (_saveAsCommand == null)
+                    _saveAsCommand = new Command.Command(this.SaveAsExecuted, this.CanSaveAs, false);
+                return _saveAsCommand;
+            }
+        }
+        private void SaveAsExecuted(object obj)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                //File.WriteAllText(saveFileDialog.FileName, JsonSerializer.Serialize(ItManagerData));
+                FileName = saveFileDialog.FileName;
+                File.WriteAllBytes(FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(ItManagerData), "QWERqwer12341234"));
+            }
+        }
+        private bool CanSaveAs(object arg)
+        {
             return true;
         }
         #endregion
@@ -70,14 +137,15 @@ namespace ItManager.ViewModel
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
-                var bytes = File.ReadAllBytes(dlg.FileName);
+                FileName = dlg.FileName;
+                var bytes = File.ReadAllBytes(FileName);
                 var str = RijndaelExample.Decrypt(bytes, "QWERqwer12341234");
-                DomainsListViewModel = JsonSerializer.Deserialize<DomainsListViewModel>(str);
+                ItManagerData = JsonSerializer.Deserialize<ItManagerData>(str);
+                CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
             }
         }
         private bool CanOpen(object arg)
         {
-            //Predicate
             return true;
         }
         #endregion

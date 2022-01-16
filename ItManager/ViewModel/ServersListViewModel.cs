@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using ItManager.Model;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -15,8 +16,27 @@ namespace ItManager.ViewModel
         }
         #endregion
 
+        public ServersListViewModel() { }
+        public ServersListViewModel(ObservableCollection<Server> servers)
+        {
+            Servers = servers;
+            ServerViewModels = new ObservableCollection<ServerViewModel>();
+            foreach (var server in Servers)
+            {
+                ServerViewModels.Add(new ServerViewModel(server));
+            }
+        }
+
+        #region ServersProperty
+        private ObservableCollection<Server> _servers;
+        public ObservableCollection<Server> Servers
+        {
+            get { return _servers; }
+            set { _servers = value; NotifyPropertyChanged(nameof(Servers)); }
+        }
+        #endregion
         #region ServerViewModelsProperty
-        private ObservableCollection<ServerViewModel> _serverViewModels = new ObservableCollection<ServerViewModel>();
+        private ObservableCollection<ServerViewModel> _serverViewModels;
         public ObservableCollection<ServerViewModel> ServerViewModels
         {
             get { return _serverViewModels; }
@@ -36,7 +56,9 @@ namespace ItManager.ViewModel
         }
         private void AddNewServerExecuted(object obj)
         {
-            ServerViewModels.Add(new ServerViewModel());
+            var server = new Server();
+            Servers.Add(server);
+            ServerViewModels.Add(new ServerViewModel(server));
         }
         private bool CanAddNewServer(object arg)
         {

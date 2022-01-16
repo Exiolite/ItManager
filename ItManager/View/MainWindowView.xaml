@@ -11,25 +11,33 @@
         Height="1080"
         DataContext="{Binding Source={StaticResource MainViewModel}}">
     <DockPanel>
+        <DockPanel.InputBindings>
+            <KeyBinding Modifiers="Ctrl"
+                        Key="S"
+                        Command="{Binding SaveCommand}" />
+        </DockPanel.InputBindings>
         <Menu DockPanel.Dock="Top"
               Background="White">
             <MenuItem Header="File">
-                <MenuItem Header="New" />
+                <MenuItem Header="New"
+                          Command="{Binding NewCommand}" />
                 <MenuItem Header="Open"
                           Command="{Binding OpenCommand}" />
                 <MenuItem Header="Save As"
-                          Command="{Binding SaveCommand}" />
+                          Command="{Binding SaveAsCommand}" />
+                <MenuItem Header="Save"
+                          Command="{Binding SaveACommand}" />
             </MenuItem>
         </Menu>
         <DockPanel>
-            <uc:DomainsListView DataContext="{Binding DomainsListViewModel}" 
-                                Width="250"
-                                DockPanel.Dock="Left"/>
+            <uc:CompaniesListView DataContext="{Binding CompaniesListViewModel}"
+                                  Width="250"
+                                  DockPanel.Dock="Left" />
             <ScrollViewer Margin="5,0,0,0">
                 <DockPanel x:Name="EditorWindow">
                     <StackPanel Name="CompanyView"
-                                DataContext="{Binding Source={StaticResource DomainViewModel}}">
-                        <TextBox Text="{Binding Path=Domain.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                DataContext="{Binding Source={StaticResource CompanyViewModel}}">
+                        <TextBox Text="{Binding Path=Company.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  FontSize="24"
                                  Padding="7.5"
                                  BorderThickness="0"
@@ -37,7 +45,7 @@
                                  Foreground="White" />
                         <StackPanel Orientation="Horizontal"
                                     Background="White">
-                            <uc:ComputersListView DataContext="{Binding Path=DevicesViewModel.ComputerListViewModel}"
+                            <uc:ComputersListView DataContext="{Binding Path=DevicesViewModel.ComputersListViewModel}"
                                                   Width="200" />
                             <uc:ServersListView DataContext="{Binding Path=DevicesViewModel.ServersListViewModel}"
                                                 Width="200" />

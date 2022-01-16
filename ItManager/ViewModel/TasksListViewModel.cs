@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using ItManager.Model;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -15,8 +16,27 @@ namespace ItManager.ViewModel
         }
         #endregion
 
+        public TasksListViewModel() { }
+        public TasksListViewModel(ObservableCollection<Task> tasks)
+        {
+            Tasks = tasks;
+            TaskViewModels = new ObservableCollection<TaskViewModel>();
+            foreach (var task in tasks)
+            {
+                TaskViewModels.Add(new TaskViewModel(task));
+            }
+        }
+
         #region TasksProperty
-        private ObservableCollection<TaskViewModel> _taskViewModels = new ObservableCollection<TaskViewModel>();
+        private ObservableCollection<Task> _tasks;
+        public ObservableCollection<Task> Tasks
+        {
+            get { return _tasks; }
+            set { _tasks = value; NotifyPropertyChanged(nameof(Tasks)); }
+        }
+        #endregion
+        #region TaskViewModelsProperty
+        private ObservableCollection<TaskViewModel> _taskViewModels;
         public ObservableCollection<TaskViewModel> TaskViewModels
         {
             get { return _taskViewModels; }
@@ -36,7 +56,9 @@ namespace ItManager.ViewModel
         }
         private void AddTaskExecute(object obj)
         {
-            TaskViewModels.Add(new TaskViewModel());
+            var task = new Task();
+            Tasks.Add(task);
+            TaskViewModels.Add(new TaskViewModel(task));
         }
         private bool CanAddTask(object arg)
         {

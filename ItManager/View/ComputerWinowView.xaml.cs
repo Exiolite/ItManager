@@ -10,22 +10,5 @@ namespace ItManager.View
         {
             InitializeComponent();
         }
-
-        private void OnClickAnyDeskConnect(object sender, RoutedEventArgs e)
-        {
-            var c = (Control)sender;
-            var pc = (Computer)c.DataContext;
-            pc.AnyDesk.Connect();
-
-        }
-
-        private void OnEditAnyDesk(object sender, RoutedEventArgs e)
-        {
-            var anyDeskWindowView = new AnyDeskWindowView();
-            var c = (Control)sender;
-            var pc = (Computer)c.DataContext;
-            anyDeskWindowView.DataContext = pc.AnyDesk;
-            anyDeskWindowView.Show();
-        }
     }
 }

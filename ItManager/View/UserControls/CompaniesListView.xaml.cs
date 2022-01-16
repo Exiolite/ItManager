@@ -3,9 +3,9 @@ using System.Windows.Input;
 
 namespace ItManager.View.UserControls
 {
-    public partial class DomainsListView : UserControl
+    public partial class CompaniesListView : UserControl
     {
-        public DomainsListView()
+        public CompaniesListView()
         {
             InitializeComponent();
         }

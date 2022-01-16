@@ -16,8 +16,16 @@ namespace ItManager.ViewModel
         }
         #endregion
 
+        public ComputerViewModel() { }
+        public ComputerViewModel(Computer computer)
+        {
+            Computer = computer;
+            TasksListViewModel = new TasksListViewModel(Computer.Tasks);
+            AnyDeskViewModel = new AnyDeskViewModel(Computer.AnyDesk);
+        }
+
         #region ComputerProperty
-        private Computer _computer = new Computer();
+        private Computer _computer;
         public Computer Computer
         {
             get { return _computer; }
@@ -25,11 +33,19 @@ namespace ItManager.ViewModel
         }
         #endregion
         #region TasksViewModelProperty
-        private TasksListViewModel _tasksListViewModel = new TasksListViewModel();
+        private TasksListViewModel _tasksListViewModel;
         public TasksListViewModel TasksListViewModel
         {
             get { return _tasksListViewModel; }
             set { _tasksListViewModel = value; NotifyPropertyChanged(nameof(TasksListViewModel)); }
+        }
+        #endregion
+        #region AnyDeskViewModel
+        private AnyDeskViewModel _anyDeskViewModel;
+        public AnyDeskViewModel AnyDeskViewModel
+        {
+            get { return _anyDeskViewModel; }
+            set { _anyDeskViewModel = value; NotifyPropertyChanged(nameof(AnyDeskViewModel)); }
         }
         #endregion
         #region OpenInNewWindowCommand()

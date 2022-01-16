@@ -1,24 +1,24 @@
-﻿<UserControl x:Class="ItManager.View.UserControls.DomainsListView"
+﻿<UserControl x:Class="ItManager.View.UserControls.CompaniesListView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             DataContext="{Binding Source={StaticResource DomainsListViewModel}}">
+             DataContext="{Binding Source={StaticResource CompaniesListViewModel}}">
     <DockPanel>
         <Border DockPanel.Dock="Top"
                 Background="Teal">
             <DockPanel DockPanel.Dock="Top"
                        Margin="5">
                 <DockPanel DockPanel.Dock="Left">
-                    <TextBlock Text="Domains"
+                    <TextBlock Text="Companies"
                                FontSize="24"
                                Foreground="White" />
                 </DockPanel>
                 <StackPanel HorizontalAlignment="Right"
                             VerticalAlignment="Center">
                     <Button Content="Add"
-                            Command="{Binding AddNewDomainCommand}"
+                            Command="{Binding AddNewCompanyCommand}"
                             BorderThickness="0"
                             Background="White"
                             Margin="2"
@@ -27,7 +27,7 @@
             </DockPanel>
         </Border>
         <StackPanel>
-            <ListBox ItemsSource="{Binding DomainViewModels}"
+            <ListBox ItemsSource="{Binding CompanyViewModels}"
                      BorderThickness="0"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListBox.ItemTemplate>
@@ -35,9 +35,9 @@
                         <Grid Width="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=ActualWidth}">
                             <Grid.InputBindings>
                                 <MouseBinding Gesture="LeftClick"
-                                              Command="{Binding SetDomainAsCurrentCommand}"/>
+                                              Command="{Binding SetCompanyAsCurrentCommand}" />
                             </Grid.InputBindings>
-                            <TextBlock Text="{Binding Path=Domain.Name}"
+                            <TextBlock Text="{Binding Path=Company.Name}"
                                        FontSize="24" />
                         </Grid>
                     </DataTemplate>

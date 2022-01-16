@@ -33,13 +33,5 @@ namespace ItManager.Model
             set { _password = value; OnPropertyChanged("Password"); }
         }
         #endregion
-
-        public void Connect()
-        {
-            var path = @"C:\AnyDesk.exe";
-            string strCmdText;
-            strCmdText = $"/C echo {Password} | {path} {Id} --with-password";
-            System.Diagnostics.Process.Start("CMD.exe", strCmdText);
-        }
     }
 }

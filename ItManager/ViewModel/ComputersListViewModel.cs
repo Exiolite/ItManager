@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using ItManager.Model;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -15,8 +16,27 @@ namespace ItManager.ViewModel
         }
         #endregion
 
+        public ComputersListViewModel() { }
+        public ComputersListViewModel(ObservableCollection<Computer> computers)
+        {
+            Computers = computers;
+            ComputerViewModels = new ObservableCollection<ComputerViewModel>();
+            foreach (var computer in Computers)
+            {
+                ComputerViewModels.Add(new ComputerViewModel(computer));
+            }
+        }
+
+        #region ComputersProperty
+        private ObservableCollection<Computer> _computers;
+        public ObservableCollection<Computer> Computers
+        {
+            get { return _computers; }
+            set { _computers = value; NotifyPropertyChanged(nameof(Computers)); }
+        }
+        #endregion
         #region ComputerViewModelsProperty
-        private ObservableCollection<ComputerViewModel> _computerViewModels = new ObservableCollection<ComputerViewModel>();
+        private ObservableCollection<ComputerViewModel> _computerViewModels;
         public ObservableCollection<ComputerViewModel> ComputerViewModels
         {
             get { return _computerViewModels; }
@@ -36,7 +56,9 @@ namespace ItManager.ViewModel
         }
         private void AddNewComputerExecuted(object obj)
         {
-            ComputerViewModels.Add(new ComputerViewModel());
+            var computer = new Computer();
+            Computers.Add(computer);
+            ComputerViewModels.Add(new ComputerViewModel(computer));
         }
         private bool CanAddNewComputer(object arg)
         {

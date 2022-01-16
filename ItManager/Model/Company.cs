@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace ItManager.Model
 {
-    public class Domain : INotifyPropertyChanged
+    public class Company : INotifyPropertyChanged
     { 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

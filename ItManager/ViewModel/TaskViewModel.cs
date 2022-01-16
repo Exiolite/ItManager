@@ -14,8 +14,14 @@ namespace ItManager.ViewModel
         }
         #endregion
 
+        public TaskViewModel() { }
+        public TaskViewModel(Task task)
+        {
+            Task = task;
+        }
+
         #region TaskProperty
-        private Task _task = new Task();
+        private Task _task;
         public Task Task
         {
             get { return _task; }
