@@ -34,3 +34,5 @@ C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\ServersList
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\ServersListView.baml
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\CompaniesListView.baml
 C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\UserControls\CompaniesListView.g.cs
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\AllComputersDataGridWindowView.g.cs
+C:\Git\ItManager\ItManager\obj\Debug\netcoreapp3.1\View\AllComputersDataGridWindowView.baml

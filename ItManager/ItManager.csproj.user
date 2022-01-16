@@ -9,6 +9,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\AllComputersDataGridWindowView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\AnyDeskWindowView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -32,6 +35,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\AllComputersDataGridWindowView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\AnyDeskWindowView.xaml">
       <SubType>Designer</SubType>
     </Page>

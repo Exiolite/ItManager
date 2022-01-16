@@ -1,4 +1,5 @@
 ﻿using ItManager.Model;
+using ItManager.View;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
@@ -145,6 +146,28 @@ namespace ItManager.ViewModel
             }
         }
         private bool CanOpen(object arg)
+        {
+            return true;
+        }
+        #endregion
+        #region OpenAllComputersDataGridWindowCommand()
+        private ICommand _openAllComputersDataGridWindowCommand;
+        public ICommand OpenAllComputersDataGridWindowCommand
+        {
+            get
+            {
+                if (_openAllComputersDataGridWindowCommand == null)
+                    _openAllComputersDataGridWindowCommand = new Command.Command(this.OpenAllComputersDataGridWindowExecute, this.CanOpenAllComputersDataGridWindow, false);
+                return _openAllComputersDataGridWindowCommand;
+            }
+        }
+        private void OpenAllComputersDataGridWindowExecute(object obj)
+        {
+            var allComputersDataGridWindowView = new AllComputersDataGridWindowView();
+            allComputersDataGridWindowView.DataContext = new AllComputersViewModel(CompaniesListViewModel);
+            allComputersDataGridWindowView.Show();
+        }
+        private bool CanOpenAllComputersDataGridWindow(object arg)
         {
             return true;
         }

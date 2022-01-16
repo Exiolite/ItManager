@@ -70,7 +70,8 @@ namespace ItManager.ViewModel
             var path = @"C:\AnyDesk.exe";
             string strCmdText;
             strCmdText = $"/C echo {AnyDesk.Password} | {path} {AnyDesk.Id} --with-password";
-            System.Diagnostics.Process.Start("CMD.exe", strCmdText);
+            var l = System.Diagnostics.Process.Start("CMD.exe", strCmdText);
+            l.Dispose();
         }
         private bool CanConnectViaAnyDesk(object arg)
         {

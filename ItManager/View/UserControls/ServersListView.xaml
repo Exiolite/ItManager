@@ -8,23 +8,16 @@
     <DockPanel>
         <Border DockPanel.Dock="Top"
                 Background="Teal">
-            <DockPanel DockPanel.Dock="Top"
-                       Margin="5">
-                <DockPanel DockPanel.Dock="Left">
-                    <TextBlock Text="Servers"
-                               FontSize="20"
-                               Foreground="White" />
-                </DockPanel>
-                <StackPanel HorizontalAlignment="Right"
-                            VerticalAlignment="Center">
-                    <Button Content="Add"
-                            Command="{Binding AddNewServerCommand}"
-                            BorderThickness="0"
-                            Background="White"
-                            Margin="2"
-                            Width="30" />
-                </StackPanel>
-            </DockPanel>
+            <Border.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Add New Server"
+                              Command="{Binding AddNewServerCommand}" />
+                </ContextMenu>
+            </Border.ContextMenu>
+            <TextBlock Text="Companies"
+                       FontSize="24"
+                       Foreground="White"
+                       Padding="5" />
         </Border>
         <StackPanel>
             <ListView ItemsSource="{Binding ServerViewModels}"
