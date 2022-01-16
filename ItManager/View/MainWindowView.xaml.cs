@@ -7,15 +7,11 @@ namespace ItManager.View
 {
     public partial class MainWindowView : Window
     {
+        public static MainWindowView Instance { get; private set; }
         public MainWindowView()
         {
             InitializeComponent();
-        }
-
-        private void OnClickCompany(object sender, SelectionChangedEventArgs e)
-        {
-            var lw = (ListBox)sender;
-            CompanyView.DataContext = (DomainViewModel)lw.SelectedItem;
+            Instance = this;
         }
     }
 }

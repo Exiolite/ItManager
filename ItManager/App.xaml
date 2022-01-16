@@ -6,6 +6,7 @@
     <Application.Resources>
         <vm:MainViewModel x:Key="MainViewModel" />
         <vm:DomainViewModel x:Key="DomainViewModel" />
+        <vm:DomainsListViewModel x:Key="DomainsListViewModel" />
         <vm:DevicesViewModel x:Key="DevicesViewModel" />
         <vm:ServersListViewModel x:Key="ServersListViewModel" />
         <vm:ServerViewModel x:Key="ServerViewModel" />

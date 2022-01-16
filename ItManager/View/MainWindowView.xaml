@@ -11,43 +11,22 @@
         Height="1080"
         DataContext="{Binding Source={StaticResource MainViewModel}}">
     <DockPanel>
-        <!--#region Menu-->
-        <DockPanel x:Name="Menu"
-                   DockPanel.Dock="Top">
-            <Menu Background="White">
-                <MenuItem Header="File">
-                    <MenuItem Header="New" />
-                    <MenuItem Header="Open"
-                              Command="{Binding OpenCommand}" />
-                    <MenuItem Header="Save As"
-                              Command="{Binding SaveCommand}" />
-                </MenuItem>
-                <MenuItem Header="New Company"
-                          Command="{Binding Path=DomainsListViewModel.AddNewDomainCommand}" />
-            </Menu>
-        </DockPanel>
-        <!--#endregion-->
-        <!--#region MainWindow-->
+        <Menu DockPanel.Dock="Top"
+              Background="White">
+            <MenuItem Header="File">
+                <MenuItem Header="New" />
+                <MenuItem Header="Open"
+                          Command="{Binding OpenCommand}" />
+                <MenuItem Header="Save As"
+                          Command="{Binding SaveCommand}" />
+            </MenuItem>
+        </Menu>
         <DockPanel>
-            <!--#region CompaniesListView-->
-            <ListBox ItemsSource="{Binding Path=DomainsListViewModel.DomainViewModels}"
-                     SelectionChanged="OnClickCompany"
-                     BorderThickness="0"
-                     DockPanel.Dock="Left">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Path=Domain.Name}"
-                                   FontSize="24"
-                                   FontWeight="Light"
-                                   Margin="5" />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <!--#endregion-->
-            <!--#region Editor-->
-            <ScrollViewer>
-                <DockPanel x:Name="EditorWindow"
-                           Margin="1">
+            <uc:DomainsListView DataContext="{Binding DomainsListViewModel}" 
+                                Width="250"
+                                DockPanel.Dock="Left"/>
+            <ScrollViewer Margin="5,0,0,0">
+                <DockPanel x:Name="EditorWindow">
                     <StackPanel Name="CompanyView"
                                 DataContext="{Binding Source={StaticResource DomainViewModel}}">
                         <TextBox Text="{Binding Path=Domain.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -66,8 +45,6 @@
                     </StackPanel>
                 </DockPanel>
             </ScrollViewer>
-            <!--#endregion-->
         </DockPanel>
-        <!--#endregion-->
     </DockPanel>
 </Window>

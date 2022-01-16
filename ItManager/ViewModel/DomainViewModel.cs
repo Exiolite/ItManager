@@ -1,5 +1,8 @@
 ﻿using ItManager.Model;
+using ItManager.View;
 using System.ComponentModel;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ItManager.ViewModel
 {
@@ -20,6 +23,27 @@ namespace ItManager.ViewModel
         {
             get { return _domain; }
             set { _domain = value; NotifyPropertyChanged(nameof(Domain)); }
+        }
+        #endregion
+        #region SetDomainAsCurrentCommand()
+        private ICommand _setDomainAsCurrentCommand;
+        public ICommand SetDomainAsCurrentCommand
+        {
+            get
+            {
+                if (_setDomainAsCurrentCommand == null)
+                    _setDomainAsCurrentCommand = new Command.Command(this.SetDomainAsCurrentExecute, this.CanSetDomainAsCurrent, false);
+                return _setDomainAsCurrentCommand;
+            }
+        }
+        private void SetDomainAsCurrentExecute(object obj)
+        {
+            MainWindowView.Instance.CompanyView.DataContext = this;
+        }
+        private bool CanSetDomainAsCurrent(object arg)
+        {
+            //Predicate
+            return true;
         }
         #endregion
         #region DevicesViewModelProperty

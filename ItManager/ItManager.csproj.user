@@ -19,6 +19,9 @@
     <Compile Update="View\UserControls\ComputersListView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\UserControls\DomainsListView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\UserControls\ServersListView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserControls\ComputersListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserControls\DomainsListView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserControls\ServersListView.xaml">
