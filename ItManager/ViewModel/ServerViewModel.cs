@@ -1,5 +1,7 @@
 ﻿using ItManager.Model;
+using ItManager.View;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace ItManager.ViewModel
 {
@@ -22,6 +24,30 @@ namespace ItManager.ViewModel
             set { _server = value; NotifyPropertyChanged(nameof(Server)); }
         }
         #endregion
+        #region OpenInNewWindowCommand()
+        private ICommand _openInNewWindowCommand;
+        public ICommand OpenInNewWindowCommand
+        {
+            get
+            {
+                if (_openInNewWindowCommand == null)
+                    _openInNewWindowCommand = new Command.Command(this.OpenInNewWindowExecute, this.CanOpenInNewWindow, false);
+                return _openInNewWindowCommand;
+            }
+        }
+        private void OpenInNewWindowExecute(object obj)
+        {
+            var computerWindowView = new ServerWindowView();
+            computerWindowView.DataContext = this;
+            computerWindowView.Show();
+        }
+        private bool CanOpenInNewWindow(object arg)
+        {
+            //Predicate
+            return true;
+        }
+        #endregion
+
         #region TasksViewModelProperty
         private TasksListViewModel _tasksListViewModel = new TasksListViewModel();
         public TasksListViewModel TasksListViewModel

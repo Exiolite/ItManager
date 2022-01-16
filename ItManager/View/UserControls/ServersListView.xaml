@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              DataContext="{Binding Source={StaticResource ServersListViewModel}}">
-    <DockPanel Background="Teal">
-        <DockPanel Margin="0,0,0,1">
+    <DockPanel>
+        <Border DockPanel.Dock="Top"
+                Background="Teal">
             <DockPanel DockPanel.Dock="Top"
                        Margin="5">
                 <DockPanel DockPanel.Dock="Left">
@@ -24,19 +25,26 @@
                             Width="30" />
                 </StackPanel>
             </DockPanel>
-            <DockPanel>
-                <ListView ItemsSource="{Binding ServerViewModels}"
-                          BorderThickness="0">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Path=Server.Name}"
-                                           FontSize="14" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </DockPanel>
-        </DockPanel>
+        </Border>
+        <StackPanel>
+            <ListView ItemsSource="{Binding ServerViewModels}"
+                      BorderThickness="0"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=ActualWidth}">
+                            <Grid.InputBindings>
+                                <MouseBinding Gesture="LeftDoubleClick"
+                                              Command="{Binding OpenInNewWindowCommand}" />
+                            </Grid.InputBindings>
+                            <TextBlock Text="{Binding Path=Server.Name}"
+                                       FontSize="14" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid Height="2"
+                  Background="Teal" />
+        </StackPanel>
     </DockPanel>
 </UserControl>

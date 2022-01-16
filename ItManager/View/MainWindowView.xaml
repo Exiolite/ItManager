@@ -47,7 +47,7 @@
             <!--#region Editor-->
             <ScrollViewer>
                 <DockPanel x:Name="EditorWindow"
-                           Margin="20, 0, 0, 0">
+                           Margin="1">
                     <StackPanel Name="CompanyView"
                                 DataContext="{Binding Source={StaticResource DomainViewModel}}">
                         <TextBox Text="{Binding Path=Domain.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -56,11 +56,12 @@
                                  BorderThickness="0"
                                  Background="Teal"
                                  Foreground="White" />
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal"
+                                    Background="White">
                             <uc:ComputersListView DataContext="{Binding Path=DevicesViewModel.ComputerListViewModel}"
-                                                  Width="300" />
+                                                  Width="200" />
                             <uc:ServersListView DataContext="{Binding Path=DevicesViewModel.ServersListViewModel}"
-                                                Width="300" />
+                                                Width="200" />
                         </StackPanel>
                     </StackPanel>
                 </DockPanel>
