@@ -1,13 +1,11 @@
 ﻿using ItManager.Model;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Windows.Input;
 
 namespace ItManager.ViewModel
 {
-    public class TasksListViewModel : INotifyPropertyChanged
+    public class TasksListViewModel : ViewModel
     {
-        #region CTOR
         public TasksListViewModel() { }
         public TasksListViewModel(ObservableCollection<Task> tasks)
         {
@@ -18,18 +16,9 @@ namespace ItManager.ViewModel
                 TaskViewModels.Add(new TaskViewModel(task));
             }
         }
-        #endregion
 
-        #region NotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string p)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(p));
-        }
-        #endregion
 
-        #region TasksCounterProperty
+
         public int TasksLeftCounter
         {
             get
@@ -42,26 +31,23 @@ namespace ItManager.ViewModel
                 return tasksLeft;
             }
         }
-        #endregion
-        #region TasksProperty
+
         private ObservableCollection<Task> _tasks;
         public ObservableCollection<Task> Tasks
         {
             get { return _tasks; }
             set { _tasks = value; NotifyPropertyChanged(nameof(Tasks)); }
         }
-        #endregion
-        #region TaskViewModelsProperty
+
         private ObservableCollection<TaskViewModel> _taskViewModels;
         public ObservableCollection<TaskViewModel> TaskViewModels
         {
             get { return _taskViewModels; }
             set { _taskViewModels = value; NotifyPropertyChanged(nameof(TaskViewModels)); }
         }
-        #endregion
 
 
-        #region AddTaskCommand()
+
         private ICommand _addTaskCommand;
         public ICommand AddTaskCommand
         {
@@ -78,13 +64,9 @@ namespace ItManager.ViewModel
             Tasks.Add(task);
             TaskViewModels.Add(new TaskViewModel(task));
         }
-        private bool CanAddTask(object arg)
-        {
-            //Predicate
-            return true;
-        }
-        #endregion
-        #region SetComputerServiceTemplateCommand()
+        private bool CanAddTask(object arg) => true;
+
+
         private ICommand _setComputerServiceTemplateCommand;
         public ICommand SetComputerServiceTemplateCommand
         {
@@ -109,13 +91,9 @@ namespace ItManager.ViewModel
                 TaskViewModels.Add(new TaskViewModel(task));
             }
         }
-        private bool CanSetComputerServiceTemplate(object arg)
-        {
-            //Predicate
-            return true;
-        }
-        #endregion
-        #region SetDomainServerServiceTemplateCommand()
+        private bool CanSetComputerServiceTemplate(object arg) => true;
+
+
         private ICommand _setDomainServerServiceTemplateCommand;
         public ICommand SetDomainServerServiceTemplateCommand
         {
@@ -138,13 +116,9 @@ namespace ItManager.ViewModel
                 TaskViewModels.Add(new TaskViewModel(task));
             }
         }
-        private bool CanDomainSetServerServiceTemplate(object arg)
-        {
-            //Predicate
-            return true;
-        }
-        #endregion
-        #region SetHyperVServerServiceTemplateCommand()
+        private bool CanDomainSetServerServiceTemplate(object arg) => true;
+
+
         private ICommand _setHyperVServerServiceTemplateCommand;
         public ICommand SetHyperVServerServiceTemplateCommand
         {
@@ -167,10 +141,6 @@ namespace ItManager.ViewModel
                 TaskViewModels.Add(new TaskViewModel(task));
             }
         }
-        private bool CanSetHyperVServerServiceTemplate(object arg)
-        {
-            return true;
-        }
-        #endregion
+        private bool CanSetHyperVServerServiceTemplate(object arg) => true;
     }
 }

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace ItManager.ViewModel
 {
-    public class AllComputersViewModel : INotifyPropertyChanged
+    public class AllComputersViewModel : ViewModel
     {
-        #region CTOR
         public AllComputersViewModel() { }
         public AllComputersViewModel(CompaniesListViewModel companiesListViewModel)
         {
@@ -20,24 +18,14 @@ namespace ItManager.ViewModel
                 }
             }
         }
-        #endregion
 
-        #region NotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string p)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(p));
-        }
-        #endregion
 
-        #region CompaniesProperty
+
         private ObservableCollection<Tuple<string, ComputerViewModel>> _computerViewModels;
         public ObservableCollection<Tuple<string, ComputerViewModel>> ComputerViewModels
         {
             get { return _computerViewModels; }
             set { _computerViewModels = value; NotifyPropertyChanged(nameof(ComputerViewModels)); }
         }
-        #endregion
     }
 }

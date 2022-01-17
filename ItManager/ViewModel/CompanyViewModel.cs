@@ -1,40 +1,27 @@
 ﻿using ItManager.Model;
 using ItManager.View;
-using System.ComponentModel;
 using System.Windows.Input;
 
 namespace ItManager.ViewModel
 {
-    public class CompanyViewModel : INotifyPropertyChanged
+    public class CompanyViewModel : ViewModel
     {
-        #region CTOR
-
         public CompanyViewModel() { }
         public CompanyViewModel(Company company)
         {
             Company = company;
             DevicesViewModel = new DevicesViewModel(Company.Devices);
         }
-        #endregion
 
-        #region NotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string p)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(p));
-        }
-        #endregion
 
-        #region CompanyProperty
+
         private Company _company;
         public Company Company
         {
             get { return _company; }
             set { _company = value; NotifyPropertyChanged(nameof(Company)); }
         }
-        #endregion
-        #region DevicesViewModelProperty
+
         private DevicesViewModel _devicesViewModel;
         public DevicesViewModel DevicesViewModel
         {
@@ -44,9 +31,9 @@ namespace ItManager.ViewModel
             }
             set { _devicesViewModel = value; NotifyPropertyChanged(nameof(DevicesViewModel)); }
         }
-        #endregion
 
-        #region SetCompanyAsCurrentCommand()
+
+
         private ICommand _setCompanyAsCurrentCommand;
         public ICommand SetCompanyAsCurrentCommand
         {
@@ -61,11 +48,6 @@ namespace ItManager.ViewModel
         {
             MainWindowView.Instance.CompanyView.DataContext = this;
         }
-        private bool CanSetCompanyAsCurrent(object arg)
-        {
-            //Predicate
-            return true;
-        }
-        #endregion
+        private bool CanSetCompanyAsCurrent(object arg) => true;
     }
 }

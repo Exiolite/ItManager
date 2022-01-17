@@ -1,40 +1,28 @@
 ﻿using ItManager.Model;
 using ItManager.View;
-using System.ComponentModel;
 using System.Windows.Input;
 
 namespace ItManager.ViewModel
 {
-    public class AnyDeskViewModel : INotifyPropertyChanged
+    public class AnyDeskViewModel : ViewModel
     {
-        #region CTOR
-
         public AnyDeskViewModel() { }
         public AnyDeskViewModel(AnyDesk anyDesk)
         {
             AnyDesk = anyDesk;
         }
-        #endregion
 
-        #region NotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string p)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(p));
-        }
-        #endregion
 
-        #region AnyDeskProperty
+
         private AnyDesk _anyDesk;
         public AnyDesk AnyDesk
         {
             get { return _anyDesk; }
             set { _anyDesk = value; NotifyPropertyChanged(nameof(AnyDesk)); }
         }
-        #endregion
 
-        #region OpenInNewWindowCommand()
+
+
         private ICommand _openInNewWindowCommand;
         public ICommand OpenInNewWindowCommand
         {
@@ -51,13 +39,10 @@ namespace ItManager.ViewModel
             anyDeskWindowView.DataContext = this;
             anyDeskWindowView.Show();
         }
-        private bool CanOpenInNewWindow(object arg)
-        {
-            //Predicate
-            return true;
-        }
-        #endregion
-        #region ConnectViaAnyDeskCommand()
+        private bool CanOpenInNewWindow(object arg) => true;
+
+
+
         private ICommand _connectViaAnyDeskCommand;
         public ICommand ConnectViaAnyDeskCommand
         {
@@ -76,11 +61,6 @@ namespace ItManager.ViewModel
             var l = System.Diagnostics.Process.Start("CMD.exe", strCmdText);
             l.Dispose();
         }
-        private bool CanConnectViaAnyDesk(object arg)
-        {
-            //Predicate
-            return true;
-        }
-        #endregion
+        private bool CanConnectViaAnyDesk(object arg) => true;
     }
 }

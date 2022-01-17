@@ -2,52 +2,40 @@
 using ItManager.View;
 using Microsoft.Win32;
 using System;
-using System.ComponentModel;
 using System.IO;
 using System.Text.Json;
 using System.Windows.Input;
 
 namespace ItManager.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ViewModel
     {
-        #region CTOR
         public MainViewModel()
         {
             ItManagerData = new ItManagerData();
             CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
         }
-        #endregion
 
-        #region NotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string p)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(p));
-        }
-        #endregion
+
 
         private string FileName = string.Empty;
 
-        #region ItManagerData
         private ItManagerData _itManagerData;
         public ItManagerData ItManagerData
         {
             get { return _itManagerData; }
             set { _itManagerData = value; NotifyPropertyChanged(nameof(ItManagerData)); }
         }
-        #endregion
-        #region CompaniesListViewModelProperty
+
         private CompaniesListViewModel _companiesListViewModel;
         public CompaniesListViewModel CompaniesListViewModel
         {
             get { return _companiesListViewModel; }
             set { _companiesListViewModel = value; NotifyPropertyChanged(nameof(CompaniesListViewModel)); }
         }
-        #endregion
 
-        #region NewCommand()
+
+
         private ICommand _newCommand;
         public ICommand NewCommand
         {
@@ -63,13 +51,9 @@ namespace ItManager.ViewModel
             ItManagerData = new ItManagerData();
             CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
         }
-        private bool CanNew(object arg)
-        {
-            //Predicate
-            return true;
-        }
-        #endregion
-        #region SaveCommand()
+        private bool CanNew(object arg) => true;
+
+
         private ICommand saveCommand;
         public ICommand SaveCommand
         {
@@ -84,19 +68,16 @@ namespace ItManager.ViewModel
         {
             SaveInFileName();
         }
-        private bool CanSave(object arg)
-        {
-            //Predicate
-            return true;
-        }
+        private bool CanSave(object arg) => true;
+
 
         private void SaveInFileName()
         {
             if (!string.IsNullOrEmpty(FileName))
                 File.WriteAllBytes(FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(ItManagerData), "QWERqwer12341234"));
         }
-        #endregion
-        #region SaveAsCommand()
+
+
         private ICommand _saveAsCommand;
         public ICommand SaveAsCommand
         {
@@ -117,12 +98,9 @@ namespace ItManager.ViewModel
                 File.WriteAllBytes(FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(ItManagerData), "QWERqwer12341234"));
             }
         }
-        private bool CanSaveAs(object arg)
-        {
-            return true;
-        }
-        #endregion
-        #region OpenCommand()
+        private bool CanSaveAs(object arg) => true;
+
+
         private ICommand openCommand;
         public ICommand OpenCommand
         {
@@ -146,13 +124,9 @@ namespace ItManager.ViewModel
                 CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
             }
         }
-        private bool CanOpen(object arg)
-        {
-            return true;
-        }
-        #endregion
+        private bool CanOpen(object arg) => true;
 
-        #region OpenAllComputersDataGridWindowCommand()
+
         private ICommand _openAllComputersDataGridWindowCommand;
         public ICommand OpenAllComputersDataGridWindowCommand
         {
@@ -169,10 +143,6 @@ namespace ItManager.ViewModel
             allComputersDataGridWindowView.DataContext = new AllComputersViewModel(CompaniesListViewModel);
             allComputersDataGridWindowView.Show();
         }
-        private bool CanOpenAllComputersDataGridWindow(object arg)
-        {
-            return true;
-        }
-        #endregion
+        private bool CanOpenAllComputersDataGridWindow(object arg) => true;
     }
 }
