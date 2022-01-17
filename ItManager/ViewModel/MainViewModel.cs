@@ -19,6 +19,13 @@ namespace ItManager.ViewModel
 
 
         private string FileName = string.Empty;
+        private string _password = "EnterPassword";
+        public string Password
+        {
+            get { return _password; }
+            set { _password = value; NotifyPropertyChanged(nameof(Password)); }
+        }
+
 
         private ItManagerData _itManagerData;
         public ItManagerData ItManagerData
@@ -74,7 +81,7 @@ namespace ItManager.ViewModel
         private void SaveInFileName()
         {
             if (!string.IsNullOrEmpty(FileName))
-                File.WriteAllBytes(FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(ItManagerData), "QWERqwer12341234"));
+                File.WriteAllBytes(FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(ItManagerData), Password));
         }
 
 
@@ -95,7 +102,7 @@ namespace ItManager.ViewModel
             {
                 //File.WriteAllText(saveFileDialog.FileName, JsonSerializer.Serialize(ItManagerData));
                 FileName = saveFileDialog.FileName;
-                File.WriteAllBytes(FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(ItManagerData), "QWERqwer12341234"));
+                File.WriteAllBytes(FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(ItManagerData), Password));
             }
         }
         private bool CanSaveAs(object arg) => true;
@@ -119,7 +126,7 @@ namespace ItManager.ViewModel
             {
                 FileName = dlg.FileName;
                 var bytes = File.ReadAllBytes(FileName);
-                var str = RijndaelExample.Decrypt(bytes, "QWERqwer12341234");
+                var str = RijndaelExample.Decrypt(bytes, Password);
                 ItManagerData = JsonSerializer.Deserialize<ItManagerData>(str);
                 CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
             }
