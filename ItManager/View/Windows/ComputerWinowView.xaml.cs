@@ -1,8 +1,6 @@
-﻿using ItManager.Model;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
-namespace ItManager.View
+namespace ItManager.View.Windows
 {
     public partial class ComputerWinowView : Window
     {

@@ -6,21 +6,21 @@
         public int Id
         {
             get { return _id; }
-            set { _id = value; OnPropertyChanged("Id"); }
+            set { _id = value; OnPropertyChanged(nameof(Id)); }
+        }
+
+        private int _adUserId;
+        public int AdUserId
+        {
+            get { return _adUserId; }
+            set { _adUserId = value; OnPropertyChanged(nameof(AdUserId)); ; }
         }
 
         private UserContact _userContact = new UserContact();
-        public UserContact MyProperty
+        public UserContact UserContact
         {
             get { return _userContact; }
-            set { _userContact = value; OnPropertyChanged("UserContact"); }
-        }
-
-        private AdUser _adUser = new AdUser();
-        public AdUser AdUser
-        {
-            get { return _adUser; }
-            set { _adUser = value; OnPropertyChanged("AdUser"); }
+            set { _userContact = value; OnPropertyChanged(nameof(UserContact)); }
         }
     }
 }

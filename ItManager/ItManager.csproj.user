@@ -9,16 +9,22 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\AllComputersDataGridWindowView.xaml.cs">
+    <Compile Update="View\UserControls\AdUsersListView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\AnyDeskWindowView.xaml.cs">
+    <Compile Update="View\Windows\AdUserWindowView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ComputerWinowView.xaml.cs">
+    <Compile Update="View\Windows\AllComputersDataGridWindowView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ServerWindowView.xaml.cs">
+    <Compile Update="View\Windows\AnyDeskWindowView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\ComputerWinowView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\ServerWindowView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UserControls\ComputersListView.xaml.cs">
@@ -33,21 +39,30 @@
     <Compile Update="View\UserControls\TasksListView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Windows\UserWindowView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\AllComputersDataGridWindowView.xaml">
+    <Page Update="View\UserControls\AdUsersListView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\AnyDeskWindowView.xaml">
+    <Page Update="View\Windows\AdUserWindowView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ComputerWinowView.xaml">
+    <Page Update="View\Windows\AllComputersDataGridWindowView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\AnyDeskWindowView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\ComputerWinowView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MainWindowView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ServerWindowView.xaml">
+    <Page Update="View\Windows\ServerWindowView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserControls\ComputersListView.xaml">
@@ -60,6 +75,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserControls\TasksListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\UserWindowView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

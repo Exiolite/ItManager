@@ -6,9 +6,8 @@
         xmlns:uc="clr-namespace:ItManager.View.UserControls"
         mc:Ignorable="d"
         Title="ItManager"
-        WindowState="Maximized"
-        Width="1920"
-        Height="1080"
+        Width="1024"
+        Height="720"
         DataContext="{Binding Source={StaticResource MainViewModel}}">
     <DockPanel>
         <DockPanel.InputBindings>
@@ -48,10 +47,14 @@
                              Foreground="White" />
                     <StackPanel Orientation="Horizontal"
                                 Background="White">
-                        <uc:ComputersListView DataContext="{Binding Path=DevicesViewModel.ComputersListViewModel}"
-                                              Width="200" />
+                        <uc:ComputersListView DataContext="{Binding Path=DevicesViewModel.ComputersListViewModel}" 
+                                              Margin="0,0,2,0"/>
                         <uc:ServersListView DataContext="{Binding Path=DevicesViewModel.ServersListViewModel}"
-                                            Width="200" />
+                                            Margin="2,0,2,0" />
+                        <uc:UsersListView DataContext="{Binding Path=ClientsViewModel.UsersListViewModel}"
+                                          Margin="2,0,2,0" />
+                        <uc:AdUsersListView DataContext="{Binding Path=ClientsViewModel.AdUsersListViewModel}"
+                                            Margin="2,0,2,0" />
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

@@ -1,13 +1,14 @@
 ﻿using ItManager.View.Windows;
 using ItManager.ViewModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ItManager.View.UserControls
 {
-    public partial class UsersListView : UserControl
+    public partial class AdUsersListView : UserControl
     {
-        public UsersListView()
+        public AdUsersListView()
         {
             InitializeComponent();
         }
@@ -15,8 +16,8 @@ namespace ItManager.View.UserControls
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var lw = (ListView)sender;
-            var uwv = new UserWindowView();
-            uwv.DataContext = (UserViewModel)lw.SelectedItem;
+            var uwv = new AdUserWindowView();
+            uwv.DataContext = (AdUserViewModel)lw.SelectedItem;
             uwv.Show();
         }
     }

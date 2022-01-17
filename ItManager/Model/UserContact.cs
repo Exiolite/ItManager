@@ -1,9 +1,12 @@
-﻿using System.ComponentModel;
-
-namespace ItManager.Model
+﻿namespace ItManager.Model
 {
     public class UserContact : Model
     {
+        public string FullName
+        {
+            get { return $"{Name} {SecondName}"; }
+        }
+
         private string _name = "Name";
         public string Name
         {

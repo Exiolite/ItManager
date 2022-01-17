@@ -14,7 +14,7 @@
                               Command="{Binding AddNewComputerCommand}" />
                 </ContextMenu>
             </Border.ContextMenu>
-            <TextBlock Text="Companies"
+            <TextBlock Text="Computers"
                        FontSize="24"
                        Foreground="White"
                        Padding="5" />

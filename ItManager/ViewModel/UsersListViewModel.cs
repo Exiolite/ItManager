@@ -9,7 +9,7 @@ namespace ItManager.ViewModel
         public UsersListViewModel() { }
         public UsersListViewModel(ObservableCollection<User> users)
         {
-            Users = new ObservableCollection<User>();
+            Users = users;
             UserViewModels = new ObservableCollection<UserViewModel>();
             foreach (var user in Users)
             {
@@ -47,9 +47,9 @@ namespace ItManager.ViewModel
         }
         private void AddUserExecuted(object obj)
         {
-            var server = new User();
-            Users.Add(server);
-            UserViewModels.Add(new UserViewModel(server));
+            var user = new User();
+            Users.Add(user);
+            UserViewModels.Add(new UserViewModel(user));
         }
         private bool CanAddUser(object arg) => true;
     }

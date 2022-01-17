@@ -1,7 +1,6 @@
-﻿using ItManager.ViewModel;
-using System.Windows;
+﻿using System.Windows;
 
-namespace ItManager.View
+namespace ItManager.View.Windows
 {
     public partial class ServerWindowView : Window
     {

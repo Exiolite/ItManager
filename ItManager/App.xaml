@@ -16,5 +16,9 @@
         <vm:TaskViewModel x:Key="TaskViewModel" />
         <vm:AnyDeskViewModel x:Key="AnyDeskViewModel" />
         <vm:AllComputersViewModel x:Key="AllComputersViewModel" />
+        <vm:UsersListViewModel x:Key="UsersListViewModel" />
+        <vm:UserViewModel x:Key="UserViewModel" />
+        <vm:AdUsersListViewModel x:Key="AdUsersListViewModel" />
+        <vm:AdUserViewModel x:Key="AdUserViewModel" />
     </Application.Resources>
 </Application>

@@ -11,6 +11,7 @@ namespace ItManager.ViewModel
         {
             Company = company;
             DevicesViewModel = new DevicesViewModel(Company.Devices);
+            ClientsViewModel = new ClientsViewModel(Company.Clients);
         }
 
 
@@ -30,6 +31,14 @@ namespace ItManager.ViewModel
                 return _devicesViewModel; 
             }
             set { _devicesViewModel = value; NotifyPropertyChanged(nameof(DevicesViewModel)); }
+        }
+
+        private ClientsViewModel _clientsViewModel;
+
+        public ClientsViewModel ClientsViewModel
+        {
+            get { return _clientsViewModel; }
+            set { _clientsViewModel = value; NotifyPropertyChanged(nameof(ClientsViewModel)); }
         }
 
 

@@ -1,5 +1,5 @@
 ﻿using ItManager.Model;
-using ItManager.View;
+using ItManager.View.Windows;
 using System.Windows.Input;
 
 namespace ItManager.ViewModel

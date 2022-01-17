@@ -10,14 +10,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ItManager.View
+namespace ItManager.View.Windows
 {
     /// <summary>
-    /// Interaction logic for AllComputersDataGridWindowView.xaml
+    /// Interaction logic for AdUserWindowView.xaml
     /// </summary>
-    public partial class AllComputersDataGridWindowView : Window
+    public partial class AdUserWindowView : Window
     {
-        public AllComputersDataGridWindowView()
+        public AdUserWindowView()
         {
             InitializeComponent();
         }

@@ -1,4 +1,5 @@
-﻿using ItManager.ViewModel;
+﻿using ItManager.View.Windows;
+using ItManager.ViewModel;
 using System.Windows.Controls;
 
 namespace ItManager.View.UserControls

@@ -18,11 +18,11 @@ namespace ItManager.Model
             set { _devices = value; OnPropertyChanged("Devices"); }
         }
 
-        private ObservableCollection<User> _users = new ObservableCollection<User>();
-        public ObservableCollection<User> Users
+        private Clients _clients = new Clients();
+        public Clients Clients
         {
-            get { return _users; }
-            set { _users = value; OnPropertyChanged("Users"); }
+            get { return _clients; }
+            set { _clients = value; OnPropertyChanged(nameof(Clients)); }
         }
     }
 }
