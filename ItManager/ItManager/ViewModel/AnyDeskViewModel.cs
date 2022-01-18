@@ -53,8 +53,9 @@ namespace ItManager.ViewModel
                 return _connectViaAnyDeskCommand;
             }
         }
-        private void ConnectViaAnyDeskExecute(object obj)
+        private async void ConnectViaAnyDeskExecute(object obj)
         {
+            await System.Threading.Tasks.Task.Delay(1);
             var path = @"C:\AnyDesk.exe";
             string strCmdText;
             strCmdText = $"/C echo {AnyDesk.Password} | {path} {AnyDesk.Id} --with-password";
