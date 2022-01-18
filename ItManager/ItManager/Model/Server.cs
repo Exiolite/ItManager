@@ -19,7 +19,7 @@ namespace ItManager.Model
             set { _userId = value; OnPropertyChanged("UserId"); }
         }
 
-        private Rdp _rpd = new Rdp();
+        private Rdp _rpd = new();
         public Rdp Rdp
         {
             get { return _rpd; }
@@ -27,7 +27,7 @@ namespace ItManager.Model
         }
 
 
-        private ObservableCollection<Task> _tasks = new ObservableCollection<Task>();
+        private ObservableCollection<Task> _tasks = new();
         public ObservableCollection<Task> Tasks
         {
             get { return _tasks; }

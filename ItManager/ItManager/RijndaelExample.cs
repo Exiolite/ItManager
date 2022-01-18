@@ -7,7 +7,7 @@ class RijndaelExample
     {
     public static byte[] Encrypt(string original, string password)
     {
-        using (RijndaelManaged myRijndael = new RijndaelManaged())
+        using (RijndaelManaged myRijndael = new())
         {
             var Key = Encoding.ASCII.GetBytes(password);
             var IV = Encoding.ASCII.GetBytes("Exiolite20212022");
@@ -17,7 +17,7 @@ class RijndaelExample
 
     public static string Decrypt(byte[] original, string password)
     {
-        using (RijndaelManaged myRijndael = new RijndaelManaged())
+        using (RijndaelManaged myRijndael = new())
         {
             var Key = Encoding.ASCII.GetBytes(password);
             var IV = Encoding.ASCII.GetBytes("Exiolite20212022");
@@ -35,15 +35,15 @@ class RijndaelExample
                 throw new ArgumentNullException("IV");
             byte[] encrypted;
 
-            using (RijndaelManaged rijAlg = new RijndaelManaged())
+            using (RijndaelManaged rijAlg = new())
             {
                 rijAlg.Padding = PaddingMode.ANSIX923;
                 ICryptoTransform encryptor = rijAlg.CreateEncryptor(Key, IV);
-                using (MemoryStream msEncrypt = new MemoryStream())
+                using (MemoryStream msEncrypt = new())
                 {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    using (CryptoStream csEncrypt = new(msEncrypt, encryptor, CryptoStreamMode.Write))
                     {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        using (StreamWriter swEncrypt = new(csEncrypt))
                         {
                             swEncrypt.Write(plainText);
                         }
@@ -66,15 +66,15 @@ class RijndaelExample
                 throw new ArgumentNullException("IV");
 
             string plaintext = null;
-            using (RijndaelManaged rijAlg = new RijndaelManaged())
+            using (RijndaelManaged rijAlg = new())
             {
                 rijAlg.Padding = PaddingMode.ANSIX923;
                 ICryptoTransform decryptor = rijAlg.CreateDecryptor(Key, IV);
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                using (MemoryStream msDecrypt = new(cipherText))
                 {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    using (CryptoStream csDecrypt = new(msDecrypt, decryptor, CryptoStreamMode.Read))
                     {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        using (StreamReader srDecrypt = new(csDecrypt))
                         {
                             plaintext = srDecrypt.ReadToEnd();
                         }

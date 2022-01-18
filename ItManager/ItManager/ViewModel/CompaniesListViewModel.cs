@@ -1,6 +1,6 @@
-﻿using ItManager.Model;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using ItManager.Model;
 
 namespace ItManager.ViewModel
 {

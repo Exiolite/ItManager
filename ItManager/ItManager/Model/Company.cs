@@ -11,14 +11,14 @@ namespace ItManager.Model
             set { _name = value; OnPropertyChanged("Name"); }
         }
 
-        private Devices _devices = new Devices();
+        private Devices _devices = new();
         public Devices Devices
         {
             get { return _devices; }
             set { _devices = value; OnPropertyChanged("Devices"); }
         }
 
-        private Clients _clients = new Clients();
+        private Clients _clients = new();
         public Clients Clients
         {
             get { return _clients; }

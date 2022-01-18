@@ -18,14 +18,14 @@ namespace ItManager.Model
             set { _userId = value; OnPropertyChanged("UserId"); }
         }
 
-        private ObservableCollection<Task> _tasks = new ObservableCollection<Task>();
+        private ObservableCollection<Task> _tasks = new();
         public ObservableCollection<Task> Tasks
         {
             get { return _tasks; }
             set { _tasks = value; OnPropertyChanged("Tasks"); }
         }
 
-        private AnyDesk _anyDesk = new AnyDesk();
+        private AnyDesk _anyDesk = new();
         public AnyDesk AnyDesk
         {
             get { return _anyDesk; }

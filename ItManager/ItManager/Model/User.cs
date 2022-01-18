@@ -16,7 +16,7 @@
             set { _adUserId = value; OnPropertyChanged(nameof(AdUserId)); ; }
         }
 
-        private UserContact _userContact = new UserContact();
+        private UserContact _userContact = new();
         public UserContact UserContact
         {
             get { return _userContact; }

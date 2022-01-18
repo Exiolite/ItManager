@@ -20,9 +20,14 @@
                        Padding="5" />
         </Border>
         <StackPanel>
-            <ListBox ItemsSource="{Binding CompanyViewModels}"
+            <ListBox x:Name="CompaniesListBox"
+                     ItemsSource="{Binding CompanyViewModels}"
                      BorderThickness="0"
                      SelectionChanged="ListBox_SelectionChanged">
+                <ListBox.InputBindings>
+                    <KeyBinding Key="Up"
+                                Command="{Binding }" />
+                </ListBox.InputBindings>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Path=Company.Name}"

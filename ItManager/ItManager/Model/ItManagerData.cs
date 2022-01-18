@@ -4,7 +4,7 @@ namespace ItManager.Model
 {
     public class ItManagerData : Model
     {
-        private ObservableCollection<Company> _companies = new ObservableCollection<Company>();
+        private ObservableCollection<Company> _companies = new();
         public ObservableCollection<Company> Companies
         {
             get { return _companies; }

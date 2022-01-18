@@ -4,14 +4,14 @@ namespace ItManager.Model
 {
     public class Clients : Model
     {
-        private ObservableCollection<User> _users = new ObservableCollection<User>();
+        private ObservableCollection<User> _users = new();
         public ObservableCollection<User> Users
         {
             get { return _users; }
             set { _users = value; OnPropertyChanged(nameof(Users)); }
         }
 
-        private ObservableCollection<AdUser> _adUsers = new ObservableCollection<AdUser>();
+        private ObservableCollection<AdUser> _adUsers = new();
         public ObservableCollection<AdUser> AdUsers
         {
             get { return _adUsers; }
