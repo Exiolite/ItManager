@@ -2,9 +2,9 @@
 
 namespace ItManager.View.Windows
 {
-    public partial class ComputerWinowView : Window
+    public partial class ComputerWindowView : Window
     {
-        public ComputerWinowView()
+        public ComputerWindowView()
         {
             InitializeComponent();
         }

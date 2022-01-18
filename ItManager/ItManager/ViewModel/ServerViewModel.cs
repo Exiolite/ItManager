@@ -12,6 +12,7 @@ namespace ItManager.ViewModel
         public ServerViewModel(Server server)
         {
             Server = server;
+            RdpViewModel = new RdpViewModel(Server.Rdp);
             TasksListViewModel = new TasksListViewModel(Server.Tasks);
         }
 
@@ -22,6 +23,14 @@ namespace ItManager.ViewModel
         {
             get { return _server; }
             set { _server = value; NotifyPropertyChanged(nameof(Server)); }
+        }
+
+        private RdpViewModel _rdpViewModel;
+
+        public RdpViewModel RdpViewModel
+        {
+            get { return _rdpViewModel; }
+            set { _rdpViewModel = value; NotifyPropertyChanged(nameof(RdpViewModel)); }
         }
 
         private TasksListViewModel _tasksListViewModel;

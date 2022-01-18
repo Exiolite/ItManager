@@ -33,9 +33,11 @@ namespace ItManager.ViewModel
                 return _copyPassToClipBoardCommand;
             }
         }
-        private void CopyPassToClipBoardExecute(object obj)
+        private async void CopyPassToClipBoardExecute(object obj)
         {
             Clipboard.SetText(AdUser.Password);
+            await System.Threading.Tasks.Task.Delay(10000);
+            Clipboard.Clear();
         }
         private bool CanCopyPassToClipBoard(object arg) => true;
     }

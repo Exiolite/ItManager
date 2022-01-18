@@ -22,29 +22,23 @@ namespace ItManager.ViewModel
         private ObservableCollection<Company> _companies;
         public ObservableCollection<Company> Companies
         {
-            get { return _companies; }
+            get => _companies;
             set { _companies = value; NotifyPropertyChanged(nameof(Companies)); }
         }
 
         private ObservableCollection<CompanyViewModel> _companyViewModels;
         public ObservableCollection<CompanyViewModel> CompanyViewModels
         {
-            get { return _companyViewModels; }
+            get => _companyViewModels;
             set { _companyViewModels = value; NotifyPropertyChanged(nameof(CompanyViewModels)); }
         }
 
 
 
         private ICommand _addNewCompanyCommand;
-        public ICommand AddNewCompanyCommand
-        {
-            get
-            {
-                if (_addNewCompanyCommand == null)
-                    _addNewCompanyCommand = new Command.Command(this.AddNewCompanyExecuted, this.CanAddNewCompany, false);
-                return _addNewCompanyCommand;
-            }
-        }
+        public ICommand AddNewCompanyCommand =>
+            _addNewCompanyCommand ??= new Command.Command(AddNewCompanyExecuted, CanAddNewCompany, false);
+
         private void AddNewCompanyExecuted(object obj)
         {
             var company = new Company();

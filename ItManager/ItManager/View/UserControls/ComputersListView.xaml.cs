@@ -13,7 +13,7 @@ namespace ItManager.View.UserControls
         private void ListView_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var lw = (ListView)sender;
-            var computerWindowView = new ComputerWinowView();
+            var computerWindowView = new ComputerWindowView();
             computerWindowView.DataContext = (ComputerViewModel)lw.SelectedItem;
             computerWindowView.Show();
         }

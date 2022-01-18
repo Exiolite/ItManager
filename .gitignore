@@ -364,3 +364,5 @@ FodyWeavers.xsd
 ItManager/obj/
 
 ItManager/bin/
+
+ItManager/.idea/
