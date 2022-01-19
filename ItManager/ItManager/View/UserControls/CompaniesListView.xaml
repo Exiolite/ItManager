@@ -5,6 +5,80 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              DataContext="{Binding Source={StaticResource CompaniesListViewModel}}">
+    <UserControl.Resources>
+        <Style x:Key="TreeViewButton"
+               TargetType="Button">
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Background"
+                    Value="White" />
+            <Setter Property="Padding"
+                    Value="2" />
+            <Setter Property="FontSize"
+                    Value="14" />
+            <Setter Property="Margin"
+                    Value="-10,0,0,0" />
+        </Style>
+        <DataTemplate x:Key="Item">
+            <TreeViewItem Header="{Binding Company.Name}"
+                          FontSize="24">
+                <StackPanel Margin="-22.5,0,0,0">
+                    <TreeViewItem Header="Users"
+                                  FontSize="20"
+                                  ItemsSource="{Binding Company.Clients}">
+                        <StackPanel Margin="-22.5,0,0,0">
+                            <TreeViewItem Header="Users"
+                                          FontSize="16"
+                                          ItemsSource="{Binding Path=Company.Clients.Users}">
+                                <TreeViewItem.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding UserContact.FullName}"
+                                                Style="{StaticResource ResourceKey=TreeViewButton}" />
+                                    </DataTemplate>
+                                </TreeViewItem.ItemTemplate>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Users"
+                                          FontSize="16"
+                                          ItemsSource="{Binding Path=Company.Clients.AdUsers}">
+                                <TreeViewItem.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding Username}"
+                                                Style="{StaticResource ResourceKey=TreeViewButton}" />
+                                    </DataTemplate>
+                                </TreeViewItem.ItemTemplate>
+                            </TreeViewItem>
+                        </StackPanel>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Devices"
+                                  FontSize="20"
+                                  ItemsSource="{Binding Devices}">
+                        <StackPanel Margin="-22.5,0,0,0">
+                            <TreeViewItem Header="Computers"
+                                          FontSize="16"
+                                          ItemsSource="{Binding Path=Company.Devices.Computers}">
+                                <TreeViewItem.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding Name}"
+                                                Style="{StaticResource ResourceKey=TreeViewButton}" />
+                                    </DataTemplate>
+                                </TreeViewItem.ItemTemplate>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Servers"
+                                          FontSize="16"
+                                          ItemsSource="{Binding Path=Company.Devices.Servers}">
+                                <TreeViewItem.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding Name}"
+                                                Style="{StaticResource ResourceKey=TreeViewButton}" />
+                                    </DataTemplate>
+                                </TreeViewItem.ItemTemplate>
+                            </TreeViewItem>
+                        </StackPanel>
+                    </TreeViewItem>
+                </StackPanel>
+            </TreeViewItem>
+        </DataTemplate>
+    </UserControl.Resources>
     <DockPanel>
         <Border DockPanel.Dock="Top"
                 Background="Teal">
@@ -19,24 +93,11 @@
                        Foreground="White"
                        Padding="5" />
         </Border>
-        <StackPanel>
-            <ListBox x:Name="CompaniesListBox"
-                     ItemsSource="{Binding CompanyViewModels}"
-                     BorderThickness="0"
-                     SelectionChanged="ListBox_SelectionChanged">
-                <ListBox.InputBindings>
-                    <KeyBinding Key="Up"
-                                Command="{Binding }" />
-                </ListBox.InputBindings>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Path=Company.Name}"
-                                   FontSize="24" />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <Grid Height="2"
-                  Background="Teal" />
-        </StackPanel>
+        <TreeView ItemsSource="{Binding CompanyViewModels}"
+                  ItemTemplate="{StaticResource ResourceKey=Item}"
+                  Padding="-15,0,20,0"
+                  BorderThickness="0">
+
+        </TreeView>
     </DockPanel>
 </UserControl>

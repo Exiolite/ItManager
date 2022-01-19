@@ -8,6 +8,7 @@
         Title="ItManager"
         Width="1024"
         Height="720"
+        WindowState="Maximized"
         DataContext="{Binding Source={StaticResource MainViewModel}}">
     <Window.InputBindings>
         <KeyBinding Modifiers="Ctrl"
@@ -37,9 +38,8 @@
         </Menu>
         <DockPanel>
             <uc:CompaniesListView DataContext="{Binding CompaniesListViewModel}"
-                                  Width="250"
                                   DockPanel.Dock="Left" />
-            <ScrollViewer Margin="5,0,0,0">
+            <ScrollViewer>
                 <StackPanel x:Name="CompanyView"
                             DataContext="{Binding Source={StaticResource CompanyViewModel}}">
                     <TextBox Text="{Binding Path=Company.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

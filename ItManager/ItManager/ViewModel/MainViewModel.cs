@@ -13,6 +13,7 @@ namespace ItManager.ViewModel
         public MainViewModel()
         {
             ItManagerData = new ItManagerData();
+            ItManagerData.Companies.Add(new Company());
             CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
         }
 
