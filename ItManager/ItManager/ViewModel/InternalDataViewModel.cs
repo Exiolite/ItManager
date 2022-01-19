@@ -28,7 +28,6 @@ namespace ItManager.ViewModel
         public void Load()
         {
             InternalData = JsonSerializer.Deserialize<InternalData>(File.ReadAllText(FullName));
-            MessageBox.Show(InternalData.Files.RecentOpenedFileNames[1]);
         }
 
         public void Save()
