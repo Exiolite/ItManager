@@ -20,5 +20,6 @@
         <vm:UserViewModel x:Key="UserViewModel" />
         <vm:AdUsersListViewModel x:Key="AdUsersListViewModel" />
         <vm:AdUserViewModel x:Key="AdUserViewModel" />
+        <vm:InternalDataViewModel x:Key="MenuDialogView" />
     </Application.Resources>
 </Application>

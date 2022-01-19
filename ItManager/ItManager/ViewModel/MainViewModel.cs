@@ -1,4 +1,5 @@
 ﻿using ItManager.Model;
+using ItManager.Model.Internal;
 using ItManager.View.Windows;
 using Microsoft.Win32;
 using System;
@@ -15,17 +16,12 @@ namespace ItManager.ViewModel
             ItManagerData = new ItManagerData();
             ItManagerData.Companies.Add(new Company());
             CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
+            InternalDataViewModel = new InternalDataViewModel();
         }
 
 
 
-        private string FileName = string.Empty;
-        private string _password = "EnterPassword";
-        public string Password
-        {
-            get { return _password; }
-            set { _password = value; NotifyPropertyChanged(nameof(Password)); }
-        }
+
 
 
         private ItManagerData _itManagerData;
@@ -42,8 +38,36 @@ namespace ItManager.ViewModel
             set { _companiesListViewModel = value; NotifyPropertyChanged(nameof(CompaniesListViewModel)); }
         }
 
+        private InternalDataViewModel _internalDataViewModel;
+        public InternalDataViewModel InternalDataViewModel
+        {
+            get { return _internalDataViewModel; }
+            set { _internalDataViewModel = value; NotifyPropertyChanged(nameof(FileName)); }
+        }
 
 
+        #region FileName
+        private string _fileName;
+
+        public string FileName
+        {
+            get { return _fileName; }
+            set { _fileName = value; NotifyPropertyChanged(nameof(FileName)); }
+        }
+
+        #endregion
+        #region Password
+        private string _password = "EnterPassword";
+
+        public string Password
+        {
+            get { return _password; }
+            set { _password = value; NotifyPropertyChanged(nameof(Password)); }
+        }
+
+        #endregion
+
+        #region NewCommand
         private ICommand _newCommand;
         public ICommand NewCommand
         {
@@ -59,10 +83,11 @@ namespace ItManager.ViewModel
             ItManagerData = new ItManagerData();
             CompaniesListViewModel = new CompaniesListViewModel(ItManagerData.Companies);
         }
-        private bool CanNew(object arg) => true;
-
-
+        private bool CanNew(object arg) => true; 
+        #endregion
+        #region SaveAsCommand()
         private ICommand saveCommand;
+
         public ICommand SaveCommand
         {
             get
@@ -72,21 +97,21 @@ namespace ItManager.ViewModel
                 return saveCommand;
             }
         }
+
         private void SaveExecute(object obj)
         {
-            SaveInFileName();
-        }
-        private bool CanSave(object arg) => true;
-
-
-        private void SaveInFileName()
-        {
             if (!string.IsNullOrEmpty(FileName))
+            {
                 File.WriteAllBytes(FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(ItManagerData), Password));
+                AddFileNameToRecent();
+            }
         }
 
-
+        private bool CanSave(object arg) => true;
+        #endregion
+        #region SaveCommand()
         private ICommand _saveAsCommand;
+
         public ICommand SaveAsCommand
         {
             get
@@ -96,19 +121,22 @@ namespace ItManager.ViewModel
                 return _saveAsCommand;
             }
         }
+
         private void SaveAsExecuted(object obj)
         {
             var saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
-                //File.WriteAllText(saveFileDialog.FileName, JsonSerializer.Serialize(ItManagerData));
                 FileName = saveFileDialog.FileName;
+                AddFileNameToRecent();
+
                 File.WriteAllBytes(FileName, RijndaelExample.Encrypt(JsonSerializer.Serialize(ItManagerData), Password));
             }
         }
+
         private bool CanSaveAs(object arg) => true;
-
-
+        #endregion
+        #region OpenCommand()
         private ICommand openCommand;
         public ICommand OpenCommand
         {
@@ -126,6 +154,7 @@ namespace ItManager.ViewModel
             if (result == true)
             {
                 FileName = dlg.FileName;
+                AddFileNameToRecent();
                 var bytes = File.ReadAllBytes(FileName);
                 var str = RijndaelExample.Decrypt(bytes, Password);
                 ItManagerData = JsonSerializer.Deserialize<ItManagerData>(str);
@@ -133,24 +162,20 @@ namespace ItManager.ViewModel
             }
         }
         private bool CanOpen(object arg) => true;
+        #endregion
 
 
-        private ICommand _openAllComputersDataGridWindowCommand;
-        public ICommand OpenAllComputersDataGridWindowCommand
+        #region SaveInternalData()
+        public void AddFileNameToRecent()
         {
-            get
+            var recentOpenedFileNames = InternalDataViewModel.InternalData.Files.RecentOpenedFileNames;
+
+            if (!recentOpenedFileNames.Contains(FileName))
             {
-                if (_openAllComputersDataGridWindowCommand == null)
-                    _openAllComputersDataGridWindowCommand = new Command.Command(this.OpenAllComputersDataGridWindowExecute, this.CanOpenAllComputersDataGridWindow, false);
-                return _openAllComputersDataGridWindowCommand;
+                recentOpenedFileNames.Add(FileName);
+                InternalDataViewModel.Save();
             }
         }
-        private void OpenAllComputersDataGridWindowExecute(object obj)
-        {
-            var allComputersDataGridWindowView = new AllComputersDataGridWindowView();
-            allComputersDataGridWindowView.DataContext = new AllComputersViewModel(CompaniesListViewModel);
-            allComputersDataGridWindowView.Show();
-        }
-        private bool CanOpenAllComputersDataGridWindow(object arg) => true;
+        #endregion
     }
 }
