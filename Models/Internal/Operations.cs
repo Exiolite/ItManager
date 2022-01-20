@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace Models.Internal
 {
-    public class Operations : ClearModel
+    public class Operations : Model
     {
         private ObservableCollection<string> _recentOpenedFileNames = new ObservableCollection<string>() { "" };
 

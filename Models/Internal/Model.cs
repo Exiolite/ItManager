@@ -2,7 +2,7 @@
 
 namespace Addons.Model
 {
-    public abstract class ClearModel : INotifyPropertyChanged
+    public abstract class Model : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string p)

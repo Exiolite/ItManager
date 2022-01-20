@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
 using System.IO;
-using Addons.Model;
 using Microsoft.Win32;
 using System;
+using Models.Internal;
 
 namespace ViewModels.Internal
 {
@@ -16,9 +16,9 @@ namespace ViewModels.Internal
 
             }
 
-            public FileBuilder(DataContextViewModel dataContextViewModel)
+            public FileBuilder(DataContext dataContext)
             {
-                _dataContextViewModel = dataContextViewModel;
+                _dataContext = dataContext;
             }
 
             public FileBuilder(string fileName)
@@ -26,15 +26,15 @@ namespace ViewModels.Internal
                 _fileName = fileName;
             }
 
-            public FileBuilder(string fileName, DataContextViewModel dataContextViewModel)
+            public FileBuilder(string fileName, DataContext dataContext)
             {
-                _dataContextViewModel = dataContextViewModel;
+                _dataContext = dataContext;
                 _fileName = fileName;
             }
 
 
 
-            private DataContextViewModel _dataContextViewModel;
+            private DataContext _dataContext;
             private string _fileName;
 
 
@@ -61,40 +61,40 @@ namespace ViewModels.Internal
             public FileBuilder Write()
             {
                 if (!string.IsNullOrEmpty(_fileName))
-                    File.WriteAllText(_fileName, JsonSerializer.Serialize(_dataContextViewModel));
+                    File.WriteAllText(_fileName, JsonSerializer.Serialize(_dataContext));
                 return this;
             }
 
-            public DataContextViewModel ReadIfExistOrNew()
+            public DataContext ReadIfExistOrNew()
             {
                 if (File.Exists(_fileName))
                 {
                     var text = File.ReadAllText(_fileName);
-                    return JsonSerializer.Deserialize<DataContextViewModel>(text);
+                    return JsonSerializer.Deserialize<DataContext>(text);
                 }
-                return new DataContextViewModel();
+                return new DataContext();
             }
         }
         #endregion
 
 
 
-        public static void Write(string fileName, DataContextViewModel dataContextViewModel)
+        public static void Write(string fileName, DataContext dataContextViewModel)
         {
             new FileBuilder(fileName, dataContextViewModel).Write();
         }
 
-        public static void WriteWithSaveDialog(DataContextViewModel dataContextViewModel)
+        public static void WriteWithSaveDialog(DataContext dataContextViewModel)
         {
             new FileBuilder(dataContextViewModel).SaveDialog().Write();
         }
 
-        public static DataContextViewModel Read(string fileName)
+        public static DataContext Read(string fileName)
         {
             return new FileBuilder(fileName).ReadIfExistOrNew();
         }
 
-        public static DataContextViewModel ReadWithOpenDialog()
+        public static DataContext ReadWithOpenDialog()
         {
             return new FileBuilder().OpenDialog().ReadIfExistOrNew();
         }

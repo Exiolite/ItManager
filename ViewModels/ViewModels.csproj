@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Addons\Addons.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 

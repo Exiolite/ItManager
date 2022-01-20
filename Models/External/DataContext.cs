@@ -2,7 +2,7 @@
 
 namespace Models.External
 {
-    public class DataContext : ClearModel
+    public class DataContext : Model
     {
 
     }

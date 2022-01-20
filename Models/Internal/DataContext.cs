@@ -1,8 +1,6 @@
-﻿using Addons.Model;
-
-namespace Models.Internal
+﻿namespace Models.Internal
 {
-    public class DataContext : ClearModel
+    public class DataContext : Model
     {
         private Operations _operations = new Operations();
 
