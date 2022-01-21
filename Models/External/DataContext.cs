@@ -1,8 +1,6 @@
-﻿using Addons.Model;
-
-namespace Models.External
+﻿namespace Models.External
 {
-    public class DataContext : Model
+    public class DataContext : Internal.Model
     {
 
     }

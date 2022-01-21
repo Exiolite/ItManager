@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace View.Internal
+namespace View
 {
     /// <summary>
-    /// Interaction logic for TopMenu.xaml
+    /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class TopMenu : UserControl
+    public partial class MainView : UserControl
     {
-        public TopMenu()
+        public MainView()
         {
             InitializeComponent();
         }

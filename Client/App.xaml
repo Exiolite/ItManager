@@ -1,11 +1,12 @@
 ﻿<Application x:Class="Client.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vi="clr-namespace:ViewModels.Internal;assembly=ViewModels"
-             xmlns:ve="clr-namespace:ViewModels.External;assembly=ViewModels"
+             xmlns:vms="clr-namespace:ViewModels;assembly=ViewModels"
+             xmlns:vmi="clr-namespace:ViewModels.Internal;assembly=ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ve:DataContextViewModel x:Key="ExternalDataContextViewModel" />
-        <vi:DataContextViewModel x:Key="InternalDataContextViewModel" />
+        <vms:MainViewModel x:Key="MainViewModel" />
+
+        <vmi:FileViewModel x:Key="FileViewModel" />
     </Application.Resources>
 </Application>

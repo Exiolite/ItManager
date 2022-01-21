@@ -2,12 +2,14 @@
 {
     public class DataContext : Model
     {
-        private Operations _operations = new Operations();
+        #region property FileOperation
+        private FileOperation _fileOperation = new FileOperation();
 
-        public Operations Operations
+        public FileOperation FileOperation
         {
-            get { return _operations; }
-            set { _operations = value; NotifyPropertyChanged(nameof(Operations)); }
-        }
+            get { return _fileOperation; }
+            set { _fileOperation = value; NotifyPropertyChanged(nameof(FileOperation)); }
+        } 
+        #endregion
     }
 }
