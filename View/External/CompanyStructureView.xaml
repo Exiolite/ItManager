@@ -22,26 +22,44 @@
                   ItemsSource="{Binding Property}"
                   Background="{StaticResource Clear}"
                   BorderThickness="0">
+            <TreeView.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                                 Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                                 Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                                 Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                                 Color="Black" />
+            </TreeView.Resources>
             <TreeView.ItemTemplate>
                 <DataTemplate>
                     <TreeViewItem Header="{Binding Property.Name}"
+                                  FontSize="28"
                                   Foreground="{StaticResource ff}">
                         <TreeViewItem Header="Devices"
+                                      FontSize="24"
                                       Foreground="{StaticResource ff}">
                             <TreeViewItem Header="Computers"
+                                          FontSize="20"
                                           Foreground="{StaticResource ff}"
                                           ItemsSource="{Binding PropertyComputersTableViewModel.Property}">
                                 <TreeViewItem.ContextMenu>
-                                    <ContextMenu>
+                                    <ContextMenu BorderThickness="0"
+                                                 Background="{StaticResource bbb}"
+                                                 Foreground="{StaticResource ff}">
                                         <MenuItem Header="Add Computer"
-                                                  Foreground="{StaticResource ff}"
                                                   Command="{Binding PropertyComputersTableViewModel.CommandAddNew}" />
                                     </ContextMenu>
                                 </TreeViewItem.ContextMenu>
                                 <TreeViewItem.ItemTemplate>
                                     <DataTemplate>
                                         <Button Content="{Binding Property.Name}"
-                                                Foreground="{StaticResource ff}" />
+                                                FontSize="16"
+                                                Margin="4"
+                                                Background="{StaticResource Clear}"
+                                                Foreground="{StaticResource fff}"
+                                                BorderThickness="0"/>
                                     </DataTemplate>
                                 </TreeViewItem.ItemTemplate>
                             </TreeViewItem>

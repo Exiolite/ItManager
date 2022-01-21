@@ -10,5 +10,5 @@
         AllowsTransparency="True"
         Background="{StaticResource bbb}"
         WindowStyle="None">
-    <v:MainView  Margin="10"/>
+    <v:MainView Margin="10"/>
 </Window>
