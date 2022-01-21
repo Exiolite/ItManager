@@ -9,7 +9,7 @@
         <StackPanel>
             <StackPanel>
                 <Button Content="Add Company"
-                        DataContext="{Binding Source={StaticResource CompaniesTableViewModel}}"
+                        DataContext="{Binding Source={StaticResource CompanyTableViewModel}}"
                         Command="{Binding CommandAddCompany}" />
             </StackPanel>
             <local:CompanyStructureView DockPanel.Dock="Left" />

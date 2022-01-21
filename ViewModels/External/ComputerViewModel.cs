@@ -22,7 +22,7 @@ namespace ViewModels.External
 
         public ComputerViewModel(int companyId)
         {
-            PropertyComputer = MainViewModel.Instance.ExternalDataContext.ComputersTable.AddNewItem();
+            PropertyComputer = MainViewModel.Instance.ExternalDataContext.ComputerTable.AddNewItem();
             PropertyComputer.CompanyId = companyId;
         }
     }

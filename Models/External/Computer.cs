@@ -25,7 +25,7 @@
         #endregion
 
         #region property CompanyId
-        private int _companyId;
+        private int _companyId = -1;
 
         public int CompanyId
         {

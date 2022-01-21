@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace ViewModels.External
 {
-    public sealed class ComputersTableViewModel : ViewModel
+    public sealed class ComputerTableViewModel : ViewModel
     {
         private int _companyId;
 
@@ -20,12 +20,12 @@ namespace ViewModels.External
         #endregion
 
 
-        public ComputersTableViewModel(int companyId)
+        public ComputerTableViewModel(int companyId)
         {
             _companyId = companyId;
 
             PropertyComputerViewModels = new ObservableCollection<ComputerViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.ComputersTable.Content.Where(c => c.CompanyId == _companyId))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.ComputerTable.Content.Where(c => c.CompanyId == _companyId))
             {
                 PropertyComputerViewModels.Add(new ComputerViewModel(item));
             }

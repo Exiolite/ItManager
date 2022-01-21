@@ -2,21 +2,21 @@
 
 namespace Models.External
 {
-    public sealed class ComputersTable : Internal.Model
+    public sealed class RemoteDesktopServiceTable : Internal.Model
     {
         #region property Companies
-        private ObservableCollection<Computer> _content = new ObservableCollection<Computer>();
+        private ObservableCollection<RemoteDesktopService> _content = new ObservableCollection<RemoteDesktopService>();
 
-        public ObservableCollection<Computer> Content
+        public ObservableCollection<RemoteDesktopService> Content
         {
             get { return _content; }
             set { _content = value; NotifyPropertyChanged(nameof(Content)); }
         }
         #endregion
 
-        public Computer AddNewItem()
+        public RemoteDesktopService AddNewItem()
         {
-            var item = new Computer();
+            var item = new RemoteDesktopService();
             Content.Add(item);
             item.Id = Content.IndexOf(item);
             return item;

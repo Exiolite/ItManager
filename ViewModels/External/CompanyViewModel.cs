@@ -1,5 +1,4 @@
 ﻿using Models.External;
-using System.Collections.ObjectModel;
 
 namespace ViewModels.External
 {
@@ -17,9 +16,9 @@ namespace ViewModels.External
         #endregion
 
         #region property ComputersViewModel
-        private ComputersTableViewModel _propertyComputersTableViewModel;
+        private ComputerTableViewModel _propertyComputersTableViewModel;
 
-        public ComputersTableViewModel PropertyComputersTableViewModel
+        public ComputerTableViewModel PropertyComputersTableViewModel
         {
             get { return _propertyComputersTableViewModel; }
             set { _propertyComputersTableViewModel = value; NotifyPropertyChanged(nameof(PropertyComputersTableViewModel)); }
@@ -29,8 +28,8 @@ namespace ViewModels.External
 
         public CompanyViewModel()
         {
-            PropertyCompany = MainViewModel.Instance.ExternalDataContext.CompaniesTable.AddNewCompany();
-            PropertyComputersTableViewModel = new ComputersTableViewModel(PropertyCompany.Id);
+            PropertyCompany = MainViewModel.Instance.ExternalDataContext.CompanyTable.AddNewCompany();
+            PropertyComputersTableViewModel = new ComputerTableViewModel(PropertyCompany.Id);
         }
 
         public CompanyViewModel(Company company)

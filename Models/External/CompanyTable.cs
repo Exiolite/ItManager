@@ -2,7 +2,7 @@
 
 namespace Models.External
 {
-    public sealed class CompaniesTable : Internal.Model
+    public sealed class CompanyTable : Internal.Model
     {
         #region property Companies
         private ObservableCollection<Company> _content = new ObservableCollection<Company>();

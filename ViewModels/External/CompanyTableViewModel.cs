@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace ViewModels.External
 {
-    public sealed class CompaniesTableViewModel : ViewModel
+    public sealed class CompanyTableViewModel : ViewModel
     {
         #region property CompaniesViewModels
         private ObservableCollection<CompanyViewModel> _propCompanyViewModels;
@@ -16,10 +16,10 @@ namespace ViewModels.External
 
         #endregion
 
-        public CompaniesTableViewModel()
+        public CompanyTableViewModel()
         {
             PropertyCompanyViewModels = new ObservableCollection<CompanyViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.CompaniesTable.Content)
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.CompanyTable.Content)
             {
                 PropertyCompanyViewModels.Add(new CompanyViewModel(item));
             }

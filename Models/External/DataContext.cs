@@ -2,24 +2,68 @@
 {
     public class DataContext : Internal.Model
     {
-        #region property CompaniesTable
-        private CompaniesTable _companiesTable = new CompaniesTable();
+        #region property AnyDeskTable
+        private AnyDeskTable _anyDeskTable = new AnyDeskTable();
 
-        public CompaniesTable CompaniesTable
+        public AnyDeskTable AnyDeskTable
         {
-            get { return _companiesTable; }
-            set { _companiesTable = value; NotifyPropertyChanged(nameof(CompaniesTable)); }
+            get { return _anyDeskTable; }
+            set { _anyDeskTable = value; NotifyPropertyChanged(nameof(AnyDeskTable)); }
         }
 
         #endregion
 
-        #region property ComputersTable
-        private ComputersTable _computersTable = new ComputersTable();
+        #region property CompanyTable
+        private CompanyTable _companyTable = new CompanyTable();
 
-        public ComputersTable ComputersTable
+        public CompanyTable CompanyTable
         {
-            get { return _computersTable; }
-            set { _computersTable = value; NotifyPropertyChanged(nameof(ComputersTable)); }
+            get { return _companyTable; }
+            set { _companyTable = value; NotifyPropertyChanged(nameof(CompanyTable)); }
+        }
+
+        #endregion
+
+        #region property ComputerTable
+        private ComputerTable _computerTable = new ComputerTable();
+
+        public ComputerTable ComputerTable
+        {
+            get { return _computerTable; }
+            set { _computerTable = value; NotifyPropertyChanged(nameof(ComputerTable)); }
+        }
+
+        #endregion
+
+        #region property OSDescriptionTable
+        private OSDescriptionTable _oSDescription = new OSDescriptionTable();
+
+        public OSDescriptionTable OSDescription
+        {
+            get { return _oSDescription; }
+            set { _oSDescription = value; NotifyPropertyChanged(nameof(OSDescription)); }
+        }
+
+        #endregion
+
+        #region property MasterTable
+        private MasterTable _masterTable;
+
+        public MasterTable MasterTable
+        {
+            get { return _masterTable; }
+            set { _masterTable = value; NotifyPropertyChanged(nameof(MasterTable)); }
+        }
+
+        #endregion
+
+        #region property RemoteDesktopServiceTable
+        private RemoteDesktopServiceTable _remoteDesktopServiceTable = new RemoteDesktopServiceTable();
+
+        public RemoteDesktopServiceTable RemoteDesktopServiceTable
+        {
+            get { return _remoteDesktopServiceTable; }
+            set { _remoteDesktopServiceTable = value; NotifyPropertyChanged(nameof(RemoteDesktopServiceTable)); }
         }
 
         #endregion
