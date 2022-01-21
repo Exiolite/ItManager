@@ -4,7 +4,7 @@
              xmlns:vi="clr-namespace:View.Internal"
              xmlns:ve="clr-namespace:View.External">
     <DockPanel>
-        <vi:InternalMainView />
+        <vi:InternalMainView DockPanel.Dock="Top" />
         <ve:ExternalMainView />
     </DockPanel>
 </UserControl>

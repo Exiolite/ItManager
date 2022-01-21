@@ -3,7 +3,7 @@
     public class Computer : Model
     {
         #region property Name
-        private string _name = "New Computer";
+        private string _name = Consts.ComputerName;
 
         public string Name
         {

@@ -47,9 +47,9 @@
         #endregion
 
         #region property MasterTable
-        private MasterTable _masterTable;
+        private StuffTable _masterTable;
 
-        public MasterTable MasterTable
+        public StuffTable MasterTable
         {
             get { return _masterTable; }
             set { _masterTable = value; NotifyPropertyChanged(nameof(MasterTable)); }

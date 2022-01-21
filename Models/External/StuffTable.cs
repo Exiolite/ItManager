@@ -2,21 +2,21 @@
 
 namespace Models.External
 {
-    public sealed class MasterTable : Internal.Model
+    public sealed class StuffTable : Internal.Model
     {
         #region property Companies
-        private ObservableCollection<Master> _content = new ObservableCollection<Master>();
+        private ObservableCollection<Stuff> _content = new ObservableCollection<Stuff>();
 
-        public ObservableCollection<Master> Content
+        public ObservableCollection<Stuff> Content
         {
             get { return _content; }
             set { _content = value; NotifyPropertyChanged(nameof(Content)); }
         }
         #endregion
 
-        public Master AddNewItem()
+        public Stuff AddNewItem()
         {
-            var item = new Master();
+            var item = new Stuff();
             Content.Add(item);
             item.Id = Content.IndexOf(item);
             return item;

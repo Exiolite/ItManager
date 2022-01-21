@@ -7,11 +7,6 @@
              mc:Ignorable="d">
     <DockPanel >
         <StackPanel>
-            <StackPanel>
-                <Button Content="Add Company"
-                        DataContext="{Binding Source={StaticResource CompanyTableViewModel}}"
-                        Command="{Binding CommandAddCompany}" />
-            </StackPanel>
             <local:CompanyStructureView DockPanel.Dock="Left" />
         </StackPanel>
     </DockPanel>

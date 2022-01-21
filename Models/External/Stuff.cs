@@ -1,13 +1,13 @@
 ﻿namespace Models.External
 {
-    public class Master : Model
+    public class Stuff : Model
     {
         #region property ComputerId
 
         #endregion
 
         #region property FirstName
-        private string _firstName = "Имя";
+        private string _firstName = Consts.StaffFirstName;
 
         public string FirstName
         {
@@ -18,7 +18,7 @@
         #endregion
 
         #region property SecondName
-        private string _secondName = "Отчество";
+        private string _secondName = Consts.StaffSecondName;
 
         public string SecondName
         {
@@ -29,7 +29,7 @@
         #endregion
 
         #region property SureName
-        private string _sureName = "Фамилия";
+        private string _sureName = Consts.StaffSureName;
 
         public string SureName
         {

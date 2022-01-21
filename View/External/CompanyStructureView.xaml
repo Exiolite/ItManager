@@ -1,16 +1,22 @@
-<UserControl x:Class="View.External.CompanyStructureView"
+﻿<UserControl x:Class="View.External.CompanyStructureView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d">
-    <TreeView DataContext="{Binding Source={StaticResource CompanyTableViewModel}}"
+    <TreeView Name="CompanyTableView"
+              DataContext="{Binding Source={StaticResource CompanyTableViewModel}}"
               ItemsSource="{Binding PropertyCompanyViewModels}">
         <TreeView.ItemTemplate>
             <DataTemplate>
                 <TreeViewItem Header="{Binding PropertyCompany.Name}">
-                    <TreeViewItem Header="Devices">
-                        <TreeViewItem Header="Compters"
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Add Company" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                    <TreeViewItem Header="Устройства">
+                        <TreeViewItem Header="Компьютеры"
                                       ItemsSource="{Binding PropertyComputersTableViewModel.PropertyComputerViewModels}">
                             <TreeViewItem.ItemTemplate>
                                 <DataTemplate>
@@ -25,7 +31,7 @@
                             </TreeViewItem.ContextMenu>
                         </TreeViewItem>
                     </TreeViewItem>
-                    <TreeViewItem Header="Users">
+                    <TreeViewItem Header="Add Stuff">
 
                     </TreeViewItem>
                 </TreeViewItem>

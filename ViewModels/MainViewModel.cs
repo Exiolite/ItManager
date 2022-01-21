@@ -7,6 +7,7 @@
         public MainViewModel()
         {
             Instance = this;
+            ExternalDataContext.CompanyTable.AddNewCompany();
         }
         #endregion
 
