@@ -4,7 +4,10 @@
     {
         #region Singleton
         public static MainViewModel Instance { get; set; }
-        public MainViewModel() => Instance = this;
+        public MainViewModel()
+        {
+            Instance = this;
+        }
         #endregion
 
         #region property InternalDataContext

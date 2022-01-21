@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace ViewModels.Internal
 {
-    public class FileViewModel
+    public sealed class FileViewModel
     {
         #region property FileOperation
         private FileOperation _fileOperation;

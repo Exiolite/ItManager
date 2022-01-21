@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="View.External.CompanyStructureView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <TreeView DataContext="{Binding Source={StaticResource CompaniesTableViewModel}}"
+              ItemsSource="{Binding PropertyCompanyViewModels}">
+        <TreeView.ItemTemplate>
+            <DataTemplate>
+                <TreeViewItem Header="{Binding PropertyCompany.Name}">
+                    <TreeViewItem Header="Devices">
+                        <TreeViewItem Header="Compters"
+                                      ItemsSource="{Binding PropertyComputersTableViewModel.PropertyComputerViewModels}">
+                            <TreeViewItem.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Content="{Binding PropertyComputer.Name}" />
+                                </DataTemplate>
+                            </TreeViewItem.ItemTemplate>
+                            <TreeViewItem.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Add Computer" 
+                                              Command="{Binding PropertyComputersTableViewModel.CommandAddNewComputer}"/>
+                                </ContextMenu>
+                            </TreeViewItem.ContextMenu>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Users">
+
+                    </TreeViewItem>
+                </TreeViewItem>
+            </DataTemplate>
+        </TreeView.ItemTemplate>
+    </TreeView>
+</UserControl>

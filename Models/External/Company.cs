@@ -1,6 +1,6 @@
 ﻿namespace Models.External
 {
-    public class Company : Model
+    public sealed class Company : Model
     {
         #region property Name
         private string _name = Consts.CompanyName;

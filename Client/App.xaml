@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vms="clr-namespace:ViewModels;assembly=ViewModels"
              xmlns:vmi="clr-namespace:ViewModels.Internal;assembly=ViewModels"
+             xmlns:vme="clr-namespace:ViewModels.External;assembly=ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <vms:MainViewModel x:Key="MainViewModel" />
+
+        <vme:CompaniesTableViewModel x:Key="CompaniesTableViewModel" />
+        <vme:CompanyViewModel x:Key="CompanyViewModel" />
 
         <vmi:FileViewModel x:Key="FileViewModel" />
     </Application.Resources>
