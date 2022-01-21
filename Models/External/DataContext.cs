@@ -78,5 +78,16 @@
         }
 
         #endregion
+
+        #region property ServerTable
+        private ServerTable _serverTable = new ServerTable();
+
+        public ServerTable ServerTable
+        {
+            get { return _serverTable; }
+            set { _serverTable = value; NotifyPropertyChanged(nameof(ServerTable)); }
+        }
+
+        #endregion
     }
 }

@@ -4,25 +4,25 @@ namespace ViewModels.External
 {
     public sealed class ComputerViewModel : ViewModel
     {
-        #region property
-        private Computer _property;
-        public Computer Property
+        #region property Computer
+        private Computer _computer;
+        public Computer PropertyComputer
         {
-            get { return _property; }
-            set { _property = value; NotifyPropertyChanged(nameof(Property)); }
+            get { return _computer; }
+            set { _computer = value; NotifyPropertyChanged(nameof(PropertyComputer)); }
         } 
         #endregion
 
 
         public ComputerViewModel(Computer computer)
         {
-            Property = computer;
+            PropertyComputer = computer;
         }
 
         public ComputerViewModel(int companyId)
         {
-            Property = MainViewModel.Instance.ExternalDataContext.ComputerTable.AddNewItem();
-            Property.CompanyId = companyId;
+            PropertyComputer = MainViewModel.Instance.ExternalDataContext.ComputerTable.AddNewItem();
+            PropertyComputer.CompanyId = companyId;
         }
     }
 }

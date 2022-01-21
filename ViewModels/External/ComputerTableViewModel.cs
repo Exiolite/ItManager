@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Models.External;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
@@ -7,30 +8,6 @@ namespace ViewModels.External
     public sealed class ComputerTableViewModel : ViewModel
     {
         private int _companyId;
-
-        #region property
-        private ObservableCollection<ComputerViewModel> _property;
-
-        public ObservableCollection<ComputerViewModel> Property
-        {
-            get { return _property; }
-            set { _property = value; NotifyPropertyChanged(nameof(Property)); }
-        }
-
-        #endregion
-
-
-        public ComputerTableViewModel(int companyId)
-        {
-            _companyId = companyId;
-
-
-            Property = new ObservableCollection<ComputerViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.ComputerTable.Content.Where(c => c.CompanyId == _companyId))
-            {
-                Property.Add(new ComputerViewModel(item));
-            }
-        }
 
 
         #region command AddNew
@@ -45,9 +22,34 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            Property.Add(new ComputerViewModel(_companyId));
+            PropertyComputerViewModels.Add(new ComputerViewModel(_companyId));
         }
         private bool CAddNew(object arg) => true;
         #endregion
+
+
+        #region property ComputerViewModels
+        private ObservableCollection<ComputerViewModel> _computerViewModels;
+
+        public ObservableCollection<ComputerViewModel> PropertyComputerViewModels
+        {
+            get { return _computerViewModels; }
+            set { _computerViewModels = value; NotifyPropertyChanged(nameof(PropertyComputerViewModels)); }
+        }
+
+        #endregion
+
+
+        public ComputerTableViewModel(int companyId)
+        {
+            _companyId = companyId;
+
+
+            PropertyComputerViewModels = new ObservableCollection<ComputerViewModel>();
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.ComputerTable.Content.Where(c => c.CompanyId == _companyId))
+            {
+                PropertyComputerViewModels.Add(new ComputerViewModel(item));
+            }
+        }
     }
 }

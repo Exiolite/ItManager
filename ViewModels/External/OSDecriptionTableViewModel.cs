@@ -9,33 +9,6 @@ namespace ViewModels.External
         private int _computerId;
 
 
-
-        #region property
-        private ObservableCollection<OSDescriptionViewModel> _property;
-
-        public ObservableCollection<OSDescriptionViewModel> Property
-        {
-            get { return _property; }
-            set { _property = value; NotifyPropertyChanged(nameof(Property)); }
-        }
-
-        #endregion
-
-
-
-        public OSDescriptionTableViewModel(int remoteDesktopServiceId)
-        {
-            _computerId = remoteDesktopServiceId;
-
-
-            Property = new ObservableCollection<OSDescriptionViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.OSDescription.Content.Where(ad => ad.ComputerId == _computerId))
-            {
-                Property.Add(new OSDescriptionViewModel(item));
-            }
-        }
-
-
         #region command AddNew
         private ICommand _commandAddNew;
         public ICommand CommandAddNew
@@ -48,9 +21,35 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            Property.Add(new OSDescriptionViewModel(_computerId));
+            PropertyOSDescriptionViewModels.Add(new OSDescriptionViewModel(_computerId));
         }
         private bool CAddNew(object arg) => true;
         #endregion
+
+
+        #region property OSDescriptionViewModels
+        private ObservableCollection<OSDescriptionViewModel> _oSDescriptionViewModels;
+
+        public ObservableCollection<OSDescriptionViewModel> PropertyOSDescriptionViewModels
+        {
+            get { return _oSDescriptionViewModels; }
+            set { _oSDescriptionViewModels = value; NotifyPropertyChanged(nameof(PropertyOSDescriptionViewModels)); }
+        }
+
+        #endregion
+
+
+
+        public OSDescriptionTableViewModel(int remoteDesktopServiceId)
+        {
+            _computerId = remoteDesktopServiceId;
+
+
+            PropertyOSDescriptionViewModels = new ObservableCollection<OSDescriptionViewModel>();
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.OSDescription.Content.Where(ad => ad.ComputerId == _computerId))
+            {
+                PropertyOSDescriptionViewModels.Add(new OSDescriptionViewModel(item));
+            }
+        }
     }
 }

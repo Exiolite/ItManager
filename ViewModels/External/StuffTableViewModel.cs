@@ -9,33 +9,6 @@ namespace ViewModels.External
         private int _companyId;
 
 
-
-        #region property
-        private ObservableCollection<StuffViewModel> _property;
-
-        public ObservableCollection<StuffViewModel> Property
-        {
-            get { return _property; }
-            set { _property = value; NotifyPropertyChanged(nameof(Property)); }
-        }
-
-        #endregion
-
-
-
-        public StuffTableViewModel(int companyId)
-        {
-            _companyId = companyId;
-
-
-            Property = new ObservableCollection<StuffViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.StuffTable.Content.Where(c => c.CompanyId == _companyId))
-            {
-                Property.Add(new StuffViewModel(item));
-            }
-        }
-
-
         #region command AddNew
         private ICommand _commandAddNew;
         public ICommand CommandAddNew
@@ -48,9 +21,35 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            Property.Add(new StuffViewModel(_companyId));
+            PropertyStaffViewModels.Add(new StuffViewModel(_companyId));
         }
         private bool CAddNew(object arg) => true;
         #endregion
+
+
+        #region property StaffViewModels
+        private ObservableCollection<StuffViewModel> _stuffViewModels;
+
+        public ObservableCollection<StuffViewModel> PropertyStaffViewModels
+        {
+            get { return _stuffViewModels; }
+            set { _stuffViewModels = value; NotifyPropertyChanged(nameof(PropertyStaffViewModels)); }
+        }
+
+        #endregion
+
+
+
+        public StuffTableViewModel(int companyId)
+        {
+            _companyId = companyId;
+
+
+            PropertyStaffViewModels = new ObservableCollection<StuffViewModel>();
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.StuffTable.Content.Where(c => c.CompanyId == _companyId))
+            {
+                PropertyStaffViewModels.Add(new StuffViewModel(item));
+            }
+        }
     }
 }

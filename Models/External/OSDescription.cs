@@ -12,24 +12,5 @@
         }
 
         #endregion
-
-        #region property ComputerType
-        private Type _computerType = Type.None;
-
-        public Type ComputerType
-        {
-            get { return _computerType; }
-            set { _computerType = value; NotifyPropertyChanged(nameof(ComputerType)); }
-        }
-
-        #endregion
-
-        public enum Type
-        {
-            None,
-            Personal,
-            Server,
-            Virtual
-        }
     }
 }

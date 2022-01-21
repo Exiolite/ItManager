@@ -9,33 +9,6 @@ namespace ViewModels.External
         private int _remoteDesktopServiceId;
 
 
-
-        #region property
-        private ObservableCollection<AnyDeskViewModel> _property;
-
-        public ObservableCollection<AnyDeskViewModel> Property
-        {
-            get { return _property; }
-            set { _property = value; NotifyPropertyChanged(nameof(Property)); }
-        }
-
-        #endregion
-
-
-
-        public AnyDeskTableViewModel(int remoteDesktopServiceId)
-        {
-            _remoteDesktopServiceId = remoteDesktopServiceId;
-
-
-            Property = new ObservableCollection<AnyDeskViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.AnyDeskTable.Content.Where(ad => ad.RemoteDesktopServiceId == _remoteDesktopServiceId))
-            {
-                Property.Add(new AnyDeskViewModel(item));
-            }
-        }
-
-
         #region command AddNew
         private ICommand _commandAddNew;
         public ICommand CommandAddNew
@@ -48,9 +21,35 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            Property.Add(new AnyDeskViewModel(_remoteDesktopServiceId));
+            PropertyAnyDeskViewModels.Add(new AnyDeskViewModel(_remoteDesktopServiceId));
         }
         private bool CAddNew(object arg) => true;
         #endregion
+
+        
+        #region property AnyDeskViewModels
+        private ObservableCollection<AnyDeskViewModel> _anyDeskViewModels;
+
+        public ObservableCollection<AnyDeskViewModel> PropertyAnyDeskViewModels
+        {
+            get { return _anyDeskViewModels; }
+            set { _anyDeskViewModels = value; NotifyPropertyChanged(nameof(PropertyAnyDeskViewModels)); }
+        }
+
+        #endregion
+
+
+
+        public AnyDeskTableViewModel(int remoteDesktopServiceId)
+        {
+            _remoteDesktopServiceId = remoteDesktopServiceId;
+
+
+            PropertyAnyDeskViewModels = new ObservableCollection<AnyDeskViewModel>();
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.AnyDeskTable.Content.Where(ad => ad.RemoteDesktopServiceId == _remoteDesktopServiceId))
+            {
+                PropertyAnyDeskViewModels.Add(new AnyDeskViewModel(item));
+            }
+        }
     }
 }

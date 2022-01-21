@@ -4,26 +4,27 @@ namespace ViewModels.External
 {
     public sealed class StuffViewModel : ViewModel
     {
-        #region property
-        private Stuff _property;
+        #region property Stuff
+        private Stuff _stuff;
 
-        public Stuff Property
+        public Stuff PropertyStuff
         {
-            get { return _property; }
-            set { _property = value; NotifyPropertyChanged(nameof(Property)); }
+            get { return _stuff; }
+            set { _stuff = value; NotifyPropertyChanged(nameof(PropertyStuff)); }
         }
 
         #endregion
 
+
         public StuffViewModel(Stuff stuff)
         {
-            Property = stuff;
+            PropertyStuff = stuff;
         }
 
         public StuffViewModel(int companyId)
         {
-            Property = MainViewModel.Instance.ExternalDataContext.StuffTable.AddNewItem();
-            Property.CompanyId = companyId;
+            PropertyStuff = MainViewModel.Instance.ExternalDataContext.StuffTable.AddNewItem();
+            PropertyStuff.CompanyId = companyId;
         }
     }
 }

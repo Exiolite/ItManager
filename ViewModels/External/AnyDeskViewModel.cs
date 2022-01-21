@@ -4,26 +4,27 @@ namespace ViewModels.External
 {
     public sealed class AnyDeskViewModel : ViewModel
     {
-        #region property
-        private AnyDesk _property;
+        #region property AnyDesk
+        private AnyDesk _anyDesk;
 
-        public AnyDesk Property
+        public AnyDesk PropertyAnyDesk
         {
-            get { return _property; }
-            set { _property = value; NotifyPropertyChanged(nameof(Property)); }
+            get { return _anyDesk; }
+            set { _anyDesk = value; NotifyPropertyChanged(nameof(PropertyAnyDesk)); }
         }
 
         #endregion
 
+
         public AnyDeskViewModel(AnyDesk anyDesk)
         {
-            Property = anyDesk;
+            PropertyAnyDesk = anyDesk;
         }
 
         public AnyDeskViewModel(int remoteDesktopServiceId)
         {
-            Property = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.AddNew();
-            Property.RemoteDesktopServiceId = remoteDesktopServiceId;
+            PropertyAnyDesk = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.AddNew();
+            PropertyAnyDesk.RemoteDesktopServiceId = remoteDesktopServiceId;
         }
     }
 }

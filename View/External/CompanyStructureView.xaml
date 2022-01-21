@@ -43,13 +43,13 @@
                             <TreeViewItem Header="Computers"
                                           FontSize="20"
                                           Foreground="{StaticResource ff}"
-                                          ItemsSource="{Binding PropertyComputersTableViewModel.Property}">
+                                          ItemsSource="{Binding PropertyComputerTableViewModel.PropertyPersonal}">
                                 <TreeViewItem.ContextMenu>
                                     <ContextMenu BorderThickness="0"
                                                  Background="{StaticResource bbb}"
                                                  Foreground="{StaticResource ff}">
                                         <MenuItem Header="Add Computer"
-                                                  Command="{Binding PropertyComputersTableViewModel.CommandAddNew}" />
+                                                  Command="{Binding PropertyComputerTableViewModel.CommandAddNew}" />
                                     </ContextMenu>
                                 </TreeViewItem.ContextMenu>
                                 <TreeViewItem.ItemTemplate>
@@ -63,7 +63,19 @@
                                     </DataTemplate>
                                 </TreeViewItem.ItemTemplate>
                             </TreeViewItem>
-                        </TreeViewItem>
+                            <TreeViewItem Header="Servers"
+                                          FontSize="20"
+                                          Foreground="{StaticResource ff}"
+                                          ItemsSource="{Binding PropertyComputerTableViewModel.Property}">
+                                <TreeViewItem.ContextMenu>
+                                    <ContextMenu BorderThickness="0"
+                                                 Background="{StaticResource bbb}"
+                                                 Foreground="{StaticResource ff}">
+                                        <MenuItem Header="Add Computer"
+                                                  Command="{Binding PropertyComputerTableViewModel.CommandAddNew}" />
+                                    </ContextMenu>
+                                </TreeViewItem.ContextMenu>
+                            </TreeViewItem>
                         <TreeViewItem Header="Stuff"
                                       Foreground="{StaticResource ff}">
 
