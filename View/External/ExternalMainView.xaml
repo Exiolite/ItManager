@@ -6,8 +6,11 @@
              xmlns:local="clr-namespace:View.External"
              mc:Ignorable="d">
     <DockPanel >
-        <StackPanel>
-            <local:CompanyStructureView DockPanel.Dock="Left" />
+        <StackPanel  HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+            <local:CompanyStructureView DockPanel.Dock="Left"
+                                        Margin="8"
+                                        Width="300"/>
         </StackPanel>
     </DockPanel>
 </UserControl>

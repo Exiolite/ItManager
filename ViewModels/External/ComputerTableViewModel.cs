@@ -8,13 +8,13 @@ namespace ViewModels.External
     {
         private int _companyId;
 
-        #region property ComputerViewModels
-        private ObservableCollection<ComputerViewModel> _propertyComputerViewModels;
+        #region property
+        private ObservableCollection<ComputerViewModel> _property;
 
-        public ObservableCollection<ComputerViewModel> PropertyComputerViewModels
+        public ObservableCollection<ComputerViewModel> Property
         {
-            get { return _propertyComputerViewModels; }
-            set { _propertyComputerViewModels = value; NotifyPropertyChanged(nameof(PropertyComputerViewModels)); }
+            get { return _property; }
+            set { _property = value; NotifyPropertyChanged(nameof(Property)); }
         }
 
         #endregion
@@ -24,29 +24,30 @@ namespace ViewModels.External
         {
             _companyId = companyId;
 
-            PropertyComputerViewModels = new ObservableCollection<ComputerViewModel>();
+
+            Property = new ObservableCollection<ComputerViewModel>();
             foreach (var item in MainViewModel.Instance.ExternalDataContext.ComputerTable.Content.Where(c => c.CompanyId == _companyId))
             {
-                PropertyComputerViewModels.Add(new ComputerViewModel(item));
+                Property.Add(new ComputerViewModel(item));
             }
         }
 
 
-        #region command AddNewComputer
-        private ICommand _commandAddNewComputer;
-        public ICommand CommandAddNewComputer
+        #region command AddNew
+        private ICommand _commandAddNew;
+        public ICommand CommandAddNew
         {
             get
             {
-                if (_commandAddNewComputer == null) _commandAddNewComputer = new Command(this.NameE, this.CName, false);
-                return _commandAddNewComputer;
+                if (_commandAddNew == null) _commandAddNew = new Command(this.AddNewE, this.CAddNew, false);
+                return _commandAddNew;
             }
         }
-        private void NameE(object obj)
+        private void AddNewE(object obj)
         {
-            PropertyComputerViewModels.Add(new ComputerViewModel(_companyId));
+            Property.Add(new ComputerViewModel(_companyId));
         }
-        private bool CName(object arg) => true;
+        private bool CAddNew(object arg) => true;
         #endregion
     }
 }

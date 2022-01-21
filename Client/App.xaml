@@ -12,5 +12,38 @@
         <vme:CompanyViewModel x:Key="CompanyViewModel" />
 
         <vmi:FileViewModel x:Key="FileViewModel" />
+
+
+
+
+
+        <SolidColorBrush x:Key="Clear"
+                         Opacity="0"/>
+        
+        <SolidColorBrush x:Key="b"
+                         Opacity="0.25"
+                         Color="Black" />
+        <SolidColorBrush x:Key="bb"
+                         Opacity="0.5"
+                         Color="Black" />
+        <SolidColorBrush x:Key="bbb"
+                         Opacity="0.75"
+                         Color="Black" />
+        <SolidColorBrush x:Key="bbbb"
+                         Opacity="1"
+                         Color="Black" />
+
+        <SolidColorBrush x:Key="f"
+                         Opacity="0.25"
+                         Color="White" />
+        <SolidColorBrush x:Key="ff"
+                         Opacity="0.5"
+                         Color="White" />
+        <SolidColorBrush x:Key="fff"
+                         Opacity="0.75"
+                         Color="White" />
+        <SolidColorBrush x:Key="ffff"
+                         Opacity="1"
+                         Color="White" />
     </Application.Resources>
 </Application>

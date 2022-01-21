@@ -4,7 +4,7 @@ namespace Models.External
 {
     public sealed class OSDescriptionTable : Internal.Model
     {
-        #region property Companies
+        #region property Content
         private ObservableCollection<OSDescription> _content = new ObservableCollection<OSDescription>();
 
         public ObservableCollection<OSDescription> Content

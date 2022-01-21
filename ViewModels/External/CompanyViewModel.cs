@@ -4,13 +4,13 @@ namespace ViewModels.External
 {
     public sealed class CompanyViewModel : ViewModel
     {
-        #region property CompanyViewModel
-        private Company _propertyCompany;
+        #region property
+        private Company _property;
 
-        public Company PropertyCompany
+        public Company Property
         {
-            get { return _propertyCompany; }
-            set { _propertyCompany = value; NotifyPropertyChanged(nameof(PropertyCompany)); }
+            get { return _property; }
+            set { _property = value; NotifyPropertyChanged(nameof(_property)); }
         }
 
         #endregion
@@ -26,15 +26,16 @@ namespace ViewModels.External
 
         #endregion
 
+
         public CompanyViewModel()
         {
-            PropertyCompany = MainViewModel.Instance.ExternalDataContext.CompanyTable.AddNewCompany();
-            PropertyComputersTableViewModel = new ComputerTableViewModel(PropertyCompany.Id);
+            _property = MainViewModel.Instance.ExternalDataContext.CompanyTable.AddNewCompany();
+            PropertyComputersTableViewModel = new ComputerTableViewModel(_property.Id);
         }
 
         public CompanyViewModel(Company company)
         {
-            PropertyCompany = company;
+            _property = company;
         }
     }
 }

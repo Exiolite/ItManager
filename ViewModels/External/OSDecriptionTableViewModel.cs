@@ -1,14 +1,19 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace ViewModels.External
 {
-    public sealed class CompanyTableViewModel : ViewModel
+    public sealed class OSDescriptionTableViewModel : ViewModel
     {
-        #region property
-        private ObservableCollection<CompanyViewModel> _property;
+        private int _computerId;
 
-        public ObservableCollection<CompanyViewModel> Property
+
+
+        #region property
+        private ObservableCollection<OSDescriptionViewModel> _property;
+
+        public ObservableCollection<OSDescriptionViewModel> Property
         {
             get { return _property; }
             set { _property = value; NotifyPropertyChanged(nameof(Property)); }
@@ -17,12 +22,16 @@ namespace ViewModels.External
         #endregion
 
 
-        public CompanyTableViewModel()
+
+        public OSDescriptionTableViewModel(int remoteDesktopServiceId)
         {
-            Property = new ObservableCollection<CompanyViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.CompanyTable.Content)
+            _computerId = remoteDesktopServiceId;
+
+
+            Property = new ObservableCollection<OSDescriptionViewModel>();
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.OSDescription.Content.Where(ad => ad.ComputerId == _computerId))
             {
-                Property.Add(new CompanyViewModel(item));
+                Property.Add(new OSDescriptionViewModel(item));
             }
         }
 
@@ -39,7 +48,7 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            Property.Add(new CompanyViewModel());
+            Property.Add(new OSDescriptionViewModel(_computerId));
         }
         private bool CAddNew(object arg) => true;
         #endregion

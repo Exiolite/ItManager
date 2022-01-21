@@ -14,7 +14,7 @@ namespace Models.External
         }
         #endregion
 
-        public AnyDesk AddNewCompany()
+        public AnyDesk AddNew()
         {
             var item = new AnyDesk();
             Content.Add(item);

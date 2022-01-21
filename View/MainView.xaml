@@ -5,6 +5,6 @@
              xmlns:ve="clr-namespace:View.External">
     <DockPanel>
         <vi:InternalMainView DockPanel.Dock="Top" />
-        <ve:ExternalMainView />
+        <ve:ExternalMainView Margin="25"/>
     </DockPanel>
 </UserControl>

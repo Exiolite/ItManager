@@ -3,6 +3,13 @@
     public class Stuff : Model
     {
         #region property ComputerId
+        private int _companyId = -1;
+
+        public int CompanyId
+        {
+            get { return _companyId; }
+            set { _companyId = value; NotifyPropertyChanged(nameof(CompanyId)); }
+        }
 
         #endregion
 
@@ -38,7 +45,5 @@
         }
 
         #endregion
-
-
     }
 }

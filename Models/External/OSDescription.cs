@@ -31,7 +31,5 @@
             Server,
             Virtual
         }
-
-
     }
 }

@@ -6,6 +6,9 @@
         xmlns:v="clr-namespace:View;assembly=View"
         mc:Ignorable="d"
         Title="ItManager"
-        WindowState="Maximized">
-    <v:MainView />
+        WindowState="Maximized"
+        AllowsTransparency="True"
+        Background="{StaticResource bbb}"
+        WindowStyle="None">
+    <v:MainView  Margin="10"/>
 </Window>

@@ -67,5 +67,16 @@
         }
 
         #endregion
+
+        #region property StuffTable
+        private StuffTable _stuffTable = new StuffTable();
+
+        public StuffTable StuffTable
+        {
+            get { return _stuffTable; }
+            set { _stuffTable = value; NotifyPropertyChanged(nameof(StuffTable)); }
+        }
+
+        #endregion
     }
 }

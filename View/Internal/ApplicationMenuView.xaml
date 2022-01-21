@@ -6,9 +6,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d">
     <StackPanel>
-        <Menu>
-            <MenuItem Header="File">
+        <Menu Background="{StaticResource Clear}">
+            <MenuItem Header="File"
+                      Foreground="{StaticResource ff}">
                 <MenuItem Header="New"
+                          Foreground="{StaticResource Clear}"
                           Command="{Binding CmdFileNew}" />
                 <MenuItem Header="Open"
                           Command="{Binding CmdFileOpen}" />
