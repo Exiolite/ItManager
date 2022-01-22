@@ -15,22 +15,33 @@ namespace ViewModels.External
 
         #endregion
 
-        #region property ComputerViewModel
-        private ComputerTableViewModel _propertyComputerTableViewModel;
+        #region property ComputerTableViewModel
+        private ComputerTableViewModel _computerTableViewModel;
 
         public ComputerTableViewModel PropertyComputerTableViewModel
         {
-            get { return _propertyComputerTableViewModel; }
-            set { _propertyComputerTableViewModel = value; NotifyPropertyChanged(nameof(PropertyComputerTableViewModel)); }
+            get { return _computerTableViewModel; }
+            set { _computerTableViewModel = value; NotifyPropertyChanged(nameof(PropertyComputerTableViewModel)); }
         }
 
         #endregion
 
+        #region property ServerTableViewModel
+        private ServerTableViewModel _serverTableViewModel;
+
+        public ServerTableViewModel PropertyServerTableViewModel
+        {
+            get { return _serverTableViewModel; }
+            set { _serverTableViewModel = value; NotifyPropertyChanged(nameof(PropertyServerTableViewModel)); }
+        }
+
+        #endregion
 
         public CompanyViewModel()
         {
             _company = MainViewModel.Instance.ExternalDataContext.CompanyTable.AddNewCompany();
             PropertyComputerTableViewModel = new ComputerTableViewModel(_company.Id);
+            PropertyServerTableViewModel = new ServerTableViewModel(_company.Id);
         }
 
         public CompanyViewModel(Company company)

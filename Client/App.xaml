@@ -45,8 +45,8 @@
         <SolidColorBrush x:Key="ffff"
                          Opacity="1"
                          Color="White" />
-        
-        
+
+
         <Style TargetType="{x:Type MenuItem}">
             <Style.Triggers>
                 <Trigger Property="MenuItem.Role"
@@ -69,9 +69,9 @@
                                                           SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
                                                           VerticalAlignment="Center"
                                                           HorizontalAlignment="Center"
-                                                          Width="16"
-                                                          Height="16"
-                                                          Margin="3" />
+                                                          Width="0"
+                                                          Height="0"
+                                                          Margin="0" />
                                         <Path x:Name="GlyphPanel"
                                               Data="F1 M 10.0,1.2 L 4.7,9.1 L 4.5,9.1 L 0,5.2 L 1.3,3.5 L 4.3,6.1L 8.3,0 L 10.0,1.2 Z"
                                               FlowDirection="LeftToRight"
@@ -148,10 +148,10 @@
                                     <Trigger Property="MenuItem.IsHighlighted"
                                              Value="true">
                                         <Setter TargetName="templateRoot"
-                                                Value="#3D26A0DA"
+                                                Value="Transparent"
                                                 Property="Border.Background" />
                                         <Setter TargetName="templateRoot"
-                                                Value="#FF26A0DA"
+                                                Value="{StaticResource ff}"
                                                 Property="Border.BorderBrush" />
                                     </Trigger>
                                     <Trigger Property="UIElement.IsEnabled"
@@ -180,6 +180,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+
     </Application.Resources>
 </Application>
