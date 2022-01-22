@@ -15,6 +15,10 @@ namespace ViewModels.External
 
         #endregion
 
+        public AnyDeskViewModel()
+        {
+
+        }
 
         public AnyDeskViewModel(AnyDesk anyDesk)
         {

@@ -8,7 +8,7 @@
         Title="ItManager"
         WindowState="Maximized"
         AllowsTransparency="True"
-        Background="{StaticResource bbb}"
+        Background="{StaticResource B}"
         WindowStyle="None">
-    <v:MainView Margin="10"/>
+    <v:MainView Margin="8"/>
 </Window>

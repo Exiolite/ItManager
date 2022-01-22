@@ -22,7 +22,6 @@ namespace ViewModels.External
         private bool CAddNew(object arg) => true;
         #endregion
 
-
         #region property
         private ObservableCollection<CompanyViewModel> _companyViewModels;
 

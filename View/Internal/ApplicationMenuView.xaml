@@ -5,8 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d">
-    <Menu Foreground="{StaticResource fff}"
-          Background="{StaticResource bbbb}">
+    <Menu Foreground="{StaticResource F}"
+          Background="{StaticResource B}">
         <MenuItem Header="File">
             <MenuItem Header="New"
                       Command="{Binding CmdFileNew}" />

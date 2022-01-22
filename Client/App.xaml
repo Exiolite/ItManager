@@ -8,178 +8,33 @@
     <Application.Resources>
         <vms:MainViewModel x:Key="MainViewModel" />
 
+        <vme:AnyDeskTableViewModel x:Key="AnyDeskTableViewModel" />
+        <vme:AnyDeskViewModel x:Key="AnyDeskViewModel" />
         <vme:CompanyTableViewModel x:Key="CompanyTableViewModel" />
         <vme:CompanyViewModel x:Key="CompanyViewModel" />
+        <vme:ComputerTableViewModel x:Key="ComputerTableViewModel" />
+        <vme:ComputerViewModel x:Key="ComputerViewModel" />
+        <vme:OSDescriptionTableViewModel x:Key="OSDescriptionTableViewModel" />
+        <vme:OSDescriptionViewModel x:Key="OSDescriptionViewModel" />
+        <vme:RemoteDesktopServiceTableViewModel x:Key="RemoteDesktopServiceTableViewModel" />
+        <vme:RemoteDesktopServiceViewModel x:Key="RemoteDesktopServiceViewModel" />
+        <vme:ServerTableViewModel x:Key="ServerTableViewModel" />
+        <vme:ServerViewModel x:Key="ServerViewModel" />
+        <vme:StuffTableViewModel x:Key="StuffTableViewModel" />
+        <vme:StuffViewModel x:Key="StuffViewModel" />
 
         <vmi:FileViewModel x:Key="FileViewModel" />
-
-
-
-
 
         <SolidColorBrush x:Key="Clear"
                          Opacity="0" />
 
-        <SolidColorBrush x:Key="b"
-                         Opacity="0.25"
-                         Color="Black" />
-        <SolidColorBrush x:Key="bb"
-                         Opacity="0.5"
-                         Color="Black" />
-        <SolidColorBrush x:Key="bbb"
-                         Opacity="0.90"
-                         Color="Black" />
-        <SolidColorBrush x:Key="bbbb"
-                         Opacity="1"
-                         Color="Black" />
+        <SolidColorBrush x:Key="B"
+                         Color="White" />
+        <SolidColorBrush x:Key="BB"
+                         Color="WhiteSmoke" />
 
-        <SolidColorBrush x:Key="f"
-                         Opacity="0.25"
-                         Color="White" />
-        <SolidColorBrush x:Key="ff"
-                         Opacity="0.5"
-                         Color="White" />
-        <SolidColorBrush x:Key="fff"
-                         Opacity="0.90"
-                         Color="White" />
-        <SolidColorBrush x:Key="ffff"
-                         Opacity="1"
-                         Color="White" />
-
-
-        <Style TargetType="{x:Type MenuItem}">
-            <Style.Triggers>
-                <Trigger Property="MenuItem.Role"
-                         Value="TopLevelHeader">
-                    <Setter Property="Control.Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type MenuItem}">
-                                <Border x:Name="templateRoot"
-                                        SnapsToDevicePixels="true"
-                                        BorderThickness="{TemplateBinding Control.BorderThickness}"
-                                        Background="{TemplateBinding Control.Background}"
-                                        BorderBrush="{TemplateBinding Control.BorderBrush}">
-                                    <Grid VerticalAlignment="Center">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <ContentPresenter x:Name="Icon"
-                                                          ContentSource="Icon"
-                                                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
-                                                          VerticalAlignment="Center"
-                                                          HorizontalAlignment="Center"
-                                                          Width="0"
-                                                          Height="0"
-                                                          Margin="0" />
-                                        <Path x:Name="GlyphPanel"
-                                              Data="F1 M 10.0,1.2 L 4.7,9.1 L 4.5,9.1 L 0,5.2 L 1.3,3.5 L 4.3,6.1L 8.3,0 L 10.0,1.2 Z"
-                                              FlowDirection="LeftToRight"
-                                              Margin="3"
-                                              Visibility="Collapsed"
-                                              VerticalAlignment="Center"
-                                              Fill="{TemplateBinding Control.Foreground}" />
-                                        <ContentPresenter Grid.Column="1"
-                                                          ContentSource="Header"
-                                                          RecognizesAccessKey="true"
-                                                          Margin="{TemplateBinding Control.Padding}"
-                                                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
-                                        <Popup x:Name="PART_Popup"
-                                               AllowsTransparency="true"
-                                               Focusable="false"
-                                               PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
-                                               Placement="Bottom"
-                                               IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                                               PlacementTarget="{Binding ElementName=templateRoot}">
-                                            <Border x:Name="SubMenuBorder"
-                                                    Background="{StaticResource bbb}"
-                                                    BorderBrush="{StaticResource bbb}"
-                                                    BorderThickness="1"
-                                                    Padding="2">
-                                                <ScrollViewer x:Name="SubMenuScrollViewer"
-                                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
-                                                    <Grid RenderOptions.ClearTypeHint="Enabled">
-                                                        <Canvas Height="0"
-                                                                Width="0"
-                                                                HorizontalAlignment="Left"
-                                                                VerticalAlignment="Top">
-                                                            <Rectangle Name="OpaqueRect"
-                                                                       Height="{Binding ElementName=SubMenuBorder, Path=ActualHeight}"
-                                                                       Width="{Binding ElementName=SubMenuBorder, Path=ActualWidth}"
-                                                                       Fill="{Binding ElementName=SubMenuBorder, Path=Background}" />
-                                                        </Canvas>
-                                                        <Rectangle HorizontalAlignment="Left"
-                                                                   Width="1"
-                                                                   Margin="29,2,0,2"
-                                                                   Fill="#FFD7D7D7" />
-                                                        <ItemsPresenter x:Name="ItemsPresenter"
-                                                                        KeyboardNavigation.DirectionalNavigation="Cycle"
-                                                                        KeyboardNavigation.TabNavigation="Cycle"
-                                                                        Grid.IsSharedSizeScope="true"
-                                                                        SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
-                                                    </Grid>
-                                                </ScrollViewer>
-                                            </Border>
-                                        </Popup>
-                                    </Grid>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="MenuItem.IsSuspendingPopupAnimation"
-                                             Value="true">
-                                        <Setter TargetName="PART_Popup"
-                                                Property="Popup.PopupAnimation"
-                                                Value="None" />
-                                    </Trigger>
-                                    <Trigger Value="{x:Null}"
-                                             Property="MenuItem.Icon">
-                                        <Setter TargetName="Icon"
-                                                Property="UIElement.Visibility"
-                                                Value="Collapsed" />
-                                    </Trigger>
-                                    <Trigger Property="MenuItem.IsChecked"
-                                             Value="true">
-                                        <Setter TargetName="GlyphPanel"
-                                                Property="UIElement.Visibility"
-                                                Value="Visible" />
-                                        <Setter TargetName="Icon"
-                                                Property="UIElement.Visibility"
-                                                Value="Collapsed" />
-                                    </Trigger>
-                                    <Trigger Property="MenuItem.IsHighlighted"
-                                             Value="true">
-                                        <Setter TargetName="templateRoot"
-                                                Value="Transparent"
-                                                Property="Border.Background" />
-                                        <Setter TargetName="templateRoot"
-                                                Value="{StaticResource ff}"
-                                                Property="Border.BorderBrush" />
-                                    </Trigger>
-                                    <Trigger Property="UIElement.IsEnabled"
-                                             Value="false">
-                                        <Setter TargetName="templateRoot"
-                                                Value="#FF707070"
-                                                Property="TextElement.Foreground" />
-                                        <Setter TargetName="GlyphPanel"
-                                                Value="#FF707070"
-                                                Property="Shape.Fill" />
-                                    </Trigger>
-                                    <Trigger SourceName="SubMenuScrollViewer"
-                                             Property="ScrollViewer.CanContentScroll"
-                                             Value="false">
-                                        <Setter TargetName="OpaqueRect"
-                                                Value="{Binding ElementName=SubMenuScrollViewer, Path=VerticalOffset}"
-                                                Property="Canvas.Top" />
-                                        <Setter TargetName="OpaqueRect"
-                                                Value="{Binding ElementName=SubMenuScrollViewer, Path=HorizontalOffset}"
-                                                Property="Canvas.Left" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <SolidColorBrush x:Key="F"
+                         Color="Black" />
 
     </Application.Resources>
 </Application>

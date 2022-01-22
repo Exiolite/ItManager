@@ -16,6 +16,12 @@ namespace ViewModels.External
         #endregion
 
 
+        public StuffViewModel()
+        {
+
+        }
+
+
         public StuffViewModel(Stuff stuff)
         {
             PropertyStuff = stuff;

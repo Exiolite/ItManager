@@ -39,6 +39,12 @@ namespace ViewModels.External
         #endregion
 
 
+        public RemoteDesktopServiceTableViewModel()
+        {
+
+        }
+
+
         public RemoteDesktopServiceTableViewModel(int computerSystemDescriptionId)
         {
             _computerSystemDescriptionId = computerSystemDescriptionId;

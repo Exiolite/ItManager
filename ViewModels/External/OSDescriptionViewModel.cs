@@ -16,6 +16,12 @@ namespace ViewModels.External
         #endregion
 
 
+        public OSDescriptionViewModel()
+        {
+
+        }
+
+
         public OSDescriptionViewModel(OSDescription item)
         {
             PropertyOSDescription = item;

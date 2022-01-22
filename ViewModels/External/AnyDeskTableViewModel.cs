@@ -39,6 +39,10 @@ namespace ViewModels.External
         #endregion
 
 
+        public AnyDeskTableViewModel()
+        {
+
+        }
 
         public AnyDeskTableViewModel(int remoteDesktopServiceId)
         {

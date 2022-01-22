@@ -37,6 +37,7 @@ namespace ViewModels.External
 
         #endregion
 
+
         public CompanyViewModel()
         {
             _company = MainViewModel.Instance.ExternalDataContext.CompanyTable.AddNewCompany();

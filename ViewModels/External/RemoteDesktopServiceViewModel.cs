@@ -16,6 +16,12 @@ namespace ViewModels.External
         #endregion
 
 
+        public RemoteDesktopServiceViewModel()
+        {
+
+        }
+
+
         public RemoteDesktopServiceViewModel(RemoteDesktopService item)
         {
             PropertyOSDescription = item;

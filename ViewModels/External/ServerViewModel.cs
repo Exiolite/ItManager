@@ -16,6 +16,12 @@ namespace ViewModels.External
         #endregion
 
 
+        public ServerViewModel()
+        {
+
+        }
+
+
         public ServerViewModel(Server server)
         {
             PropertyServer = server;

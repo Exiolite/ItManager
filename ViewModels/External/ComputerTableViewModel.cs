@@ -1,5 +1,4 @@
-﻿using Models.External;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
@@ -39,6 +38,11 @@ namespace ViewModels.External
 
         #endregion
 
+
+        public ComputerTableViewModel()
+        {
+
+        }
 
         public ComputerTableViewModel(int companyId)
         {

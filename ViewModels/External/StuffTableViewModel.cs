@@ -39,6 +39,12 @@ namespace ViewModels.External
         #endregion
 
 
+        public StuffTableViewModel()
+        {
+
+        }
+
+
 
         public StuffTableViewModel(int companyId)
         {

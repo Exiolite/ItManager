@@ -10,12 +10,12 @@
         <TextBlock Text="Companies"
                    FontSize="36"
                    FontFamily="SegoeUi"
-                   Foreground="{StaticResource fff}"
+                   Foreground="{StaticResource F}"
                    DockPanel.Dock="Top">
             <TextBlock.ContextMenu>
                 <ContextMenu BorderThickness="0"
-                             Background="{StaticResource bbb}"
-                             Foreground="{StaticResource ff}"
+                             Background="{StaticResource B}"
+                             Foreground="{StaticResource F}"
                              Placement="Right">
                     <MenuItem Header="Add Company"
                               Command="{Binding CommandAddNew}" />
@@ -43,21 +43,21 @@
                 <DataTemplate>
                     <TreeViewItem Header="{Binding PropertyCompany.Name}"
                                   FontSize="28"
-                                  Foreground="{StaticResource ff}">
+                                  Foreground="{StaticResource F}">
                         <TreeViewItem Header="Devices"
                                       FontSize="24"
-                                      Foreground="{StaticResource ff}">
+                                      Foreground="{StaticResource F}">
                             <!--#region ComputersView -->
                             <TreeViewItem FontSize="20"
-                                          Foreground="{StaticResource ff}"
+                                          Foreground="{StaticResource F}"
                                           ItemsSource="{Binding PropertyComputerTableViewModel.PropertyComputerViewModels}">
                                 <TreeViewItem.Header>
                                     <TextBlock Text="Computers"
                                                ContextMenuService.Placement="Right">
                                         <TextBlock.ContextMenu>
                                             <ContextMenu BorderThickness="0"
-                                                         Background="{StaticResource bbb}"
-                                                         Foreground="{StaticResource ff}"
+                                                         Background="{StaticResource B}"
+                                                         Foreground="{StaticResource F}"
                                                          Placement="Right">
                                                 <MenuItem Header="Add Computer"
                                                           Command="{Binding PropertyComputerTableViewModel.CommandAddNew}" />
@@ -68,26 +68,40 @@
                                 <TreeViewItem.ItemTemplate>
                                     <DataTemplate>
                                         <Button Content="{Binding PropertyComputer.Name}"
+                                                Click="OpenComputerInNewWindow"
                                                 FontSize="16"
                                                 Margin="4"
                                                 Background="{StaticResource Clear}"
-                                                Foreground="{StaticResource fff}"
-                                                BorderThickness="0" />
+                                                Foreground="{StaticResource F}"
+                                                BorderThickness="0">
+                                            <Button.Style>
+                                                <Style TargetType="Button"
+                                                       BasedOn="{StaticResource {x:Type Button}}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver"
+                                                                 Value="True">
+                                                            <Setter Property="Background"
+                                                                    Value="{StaticResource B}" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
                                     </DataTemplate>
                                 </TreeViewItem.ItemTemplate>
                             </TreeViewItem>
                             <!--#endregion-->
                             <!--#region ServersView -->
                             <TreeViewItem FontSize="20"
-                                          Foreground="{StaticResource ff}"
+                                          Foreground="{StaticResource F}"
                                           ItemsSource="{Binding PropertyServerTableViewModel.PropertyServerTable}">
                                 <TreeViewItem.Header>
                                 <TextBlock Text="Servers"
                                            ContextMenuService.Placement="Right">
                                     <TextBlock.ContextMenu>
                                         <ContextMenu BorderThickness="0"
-                                                     Background="{StaticResource bbb}"
-                                                     Foreground="{StaticResource ff}">
+                                                     Background="{StaticResource B}"
+                                                     Foreground="{StaticResource F}">
                                             <MenuItem Header="Add Server"
                                                       Command="{Binding PropertyServerTableViewModel.CommandAddNew}" />
                                         </ContextMenu>
@@ -101,8 +115,10 @@
                                                 FontSize="16"
                                                 Margin="4"
                                                 Background="{StaticResource Clear}"
-                                                Foreground="{StaticResource fff}"
-                                                BorderThickness="0" />
+                                                Foreground="{StaticResource F}"
+                                                BorderThickness="0"
+                                                >
+                                        </Button>
                                     </DataTemplate>
                                 </TreeViewItem.ItemTemplate>
                             </TreeViewItem>
