@@ -21,5 +21,10 @@ namespace Models.External
             item.Id = Content.IndexOf(item);
             return item;
         }
+
+        public Computer GetById(int id)
+        {
+            return Content.FirstOrDefault(x => x.Id == id);
+        }
     }
 }

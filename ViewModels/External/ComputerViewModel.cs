@@ -32,6 +32,17 @@ namespace ViewModels.External
         }
         #endregion
 
+        #region property PropertyDomenPath
+        private string _domainPath;
+
+        public string PropertyDomainPath
+        {
+            get { return _domainPath; }
+            set { _domainPath = value; }
+        }
+
+        #endregion
+
 
         public ComputerViewModel()
         {
@@ -47,6 +58,12 @@ namespace ViewModels.External
         {
             PropertyComputer = MainViewModel.Instance.ExternalDataContext.ComputerTable.AddNewItem();
             PropertyComputer.CompanyId = companyId;
+
+            var company = MainViewModel.Instance.ExternalDataContext.CompanyTable.GetById(companyId);
+            var domainName = company.PropertyDomainName;
+            var computerName = PropertyComputer.Name;
+
+            _domainPath = $"{domainName}/{computerName}";
         }
     }
 }

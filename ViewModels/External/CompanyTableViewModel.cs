@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace ViewModels.External
@@ -22,7 +23,7 @@ namespace ViewModels.External
         private bool CAddNew(object arg) => true;
         #endregion
 
-        #region property
+        #region property PropertyCompanyViewModels
         private ObservableCollection<CompanyViewModel> _companyViewModels;
 
         public ObservableCollection<CompanyViewModel> PropertyCompanyViewModels

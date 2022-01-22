@@ -22,5 +22,9 @@ namespace Models.External
             return item;
         }
 
+        public OSDescription GetById(int id)
+        {
+            return Content.FirstOrDefault(x => x.Id == id);
+        }
     }
 }

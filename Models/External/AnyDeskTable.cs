@@ -4,7 +4,7 @@ namespace Models.External
 {
     public sealed class AnyDeskTable : Internal.Model
     {
-        #region property Companies
+        #region property Content
         private ObservableCollection<AnyDesk> _content = new ObservableCollection<AnyDesk>();
 
         public ObservableCollection<AnyDesk> Content
@@ -20,6 +20,11 @@ namespace Models.External
             Content.Add(item);
             item.Id = Content.IndexOf(item);
             return item;
+        }
+
+        public AnyDesk GetById(int id)
+        {
+            return Content.FirstOrDefault(x => x.Id == id);
         }
     }
 }
