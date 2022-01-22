@@ -25,22 +25,12 @@ namespace ViewModels.External
 
         #region property Computer
         private Computer _computer;
+
         public Computer PropertyComputer
         {
             get { return _computer; }
             set { _computer = value; NotifyPropertyChanged(nameof(PropertyComputer)); }
         }
-        #endregion
-
-        #region property PropertyDomenPath
-        private string _domainPath;
-
-        public string PropertyDomainPath
-        {
-            get { return _domainPath; }
-            set { _domainPath = value; }
-        }
-
         #endregion
 
 
@@ -58,12 +48,6 @@ namespace ViewModels.External
         {
             PropertyComputer = MainViewModel.Instance.ExternalDataContext.ComputerTable.AddNewItem();
             PropertyComputer.CompanyId = companyId;
-
-            var company = MainViewModel.Instance.ExternalDataContext.CompanyTable.GetById(companyId);
-            var domainName = company.PropertyDomainName;
-            var computerName = PropertyComputer.Name;
-
-            _domainPath = $"{domainName}/{computerName}";
         }
     }
 }

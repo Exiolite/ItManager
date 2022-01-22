@@ -3,13 +3,23 @@
     public sealed class Company : Model
     {
         #region property Name
-        private string _name = Consts.CompanyName;
-
-        public string Name
+        private string _name = "Новая Компания";
+        public string PropertyName
         {
             get { return _name; }
-            set { _name = value; NotifyPropertyChanged(nameof(Name)); }
+            set { _name = value; NotifyPropertyChanged(nameof(PropertyName)); }
         }
+        #endregion
+
+        #region property Description
+        private string _description = Consts.CompanyDescription;
+
+        public string PropertyDescription
+        {
+            get { return _description; }
+            set { _description = value; NotifyPropertyChanged(nameof(PropertyDescription)); }
+        }
+
         #endregion
 
         #region property DomainName

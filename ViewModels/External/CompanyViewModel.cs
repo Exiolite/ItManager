@@ -1,4 +1,5 @@
-﻿using Models.External;
+﻿using Models;
+using Models.External;
 
 namespace ViewModels.External
 {

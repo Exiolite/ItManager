@@ -1,11 +1,11 @@
-﻿<Window DataContext="{StaticResource ComputerViewModel}"
-        x:Class="View.External.ComputerWindowView"
+﻿<Window DataContext="{StaticResource ServerViewModel}"
+        x:Class="View.External.ServerWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="{Binding PropertyComputer.Name}"
+        Title="{Binding PropertyServer.Name}"
         Width="400"
         ResizeMode="NoResize">
     <StackPanel>
@@ -13,12 +13,12 @@
         <StackPanel Margin="4"
                     Background="{StaticResource PanelBackground}">
             <StackPanel Margin="8,0,8,8">
-                <TextBox Text="{Binding PropertyComputer.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox Text="{Binding PropertyServer.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Foreground="{StaticResource PanelForeground}"
                          FontSize="36"
                          BorderThickness="0"
                          Background="{StaticResource Clear}" />
-                <TextBox Text="{Binding PropertyComputer.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox Text="{Binding PropertyServer.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Foreground="{StaticResource PanelForeground}"
                          BorderThickness="0"
                          TextWrapping="Wrap"
@@ -27,24 +27,17 @@
             </StackPanel>
         </StackPanel>
         <!--#endregion-->
-        
+
         <!--#region RemoteServices -->
         <StackPanel>
             <StackPanel Margin="4,0,4,4"
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
-                <Button Content="AnyDesk" 
+                <Button Content="RDP"
                         Margin="0,0,4,0"
                         Padding="16,4,16,4"
                         BorderThickness="0"
-                        Background="#ff0000"
-                        Foreground="{StaticResource PanelForeground}"
-                        FontSize="20"/>
-                <Button Content="TeamViewer"
-                        Margin="0,0,4,0"
-                        Padding="16,4,16,4"
-                        BorderThickness="0"
-                        Background="#4a89c2"
+                        Background="#5f9597"
                         Foreground="{StaticResource PanelForeground}"
                         FontSize="20" />
             </StackPanel>

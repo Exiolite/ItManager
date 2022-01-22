@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Unicode;
 
 namespace Models.Internal
 {
@@ -30,7 +32,16 @@ namespace Models.Internal
         public External.DataContext Write(External.DataContext dataContext)
         {
             if (!string.IsNullOrEmpty(CurrentOpenedFileName))
-                File.WriteAllText(CurrentOpenedFileName, JsonSerializer.Serialize(dataContext));
+            {
+                var options = new JsonSerializerOptions
+                {
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                    WriteIndented = true
+                };
+                var json = JsonSerializer.Serialize(dataContext, options);
+                File.WriteAllText(CurrentOpenedFileName, json);
+                return dataContext;
+            }
             return dataContext;
         }
 

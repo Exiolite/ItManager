@@ -10,14 +10,34 @@ namespace View.External
             InitializeComponent();
         }
 
-        private void OpenComputerInNewWindow(object sender, System.Windows.RoutedEventArgs e)
+        private void ClickOpenCompanyInNewWindow(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var castedSender = (MenuItem)sender;
+            var viewModel = (CompanyViewModel)castedSender.DataContext;
+            var window = new CompanyWindowView();
+
+            window.DataContext = viewModel;
+            window.Show();
+        }
+
+        private void ClickOpenComputerInNewWindow(object sender, System.Windows.RoutedEventArgs e)
         {
             var button = (Button)sender;
-            var computerViewModel = (ComputerViewModel)button.DataContext;
-            var computerWindowView = new ComputerWindowView();
+            var viewModel = (ComputerViewModel)button.DataContext;
+            var window = new ComputerWindowView();
 
-            computerWindowView.DataContext = computerViewModel;
-            computerWindowView.Show();
+            window.DataContext = viewModel;
+            window.Show();
+        }
+
+        private void ClickOpenServerInNewWindow(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            var viewModel = (ServerViewModel)button.DataContext;
+            var window = new ServerWindowView();
+
+            window.DataContext = viewModel;
+            window.Show();
         }
     }
 }

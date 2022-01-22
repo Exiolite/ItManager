@@ -2,6 +2,6 @@
 {
     public sealed class Server : Computer
     {
-        public Server() => Name = "New Server";
+        public Server() => Name = "Новый Сервер";
     }
 }

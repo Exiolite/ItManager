@@ -3,11 +3,11 @@
 namespace View.External
 {
     /// <summary>
-    /// Interaction logic for ComputerWindowView.xaml
+    /// Interaction logic for ServerViewWindow.xaml
     /// </summary>
-    public partial class ComputerWindowView : Window
+    public partial class ServerWindowView : Window
     {
-        public ComputerWindowView()
+        public ServerWindowView()
         {
             InitializeComponent();
         }

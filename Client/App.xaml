@@ -28,13 +28,20 @@
         <SolidColorBrush x:Key="Clear"
                          Opacity="0" />
 
-        <SolidColorBrush x:Key="B"
-                         Color="White" />
-        <SolidColorBrush x:Key="BB"
-                         Color="WhiteSmoke" />
 
-        <SolidColorBrush x:Key="F"
+        <SolidColorBrush x:Key="MainForeground"
                          Color="Black" />
+        <SolidColorBrush x:Key="MainBackground"
+                         Color="#ffffff" />
+
+        <SolidColorBrush x:Key="PanelBackground"
+                         Color="#333333" />
+        <SolidColorBrush x:Key="PanelDomainBackground"
+                         Color="#425053" />
+        <SolidColorBrush x:Key="PanelUsersBackground"
+                         Color="#424c53" />
+        <SolidColorBrush x:Key="PanelForeground"
+                         Color="#ffffff" />
 
     </Application.Resources>
 </Application>

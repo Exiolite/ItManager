@@ -5,16 +5,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d">
-    <Menu Foreground="{StaticResource F}"
-          Background="{StaticResource B}">
-        <MenuItem Header="File">
-            <MenuItem Header="New"
+    <Menu Foreground="{StaticResource MainForeground}"
+          Background="{StaticResource MainBackground}">
+        <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.File}">
+            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileNew}"
                       Command="{Binding CmdFileNew}" />
-            <MenuItem Header="Open"
+            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpen}"
                       Command="{Binding CmdFileOpen}" />
-            <MenuItem Header="Save"
+            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSave}"
                       Command="{Binding CmdFileSave}" />
-            <MenuItem Header="Save As"
+            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSaveAs}"
                       Command="{Binding CmdFileSaveAs}" />
         </MenuItem>
     </Menu>

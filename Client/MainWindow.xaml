@@ -8,7 +8,8 @@
         Title="ItManager"
         WindowState="Maximized"
         AllowsTransparency="True"
-        Background="{StaticResource B}"
+        Background="{StaticResource MainBackground}"
         WindowStyle="None">
-    <v:MainView Margin="8"/>
+    <v:MainView Margin="8"
+                FontFamily="SegoeUi" />
 </Window>

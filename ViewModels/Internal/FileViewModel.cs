@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace ViewModels.Internal
 {
-    public sealed class FileViewModel
+    public sealed class FileViewModel : ViewModel
     {
         #region property FileOperation
         private FileOperation _fileOperation;
@@ -37,9 +37,6 @@ namespace ViewModels.Internal
         private void FileNewE(object obj)
         {
             MainViewModel.Instance.ExternalDataContext = new Models.External.DataContext();
-            var saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == true)
-                FileOperation.Write(saveFileDialog.FileName, MainViewModel.Instance.ExternalDataContext);
         }
         private bool CFileNew(object arg) => true;
         #endregion

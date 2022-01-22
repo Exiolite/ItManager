@@ -14,7 +14,7 @@
         #endregion
 
         #region property FirstName
-        private string _firstName = Consts.StaffFirstName;
+        private string _firstName = "Имя";
 
         public string FirstName
         {
@@ -24,24 +24,24 @@
 
         #endregion
 
-        #region property SecondName
-        private string _secondName = Consts.StaffSecondName;
-
-        public string SecondName
-        {
-            get { return _secondName; }
-            set { _secondName = value; NotifyPropertyChanged(nameof(SecondName)); }
-        }
-
-        #endregion
-
         #region property SureName
-        private string _sureName = Consts.StaffSureName;
+        private string _sureName = "Фамилия";
 
         public string SureName
         {
             get { return _sureName; }
             set { _sureName = value; NotifyPropertyChanged(nameof(SureName)); }
+        }
+
+        #endregion
+
+        #region property SecondName
+        private string _secondName = "Отчетсво";
+
+        public string SecondName
+        {
+            get { return _secondName; }
+            set { _secondName = value; NotifyPropertyChanged(nameof(SecondName)); }
         }
 
         #endregion

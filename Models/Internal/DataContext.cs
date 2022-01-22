@@ -2,6 +2,11 @@
 {
     public class DataContext : Model
     {
+        public DataContext()
+        {
+              
+        }
+
         #region property FileOperation
         private FileOperation _fileOperation = new FileOperation();
 

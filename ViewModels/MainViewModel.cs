@@ -1,9 +1,14 @@
-﻿namespace ViewModels
+﻿using Models;
+
+namespace ViewModels
 {
     public class MainViewModel : ViewModel
     {
         #region Singleton
         public static MainViewModel Instance { get; set; }
+
+        public Consts Consts { get; set; } = new Consts();
+
         public MainViewModel()
         {
             Instance = this;
