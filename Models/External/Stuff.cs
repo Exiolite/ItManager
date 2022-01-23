@@ -14,7 +14,7 @@
         #endregion
 
         #region property FirstName
-        private string _firstName = "Имя";
+        private string _firstName = Consts.StaffFirstName;
 
         public string FirstName
         {
@@ -25,7 +25,7 @@
         #endregion
 
         #region property SureName
-        private string _sureName = "Фамилия";
+        private string _sureName = Consts.StaffSureName;
 
         public string SureName
         {
@@ -36,7 +36,7 @@
         #endregion
 
         #region property SecondName
-        private string _secondName = "Отчетсво";
+        private string _secondName = Consts.StaffSecondName;
 
         public string SecondName
         {

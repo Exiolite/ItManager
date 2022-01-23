@@ -2,6 +2,6 @@
 {
     public sealed class Server : Computer
     {
-        public Server() => Name = "Новый Сервер";
+        public Server() => Name = Consts.ServerName;
     }
 }

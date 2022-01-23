@@ -8,7 +8,7 @@
     <DockPanel >
         <local:CompanyStructureView DockPanel.Dock="Left"
                                     Margin="8"
-                                    Width="512 " />
+                                    Width="512"/>
         <StackPanel>
             
         </StackPanel>

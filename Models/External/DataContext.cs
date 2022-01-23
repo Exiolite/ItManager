@@ -38,7 +38,7 @@
         #region property OSDescriptionTable
         private OSDescriptionTable _oSDescription = new OSDescriptionTable();
 
-        public OSDescriptionTable OSDescription
+        public OSDescriptionTable OSDescriptionTable
         {
             get { return _oSDescription; }
             set { _oSDescription = value; NotifyPropertyChanged(nameof(OSDescription)); }
@@ -89,5 +89,21 @@
         }
 
         #endregion
+
+        public DataContext()
+        {
+
+        }
+
+        public DataContext(DataContext dataContext)
+        {
+            AnyDeskTable.Drop();
+            CompanyTable.Drop();
+            ComputerTable.Drop();
+            OSDescriptionTable.Drop();
+            RemoteDesktopServiceTable.Drop();
+            StuffTable.Drop();
+            ServerTable.Drop();
+        }
     }
 }

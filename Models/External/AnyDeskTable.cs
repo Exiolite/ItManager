@@ -22,9 +22,20 @@ namespace Models.External
             return item;
         }
 
+
         public AnyDesk GetById(int id)
         {
             return Content.FirstOrDefault(x => x.Id == id);
+        }
+        public AnyDesk Add(AnyDesk item)
+        {
+            Content.Add(item);
+            return item;
+        }
+
+        public void Drop()
+        {
+            Content.Clear();
         }
     }
 }

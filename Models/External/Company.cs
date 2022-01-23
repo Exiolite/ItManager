@@ -3,7 +3,7 @@
     public sealed class Company : Model
     {
         #region property Name
-        private string _name = "Новая Компания";
+        private string _name = Consts.CompanyName;
         public string PropertyName
         {
             get { return _name; }

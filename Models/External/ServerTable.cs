@@ -26,5 +26,16 @@ namespace Models.External
         {
             return Content.FirstOrDefault(x => x.Id == id);
         }
+
+        public Server Add(Server item)
+        {
+            Content.Add(item);
+            return item;
+        }
+
+        public void Drop()
+        {
+            Content.Clear();
+        }
     }
 }
