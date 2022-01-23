@@ -2,6 +2,7 @@
 using Models.Internal;
 using System;
 using System.Windows.Input;
+using ViewModels.External;
 
 namespace ViewModels.Internal
 {
@@ -30,13 +31,15 @@ namespace ViewModels.Internal
         {
             get
             {
-                if (_cmdFileNew == null) _cmdFileNew = new Command(this.FileNewE, this.CFileNew, false);
+                if (_cmdFileNew == null)
+                    _cmdFileNew = new Command(this.FileNewE, this.CFileNew, false);
                 return _cmdFileNew;
             }
         }
         private void FileNewE(object obj)
         {
             MainViewModel.Instance.ExternalDataContext = new Models.External.DataContext();
+            CompanyTableViewModel.Instance.Reload();
         }
         private bool CFileNew(object arg) => true;
         #endregion
@@ -55,8 +58,10 @@ namespace ViewModels.Internal
         {
             var openFileDialog = new OpenFileDialog();
             Nullable<bool> result = openFileDialog.ShowDialog();
-            if (result == true)
-                MainViewModel.Instance.ExternalDataContext = FileOperation.ReadIfExistOrNew(openFileDialog.FileName);
+            if (result == false) return;
+
+            MainViewModel.Instance.ExternalDataContext = FileOperation.ReadIfExistOrNew(openFileDialog.FileName);
+            CompanyTableViewModel.Instance.Reload();
         }
         private bool CFileOpen(object arg) => true;
         #endregion

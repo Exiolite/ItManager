@@ -41,14 +41,14 @@ namespace ViewModels.External
 
         public CompanyViewModel()
         {
-            _company = MainViewModel.Instance.ExternalDataContext.CompanyTable.AddNewCompany();
-            PropertyComputerTableViewModel = new ComputerTableViewModel(_company.Id);
-            PropertyServerTableViewModel = new ServerTableViewModel(_company.Id);
+
         }
 
         public CompanyViewModel(Company company)
         {
             _company = company;
+            PropertyComputerTableViewModel = new ComputerTableViewModel(_company.Id);
+            PropertyServerTableViewModel = new ServerTableViewModel(_company.Id);
         }
     }
 }

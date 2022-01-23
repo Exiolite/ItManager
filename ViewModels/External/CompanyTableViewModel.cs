@@ -5,6 +5,8 @@ namespace ViewModels.External
 {
     public sealed class CompanyTableViewModel : ViewModel
     {
+        public static CompanyTableViewModel Instance { get; set; }
+
         #region command AddNew
         private ICommand _commandAddNew;
         public ICommand CommandAddNew
@@ -17,13 +19,16 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            PropertyCompanyViewModels.Add(new CompanyViewModel());
+            var company = MainViewModel.Instance.ExternalDataContext.CompanyTable.AddNewCompany();
+            var companyViewModel = new CompanyViewModel(company);
+
+            PropertyCompanyViewModels.Add(companyViewModel);
         }
         private bool CAddNew(object arg) => true;
         #endregion
 
         #region property PropertyCompanyViewModels
-        private ObservableCollection<CompanyViewModel> _companyViewModels;
+        private ObservableCollection<CompanyViewModel> _companyViewModels = new ObservableCollection<CompanyViewModel>();
 
         public ObservableCollection<CompanyViewModel> PropertyCompanyViewModels
         {
@@ -36,7 +41,14 @@ namespace ViewModels.External
 
         public CompanyTableViewModel()
         {
-            PropertyCompanyViewModels = new ObservableCollection<CompanyViewModel>();
+            Instance = this;
+            Reload();
+        }
+
+
+        public void Reload()
+        {
+            PropertyCompanyViewModels.Clear();
             foreach (var item in MainViewModel.Instance.ExternalDataContext.CompanyTable.Content)
             {
                 PropertyCompanyViewModels.Add(new CompanyViewModel(item));
