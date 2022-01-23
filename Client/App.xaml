@@ -35,7 +35,7 @@
                          Color="#ffffff" />
 
         <SolidColorBrush x:Key="PanelBackground"
-                         Color="#333333" />
+                         Color="#e1e1e1" />
         <SolidColorBrush x:Key="PanelDomainBackground"
                          Color="#425053" />
         <SolidColorBrush x:Key="PanelUsersBackground"
@@ -43,5 +43,16 @@
         <SolidColorBrush x:Key="PanelForeground"
                          Color="#ffffff" />
 
+        <Style x:Key="PanelButton"
+               TargetType="Button">
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainForeground}" />
+            <Setter Property="Padding"
+                    Value="4" />
+        </Style>
     </Application.Resources>
 </Application>
