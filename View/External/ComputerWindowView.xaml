@@ -4,34 +4,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View.External"
         mc:Ignorable="d"
         Title="{Binding PropertyComputer.Name}"
         Width="400"
         ResizeMode="NoResize">
-    <StackPanel>
+    <StackPanel Margin="16">
         <!--#region ComputerDescription -->
-        <StackPanel Margin="4"
-                    Background="{StaticResource PanelBackground}">
-            <StackPanel Margin="8,0,8,8">
-                <TextBox Text="{Binding PropertyComputer.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Foreground="{StaticResource PanelForeground}"
-                         FontSize="36"
-                         BorderThickness="0"
-                         Background="{StaticResource Clear}" />
-                <TextBox Text="{Binding PropertyComputer.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Foreground="{StaticResource PanelForeground}"
-                         BorderThickness="0"
-                         TextWrapping="Wrap"
-                         Margin="2,0,0,0"
-                         Background="{StaticResource Clear}" />
-            </StackPanel>
+        <StackPanel>
+            <TextBox Text="{Binding PropertyComputer.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Foreground="{StaticResource MainForeground}"
+                     FontSize="36"
+                     BorderThickness="0"
+                     Background="{StaticResource Clear}" />
+            <TextBox Text="{Binding PropertyComputer.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Foreground="{StaticResource MainForeground}"
+                     BorderThickness="0"
+                     TextWrapping="Wrap"
+                     Margin="2,0,0,0"
+                     Background="{StaticResource Clear}" />
         </StackPanel>
         <!--#endregion-->
         
         <!--#region RemoteServices -->
-        <StackPanel>
-            <StackPanel Margin="4,0,4,4"
-                        Orientation="Horizontal"
+        <StackPanel Margin="0,16,0,0">
+            <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
                 <Button Content="AnyDesk" 
                         Margin="0,0,4,0"
@@ -39,7 +36,9 @@
                         BorderThickness="0"
                         Background="#ff0000"
                         Foreground="{StaticResource PanelForeground}"
-                        FontSize="20"/>
+                        FontSize="20"
+                        MouseRightButtonDown="Button_AnyDeskEdit"
+                        Command="{Binding PropertyAnyDeskViewModel.ConnectViaAnyDeskCommand}"/>
                 <Button Content="TeamViewer"
                         Margin="0,0,4,0"
                         Padding="16,4,16,4"
@@ -50,5 +49,8 @@
             </StackPanel>
         </StackPanel>
         <!--#endregion-->
+
+        <local:ServiceTaskListView Margin="0,16,0,0"
+                                   DataContext="{Binding PropertyServiceTaskTableViewModel}" />
     </StackPanel>
 </Window>

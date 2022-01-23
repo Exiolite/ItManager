@@ -57,17 +57,6 @@
 
         #endregion
 
-        #region property RemoteDesktopServiceTable
-        private RemoteDesktopServiceTable _remoteDesktopServiceTable = new RemoteDesktopServiceTable();
-
-        public RemoteDesktopServiceTable RemoteDesktopServiceTable
-        {
-            get { return _remoteDesktopServiceTable; }
-            set { _remoteDesktopServiceTable = value; NotifyPropertyChanged(nameof(RemoteDesktopServiceTable)); }
-        }
-
-        #endregion
-
         #region property StuffTable
         private StuffTable _stuffTable = new StuffTable();
 
@@ -90,20 +79,30 @@
 
         #endregion
 
-        public DataContext()
-        {
+        #region property ServiceTaskTables
 
+        #region property ComputerServiceTaskTable
+        private ServiceTaskTable _computerServiceTaskTable = new ServiceTaskTable();
+
+        public ServiceTaskTable ComputerServiceTaskTable
+        {
+            get { return _computerServiceTaskTable; }
+            set { _computerServiceTaskTable = value; NotifyPropertyChanged(nameof(ComputerServiceTaskTable)); }
         }
 
-        public DataContext(DataContext dataContext)
+        #endregion
+
+        #region property ServerServiceTaskTable
+        private ServiceTaskTable _serverServiceTaskTable = new ServiceTaskTable();
+
+        public ServiceTaskTable ServerServiceTaskTable
         {
-            AnyDeskTable.Drop();
-            CompanyTable.Drop();
-            ComputerTable.Drop();
-            OSDescriptionTable.Drop();
-            RemoteDesktopServiceTable.Drop();
-            StuffTable.Drop();
-            ServerTable.Drop();
+            get { return _serverServiceTaskTable; }
+            set { _serverServiceTaskTable = value; NotifyPropertyChanged(nameof(ServerServiceTaskTable)); }
         }
+
+        #endregion
+
+        #endregion
     }
 }

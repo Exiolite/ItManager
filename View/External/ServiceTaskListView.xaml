@@ -1,0 +1,44 @@
+﻿<UserControl DataContext="{StaticResource ServiceTaskTableViewModel}"
+             x:Class="View.External.ServiceTaskListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <StackPanel>
+        <TextBlock Text="Service"
+                   FontSize="20">
+            <TextBlock.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Add New Task"
+                              Command="{Binding CommandAddNew}" />
+                </ContextMenu>
+            </TextBlock.ContextMenu>
+        </TextBlock>
+        <ListBox ItemsSource="{Binding PropertyServiceTaskViewModels}"
+                 BorderThickness="0"
+                 Background="{StaticResource Clear}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="2,-2,2,-2 "
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <CheckBox IsChecked="{Binding PropertyServiceTask.PropertyIsStarted}"
+                                  VerticalAlignment="Center"
+                                  Background="{StaticResource Clear}" />
+                        <CheckBox HorizontalAlignment="Right"
+                                  IsChecked="{Binding PropertyServiceTask.PropertyIsEnded}"
+                                  VerticalAlignment="Center"
+                                  Background="{StaticResource Clear}" />
+                        <TextBox Margin="0,0,0,2.35 "
+                                 Text="{Binding PropertyServiceTask.PropertyName}"
+                                 FontSize="18.85"
+                                 BorderThickness="0"
+                                 VerticalAlignment="Center"
+                                 Background="{StaticResource Clear}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</UserControl>

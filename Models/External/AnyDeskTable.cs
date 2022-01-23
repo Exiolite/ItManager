@@ -14,9 +14,9 @@ namespace Models.External
         }
         #endregion
 
-        public AnyDesk AddNew()
+        public AnyDesk AddNew(int computeId)
         {
-            var item = new AnyDesk();
+            var item = new AnyDesk() { ComputerId = computeId };
             Content.Add(item);
             item.Id = Content.IndexOf(item);
             return item;

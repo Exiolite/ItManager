@@ -1,0 +1,19 @@
+﻿<Window DataContext="{StaticResource AnyDeskViewModel}"
+        x:Class="View.External.AnyDeskWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AnyDeskWindow"
+        Height="150"
+        Width="400">
+    <StackPanel Margin="16">
+        <TextBox Text="{Binding PropertyAnyDesk.AnyDeskId}" 
+                 BorderThickness="0"
+                 FontSize="16"/>
+        <TextBox Text="{Binding PropertyAnyDesk.AnyDeskPassword}"
+                 BorderThickness="0"
+                 FontSize="16" />
+    </StackPanel>
+</Window>

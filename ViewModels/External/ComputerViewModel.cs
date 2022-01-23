@@ -33,6 +33,28 @@ namespace ViewModels.External
         }
         #endregion
 
+        #region property AnyDeskViewModel
+        private AnyDeskViewModel _anyDeskViewModel;
+
+        public AnyDeskViewModel PropertyAnyDeskViewModel
+        {
+            get { return _anyDeskViewModel; }
+            set { _anyDeskViewModel = value; NotifyPropertyChanged(nameof(PropertyAnyDeskViewModel)); }
+        }
+
+        #endregion
+
+        #region property ServiceTaskViewModel
+        private ServiceTaskTableViewModel _serviceTaskTableViewModel;
+
+        public ServiceTaskTableViewModel PropertyServiceTaskTableViewModel
+        {
+            get { return _serviceTaskTableViewModel; }
+            set { _serviceTaskTableViewModel = value; NotifyPropertyChanged(nameof(PropertyServiceTaskTableViewModel)); }
+        }
+
+        #endregion
+
 
         public ComputerViewModel()
         {
@@ -41,13 +63,23 @@ namespace ViewModels.External
 
         public ComputerViewModel(Computer computer)
         {
+            var anyDesk = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.GetById(computer.Id);
+
             PropertyComputer = computer;
+            PropertyAnyDeskViewModel = new AnyDeskViewModel(anyDesk);
+            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.ComputerServiceTaskTable, PropertyComputer.Id);
         }
 
         public ComputerViewModel(int companyId)
         {
-            PropertyComputer = MainViewModel.Instance.ExternalDataContext.ComputerTable.AddNewItem();
+            var computer = MainViewModel.Instance.ExternalDataContext.ComputerTable.AddNewItem();
+            var anyDesk = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.AddNew(computer.Id);
+            var computerServiceTable = MainViewModel.Instance.ExternalDataContext.ComputerServiceTaskTable;
+
+            PropertyComputer = computer;
             PropertyComputer.CompanyId = companyId;
+            PropertyAnyDeskViewModel = new AnyDeskViewModel(anyDesk);
+            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(computerServiceTable, PropertyComputer.Id);
         }
     }
 }

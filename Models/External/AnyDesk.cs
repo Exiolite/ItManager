@@ -2,13 +2,13 @@
 {
     public class AnyDesk :  Model
     {
-        #region property RemoteDesktopServiceId
-        private int _remoteDesktopServiceId = -1;
+        #region property ComputerId
+        private int _computerId = -1;
 
-        public int RemoteDesktopServiceId
+        public int ComputerId
         {
-            get { return _remoteDesktopServiceId; }
-            set { _remoteDesktopServiceId = value; NotifyPropertyChanged(nameof(RemoteDesktopServiceId)); }
+            get { return _computerId; }
+            set { _computerId = value; NotifyPropertyChanged(nameof(ComputerId)); }
         }
 
         #endregion

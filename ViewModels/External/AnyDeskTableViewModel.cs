@@ -6,7 +6,7 @@ namespace ViewModels.External
 {
     public sealed class AnyDeskTableViewModel : ViewModel
     {
-        private int _remoteDesktopServiceId;
+        private int _computerId;
 
 
         #region command AddNew
@@ -21,7 +21,7 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            PropertyAnyDeskViewModels.Add(new AnyDeskViewModel(_remoteDesktopServiceId));
+            PropertyAnyDeskViewModels.Add(new AnyDeskViewModel(_computerId));
         }
         private bool CAddNew(object arg) => true;
         #endregion
@@ -44,16 +44,22 @@ namespace ViewModels.External
 
         }
 
-        public AnyDeskTableViewModel(int remoteDesktopServiceId)
+        public AnyDeskTableViewModel(int computerId)
         {
-            _remoteDesktopServiceId = remoteDesktopServiceId;
+            _computerId = computerId;
 
 
             PropertyAnyDeskViewModels = new ObservableCollection<AnyDeskViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.AnyDeskTable.Content.Where(ad => ad.RemoteDesktopServiceId == _remoteDesktopServiceId))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.AnyDeskTable.Content.Where(ad => ad.ComputerId == _computerId))
             {
                 PropertyAnyDeskViewModels.Add(new AnyDeskViewModel(item));
             }
+        }
+
+
+        public AnyDeskViewModel Get(int computerId)
+        {
+            return _anyDeskViewModels.FirstOrDefault(ad => ad.PropertyAnyDesk.ComputerId == computerId);
         }
     }
 }

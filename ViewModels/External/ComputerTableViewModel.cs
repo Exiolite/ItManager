@@ -6,6 +6,8 @@ namespace ViewModels.External
 {
     public sealed class ComputerTableViewModel : ViewModel
     {
+        public static ComputerTableViewModel Instance { get; set; }
+
         private int _companyId;
 
 
@@ -21,11 +23,11 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            PropertyComputerViewModels.Add(new ComputerViewModel(_companyId));
+            var computer = new ComputerViewModel(_companyId);
+            PropertyComputerViewModels.Add(computer);
         }
         private bool CAddNew(object arg) => true;
         #endregion
-
 
         #region property ComputerViewModels
         private ObservableCollection<ComputerViewModel> _computerViewModels;

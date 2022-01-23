@@ -2,32 +2,32 @@
 
 namespace Models.External
 {
-    public sealed class RemoteDesktopServiceTable : Internal.Model
+    public sealed class ServiceTaskTable : Internal.Model
     {
         #region property Companies
-        private ObservableCollection<RemoteDesktopService> _content = new ObservableCollection<RemoteDesktopService>();
+        private ObservableCollection<ServiceTask> _content = new ObservableCollection<ServiceTask>();
 
-        public ObservableCollection<RemoteDesktopService> Content
+        public ObservableCollection<ServiceTask> Content
         {
             get { return _content; }
             set { _content = value; NotifyPropertyChanged(nameof(Content)); }
         }
         #endregion
 
-        public RemoteDesktopService AddNewItem()
+        public ServiceTask Add(int targetId)
         {
-            var item = new RemoteDesktopService();
+            var item = new ServiceTask();
             Content.Add(item);
-            item.Id = Content.IndexOf(item);
+            item.Id = targetId;
             return item;
         }
 
-        public RemoteDesktopService GetById(int id)
+        public ServiceTask GetById(int id)
         {
             return Content.FirstOrDefault(x => x.Id == id);
         }
 
-        public RemoteDesktopService Add(RemoteDesktopService item)
+        public ServiceTask Add(ServiceTask item)
         {
             Content.Add(item);
             return item;

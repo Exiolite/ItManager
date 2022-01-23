@@ -16,13 +16,16 @@
         <vme:ComputerViewModel x:Key="ComputerViewModel" />
         <vme:OSDescriptionTableViewModel x:Key="OSDescriptionTableViewModel" />
         <vme:OSDescriptionViewModel x:Key="OSDescriptionViewModel" />
-        <vme:RemoteDesktopServiceTableViewModel x:Key="RemoteDesktopServiceTableViewModel" />
-        <vme:RemoteDesktopServiceViewModel x:Key="RemoteDesktopServiceViewModel" />
         <vme:ServerTableViewModel x:Key="ServerTableViewModel" />
         <vme:ServerViewModel x:Key="ServerViewModel" />
         <vme:StuffTableViewModel x:Key="StuffTableViewModel" />
         <vme:StuffViewModel x:Key="StuffViewModel" />
+        
+        <vme:ServiceTaskViewModel x:Key="ServiceTaskViewModel" />
+        <vme:ServiceTaskTableViewModel x:Key="ServiceTaskTableViewModel" />
 
+        
+        
         <vmi:FileViewModel x:Key="FileViewModel" />
 
         <SolidColorBrush x:Key="Clear"
