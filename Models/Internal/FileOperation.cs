@@ -45,10 +45,27 @@ namespace Models.Internal
             return dataContext;
         }
 
+        public External.DataContext Write(External.DataContext dataContext, string password)
+        {
+            if (!string.IsNullOrEmpty(CurrentOpenedFileName))
+            {
+                Write(CurrentOpenedFileName, dataContext, password);
+                return dataContext;
+            }
+            return dataContext;
+        }
+
         public FileOperation Write(string fileName, External.DataContext dataContext)
         {
             if (!string.IsNullOrEmpty(fileName))
                 File.WriteAllText(fileName, JsonSerializer.Serialize(dataContext));
+            return this;
+        }
+
+        public FileOperation Write(string fileName, External.DataContext dataContext, string password)
+        {
+            if (!string.IsNullOrEmpty(fileName))
+                File.WriteAllBytes(fileName, Encryption.Encrypt(JsonSerializer.Serialize(dataContext), password));
             return this;
         }
 
@@ -57,6 +74,16 @@ namespace Models.Internal
             if (File.Exists(fileName))
             {
                 var text = File.ReadAllText(fileName);
+                return JsonSerializer.Deserialize<External.DataContext>(text);
+            }
+            return new External.DataContext();
+        }
+
+        public External.DataContext ReadIfExistOrNew(string fileName, string password)
+        {
+            if (File.Exists(fileName))
+            {
+                var text = Encryption.Decrypt(File.ReadAllBytes(fileName), password);
                 return JsonSerializer.Deserialize<External.DataContext>(text);
             }
             return new External.DataContext();

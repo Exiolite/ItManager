@@ -18,6 +18,16 @@ namespace ViewModels.Internal
         }
         #endregion
 
+        #region property Password
+        private string _password = "1234123412341234";
+
+        public string PropertyPassword
+        {
+            get { return _password; }
+            set { _password = value; NotifyPropertyChanged(nameof(PropertyPassword)); }
+        }
+
+        #endregion
 
         public FileViewModel()
         {
@@ -60,7 +70,7 @@ namespace ViewModels.Internal
             Nullable<bool> result = openFileDialog.ShowDialog();
             if (result == false) return;
 
-            MainViewModel.Instance.ExternalDataContext = FileOperation.ReadIfExistOrNew(openFileDialog.FileName);
+            MainViewModel.Instance.ExternalDataContext = FileOperation.ReadIfExistOrNew(openFileDialog.FileName, PropertyPassword);
             CompanyTableViewModel.Instance.Reload();
         }
         private bool CFileOpen(object arg) => true;
@@ -78,7 +88,7 @@ namespace ViewModels.Internal
         }
         private void FileSaveE(object obj)
         {
-            FileOperation.Write(MainViewModel.Instance.ExternalDataContext);
+            FileOperation.Write(MainViewModel.Instance.ExternalDataContext, PropertyPassword);
         }
         private bool CFileSave(object arg) => true;
         #endregion
@@ -97,7 +107,7 @@ namespace ViewModels.Internal
         {
             var saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
-                FileOperation.Write(saveFileDialog.FileName, MainViewModel.Instance.ExternalDataContext);
+                FileOperation.Write(saveFileDialog.FileName, MainViewModel.Instance.ExternalDataContext, PropertyPassword);
         }
         private bool CFileSaveAs(object arg) => true;
         #endregion
