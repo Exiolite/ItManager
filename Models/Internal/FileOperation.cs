@@ -83,8 +83,17 @@ namespace Models.Internal
         {
             if (File.Exists(fileName))
             {
-                var text = Encryption.Decrypt(File.ReadAllBytes(fileName), password);
-                return JsonSerializer.Deserialize<External.DataContext>(text);
+                var text = string.Empty;
+
+                try
+                {
+                    text = Encryption.Decrypt(File.ReadAllBytes(fileName), password);
+                    return JsonSerializer.Deserialize<External.DataContext>(text);
+                }
+                catch (Exception)
+                {
+                    return new External.DataContext();
+                }
             }
             return new External.DataContext();
         }

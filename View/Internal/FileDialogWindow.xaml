@@ -16,15 +16,25 @@
             <StackPanel Margin="8">
                 <TextBlock Text="Recent opened"
                            FontSize="20"
-                           Foreground="{StaticResource PanelForeground}"/>
+                           Foreground="{StaticResource PanelForeground}" />
                 <ListBox ItemsSource="{Binding FileOperation.RecentFileNames}"
                          Margin="1.8"
-                         SelectedItem="{Binding FileOperation.RecentFileNames}"/>
+                         SelectionChanged="ListBox_SelectionChanged" />
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="8">
             <TextBlock Text="{Binding FileOperation.CurrentOpenedFileName}" />
             <TextBox Text="{Binding PropertyPassword}" />
-        </StackPanel>
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileNew}"
+                    Command="{Binding CmdFileNew}" />
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpen}"
+                    Command="{Binding CmdFileOpen}" />
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSave}"
+                    Command="{Binding CmdFileSave}" />
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpenAs}"
+                    Command="{Binding CommandOpenAs}" />
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSaveAs}"
+                    Command="{Binding CmdFileSaveAs}" />
+        </StackPanel> 
     </DockPanel>
 </Window>

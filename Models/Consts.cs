@@ -19,6 +19,7 @@
         public string FileDialog { get => "Dialog"; }
         public string FileNew{ get => "New"; }
         public string FileOpen{ get => "Open"; }
+        public string FileOpenAs{ get => "Open As"; }
         public string FileSave{ get => "Save"; }
         public string FileSaveAs{ get => "Save As"; }
 

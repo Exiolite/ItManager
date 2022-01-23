@@ -65,19 +65,46 @@ namespace ViewModels.Internal
         }
         private void FileOpenE(object obj)
         {
-            var openFileDialog = new OpenFileDialog();
-            Nullable<bool> result = openFileDialog.ShowDialog();
-            if (result == false) return;
+            if (FileOperation.CurrentOpenedFileName == string.Empty) return;
 
-            MainViewModel.Instance.ExternalDataContext = FileOperation.ReadIfExistOrNew(openFileDialog.FileName, PropertyPassword);
-            if (!FileOperation.RecentFileNames.Contains(openFileDialog.FileName))
+            var openFileDialog = new OpenFileDialog();
+            MainViewModel.Instance.ExternalDataContext = FileOperation.ReadIfExistOrNew(FileOperation.CurrentOpenedFileName, PropertyPassword);
+            if (!FileOperation.RecentFileNames.Contains(FileOperation.CurrentOpenedFileName))
             {
-                FileOperation.RecentFileNames.Add(openFileDialog.FileName);
+                FileOperation.RecentFileNames.Add(FileOperation.CurrentOpenedFileName);
             }
-            FileOperation.CurrentOpenedFileName = openFileDialog.FileName;
+            FileOperation.CurrentOpenedFileName = FileOperation.CurrentOpenedFileName;
             CompanyTableViewModel.Instance.Reload();
         }
         private bool CFileOpen(object arg) => true;
+        #endregion
+
+        #region command Open As
+        private ICommand _commandOpenAs;
+        public ICommand CommandOpenAs
+        {
+            get
+            {
+                if (_commandOpenAs == null) _commandOpenAs = new Command(this.OpenAsE, this.COpenAs, false);
+                return _commandOpenAs;
+            }
+        }
+        private void OpenAsE(object obj)
+        {
+            var openFileDialog = new OpenFileDialog();
+
+            Nullable<bool> result = openFileDialog.ShowDialog();
+            FileOperation.CurrentOpenedFileName = openFileDialog.FileName;
+
+            MainViewModel.Instance.ExternalDataContext = FileOperation.ReadIfExistOrNew(FileOperation.CurrentOpenedFileName, PropertyPassword);
+            if (!FileOperation.RecentFileNames.Contains(FileOperation.CurrentOpenedFileName))
+            {
+                FileOperation.RecentFileNames.Add(FileOperation.CurrentOpenedFileName);
+            }
+            FileOperation.CurrentOpenedFileName = FileOperation.CurrentOpenedFileName;
+            CompanyTableViewModel.Instance.Reload();
+        }
+        private bool COpenAs(object arg) => true;
         #endregion
 
         #region command FileSave

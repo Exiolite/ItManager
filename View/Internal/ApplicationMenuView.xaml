@@ -7,19 +7,8 @@
              mc:Ignorable="d">
     <Menu Foreground="{StaticResource MainForeground}"
           Background="{StaticResource MainBackground}">
-        <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.File}">
-            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileDialog}"
-                      DataContext="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext}"
-                      Click="MenuItem_Click" />
-            <Separator />
-            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileNew}"
-                      Command="{Binding CmdFileNew}" />
-            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpen}"
-                      Command="{Binding CmdFileOpen}" />
-            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSave}"
-                      Command="{Binding CmdFileSave}" />
-            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSaveAs}"
-                      Command="{Binding CmdFileSaveAs}" />
-        </MenuItem>
+        <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.File}"
+                  DataContext="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext}"
+                  Click="MenuItem_Click" />
     </Menu>
 </UserControl>
