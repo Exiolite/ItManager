@@ -16,6 +16,7 @@
 
         #region View.Localization
         public string File { get => "File"; }
+        public string FileDialog { get => "Dialog"; }
         public string FileNew{ get => "New"; }
         public string FileOpen{ get => "Open"; }
         public string FileSave{ get => "Save"; }

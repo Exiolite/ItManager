@@ -34,7 +34,6 @@ namespace ViewModels.Internal
             FileOperation = MainViewModel.Instance.InternalDataContext.FileOperation;
         }
 
-
         #region command FileNew
         private ICommand _cmdFileNew;
         public ICommand CmdFileNew
@@ -71,6 +70,11 @@ namespace ViewModels.Internal
             if (result == false) return;
 
             MainViewModel.Instance.ExternalDataContext = FileOperation.ReadIfExistOrNew(openFileDialog.FileName, PropertyPassword);
+            if (!FileOperation.RecentFileNames.Contains(openFileDialog.FileName))
+            {
+                FileOperation.RecentFileNames.Add(openFileDialog.FileName);
+            }
+            FileOperation.CurrentOpenedFileName = openFileDialog.FileName;
             CompanyTableViewModel.Instance.Reload();
         }
         private bool CFileOpen(object arg) => true;
@@ -108,6 +112,12 @@ namespace ViewModels.Internal
             var saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
                 FileOperation.Write(saveFileDialog.FileName, MainViewModel.Instance.ExternalDataContext, PropertyPassword);
+
+            if (!FileOperation.RecentFileNames.Contains(saveFileDialog.FileName))
+            {
+                FileOperation.RecentFileNames.Add(saveFileDialog.FileName);
+            }
+            FileOperation.CurrentOpenedFileName = saveFileDialog.FileName;
         }
         private bool CFileSaveAs(object arg) => true;
         #endregion
