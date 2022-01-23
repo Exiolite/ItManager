@@ -50,7 +50,7 @@
         </StackPanel>
         <!--#endregion-->
 
-        <local:ServiceTaskListView Margin="0,16,0,0"
+        <local:ServiceTaskListView Margin="0,16,0,0" 
                                    DataContext="{Binding PropertyServiceTaskTableViewModel}" />
     </StackPanel>
 </Window>

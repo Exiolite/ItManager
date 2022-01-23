@@ -15,6 +15,16 @@ namespace ViewModels.External
 
         #endregion
 
+        #region property ServiceTaskViewModel
+        private ServiceTaskTableViewModel _serviceTaskTableViewModel;
+
+        public ServiceTaskTableViewModel PropertyServiceTaskTableViewModel
+        {
+            get { return _serviceTaskTableViewModel; }
+            set { _serviceTaskTableViewModel = value; NotifyPropertyChanged(nameof(PropertyServiceTaskTableViewModel)); }
+        }
+
+        #endregion
 
         public ServerViewModel()
         {
@@ -25,12 +35,14 @@ namespace ViewModels.External
         public ServerViewModel(Server server)
         {
             PropertyServer = server;
+            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.ServerServiceTaskTable, PropertyServer.Id);
         }
 
         public ServerViewModel(int companyId)
         {
             PropertyServer = MainViewModel.Instance.ExternalDataContext.ServerTable.AddNew();
             PropertyServer.CompanyId = companyId;
+            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.ServerServiceTaskTable, PropertyServer.Id);
         }
     }
 }
