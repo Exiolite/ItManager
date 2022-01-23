@@ -19,7 +19,7 @@
                          FontSize="36"
                          BorderThickness="0"
                          Background="{StaticResource Clear}" />
-                <TextBox Text="{Binding PropertyCompany.PropertyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox Text="{Binding PropertyCompany.PropertyDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Foreground="{StaticResource PanelForeground}"
                          BorderThickness="0"
                          TextWrapping="Wrap"
