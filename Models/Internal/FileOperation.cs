@@ -98,14 +98,13 @@ namespace Models.Internal
             return new External.DataContext();
         }
 
-        public string Read(string fileName)
+        public byte[] ReadAsBytes(string fileName)
         {
             if (File.Exists(fileName))
             {
-                var l = File.ReadAllLines(fileName);
-                return l.ToString();
+                return File.ReadAllBytes(fileName);
             }
-            return string.Empty;
+            return null;
         }
     }
 }

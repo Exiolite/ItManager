@@ -22,35 +22,12 @@ namespace Models.External
             return item;
         }
 
-        public Company GetById(int id)
-        {
-            return Content.FirstOrDefault(x => x.Id == id);
-        }
-
-        public Company Add(Company item)
-        {
-            Content.Add(item);
-            return item;
-        }
-
         public void Merge(Company item)
         {
-            var i = Content.FirstOrDefault(i => i.Id == item.Id);
-
-            if (i != null)
-            {
-                i = item;
-                return;
-            }
-
-            Add(item);
-
+            if(Content.FirstOrDefault(i => i.Id == item.Id) != null)
+                Content.Remove(Content.FirstOrDefault(i => i.Id == item.Id));
+            Content.Add(item);
             item.PropertyIsEdited = false;
-        }
-
-        public void Drop()
-        {
-            Content.Clear();
         }
     }
 }

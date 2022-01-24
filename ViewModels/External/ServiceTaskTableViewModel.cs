@@ -19,7 +19,7 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            var serviceTask = PropertyServiceTaskTable.Add(new ServiceTask() { PropertyComputerId = PropertyId } );
+            var serviceTask = PropertyServiceTaskTable.Add(PropertyId);
             PropertyServiceTaskViewModels.Add(new ServiceTaskViewModel(serviceTask));
         }
         private bool CAddNew(object arg) => true;
@@ -72,7 +72,7 @@ namespace ViewModels.External
             PropertyId = id;
 
             PropertyServiceTaskViewModels = new ObservableCollection<ServiceTaskViewModel>();
-            foreach (var item in PropertyServiceTaskTable.Content.Where(s => s.PropertyComputerId == _id))
+            foreach (var item in PropertyServiceTaskTable.Content.Where(s => s.PropertyTargetId == _id))
             {
                 PropertyServiceTaskViewModels.Add(new ServiceTaskViewModel(item));
             }

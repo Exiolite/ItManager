@@ -35,16 +35,9 @@ namespace Models.External
 
         public void Merge(OSDescription item)
         {
-            var i = Content.FirstOrDefault(i => i.Id == item.Id);
-
-            if (i != null)
-            {
-                i = item;
-                return;
-            }
-
-            Add(item);
-
+            if (Content.FirstOrDefault(i => i.Id == item.Id) != null)
+                Content.Remove(Content.FirstOrDefault(i => i.Id == item.Id));
+            Content.Add(item);
             item.PropertyIsEdited = false;
         }
 

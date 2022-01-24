@@ -18,7 +18,8 @@ namespace Models.External
         {
             var item = new ServiceTask();
             Content.Add(item);
-            item.Id = targetId;
+            item.Id = Content.IndexOf(item);
+            item.PropertyTargetId = targetId;
             return item;
         }
 
@@ -27,24 +28,11 @@ namespace Models.External
             return Content.FirstOrDefault(x => x.Id == id);
         }
 
-        public ServiceTask Add(ServiceTask item)
-        {
-            Content.Add(item);
-            return item;
-        }
-
         public void Merge(ServiceTask item)
         {
-            var i = Content.FirstOrDefault(i => i.Id == item.Id);
-
-            if (i != null)
-            {
-                i = item;
-                return;
-            }
-
-            Add(item);
-
+            if (Content.FirstOrDefault(i => i.Id == item.Id) != null)
+                Content.Remove(Content.FirstOrDefault(i => i.Id == item.Id));
+            Content.Add(item);
             item.PropertyIsEdited = false;
         }
 

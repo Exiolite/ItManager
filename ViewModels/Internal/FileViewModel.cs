@@ -161,8 +161,8 @@ namespace ViewModels.Internal
         }
         private void SynchronizeWithServerE(object obj)
         {
-            MainViewModel.Instance.ExternalDataContext = ClientSocket.SendToServer(MainViewModel.Instance.ExternalDataContext);
-            CompanyTableViewModel.Instance.Reload();
+           MainViewModel.Instance.ExternalDataContext = ClientSocket.SendToServer(MainViewModel.Instance.ExternalDataContext);
+           CompanyTableViewModel.Instance.Reload();
         }
         private bool CSynchronizeWithServer(object arg) => true;
         #endregion

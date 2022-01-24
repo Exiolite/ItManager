@@ -3,12 +3,12 @@
     public sealed class ServiceTask : Model
     {
         #region property ComputerId
-        private int _computerId = -1;
+        private int _targetId = -1;
 
-        public int PropertyComputerId
+        public int PropertyTargetId
         {
-            get { return _computerId; }
-            set { _computerId = value; NotifyPropertyChanged(nameof(PropertyComputerId)); PropertyIsEdited = true; }
+            get { return _targetId; }
+            set { _targetId = value; NotifyPropertyChanged(nameof(PropertyTargetId)); PropertyIsEdited = true; }
         }
 
         #endregion

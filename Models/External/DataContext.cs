@@ -94,7 +94,7 @@
 
         #endregion
 
-        public void Merge(DataContext dataContext)
+        public DataContext Merge(DataContext dataContext)
         {
             foreach (var item in dataContext.AnyDeskTable.Content.Where(i => i.PropertyIsEdited == true))
             {
@@ -128,6 +128,8 @@
             {
                 ServerServiceTaskTable.Merge(item);
             }
+
+            return this;
         }
     }
 }

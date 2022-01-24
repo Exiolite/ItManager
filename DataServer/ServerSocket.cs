@@ -12,10 +12,16 @@ namespace DataServer
         private const int port = 8080;
         private const int listeners = 5;
 
-        private DataContext _dataContext = new DataContext();
-
-        public ServerSocket()
+        public ServerSocket(string password)
         {
+            if(File.Exists("DataBase.im"))
+                Program.DataContext = JsonSerializer.Deserialize<DataContext>(Encryption.Decrypt(File.ReadAllBytes("DataBase.im"), password));
+            else
+            {
+                Program.DataContext = new DataContext();
+                File.WriteAllBytes("DataBase.im", Encryption.Encrypt(JsonSerializer.Serialize(Program.DataContext), password));
+            }
+
             var tcpEndPoint = new IPEndPoint(IPAddress.Parse(Ip), port);
             var tcpSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
@@ -35,16 +41,14 @@ namespace DataServer
                     stringBuilder.Append(Encoding.UTF8.GetString(buffer, 0, size));
                 } while (listener.Available > 0);
 
-                _dataContext.Merge(JsonSerializer.Deserialize<DataContext>(stringBuilder.ToString()));
+                Program.Merge(JsonSerializer.Deserialize<DataContext>(stringBuilder.ToString()));
 
-                Console.WriteLine("Connected");
-
-                listener.Send(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(_dataContext)));
+                listener.Send(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(Program.DataContext)));
 
                 listener.Shutdown(SocketShutdown.Both);
                 listener.Close();
 
-                File.WriteAllText("Save.dat", JsonSerializer.Serialize(_dataContext));
+                File.WriteAllBytes("DataBase.im", Encryption.Encrypt(JsonSerializer.Serialize(Program.DataContext), password));
             }
         }
     }
