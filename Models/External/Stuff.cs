@@ -2,13 +2,24 @@
 {
     public class Stuff : Model
     {
-        #region property ComputerId
-        private int _companyId = -1;
+        #region property CompanyId
+        private int _companyId;
 
-        public int CompanyId
+        public int PropertyCompanyId
         {
             get { return _companyId; }
-            set { _companyId = value; NotifyPropertyChanged(nameof(CompanyId)); }
+            set { _companyId = value; }
+        }
+
+        #endregion
+
+        #region property ComputerId
+        private int _computerId = -1;
+
+        public int PropertyComputerId
+        {
+            get { return _computerId; }
+            set { _computerId = value; NotifyPropertyChanged(nameof(PropertyComputerId)); }
         }
 
         #endregion
@@ -16,10 +27,10 @@
         #region property FirstName
         private string _firstName = Consts.StaffFirstName;
 
-        public string FirstName
+        public string PropertyFirstName
         {
             get { return _firstName; }
-            set { _firstName = value; NotifyPropertyChanged(nameof(FirstName)); }
+            set { _firstName = value; NotifyPropertyChanged(nameof(PropertyFirstName)); }
         }
 
         #endregion
@@ -27,10 +38,10 @@
         #region property SureName
         private string _sureName = Consts.StaffSureName;
 
-        public string SureName
+        public string PropertySureName
         {
             get { return _sureName; }
-            set { _sureName = value; NotifyPropertyChanged(nameof(SureName)); }
+            set { _sureName = value; NotifyPropertyChanged(nameof(PropertySureName)); }
         }
 
         #endregion
@@ -38,10 +49,21 @@
         #region property SecondName
         private string _secondName = Consts.StaffSecondName;
 
-        public string SecondName
+        public string PropertySecondName
         {
             get { return _secondName; }
-            set { _secondName = value; NotifyPropertyChanged(nameof(SecondName)); }
+            set { _secondName = value; NotifyPropertyChanged(nameof(PropertySecondName)); }
+        }
+
+        #endregion
+
+        #region property PhoneNumber
+        private string _phoneNumber;
+
+        public string PropertyPhoneNumber
+        {
+            get { return _phoneNumber; }
+            set { _phoneNumber = value; NotifyPropertyChanged(nameof(PropertyPhoneNumber)); }
         }
 
         #endregion

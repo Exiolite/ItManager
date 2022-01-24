@@ -3,44 +3,37 @@
     public class Consts
     {
         #region Models.External
-        public const string CompanyName = "New Company";
-        public const string CompanyDescription = "Description"; // TODO: To merge
+        public const string CompanyName = "Новая Компания";
+        public const string Description = "Описание";
         public const string DomainName = "domain";
         public const string ComputerName = "PC";
-        public const string ServerName = "New Server";
-        public const string ComputerDescription = "Description"; // with this
-        public const string StaffFirstName = "FirstName";
-        public const string StaffSecondName = "SecondName";
-        public const string StaffSureName = "SureName";
+        public const string ServerName = "Новый Сервер";
+        public const string StaffSureName = "Фамилия";
+        public const string StaffFirstName = "Имя";
+        public const string StaffSecondName = "Отчество";
         #endregion
 
         #region View.Localization
-        public string File { get => "File"; }
-        public string FileDialog { get => "Dialog"; }
-        public string FileNew{ get => "New"; }
-        public string FileOpen{ get => "Open"; }
-        public string FileOpenAs{ get => "Open As"; }
-        public string FileSave{ get => "Save"; }
-        public string FileSaveAs{ get => "Save As"; }
+        public string File { get => "Файл"; }
+        public string FileNew{ get => "Новый"; }
+        public string FileOpen{ get => "Открыть"; }
+        public string FileOpenAs{ get => "Открыть как"; }
+        public string FileSave{ get => "Сохранить"; }
+        public string FileSaveAs{ get => "Сохранить как"; }
 
-        public string StructureCompanies { get => "Company"; }
-        public string StructureDevices { get => "Devices"; }
-        public string StructureDevicesComputers { get => "Computers"; }
-        public string StructureDevicesServers { get => "Servers"; }
-        public string StructureDevicesPrinters { get => "Printers"; }
+        public string StructureCompanies { get => "Компания"; }
+        public string StructureDevices { get => "Устройства"; }
+        public string StructureDevicesComputers { get => "Компьютеры"; }
+        public string StructureDevicesServers { get => "Серверы"; }
+        public string StructureDevicesPrinters { get => "Принтеры"; }
         public string StructureDevicesWLAN { get => "WLAN"; }
-        public string StructureStuff { get => "Stuff"; }
+        public string StructureStuff { get => "Сотрудники"; }
 
-        public string ContextMenuOpenAsNewWindow { get => "Open in new window"; }
-        public string ContextMenuAddCompany { get => "Add Company"; }
-        public string ContextMenuAddComputer { get => "Add Computer"; }
-        public string ContextMenuAddServer { get => "Add Server"; }
-        public string ContextMenuAddPrinter { get => "Add Printer"; }
-        public string ContextMenuAddWLAN { get => "Add WLAN"; }
-        public string ContextMenuAddStuff { get => "Add Stuff"; }
+        public string ContextMenuOpenAsNewWindow { get => "Открыть в новом окне"; }
+        public string ContextMenuAdd { get => "Добавить"; }
 
-        public string CompanyDomain { get => "Domain"; }
-        public string CompanyDomainName { get => "Name: "; }
+        public string CompanyDomain { get => "Домен"; }
+        public string CompanyDomainName { get => "Доменное имя: "; }
 
         #endregion
     }

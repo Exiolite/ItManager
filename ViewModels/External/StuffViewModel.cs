@@ -26,11 +26,5 @@ namespace ViewModels.External
         {
             PropertyStuff = stuff;
         }
-
-        public StuffViewModel(int companyId)
-        {
-            PropertyStuff = MainViewModel.Instance.ExternalDataContext.StuffTable.AddNewItem();
-            PropertyStuff.CompanyId = companyId;
-        }
     }
 }

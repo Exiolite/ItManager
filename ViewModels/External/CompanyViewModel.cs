@@ -38,6 +38,17 @@ namespace ViewModels.External
 
         #endregion
 
+        #region property StuffTableViewModel
+        private StuffTableViewModel _stuffTableViewModel;
+
+        public StuffTableViewModel PropertyStuffTableViewModel
+        {
+            get { return _stuffTableViewModel; }
+            set { _stuffTableViewModel = value; NotifyPropertyChanged(nameof(PropertyStuffTableViewModel)); }
+        }
+
+        #endregion
+
 
         public CompanyViewModel()
         {
@@ -47,8 +58,10 @@ namespace ViewModels.External
         public CompanyViewModel(Company company)
         {
             _company = company;
+
             PropertyComputerTableViewModel = new ComputerTableViewModel(_company.Id);
             PropertyServerTableViewModel = new ServerTableViewModel(_company.Id);
+            PropertyStuffTableViewModel = new StuffTableViewModel(_company.Id);
         }
     }
 }

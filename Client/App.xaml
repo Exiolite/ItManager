@@ -54,8 +54,16 @@
                     Value="{StaticResource Clear}" />
             <Setter Property="Foreground"
                     Value="{StaticResource MainForeground}" />
-            <Setter Property="Padding"
-                    Value="4" />
+        </Style>
+
+        <Style x:Key="MainTextBox"
+               TargetType="TextBox">
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainForeground}" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
         </Style>
     </Application.Resources>
 </Application>

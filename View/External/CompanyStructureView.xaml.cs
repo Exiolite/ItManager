@@ -12,8 +12,8 @@ namespace View.External
 
         private void ClickOpenCompanyInNewWindow(object sender, System.Windows.RoutedEventArgs e)
         {
-            var castedSender = (MenuItem)sender;
-            var viewModel = (CompanyViewModel)castedSender.DataContext;
+            var control = (MenuItem)sender;
+            var viewModel = (CompanyViewModel)control.DataContext;
             var window = new CompanyWindowView();
 
             window.DataContext = viewModel;
@@ -22,8 +22,8 @@ namespace View.External
 
         private void ClickOpenComputerInNewWindow(object sender, System.Windows.RoutedEventArgs e)
         {
-            var button = (Button)sender;
-            var viewModel = (ComputerViewModel)button.DataContext;
+            var control = (MenuItem)sender;
+            var viewModel = (ComputerViewModel)control.DataContext;
             var window = new ComputerWindowView();
 
             window.DataContext = viewModel;
@@ -32,9 +32,19 @@ namespace View.External
 
         private void ClickOpenServerInNewWindow(object sender, System.Windows.RoutedEventArgs e)
         {
-            var button = (Button)sender;
-            var viewModel = (ServerViewModel)button.DataContext;
+            var control = (MenuItem)sender;
+            var viewModel = (ServerViewModel)control.DataContext;
             var window = new ServerWindowView();
+
+            window.DataContext = viewModel;
+            window.Show();
+        }
+
+        private void ClickOpenStuffInNewWindow(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var control = (MenuItem)sender;
+            var viewModel = (StuffViewModel)control.DataContext;
+            var window = new StuffWindow();
 
             window.DataContext = viewModel;
             window.Show();

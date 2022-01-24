@@ -12,7 +12,7 @@
         #endregion
 
         #region property Description
-        private string _description = Consts.CompanyDescription;
+        private string _description = Consts.Description;
 
         public string PropertyDescription
         {

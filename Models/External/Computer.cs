@@ -14,7 +14,7 @@
         #endregion
 
         #region property Description
-        private string _description = new string(Consts.ComputerDescription);
+        private string _description = new string(Consts.Description);
 
         public string Description
         {

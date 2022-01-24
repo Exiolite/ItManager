@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Models.External;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
@@ -6,9 +7,6 @@ namespace ViewModels.External
 {
     public sealed class StuffTableViewModel : ViewModel
     {
-        private int _companyId;
-
-
         #region command AddNew
         private ICommand _commandAddNew;
         public ICommand CommandAddNew
@@ -21,11 +19,23 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            PropertyStaffViewModels.Add(new StuffViewModel(_companyId));
+            var stuff = PropertyStuffTable.Add(new Stuff() { PropertyCompanyId = PropertyId });
+            PropertyStaffViewModels.Add(new StuffViewModel(stuff));
         }
         private bool CAddNew(object arg) => true;
         #endregion
 
+
+        #region property ServiceTaskTable
+        private StuffTable _content;
+
+        public StuffTable PropertyStuffTable
+        {
+            get { return _content; }
+            set { _content = value; NotifyPropertyChanged(nameof(PropertyStuffTable)); }
+        }
+
+        #endregion
 
         #region property StaffViewModels
         private ObservableCollection<StuffViewModel> _stuffViewModels;
@@ -38,6 +48,16 @@ namespace ViewModels.External
 
         #endregion
 
+        #region property Id
+        private int _id;
+
+        public int PropertyId
+        {
+            get { return _id; }
+            set { _id = value; NotifyPropertyChanged(nameof(PropertyId)); }
+        }
+
+        #endregion
 
         public StuffTableViewModel()
         {
@@ -48,11 +68,12 @@ namespace ViewModels.External
 
         public StuffTableViewModel(int companyId)
         {
-            _companyId = companyId;
+            PropertyStuffTable = MainViewModel.Instance.ExternalDataContext.StuffTable;
+            PropertyId = companyId;
 
 
             PropertyStaffViewModels = new ObservableCollection<StuffViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.StuffTable.Content.Where(c => c.CompanyId == _companyId))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.StuffTable.Content.Where(c => c.PropertyCompanyId == PropertyId))
             {
                 PropertyStaffViewModels.Add(new StuffViewModel(item));
             }

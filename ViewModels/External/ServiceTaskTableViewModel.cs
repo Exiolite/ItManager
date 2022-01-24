@@ -25,6 +25,7 @@ namespace ViewModels.External
         private bool CAddNew(object arg) => true;
         #endregion
 
+
         #region property ServiceTaskViewModels
         private ObservableCollection<ServiceTaskViewModel> _serviceTaskViewModels;
 
@@ -47,7 +48,7 @@ namespace ViewModels.External
 
         #endregion
 
-        #region property
+        #region property Id
         private int _id;
 
         public int PropertyId
