@@ -8,7 +8,7 @@ namespace DataServer
 {
     public class ServerSocket
     {
-        private const string Ip = "127.0.0.1";
+        private const string Ip = "192.168.116.73";
         private const int port = 8080;
         private const int listeners = 5;
 
@@ -36,6 +36,8 @@ namespace DataServer
                 } while (listener.Available > 0);
 
                 _dataContext.Merge(JsonSerializer.Deserialize<DataContext>(stringBuilder.ToString()));
+
+                Console.WriteLine("Connected");
 
                 listener.Send(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(_dataContext)));
 

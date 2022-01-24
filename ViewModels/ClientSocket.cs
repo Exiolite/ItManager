@@ -8,7 +8,7 @@ namespace ViewModels
 {
     public class ClientSocket
     {
-        private const string Ip = "127.0.0.1";
+        private const string Ip = "192.168.116.73";
         private const int port = 8080;
 
         public static DataContext SendToServer(DataContext dataContext)
