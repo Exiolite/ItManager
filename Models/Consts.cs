@@ -20,6 +20,7 @@
         public string FileOpenAs{ get => "Открыть как"; }
         public string FileSave{ get => "Сохранить"; }
         public string FileSaveAs{ get => "Сохранить как"; }
+        public string FileSynchronizeWithServer{ get => "Синхронизировать"; }
 
         public string StructureCompanies { get => "Компания"; }
         public string StructureDevices { get => "Устройства"; }

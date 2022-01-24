@@ -97,5 +97,15 @@ namespace Models.Internal
             }
             return new External.DataContext();
         }
+
+        public string Read(string fileName)
+        {
+            if (File.Exists(fileName))
+            {
+                var l = File.ReadAllLines(fileName);
+                return l.ToString();
+            }
+            return string.Empty;
+        }
     }
 }

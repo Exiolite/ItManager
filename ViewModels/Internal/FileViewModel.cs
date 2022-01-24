@@ -148,5 +148,23 @@ namespace ViewModels.Internal
         }
         private bool CFileSaveAs(object arg) => true;
         #endregion
+
+        #region command SynchronizeWithServer
+        private ICommand _synchronizeWithServer;
+        public ICommand CommandSynchronizeWithServer
+        {
+            get
+            {
+                if (_synchronizeWithServer == null) _synchronizeWithServer = new Command(this.SynchronizeWithServerE, this.CSynchronizeWithServer, false);
+                return _synchronizeWithServer;
+            }
+        }
+        private void SynchronizeWithServerE(object obj)
+        {
+            MainViewModel.Instance.ExternalDataContext = ClientSocket.SendToServer(MainViewModel.Instance.ExternalDataContext);
+            CompanyTableViewModel.Instance.Reload();
+        }
+        private bool CSynchronizeWithServer(object arg) => true;
+        #endregion
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-class Encryption
+public class Encryption
 {
     public static byte[] Encrypt(string original, string password)
     {
@@ -35,7 +35,7 @@ class Encryption
 
         using (RijndaelManaged rijAlg = new())
         {
-            rijAlg.Padding = PaddingMode.ANSIX923;
+            rijAlg.Padding = PaddingMode.PKCS7;
             ICryptoTransform encryptor = rijAlg.CreateEncryptor(Key, IV);
             using (MemoryStream msEncrypt = new())
             {
@@ -66,7 +66,7 @@ class Encryption
         string plaintext = null;
         using (RijndaelManaged rijAlg = new())
         {
-            rijAlg.Padding = PaddingMode.ANSIX923;
+            rijAlg.Padding = PaddingMode.PKCS7;
             ICryptoTransform decryptor = rijAlg.CreateDecryptor(Key, IV);
             using (MemoryStream msDecrypt = new(cipherText))
             {

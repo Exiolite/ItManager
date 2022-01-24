@@ -43,6 +43,9 @@
                 <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSaveAs}"
                         Command="{Binding CmdFileSaveAs}"
                         Style="{StaticResource PanelButton}" />
+                <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSynchronizeWithServer}"
+                        Command="{Binding CommandSynchronizeWithServer}"
+                        Style="{StaticResource PanelButton}" /> 
             </StackPanel>
             <StackPanel Margin="0,4,4,4">
                 <StackPanel DockPanel.Dock="Top"
