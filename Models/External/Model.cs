@@ -21,7 +21,18 @@ namespace Models.External
         {
             get { return _id; }
             set { _id = value; NotifyPropertyChanged(nameof(Id)); }
-        } 
+        }
+        #endregion
+
+        #region property IsEdited
+        private bool _isEdited = true;
+
+        public bool PropertyIsEdited
+        {
+            get { return _isEdited; }
+            set { _isEdited = value; NotifyPropertyChanged(nameof(PropertyIsEdited)); }
+        }
+
         #endregion
     }
 }

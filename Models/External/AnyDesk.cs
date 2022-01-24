@@ -8,7 +8,7 @@
         public int ComputerId
         {
             get { return _computerId; }
-            set { _computerId = value; NotifyPropertyChanged(nameof(ComputerId)); }
+            set { _computerId = value; NotifyPropertyChanged(nameof(ComputerId)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -19,7 +19,7 @@
         public string AnyDeskId
         {
             get { return _anyDeskId; }
-            set { _anyDeskId = value; NotifyPropertyChanged(nameof(AnyDeskId)); }
+            set { _anyDeskId = value; NotifyPropertyChanged(nameof(AnyDeskId)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -30,7 +30,7 @@
         public string AnyDeskPassword
         {
             get { return _anyDeskPassword; }
-            set { _anyDeskPassword = value; NotifyPropertyChanged(nameof(AnyDeskPassword)); }
+            set { _anyDeskPassword = value; NotifyPropertyChanged(nameof(AnyDeskPassword)); PropertyIsEdited = true; }
         }
 
         #endregion

@@ -8,7 +8,7 @@
         public int PropertyComputerId
         {
             get { return _computerId; }
-            set { _computerId = value; NotifyPropertyChanged(nameof(PropertyComputerId)); }
+            set { _computerId = value; NotifyPropertyChanged(nameof(PropertyComputerId)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -19,7 +19,7 @@
         public string PropertyName
         {
             get { return _name; }
-            set { _name = value; NotifyPropertyChanged(nameof(PropertyName)); }
+            set { _name = value; NotifyPropertyChanged(nameof(PropertyName)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -30,7 +30,7 @@
         public string PropertyDescription
         {
             get { return _description; }
-            set { _description = value; NotifyPropertyChanged(nameof(PropertyDescription)); }
+            set { _description = value; NotifyPropertyChanged(nameof(PropertyDescription)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -41,7 +41,7 @@
         public bool PropertyIsStarted
         {
             get { return _isStarted; }
-            set { _isStarted = value; NotifyPropertyChanged(nameof(PropertyIsStarted)); }
+            set { _isStarted = value; NotifyPropertyChanged(nameof(PropertyIsStarted)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -52,7 +52,7 @@
         public bool PropertyIsEnded
         {
             get { return _isEnded; }
-            set { _isEnded = value; NotifyPropertyChanged(nameof(PropertyIsEnded)); }
+            set { _isEnded = value; NotifyPropertyChanged(nameof(PropertyIsEnded)); PropertyIsEdited = true; }
         }
 
         #endregion

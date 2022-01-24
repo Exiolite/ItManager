@@ -7,7 +7,7 @@
         public string PropertyName
         {
             get { return _name; }
-            set { _name = value; NotifyPropertyChanged(nameof(PropertyName)); }
+            set { _name = value; NotifyPropertyChanged(nameof(PropertyName)); PropertyIsEdited = true; }
         }
         #endregion
 
@@ -17,7 +17,7 @@
         public string PropertyDescription
         {
             get { return _description; }
-            set { _description = value; NotifyPropertyChanged(nameof(PropertyDescription)); }
+            set { _description = value; NotifyPropertyChanged(nameof(PropertyDescription)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -28,7 +28,7 @@
         public string PropertyDomainName
         {
             get { return _domanName; }
-            set { _domanName = value; NotifyPropertyChanged(nameof(PropertyDomainName)); }
+            set { _domanName = value; NotifyPropertyChanged(nameof(PropertyDomainName)); PropertyIsEdited = true; }
         }
 
         #endregion

@@ -12,7 +12,7 @@ namespace DataServer
         private const int port = 8080;
         private const int listeners = 5;
 
-        private DataContext _dataContext;
+        private DataContext _dataContext = new DataContext();
 
         public ServerSocket()
         {
@@ -35,20 +35,15 @@ namespace DataServer
                     stringBuilder.Append(Encoding.UTF8.GetString(buffer, 0, size));
                 } while (listener.Available > 0);
 
-                _dataContext = JsonSerializer.Deserialize<DataContext>(stringBuilder.ToString());
-
-                _dataContext.CompanyTable.Add(new Company() { PropertyName = "Its Working" });
+                _dataContext.Merge(JsonSerializer.Deserialize<DataContext>(stringBuilder.ToString()));
 
                 listener.Send(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(_dataContext)));
 
                 listener.Shutdown(SocketShutdown.Both);
                 listener.Close();
+
+                File.WriteAllText("Save.dat", JsonSerializer.Serialize(_dataContext));
             }
-        }
-
-        public void MergeDataContexts()
-        {
-
         }
     }
 }

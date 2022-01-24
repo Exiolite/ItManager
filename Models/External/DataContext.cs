@@ -46,17 +46,6 @@
 
         #endregion
 
-        #region property MasterTable
-        private StuffTable _masterTable;
-
-        public StuffTable MasterTable
-        {
-            get { return _masterTable; }
-            set { _masterTable = value; NotifyPropertyChanged(nameof(MasterTable)); }
-        }
-
-        #endregion
-
         #region property StuffTable
         private StuffTable _stuffTable = new StuffTable();
 
@@ -104,5 +93,41 @@
         #endregion
 
         #endregion
+
+        public void Merge(DataContext dataContext)
+        {
+            foreach (var item in dataContext.AnyDeskTable.Content.Where(i => i.PropertyIsEdited == true))
+            {
+                AnyDeskTable.Merge(item);
+            }
+            foreach (var item in dataContext.CompanyTable.Content.Where(i => i.PropertyIsEdited == true))
+            {
+                CompanyTable.Merge(item);
+            }
+            foreach (var item in dataContext.ComputerTable.Content.Where(i => i.PropertyIsEdited == true))
+            {
+                ComputerTable.Merge(item);
+            }
+            foreach (var item in dataContext.OSDescriptionTable.Content.Where(i => i.PropertyIsEdited == true))
+            {
+                OSDescriptionTable.Merge(item);
+            }
+            foreach (var item in dataContext.StuffTable.Content.Where(i => i.PropertyIsEdited == true))
+            {
+                StuffTable.Merge(item);
+            }
+            foreach (var item in dataContext.ServerTable.Content.Where(i => i.PropertyIsEdited == true))
+            {
+                ServerTable.Merge(item);
+            }
+            foreach (var item in dataContext.ComputerServiceTaskTable.Content.Where(i => i.PropertyIsEdited == true))
+            {
+                ComputerServiceTaskTable.Merge(item);
+            }
+            foreach (var item in dataContext.ServerServiceTaskTable.Content.Where(i => i.PropertyIsEdited == true))
+            {
+                ServerServiceTaskTable.Merge(item);
+            }
+        }
     }
 }

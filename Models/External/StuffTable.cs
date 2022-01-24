@@ -32,6 +32,20 @@ namespace Models.External
             Content.Add(item);
             return item;
         }
+        public void Merge(Stuff item)
+        {
+            var i = Content.FirstOrDefault(i => i.Id == item.Id);
+
+            if (i != null)
+            {
+                i = item;
+                return;
+            }
+
+            Add(item);
+
+            item.PropertyIsEdited = false;
+        }
 
         public void Drop()
         {

@@ -8,7 +8,7 @@
         public int ComputerId
         {
             get { return _computerId; }
-            set { _computerId = value; }
+            set { _computerId = value; NotifyPropertyChanged(nameof(ComputerId)); PropertyIsEdited = true; }
         }
 
         #endregion

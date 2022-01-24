@@ -8,7 +8,7 @@
         public string Name
         {
             get { return _name; }
-            set { _name = value; NotifyPropertyChanged(nameof(Name)); }
+            set { _name = value; NotifyPropertyChanged(nameof(Name)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -19,7 +19,7 @@
         public string Description
         {
             get { return _description; }
-            set { _description = value; NotifyPropertyChanged(nameof(Description)); }
+            set { _description = value; NotifyPropertyChanged(nameof(Description)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -30,7 +30,7 @@
         public int CompanyId
         {
             get { return _companyId; }
-            set { _companyId = value; NotifyPropertyChanged(nameof(CompanyId)); }
+            set { _companyId = value; NotifyPropertyChanged(nameof(CompanyId)); PropertyIsEdited = true; }
         }
 
         #endregion

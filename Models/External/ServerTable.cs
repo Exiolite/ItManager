@@ -33,6 +33,21 @@ namespace Models.External
             return item;
         }
 
+        public void Merge(Server item)
+        {
+            var i = Content.FirstOrDefault(i => i.Id == item.Id);
+
+            if (i != null)
+            {
+                i = item;
+                return;
+            }
+
+            Add(item);
+
+            item.PropertyIsEdited = false;
+        }
+
         public void Drop()
         {
             Content.Clear();

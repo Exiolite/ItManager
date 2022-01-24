@@ -8,7 +8,7 @@
         public int PropertyCompanyId
         {
             get { return _companyId; }
-            set { _companyId = value; }
+            set { _companyId = value; PropertyIsEdited = true; }
         }
 
         #endregion
@@ -19,7 +19,7 @@
         public int PropertyComputerId
         {
             get { return _computerId; }
-            set { _computerId = value; NotifyPropertyChanged(nameof(PropertyComputerId)); }
+            set { _computerId = value; NotifyPropertyChanged(nameof(PropertyComputerId)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -30,7 +30,7 @@
         public string PropertyFirstName
         {
             get { return _firstName; }
-            set { _firstName = value; NotifyPropertyChanged(nameof(PropertyFirstName)); }
+            set { _firstName = value; NotifyPropertyChanged(nameof(PropertyFirstName)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -41,7 +41,7 @@
         public string PropertySureName
         {
             get { return _sureName; }
-            set { _sureName = value; NotifyPropertyChanged(nameof(PropertySureName)); }
+            set { _sureName = value; NotifyPropertyChanged(nameof(PropertySureName)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -52,7 +52,7 @@
         public string PropertySecondName
         {
             get { return _secondName; }
-            set { _secondName = value; NotifyPropertyChanged(nameof(PropertySecondName)); }
+            set { _secondName = value; NotifyPropertyChanged(nameof(PropertySecondName)); PropertyIsEdited = true; }
         }
 
         #endregion
@@ -63,7 +63,7 @@
         public string PropertyPhoneNumber
         {
             get { return _phoneNumber; }
-            set { _phoneNumber = value; NotifyPropertyChanged(nameof(PropertyPhoneNumber)); }
+            set { _phoneNumber = value; NotifyPropertyChanged(nameof(PropertyPhoneNumber)); PropertyIsEdited = true; }
         }
 
         #endregion
