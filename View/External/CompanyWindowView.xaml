@@ -10,23 +10,34 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Width="400">
-    <StackPanel Style="{StaticResource SPMargin}">
-        <StackPanel>
-            <TextBox Text="{Binding PropertyCompany.PropertyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Style="{StaticResource TBH1}" />
-            <TextBox Text="{Binding PropertyCompany.PropertyDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Style="{StaticResource TBA}"
-                     TextWrapping="Wrap" />
-        </StackPanel>
-        <StackPanel>
-            <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.CompanyDomain}"
-                       Style="{StaticResource TH3}" />
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.CompanyDomainName}"
-                           Style="{StaticResource TA}" />
-                <TextBox Text="{Binding PropertyCompany.PropertyDomainName}"
-                         Style="{StaticResource TBA}" />
+    <StackPanel>
+        <StackPanel Style="{StaticResource SPMarginBlock}">
+            <StackPanel Style="{StaticResource SPMargin}">
+                <TextBox Text="{Binding PropertyCompany.PropertyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource TBH1}" />
+                <TextBox Text="{Binding PropertyCompany.PropertyDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource TBA}"
+                         TextWrapping="Wrap" />
             </StackPanel>
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource SPMarginBlock}">
+            <StackPanel HorizontalAlignment="Left"
+                        Style="{StaticResource SPMarginHeader}">
+                <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.HDomain}"
+                           Style="{StaticResource TH4}"
+                           Foreground="{StaticResource MainBackground}"
+                           Background="{StaticResource HRemote}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource SPMargin}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.CompanyDomainName}"
+                               Style="{StaticResource TA}" />
+                    <TextBox Text="{Binding PropertyCompany.PropertyDomainName}"
+                             Style="{StaticResource TBA}" />
+                </StackPanel>
+            </StackPanel>
+
         </StackPanel>
     </StackPanel>
 </Window>

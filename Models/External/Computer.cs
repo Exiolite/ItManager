@@ -1,7 +1,10 @@
-﻿namespace Models.External
+﻿using System.Collections.ObjectModel;
+
+namespace Models.External
 {
     public class Computer : Model
     {
+
         #region property Name
         private string _name = Consts.ComputerName;
 
@@ -20,6 +23,17 @@
         {
             get { return _description; }
             set { _description = value; NotifyPropertyChanged(nameof(Description)); PropertyIsEdited = true; }
+        }
+
+        #endregion
+
+        #region property PropUsageType
+        private string _usageType = Consts.ComputerTypePersonal;
+
+        public string PropUsageType
+        {
+            get { return _usageType; }
+            set { _usageType = value; NotifyPropertyChanged(nameof(PropUsageType)); }
         }
 
         #endregion

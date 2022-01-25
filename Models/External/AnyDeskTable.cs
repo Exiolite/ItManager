@@ -27,6 +27,14 @@ namespace Models.External
         {
             return Content.FirstOrDefault(x => x.Id == id);
         }
+
+        public AnyDesk GetOrCreateByComputer(int id)
+        {
+            var anyDesk = Content.FirstOrDefault(x => x.ComputerId == id);
+            if (anyDesk == null) return new AnyDesk() { ComputerId = id};
+            return anyDesk;
+        }
+
         public AnyDesk Add(AnyDesk item)
         {
             Content.Add(item);

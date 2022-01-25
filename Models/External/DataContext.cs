@@ -57,17 +57,6 @@
 
         #endregion
 
-        #region property ServerTable
-        private ServerTable _serverTable = new ServerTable();
-
-        public ServerTable ServerTable
-        {
-            get { return _serverTable; }
-            set { _serverTable = value; NotifyPropertyChanged(nameof(ServerTable)); }
-        }
-
-        #endregion
-
         #region property ServiceTaskTables
 
         #region property ComputerServiceTaskTable
@@ -115,10 +104,6 @@
             foreach (var item in dataContext.StuffTable.Content.Where(i => i.PropertyIsEdited == true))
             {
                 StuffTable.Merge(item);
-            }
-            foreach (var item in dataContext.ServerTable.Content.Where(i => i.PropertyIsEdited == true))
-            {
-                ServerTable.Merge(item);
             }
             foreach (var item in dataContext.ComputerServiceTaskTable.Content.Where(i => i.PropertyIsEdited == true))
             {

@@ -1,5 +1,4 @@
-﻿<UserControl DataContext="{Binding Source={StaticResource FileViewModel}}"
-             x:Class="View.Internal.ApplicationMenuView"
+﻿<UserControl x:Class="View.Internal.ApplicationMenuView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -8,7 +7,6 @@
     <Menu Foreground="{StaticResource MainColor}"
           Background="{StaticResource MainBackground}">
         <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.File}"
-                  DataContext="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext}"
                   Click="MenuItem_Click" />
     </Menu>
 </UserControl>

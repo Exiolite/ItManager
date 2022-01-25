@@ -6,17 +6,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d">
     <DockPanel Background="{StaticResource MainBackground}">
-        <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureCompanies}"
-                   Style="{StaticResource TH1}"
-                   DockPanel.Dock="Top"
-                   ContextMenuService.Placement="MousePoint">
-            <TextBlock.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                              Command="{Binding CommandAddNew}" />
-                </ContextMenu>
-            </TextBlock.ContextMenu>
-        </TextBlock>
+        <StackPanel HorizontalAlignment="Left"
+                    DockPanel.Dock="Top"
+                    Style="{StaticResource SPMarginHeader}">
+            <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureCompanies}"
+                       Style="{StaticResource TH1}"
+                       Foreground="{StaticResource MainBackground}"
+                       Background="{StaticResource MainColor2}">
+                <TextBlock.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
+                                  Command="{Binding CommandAddNew}" />
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
+            </TextBlock>
+        </StackPanel>
         <TreeView ItemsSource="{Binding PropertyCompanyViewModels}"
                   Background="{StaticResource Clear}"
                   BorderThickness="0">
@@ -69,18 +73,13 @@
                                     <DataTemplate>
                                         <Button Content="{Binding PropertyComputer.Name}"
                                                 Style="{StaticResource BH4}"
-                                                ContextMenuService.Placement="Bottom">
-                                            <Button.ContextMenu>
-                                                <ContextMenu>
-                                                    <MenuItem Header="Open in new window"
-                                                              Click="ClickOpenComputerInNewWindow" />
-                                                </ContextMenu>
-                                            </Button.ContextMenu>
+                                                ContextMenuService.Placement="Bottom"
+                                                Click="ClickOpenComputerInNewWindow">
                                         </Button>
                                     </DataTemplate>
                                 </TreeViewItem.ItemTemplate>
                             </TreeViewItem>
-                            <TreeViewItem ItemsSource="{Binding PropertyServerTableViewModel.PropertyServerTable}">
+                            <TreeViewItem ItemsSource="{Binding PropertyComputerTableViewModel.PropertyServerViewModels}">
                                 <TreeViewItem.Header>
                                     <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureDevicesServers}"
                                                Style="{StaticResource TH3}"
@@ -95,15 +94,9 @@
                                 </TreeViewItem.Header>
                                 <TreeViewItem.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding PropertyServer.Name}"
+                                        <Button Content="{Binding PropertyComputer.Name}"
                                                 Style="{StaticResource BH4}"
-                                                ContextMenuService.Placement="Bottom">
-                                            <Button.ContextMenu>
-                                                <ContextMenu>
-                                                    <MenuItem Header="Open in new window"
-                                                              Click="ClickOpenServerInNewWindow" />
-                                                </ContextMenu>
-                                            </Button.ContextMenu>
+                                                Click="ClickOpenComputerInNewWindow">
                                         </Button>
                                     </DataTemplate>
                                 </TreeViewItem.ItemTemplate>
@@ -124,18 +117,12 @@
                             </TreeViewItem.Header>
                             <TreeViewItem.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Style="{StaticResource BH4}">
-                                        <Button.ContextMenu>
-                                            <ContextMenu>
-                                                <MenuItem Header="Open in new window"
-                                                          Click="ClickOpenStuffInNewWindow" />
-                                            </ContextMenu>
-                                        </Button.ContextMenu>
+                                    <Button Style="{StaticResource BH4}"
+                                            Click="ClickOpenUserInNewWindow">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding PropertyStuff.PropertyFirstName}"
                                                        Margin="0,0,4,0" />
-                                            <TextBlock Text="{Binding PropertyStuff.PropertySureName}"
-                                                       Style="{StaticResource TH4}" />
+                                            <TextBlock Text="{Binding PropertyStuff.PropertySureName}" />
                                         </StackPanel>
                                     </Button>
                                 </DataTemplate>

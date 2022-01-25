@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.External;
+﻿using Models.External;
 
 namespace ViewModels.External
 {
@@ -27,17 +26,6 @@ namespace ViewModels.External
 
         #endregion
 
-        #region property ServerTableViewModel
-        private ServerTableViewModel _serverTableViewModel;
-
-        public ServerTableViewModel PropertyServerTableViewModel
-        {
-            get { return _serverTableViewModel; }
-            set { _serverTableViewModel = value; NotifyPropertyChanged(nameof(PropertyServerTableViewModel)); }
-        }
-
-        #endregion
-
         #region property StuffTableViewModel
         private UserTableViewModel _stuffTableViewModel;
 
@@ -60,7 +48,6 @@ namespace ViewModels.External
             _company = company;
 
             PropertyComputerTableViewModel = new ComputerTableViewModel(_company.Id);
-            PropertyServerTableViewModel = new ServerTableViewModel(_company.Id);
             PropertyStuffTableViewModel = new UserTableViewModel(_company.Id);
         }
     }

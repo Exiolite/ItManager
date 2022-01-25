@@ -1,6 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using System.Windows.Controls;
-using ViewModels.Internal;
+﻿using System.Windows.Controls;
+using ViewModels;
 
 namespace View.Internal
 {
@@ -13,11 +12,8 @@ namespace View.Internal
 
         private void MenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var control = (MenuItem)sender;
-            var dataContext = (FileViewModel)control.DataContext;
             var fileDialogWindowView = new FileDialogWindow();
-
-            fileDialogWindowView.DataContext = dataContext;
+            fileDialogWindowView.DataContext = MainViewModel.Instance.PropFileViewModel;
             fileDialogWindowView.Show();
         }
     }

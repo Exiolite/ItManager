@@ -1,10 +1,23 @@
-﻿namespace Models
+﻿using System.Collections.ObjectModel;
+
+namespace Models
 {
     public class Consts
     {
+        public static string ComputerTypePersonal { get => "Персональный"; }
+        public static string ComputerTypeServer { get => "Сервер"; }
+        public static string ComputerTypeVirtual { get => "Виртуальный"; }
+
+
+
         #region filename
         public static string InternalDataFileName = "InternalData.json";
         #endregion
+
+        public string HInfo { get => "Информация"; }
+        public string HRemote { get => "Удаленный Доступ"; }
+        public string HServicePlan { get => "Сервисный План"; }
+        public string HDomain { get => "Домен"; }
 
         #region Models.External
         public const string CompanyName = "Новая Компания";
@@ -15,6 +28,7 @@
         public const string StaffSureName = "Фамилия";
         public const string StaffFirstName = "Имя";
         public const string StaffSecondName = "Отчество";
+        public const string UserPhoneNumber= "+79990001122";
         #endregion
 
         #region View.Localization

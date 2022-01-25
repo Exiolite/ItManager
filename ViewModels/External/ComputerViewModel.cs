@@ -1,4 +1,6 @@
-﻿using Models.External;
+﻿using Models;
+using Models.External;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace ViewModels.External
@@ -33,13 +35,13 @@ namespace ViewModels.External
         }
         #endregion
 
-        #region property AnyDeskViewModel
-        private AnyDeskViewModel _anyDeskViewModel;
+        #region property RemoteViewModel
+        private RemoteViewModel _remoteViewModel;
 
-        public AnyDeskViewModel PropertyAnyDeskViewModel
+        public RemoteViewModel PropRemoteViewModel
         {
-            get { return _anyDeskViewModel; }
-            set { _anyDeskViewModel = value; NotifyPropertyChanged(nameof(PropertyAnyDeskViewModel)); }
+            get { return _remoteViewModel; }
+            set { _remoteViewModel = value; NotifyPropertyChanged(nameof(PropRemoteViewModel)); }
         }
 
         #endregion
@@ -55,10 +57,25 @@ namespace ViewModels.External
 
         #endregion
 
+        #region MyRegion
+        private ObservableCollection<string> _computerUsageType;
+
+        public ObservableCollection<string> PropComputerUsageTypeCollection
+        {
+            get { return _computerUsageType; }
+            set { _computerUsageType = value; NotifyPropertyChanged(nameof(PropComputerUsageTypeCollection)); }
+        }
+
+        #endregion
 
         public ComputerViewModel()
         {
-
+            PropComputerUsageTypeCollection = new ObservableCollection<string>
+            {
+                Consts.ComputerTypePersonal,
+                Consts.ComputerTypeServer,
+                Consts.ComputerTypeVirtual
+            };
         }
 
         public ComputerViewModel(Computer computer)
@@ -66,8 +83,14 @@ namespace ViewModels.External
             var anyDesk = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.GetById(computer.Id);
 
             PropertyComputer = computer;
-            PropertyAnyDeskViewModel = new AnyDeskViewModel(anyDesk);
+            PropRemoteViewModel = new RemoteViewModel(computer);
             PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.ComputerServiceTaskTable, PropertyComputer.Id);
+            PropComputerUsageTypeCollection = new ObservableCollection<string>
+            {
+                Consts.ComputerTypePersonal,
+                Consts.ComputerTypeServer,
+                Consts.ComputerTypeVirtual
+            };
         }
 
         public ComputerViewModel(int companyId)
@@ -78,8 +101,14 @@ namespace ViewModels.External
 
             PropertyComputer = computer;
             PropertyComputer.CompanyId = companyId;
-            PropertyAnyDeskViewModel = new AnyDeskViewModel(anyDesk);
+            PropRemoteViewModel = new RemoteViewModel(computer);
             PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(computerServiceTable, PropertyComputer.Id);
+            PropComputerUsageTypeCollection = new ObservableCollection<string>
+            {
+                Consts.ComputerTypePersonal,
+                Consts.ComputerTypeServer,
+                Consts.ComputerTypeVirtual
+            };
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Models;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
@@ -35,7 +36,18 @@ namespace ViewModels.External
         public ObservableCollection<ComputerViewModel> PropertyComputerViewModels
         {
             get { return _computerViewModels; }
-            set { _computerViewModels = value; NotifyPropertyChanged(nameof(PropertyComputerViewModels)); }
+            set { _computerViewModels = value; NotifyPropertyChanged(nameof(PropertyComputerViewModels));}
+        }
+
+        #endregion
+
+        #region property ComputerViewModels
+        private ObservableCollection<ComputerViewModel> _serverViewModels;
+
+        public ObservableCollection<ComputerViewModel> PropertyServerViewModels
+        {
+            get { return _serverViewModels; }
+            set { _serverViewModels = value; NotifyPropertyChanged(nameof(PropertyComputerViewModels)); }
         }
 
         #endregion
@@ -50,11 +62,12 @@ namespace ViewModels.External
         {
             _companyId = companyId;
 
-
             PropertyComputerViewModels = new ObservableCollection<ComputerViewModel>();
+            PropertyServerViewModels = new ObservableCollection<ComputerViewModel>();
             foreach (var item in MainViewModel.Instance.ExternalDataContext.ComputerTable.Content.Where(c => c.CompanyId == _companyId))
             {
-                PropertyComputerViewModels.Add(new ComputerViewModel(item));
+                if (item.PropUsageType == Consts.ComputerTypePersonal) PropertyComputerViewModels.Add(new ComputerViewModel(item));
+                if (item.PropUsageType == Consts.ComputerTypeServer) PropertyServerViewModels.Add(new ComputerViewModel(item));
             }
         }
     }

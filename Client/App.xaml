@@ -4,15 +4,16 @@
              xmlns:vms="clr-namespace:ViewModels;assembly=ViewModels"
              xmlns:vmi="clr-namespace:ViewModels.Internal;assembly=ViewModels"
              xmlns:vme="clr-namespace:ViewModels.External;assembly=ViewModels"
+             xmlns:local="clr-namespace:Client"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
         <!--#region ViewModels -->
         <vms:MainViewModel x:Key="MainViewModel" />
 
         <vmi:FileViewModel x:Key="FileViewModel" />
 
-        <vme:AnyDeskTableViewModel x:Key="AnyDeskTableViewModel" />
+        <vme:RemoteViewModel x:Key="RemoteViewModel" />
+
         <vme:AnyDeskViewModel x:Key="AnyDeskViewModel" />
 
         <vme:CompanyTableViewModel x:Key="CompanyTableViewModel" />
@@ -24,9 +25,6 @@
         <vme:OSDescriptionTableViewModel x:Key="OSDescriptionTableViewModel" />
         <vme:OSDescriptionViewModel x:Key="OSDescriptionViewModel" />
 
-        <vme:ServerTableViewModel x:Key="ServerTableViewModel" />
-        <vme:ServerViewModel x:Key="ServerViewModel" />
-
         <vme:UserTableViewModel x:Key="UserTableViewModel" />
         <vme:UserViewModel x:Key="UserViewModel" />
 
@@ -34,20 +32,35 @@
         <vme:ServiceTaskTableViewModel x:Key="ServiceTaskTableViewModel" />
         <!--#endregion-->
 
-
-
+        
 
         <SolidColorBrush x:Key="Clear"
                          Opacity="0" />
         <SolidColorBrush x:Key="MainColor"
                          Color="Black" />
+        <SolidColorBrush x:Key="MainColor2"
+                         Color="#6c6c6c" />
         <SolidColorBrush x:Key="MainBackground"
                          Color="#ffffff" />
+        <SolidColorBrush x:Key="HRemote"
+                         Color="#779ea4" />
+        <SolidColorBrush x:Key="HService"
+                         Color="#dac584" />
 
         <Style x:Key="SPMargin"
                TargetType="StackPanel">
             <Setter Property="Margin"
-                    Value="8" />
+                    Value="8,0,8,8" />
+        </Style>
+        <Style x:Key="SPMarginBlock"
+               TargetType="StackPanel">
+            <Setter Property="Margin"
+                    Value="0,0,0,8" />
+        </Style>
+        <Style x:Key="SPMarginHeader"
+               TargetType="StackPanel">
+            <Setter Property="Margin"
+                    Value="0,0,0,8" />
         </Style>
         <Style x:Key="DPMargin"
                TargetType="DockPanel">
@@ -67,6 +80,8 @@
                     Value="0" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Padding"
+                    Value="4" />
         </Style>
         <Style x:Key="TBH2"
                TargetType="TextBox">
@@ -80,6 +95,8 @@
                     Value="0" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Padding"
+                    Value="4" />
         </Style>
         <Style x:Key="TBH3"
                TargetType="TextBox">
@@ -93,6 +110,8 @@
                     Value="0" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Padding"
+                    Value="4" />
         </Style>
         <Style x:Key="TBH4"
                TargetType="TextBox">
@@ -106,6 +125,8 @@
                     Value="0" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Padding"
+                    Value="4" />
         </Style>
         <Style x:Key="TBA"
                TargetType="TextBox">
@@ -119,7 +140,10 @@
                     Value="0" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Padding"
+                    Value="4" />
         </Style>
+        
         <Style x:Key="TH1"
                TargetType="TextBlock">
             <Setter Property="Background"
@@ -130,6 +154,8 @@
                     Value="28" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Padding"
+                    Value="4" />
         </Style>
         <Style x:Key="TH2"
                TargetType="TextBlock">
@@ -141,6 +167,8 @@
                     Value="24" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Padding"
+                    Value="4" />
         </Style>
         <Style x:Key="TH3"
                TargetType="TextBlock">
@@ -152,6 +180,8 @@
                     Value="20" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Padding"
+                    Value="4" />
         </Style>
         <Style x:Key="TH4"
                TargetType="TextBlock">
@@ -163,6 +193,8 @@
                     Value="16" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Padding"
+                    Value="4" />
         </Style>
         <Style x:Key="TA"
                TargetType="TextBlock">
@@ -174,6 +206,8 @@
                     Value="12" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Padding"
+                    Value="4" />
         </Style>
 
         <Style x:Key="BH1"
@@ -186,6 +220,8 @@
                     Value="0" />
             <Setter Property="FontSize"
                     Value="28" />
+            <Setter Property="Margin"
+                    Value="0,0,8,0" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
         </Style>
@@ -199,6 +235,8 @@
                     Value="0" />
             <Setter Property="FontSize"
                     Value="24" />
+            <Setter Property="Margin"
+                    Value="0,0,8,0" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
         </Style>
@@ -212,6 +250,8 @@
                     Value="0" />
             <Setter Property="FontSize"
                     Value="20" />
+            <Setter Property="Margin"
+                    Value="0,0,8,0" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
         </Style>
@@ -225,6 +265,8 @@
                     Value="0" />
             <Setter Property="FontSize"
                     Value="16" />
+            <Setter Property="Margin"
+                    Value="0,0,8,0" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
         </Style>
@@ -240,6 +282,8 @@
                     Value="12" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
+            <Setter Property="Margin"
+                    Value="0,0,8,0" />
         </Style>
 
     </Application.Resources>

@@ -6,15 +6,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d">
     <StackPanel>
-        <TextBlock Text="Service"
-                   Style="{StaticResource TH3}">
-            <TextBlock.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Add New Task"
-                              Command="{Binding CommandAddNew}" />
-                </ContextMenu>
-            </TextBlock.ContextMenu>
-        </TextBlock>
+        <StackPanel Style="{StaticResource SPMarginHeader}">
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock Text="Service"
+                           Style="{StaticResource TH4}"
+                           Foreground="{StaticResource MainBackground}"
+                           Background="{StaticResource HService}">
+                    <TextBlock.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}" 
+                                      Command="{Binding CommandAddNew}"/>
+                        </ContextMenu>
+                    </TextBlock.ContextMenu>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
         <ListBox ItemsSource="{Binding PropertyServiceTaskViewModels}"
                  Background="{StaticResource Clear}"
                  BorderThickness="0">

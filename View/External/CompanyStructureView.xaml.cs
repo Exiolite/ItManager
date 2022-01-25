@@ -22,7 +22,7 @@ namespace View.External
 
         private void ClickOpenComputerInNewWindow(object sender, System.Windows.RoutedEventArgs e)
         {
-            var control = (MenuItem)sender;
+            var control = (Button)sender;
             var viewModel = (ComputerViewModel)control.DataContext;
             var window = new ComputerWindowView();
 
@@ -30,19 +30,9 @@ namespace View.External
             window.Show();
         }
 
-        private void ClickOpenServerInNewWindow(object sender, System.Windows.RoutedEventArgs e)
+        private void ClickOpenUserInNewWindow(object sender, System.Windows.RoutedEventArgs e)
         {
-            var control = (MenuItem)sender;
-            var viewModel = (ServerViewModel)control.DataContext;
-            var window = new ServerWindowView();
-
-            window.DataContext = viewModel;
-            window.Show();
-        }
-
-        private void ClickOpenStuffInNewWindow(object sender, System.Windows.RoutedEventArgs e)
-        {
-            var control = (MenuItem)sender;
+            var control = (Button)sender;
             var viewModel = (UserViewModel)control.DataContext;
             var window = new UserWindow();
 

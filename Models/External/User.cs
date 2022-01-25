@@ -58,7 +58,7 @@
         #endregion
 
         #region property PhoneNumber
-        private string _phoneNumber;
+        private string _phoneNumber = Consts.UserPhoneNumber;
 
         public string PropertyPhoneNumber
         {

@@ -31,7 +31,7 @@
                    Style="{StaticResource TA}" />
         <TextBlock Grid.Row="3"
                    Grid.Column="0"
-                   Text="Pthone number: "
+                   Text="Phone number: "
                    Style="{StaticResource TA}"/>
         <TextBox Grid.Row="0"
                  Grid.Column="1"

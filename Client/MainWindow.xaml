@@ -8,5 +8,11 @@
         Title="ItManager"
         WindowState="Maximized"
         Background="{StaticResource MainBackground}">
+    <Window.InputBindings>
+        <KeyBinding Key="F5"
+                    Command="{Binding Source={StaticResource MainViewModel}, Path=CMDReload}" />
+        <KeyBinding Key="F1"
+                    Command="{Binding Source={StaticResource MainViewModel}, Path=PropFileViewModel.CmdFileSave}" />
+    </Window.InputBindings>
     <v:MainView FontFamily="SegoeUi" />
 </Window>

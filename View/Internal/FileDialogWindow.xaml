@@ -1,4 +1,4 @@
-﻿<Window DataContext="{StaticResource FileViewModel}"
+﻿<Window DataContext="{Binding Source={StaticResource MainViewModel}, Path=PropFileViewModel}"
         x:Class="View.Internal.FileDialogWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

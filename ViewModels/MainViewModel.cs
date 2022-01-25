@@ -1,4 +1,5 @@
 ﻿using Models;
+using ViewModels.Internal;
 
 namespace ViewModels
 {
@@ -14,6 +15,17 @@ namespace ViewModels
             Instance = this;
             MainViewModel.Instance.InternalDataContext = MainViewModel.Instance.InternalDataContext.PropFileOperation.ReadInternalDataIfExist();
         }
+        #endregion
+
+        #region PropFileViewModel
+        private FileViewModel _fileViewModel = new FileViewModel();
+
+        public FileViewModel PropFileViewModel
+        {
+            get { return _fileViewModel; }
+            set { _fileViewModel = value; NotifyPropertyChanged(nameof(PropFileViewModel)); }
+        }
+
         #endregion
 
         #region property InternalDataContext

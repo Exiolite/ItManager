@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="AnyDeskWindow"
         Height="150"
+        WindowStartupLocation="CenterOwner"
         Width="400">
     <StackPanel Style="{StaticResource SPMargin}">
         <TextBox Text="{Binding PropertyAnyDesk.AnyDeskId}" 

@@ -7,8 +7,8 @@
         xmlns:local="clr-namespace:View.External"
         mc:Ignorable="d"
         Title="StuffWindow"
-        Height="450"
-        Width="800">
+        Height="500"
+        Width="400">
     <StackPanel Style="{StaticResource SPMargin}">
         <local:UserShortContactView DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
     </StackPanel>

@@ -70,14 +70,9 @@ namespace ViewModels.External
 
         }
 
-        public AnyDeskViewModel(AnyDesk anyDesk)
+        public AnyDeskViewModel(Computer computer)
         {
-            PropertyAnyDesk = anyDesk;
-        }
-
-        public AnyDeskViewModel(int computerId)
-        {
-            PropertyAnyDesk.ComputerId = computerId;
+            PropertyAnyDesk = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.GetOrCreateByComputer(computer.Id);
         }
     }
 }
