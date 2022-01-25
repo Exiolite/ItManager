@@ -12,6 +12,7 @@ namespace ViewModels
         public MainViewModel()
         {
             Instance = this;
+            MainViewModel.Instance.InternalDataContext = MainViewModel.Instance.InternalDataContext.PropFileOperation.ReadInternalDataIfExist();
         }
         #endregion
 

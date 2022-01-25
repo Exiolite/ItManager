@@ -2,6 +2,10 @@
 {
     public class Consts
     {
+        #region filename
+        public static string InternalDataFileName = "InternalData.json";
+        #endregion
+
         #region Models.External
         public const string CompanyName = "Новая Компания";
         public const string Description = "Описание";

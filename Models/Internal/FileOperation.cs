@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Unicode;
 
 namespace Models.Internal
 {
@@ -33,12 +31,7 @@ namespace Models.Internal
         {
             if (!string.IsNullOrEmpty(PropCurrentFileName))
             {
-                var options = new JsonSerializerOptions
-                {
-                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-                    WriteIndented = true
-                };
-                var json = JsonSerializer.Serialize(dataContext, options);
+                var json = JsonSerializer.Serialize(dataContext);
                 File.WriteAllText(PropCurrentFileName, json);
                 return dataContext;
             }
@@ -105,6 +98,32 @@ namespace Models.Internal
                 return File.ReadAllBytes(fileName);
             }
             return null;
+        }
+
+        public FileOperation WriteInternalData(DataContext dataContext)
+        {
+            if (!string.IsNullOrEmpty(Consts.InternalDataFileName))
+                File.WriteAllText(Consts.InternalDataFileName, JsonSerializer.Serialize(dataContext));
+            return this;
+        }
+
+        public DataContext ReadInternalDataIfExist()
+        {
+            if (File.Exists(Consts.InternalDataFileName))
+            {
+                var text = string.Empty;
+
+                try
+                {
+                    text = File.ReadAllText(Consts.InternalDataFileName);
+                    return JsonSerializer.Deserialize<DataContext>(text);
+                }
+                catch (Exception)
+                {
+                    return new DataContext();
+                }
+            }
+            return new DataContext();
         }
     }
 }

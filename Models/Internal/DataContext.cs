@@ -10,10 +10,10 @@
         #region property FileOperation
         private FileOperation _fileOperation = new FileOperation();
 
-        public FileOperation FileOperation
+        public FileOperation PropFileOperation
         {
             get { return _fileOperation; }
-            set { _fileOperation = value; NotifyPropertyChanged(nameof(FileOperation)); }
+            set { _fileOperation = value; NotifyPropertyChanged(nameof(PropFileOperation)); }
         } 
         #endregion
     }
