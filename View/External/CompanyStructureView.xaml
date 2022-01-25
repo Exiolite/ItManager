@@ -128,6 +128,30 @@
                                 </DataTemplate>
                             </TreeViewItem.ItemTemplate>
                         </TreeViewItem>
+                        <TreeViewItem ItemsSource="{Binding PropServiceRequestViewModelCollection.PropServiceRequestViewModelCollection}">
+                            <TreeViewItem.Header>
+                                <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureStuff}"
+                                           Style="{StaticResource TH2}"
+                                           ContextMenuService.Placement="Bottom">
+                                    <TextBlock.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
+                                                      Command="{Binding PropServiceRequestViewModelCollection.CommandAddNew}" />
+                                        </ContextMenu>
+                                    </TextBlock.ContextMenu>
+                                </TextBlock>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource BH4}"
+                                            Click="ClickOpenServiceRequestInNewWindow">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding PropertyServiceTask.PropertyName}" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </TreeViewItem.ItemTemplate>
+                        </TreeViewItem>
                     </TreeViewItem>
                 </DataTemplate>
             </TreeView.ItemTemplate>

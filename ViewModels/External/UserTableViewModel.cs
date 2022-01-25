@@ -19,7 +19,7 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            var stuff = PropertyStuffTable.Add(new User() { PropertyCompanyId = PropCompanyViewModel });
+            var stuff = PropertyStuffTable.Add(new User() { PropertyCompanyId = PropCompanyViewModel.PropertyCompany.Id });
             PropUserViewModelCollection.Add(new UserViewModel(stuff));
         }
         private bool CAddNew(object arg) => true;
@@ -71,7 +71,7 @@ namespace ViewModels.External
             PropCompanyViewModel = companyViewModel;
 
             PropUserViewModelCollection = new ObservableCollection<UserViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.StuffTable.Content.Where(c => c.PropertyCompanyId == PropCompanyViewModel))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.StuffTable.Content.Where(c => c.PropertyCompanyId == PropCompanyViewModel.PropertyCompany.Id))
             {
                 PropUserViewModelCollection.Add(new UserViewModel(item));
             }
