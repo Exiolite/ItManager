@@ -12,7 +12,7 @@ namespace ViewModels.Internal
         public FileOperation PropFileOperation
         {
             get { return MainViewModel.Instance.InternalDataContext.PropFileOperation; }
-            set { MainViewModel.Instance.InternalDataContext.PropFileOperation = value; }
+            set { MainViewModel.Instance.InternalDataContext.PropFileOperation = value; NotifyPropertyChanged(nameof(PropFileOperation)); }
         }
         #endregion
 
@@ -58,16 +58,14 @@ namespace ViewModels.Internal
         }
         private void FileOpenE(object obj)
         {
-            if (PropFileOperation.PropCurrentFileName == string.Empty) return;
-            var openFileDialog = new OpenFileDialog();
-            MainViewModel.Instance.ExternalDataContext = PropFileOperation.ReadIfExistOrNew(PropFileOperation.PropCurrentFileName, PropPassword);
-            if (!PropFileOperation.PropOpenedFileNameCollection.Contains(PropFileOperation.PropCurrentFileName))
-            {
-                PropFileOperation.PropOpenedFileNameCollection.Add(PropFileOperation.PropCurrentFileName);
-            }
+            if (string.IsNullOrEmpty(MainViewModel.Instance.PropFileViewModel.PropFileOperation.PropCurrentFileName)) return;
+
+            MainViewModel.Instance.ExternalDataContext = PropFileOperation.ReadIfExistOrNew(MainViewModel.Instance.PropFileViewModel.PropFileOperation.PropCurrentFileName, PropPassword);
+
             PropFileOperation.PropCurrentFileName = PropFileOperation.PropCurrentFileName;
-            CompanyTableViewModel.Instance.Reload();
             PropFileOperation.WriteInternalData(MainViewModel.Instance.InternalDataContext);
+
+            CompanyTableViewModel.Instance.Reload();
         }
         private bool CFileOpen(object arg) => true;
         #endregion
@@ -89,10 +87,6 @@ namespace ViewModels.Internal
             Nullable<bool> result = openFileDialog.ShowDialog();
             PropFileOperation.PropCurrentFileName = openFileDialog.FileName;
             MainViewModel.Instance.ExternalDataContext = PropFileOperation.ReadIfExistOrNew(PropFileOperation.PropCurrentFileName, PropPassword);
-            if (!PropFileOperation.PropOpenedFileNameCollection.Contains(PropFileOperation.PropCurrentFileName))
-            {
-                PropFileOperation.PropOpenedFileNameCollection.Add(PropFileOperation.PropCurrentFileName);
-            }
             PropFileOperation.PropCurrentFileName = PropFileOperation.PropCurrentFileName;
             CompanyTableViewModel.Instance.Reload();
             PropFileOperation.WriteInternalData(MainViewModel.Instance.InternalDataContext);
@@ -134,10 +128,6 @@ namespace ViewModels.Internal
             if (saveFileDialog.ShowDialog() == true)
                 PropFileOperation.Write(saveFileDialog.FileName, MainViewModel.Instance.ExternalDataContext, PropPassword);
 
-            if (!PropFileOperation.PropOpenedFileNameCollection.Contains(saveFileDialog.FileName))
-            {
-                PropFileOperation.PropOpenedFileNameCollection.Add(saveFileDialog.FileName);
-            }
             PropFileOperation.PropCurrentFileName = saveFileDialog.FileName;
             PropFileOperation.WriteInternalData(MainViewModel.Instance.InternalDataContext);
         }

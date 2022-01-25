@@ -64,7 +64,7 @@
                                         <TextBlock.ContextMenu>
                                             <ContextMenu>
                                                 <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                                                          Command="{Binding PropertyComputerTableViewModel.CommandAddNew}" />
+                                                          Command="{Binding PropertyComputerTableViewModel.CMDAddComputer}" />
                                             </ContextMenu>
                                         </TextBlock.ContextMenu>
                                     </TextBlock>
@@ -87,7 +87,7 @@
                                         <TextBlock.ContextMenu>
                                             <ContextMenu>
                                                 <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                                                          Command="{Binding PropertyServerTableViewModel.CommandAddNew}" />
+                                                          Command="{Binding PropertyComputerTableViewModel.CMDAddServer}" />
                                             </ContextMenu>
                                         </TextBlock.ContextMenu>
                                     </TextBlock>

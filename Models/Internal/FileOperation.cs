@@ -15,17 +15,6 @@ namespace Models.Internal
         }
         #endregion
 
-        #region property RecentFileNames
-        private ObservableCollection<string> _openedFileNameCollection = new ObservableCollection<string>();
-
-        public ObservableCollection<string> PropOpenedFileNameCollection
-        {
-            get { return _openedFileNameCollection; }
-            set { _openedFileNameCollection = value; NotifyPropertyChanged(nameof(PropOpenedFileNameCollection)); }
-        }
-
-        #endregion
-
         public External.DataContext Write(External.DataContext dataContext, string password)
         {
             if (!string.IsNullOrEmpty(PropCurrentFileName))

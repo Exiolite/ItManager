@@ -12,22 +12,23 @@ namespace ViewModels.External
         private int _companyId;
 
 
-        #region command AddNew
-        private ICommand _commandAddNew;
-        public ICommand CommandAddNew
+        #region command AddComputer
+        private ICommand _addComputer;
+        public ICommand CMDAddComputer
         {
             get
             {
-                if (_commandAddNew == null) _commandAddNew = new Command(this.AddNewE, this.CAddNew, false);
-                return _commandAddNew;
+                if (_addComputer == null) _addComputer = new Command(this.AddComputerE, this.CAddComputer, false);
+                return _addComputer;
             }
         }
-        private void AddNewE(object obj)
+        private void AddComputerE(object obj)
         {
-            var computer = new ComputerViewModel(_companyId);
-            PropertyComputerViewModels.Add(computer);
+            var computerViewModel = new ComputerViewModel(_companyId);
+            computerViewModel.PropertyComputer.PropUsageType = Consts.ComputerTypePersonal;
+            PropertyComputerViewModels.Add(computerViewModel);
         }
-        private bool CAddNew(object arg) => true;
+        private bool CAddComputer(object arg) => true;
         #endregion
 
         #region property ComputerViewModels
@@ -39,6 +40,27 @@ namespace ViewModels.External
             set { _computerViewModels = value; NotifyPropertyChanged(nameof(PropertyComputerViewModels));}
         }
 
+        #endregion
+
+
+        #region CMDAddServer
+        private ICommand _addServer;
+        public ICommand CMDAddServer
+        {
+            get
+            {
+                if (_addServer == null) _addServer = new Command(this.AddServerE, this.CAddServer, false);
+                return _addServer;
+            }
+        }
+        private void AddServerE(object obj)
+        {
+            var computerViewModel = new ComputerViewModel(_companyId);
+            computerViewModel.PropertyComputer.PropUsageType = Consts.ComputerTypeServer;
+            computerViewModel.PropertyComputer.Name = Consts.ServerName;
+            PropertyServerViewModels.Add(computerViewModel);
+        }
+        private bool CAddServer(object arg) => true;
         #endregion
 
         #region property ComputerViewModels
