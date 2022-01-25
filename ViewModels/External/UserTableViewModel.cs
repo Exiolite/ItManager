@@ -7,32 +7,32 @@ namespace ViewModels.External
 {
     public sealed class UserTableViewModel : ViewModel
     {
-        #region command AddNew
-        private ICommand _commandAddNew;
-        public ICommand CommandAddNew
+        #region CMDAdd
+        private ICommand _add;
+        public ICommand CMDAdd
         {
             get
             {
-                if (_commandAddNew == null) _commandAddNew = new Command(this.AddNewE, this.CAddNew, false);
-                return _commandAddNew;
+                if (_add == null) _add = new Command(this.AddE, this.CAdd, false);
+                return _add;
             }
         }
-        private void AddNewE(object obj)
+        private void AddE(object obj)
         {
-            var stuff = PropertyStuffTable.Add(new User() { PropCompanyId = PropCompanyViewModel.PropertyCompany.PropId });
+            var stuff = PropUserTable.Add(new User() { PropCompanyId = PropCompanyViewModel.PropCompany.PropId });
             PropUserViewModelCollection.Add(new UserViewModel(stuff));
         }
-        private bool CAddNew(object arg) => true;
+        private bool CAdd(object arg) => true;
         #endregion
 
 
-        #region property ServiceTaskTable
+        #region PropUserTable
         private UserTable _content;
 
-        public UserTable PropertyStuffTable
+        public UserTable PropUserTable
         {
             get { return _content; }
-            set { _content = value; NotifyPropertyChanged(nameof(PropertyStuffTable)); }
+            set { _content = value; NotifyPropertyChanged(nameof(PropUserTable)); }
         }
 
         #endregion
@@ -48,7 +48,7 @@ namespace ViewModels.External
 
         #endregion
 
-        #region property Id
+        #region PropCompanyViewModel
         private CompanyViewModel _company;
 
         public CompanyViewModel PropCompanyViewModel
@@ -71,7 +71,7 @@ namespace ViewModels.External
             PropCompanyViewModel = companyViewModel;
 
             PropUserViewModelCollection = new ObservableCollection<UserViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropUserTable.PropContent.Where(c => c.PropCompanyId == PropCompanyViewModel.PropertyCompany.PropId))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropUserTable.PropContent.Where(c => c.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
             {
                 PropUserViewModelCollection.Add(new UserViewModel(item));
             }

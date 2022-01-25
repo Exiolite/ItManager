@@ -8,7 +8,7 @@
              d:DesignHeight="200"
              d:DesignWidth="400">
     <StackPanel Style="{StaticResource SPMargin}"
-                DataContext="{Binding PropertyServiceTask}">
+                DataContext="{Binding PropServiceTask}">
         <StackPanel>
             <TextBox Style="{StaticResource TBH1}"
                      Text="{Binding PropName}" />

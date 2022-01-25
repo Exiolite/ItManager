@@ -6,22 +6,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View.External"
         mc:Ignorable="d"
-        Title="{Binding PropertyComputer.PropName}"
+        Title="{Binding PropComputer.PropName}"
         Width="400"
         ResizeMode="NoResize">
     <StackPanel>
         <StackPanel Style="{StaticResource SPMarginBlock}">
             <StackPanel Style="{StaticResource SPMargin}">
-                <TextBox Text="{Binding PropertyComputer.PropName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox Text="{Binding PropComputer.PropName}"
                          Style="{StaticResource TBH1}" />
-                <TextBox Text="{Binding PropertyComputer.PropDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox Text="{Binding PropComputer.PropDescription}"
                          Style="{StaticResource TBA}"
                          TextWrapping="Wrap" />
                 <ComboBox ItemsSource="{Binding PropComputerUsageTypeCollection}"
-                          SelectedItem="{Binding PropertyComputer.PropUsageType}" />
+                          SelectedItem="{Binding PropComputer.PropUsageType}" />
             </StackPanel>
         </StackPanel>
         <local:BlockRemoteView DataContext="{Binding PropRemoteViewModel}" />
-        <local:ServiceTaskListView DataContext="{Binding PropertyServiceTaskTableViewModel}" />
+        <local:ServiceTaskListView DataContext="{Binding PropServiceTaskTableViewModel}" />
     </StackPanel>
 </Window>

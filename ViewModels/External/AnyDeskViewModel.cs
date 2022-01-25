@@ -7,25 +7,25 @@ namespace ViewModels.External
 {
     public sealed class AnyDeskViewModel : ViewModel
     {
-        #region command ConnectWithAnyDesk
-        private ICommand _connectWithAnyDesk;
+        #region CMDConnect
+        private ICommand _cmdConnect;
 
-        public ICommand ConnectViaAnyDeskCommand
+        public ICommand CMDConnect
         {
             get
             {
-                if (_connectWithAnyDesk == null)
-                    _connectWithAnyDesk = new Command(this.ConnectViaAnyDeskExecute, this.CanConnectViaAnyDesk, false);
-                return _connectWithAnyDesk;
+                if (_cmdConnect == null)
+                    _cmdConnect = new Command(this.ConnectE, this.CConnect, false);
+                return _cmdConnect;
             }
         }
 
-        private async void ConnectViaAnyDeskExecute(object obj)
+        private async void ConnectE(object obj)
         {
             await System.Threading.Tasks.Task.Delay(1);
 
             var path = @"C:\AnyDesk.exe";
-            var args = $"/C echo {PropertyAnyDesk.PropAnyDeskPassword} | {path} {PropertyAnyDesk.PropAnyDeskId} --with-password";
+            var args = $"/C echo {PropAnyDesk.PropAnyDeskPassword} | {path} {PropAnyDesk.PropAnyDeskId} --with-password";
 
             var startInfo = new ProcessStartInfo
             {
@@ -50,17 +50,16 @@ namespace ViewModels.External
             }
         }
 
-        private bool CanConnectViaAnyDesk(object arg) => true;
+        private bool CConnect(object arg) => true;
         #endregion
 
-
-        #region property AnyDesk
+        #region PropAnyDesk
         private AnyDesk _anyDesk;
 
-        public AnyDesk PropertyAnyDesk
+        public AnyDesk PropAnyDesk
         {
             get { return _anyDesk; }
-            set { _anyDesk = value; NotifyPropertyChanged(nameof(PropertyAnyDesk)); }
+            set { _anyDesk = value; NotifyPropertyChanged(nameof(PropAnyDesk)); }
         }
 
         #endregion
@@ -72,7 +71,7 @@ namespace ViewModels.External
 
         public AnyDeskViewModel(Computer computer)
         {
-            PropertyAnyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.GetOrCreateByComputer(computer.PropId);
+            PropAnyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.GetOrCreateByComputer(computer.PropId);
         }
     }
 }

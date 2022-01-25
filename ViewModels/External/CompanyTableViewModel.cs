@@ -7,33 +7,33 @@ namespace ViewModels.External
     {
         public static CompanyTableViewModel Instance { get; set; }
 
-        #region command AddNew
-        private ICommand _commandAddNew;
-        public ICommand CommandAddNew
+        #region CMDAdd
+        private ICommand _cmdAdd;
+        public ICommand CMDAdd
         {
             get
             {
-                if (_commandAddNew == null) _commandAddNew = new Command(this.AddNewE, this.CAddNew, false);
-                return _commandAddNew;
+                if (_cmdAdd == null) _cmdAdd = new Command(this.AddE, this.CAdd, false);
+                return _cmdAdd;
             }
         }
-        private void AddNewE(object obj)
+        private void AddE(object obj)
         {
             var company = MainViewModel.Instance.ExternalDataContext.PropCompanyTable.AddNewCompany();
             var companyViewModel = new CompanyViewModel(company);
 
-            PropertyCompanyViewModels.Add(companyViewModel);
+            PropCompanyViewModelCollection.Add(companyViewModel);
         }
-        private bool CAddNew(object arg) => true;
+        private bool CAdd(object arg) => true;
         #endregion
 
-        #region property PropertyCompanyViewModels
-        private ObservableCollection<CompanyViewModel> _companyViewModels = new ObservableCollection<CompanyViewModel>();
+        #region PropCompanyViewModelCollection
+        private ObservableCollection<CompanyViewModel> _companyViewModelCollection = new ObservableCollection<CompanyViewModel>();
 
-        public ObservableCollection<CompanyViewModel> PropertyCompanyViewModels
+        public ObservableCollection<CompanyViewModel> PropCompanyViewModelCollection
         {
-            get { return _companyViewModels; }
-            set { _companyViewModels = value; NotifyPropertyChanged(nameof(PropertyCompanyViewModels)); }
+            get { return _companyViewModelCollection; }
+            set { _companyViewModelCollection = value; NotifyPropertyChanged(nameof(PropCompanyViewModelCollection)); }
         }
 
         #endregion
@@ -48,10 +48,10 @@ namespace ViewModels.External
 
         public void Reload()
         {
-            PropertyCompanyViewModels.Clear();
+            PropCompanyViewModelCollection.Clear();
             foreach (var item in MainViewModel.Instance.ExternalDataContext.PropCompanyTable.PropContent)
             {
-                PropertyCompanyViewModels.Add(new CompanyViewModel(item));
+                PropCompanyViewModelCollection.Add(new CompanyViewModel(item));
             }
         }
     }

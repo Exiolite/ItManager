@@ -4,13 +4,13 @@ namespace ViewModels.External
 {
     public sealed class UserViewModel : ViewModel
     {
-        #region property Stuff
-        private User _stuff;
+        #region PropUser
+        private User _user;
 
-        public User PropertyStuff
+        public User PropUser
         {
-            get { return _stuff; }
-            set { _stuff = value; NotifyPropertyChanged(nameof(PropertyStuff)); }
+            get { return _user; }
+            set { _user = value; NotifyPropertyChanged(nameof(PropUser)); }
         }
 
         #endregion
@@ -24,7 +24,7 @@ namespace ViewModels.External
 
         public UserViewModel(User stuff)
         {
-            PropertyStuff = stuff;
+            PropUser = stuff;
         }
     }
 }

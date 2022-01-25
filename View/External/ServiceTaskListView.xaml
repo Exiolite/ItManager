@@ -21,7 +21,7 @@
                 </TextBlock>
             </StackPanel>
         </StackPanel>
-        <ListBox ItemsSource="{Binding PropertyServiceTaskViewModels}"
+        <ListBox ItemsSource="{Binding PropServiceTaskViewModels}"
                  Background="{StaticResource Clear}"
                  BorderThickness="0">
             <ListBox.ItemTemplate>
@@ -29,15 +29,15 @@
                     <StackPanel Margin="2,-2,2,-2 "
                                 Orientation="Horizontal"
                                 VerticalAlignment="Center">
-                        <CheckBox IsChecked="{Binding PropertyServiceTask.PropIsStarted}"
+                        <CheckBox IsChecked="{Binding PropServiceTask.PropIsStarted}"
                                   VerticalAlignment="Center"
                                   Background="{StaticResource Clear}" />
                         <CheckBox HorizontalAlignment="Right"
-                                  IsChecked="{Binding PropertyServiceTask.PropIsEnded}"
+                                  IsChecked="{Binding PropServiceTask.PropIsEnded}"
                                   VerticalAlignment="Center"
                                   Background="{StaticResource Clear}" />
                         <TextBox 
-                                 Text="{Binding PropertyServiceTask.PropName}"
+                                 Text="{Binding PropServiceTask.PropName}"
                                  Style="{StaticResource TBH3}"
                                  VerticalAlignment="Center"
                                  Background="{StaticResource Clear}" />

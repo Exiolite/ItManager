@@ -12,7 +12,7 @@ namespace ViewModels.External
         private int _companyId;
 
 
-        #region command AddComputer
+        #region CMDAddComputer
         private ICommand _addComputer;
         public ICommand CMDAddComputer
         {
@@ -25,19 +25,19 @@ namespace ViewModels.External
         private void AddComputerE(object obj)
         {
             var computerViewModel = new ComputerViewModel(_companyId);
-            computerViewModel.PropertyComputer.PropUsageType = Consts.ComputerTypePersonal;
-            PropertyComputerViewModels.Add(computerViewModel);
+            computerViewModel.PropComputer.PropUsageType = Consts.ComputerTypePersonal;
+            PropComputerViewModelCollection.Add(computerViewModel);
         }
         private bool CAddComputer(object arg) => true;
         #endregion
 
-        #region property ComputerViewModels
-        private ObservableCollection<ComputerViewModel> _computerViewModels;
+        #region PropComputerViewModelCollection
+        private ObservableCollection<ComputerViewModel> _computerViewModelCollection;
 
-        public ObservableCollection<ComputerViewModel> PropertyComputerViewModels
+        public ObservableCollection<ComputerViewModel> PropComputerViewModelCollection
         {
-            get { return _computerViewModels; }
-            set { _computerViewModels = value; NotifyPropertyChanged(nameof(PropertyComputerViewModels));}
+            get { return _computerViewModelCollection; }
+            set { _computerViewModelCollection = value; NotifyPropertyChanged(nameof(PropComputerViewModelCollection));}
         }
 
         #endregion
@@ -56,20 +56,20 @@ namespace ViewModels.External
         private void AddServerE(object obj)
         {
             var computerViewModel = new ComputerViewModel(_companyId);
-            computerViewModel.PropertyComputer.PropUsageType = Consts.ComputerTypeServer;
-            computerViewModel.PropertyComputer.PropName = Consts.ServerName;
-            PropertyServerViewModels.Add(computerViewModel);
+            computerViewModel.PropComputer.PropUsageType = Consts.ComputerTypeServer;
+            computerViewModel.PropComputer.PropName = Consts.ServerName;
+            PropServerViewModelCollection.Add(computerViewModel);
         }
         private bool CAddServer(object arg) => true;
         #endregion
 
-        #region property ComputerViewModels
-        private ObservableCollection<ComputerViewModel> _serverViewModels;
+        # region PropServerViewModelCollection
+        private ObservableCollection<ComputerViewModel> _serverViewModelCollection;
 
-        public ObservableCollection<ComputerViewModel> PropertyServerViewModels
+        public ObservableCollection<ComputerViewModel> PropServerViewModelCollection
         {
-            get { return _serverViewModels; }
-            set { _serverViewModels = value; NotifyPropertyChanged(nameof(PropertyComputerViewModels)); }
+            get { return _serverViewModelCollection; }
+            set { _serverViewModelCollection = value; NotifyPropertyChanged(nameof(PropComputerViewModelCollection)); }
         }
 
         #endregion
@@ -84,12 +84,12 @@ namespace ViewModels.External
         {
             _companyId = companyId;
 
-            PropertyComputerViewModels = new ObservableCollection<ComputerViewModel>();
-            PropertyServerViewModels = new ObservableCollection<ComputerViewModel>();
+            PropComputerViewModelCollection = new ObservableCollection<ComputerViewModel>();
+            PropServerViewModelCollection = new ObservableCollection<ComputerViewModel>();
             foreach (var item in MainViewModel.Instance.ExternalDataContext.PropComputerTable.PropContent.Where(c => c.PropCompanyId == _companyId))
             {
-                if (item.PropUsageType == Consts.ComputerTypePersonal) PropertyComputerViewModels.Add(new ComputerViewModel(item));
-                if (item.PropUsageType == Consts.ComputerTypeServer) PropertyServerViewModels.Add(new ComputerViewModel(item));
+                if (item.PropUsageType == Consts.ComputerTypePersonal) PropComputerViewModelCollection.Add(new ComputerViewModel(item));
+                if (item.PropUsageType == Consts.ComputerTypeServer) PropServerViewModelCollection.Add(new ComputerViewModel(item));
             }
         }
     }

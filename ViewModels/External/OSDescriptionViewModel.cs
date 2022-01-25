@@ -4,13 +4,13 @@ namespace ViewModels.External
 {
     public sealed class OSDescriptionViewModel : ViewModel
     {
-        #region property OSDescription
+        #region PropOSDescription
         private OSDescription _oSDescription;
 
-        public OSDescription PropertyOSDescription
+        public OSDescription PropOSDescription
         {
             get { return _oSDescription; }
-            set { _oSDescription = value; NotifyPropertyChanged(nameof(PropertyOSDescription)); }
+            set { _oSDescription = value; NotifyPropertyChanged(nameof(PropOSDescription)); }
         }
 
         #endregion
@@ -24,13 +24,13 @@ namespace ViewModels.External
 
         public OSDescriptionViewModel(OSDescription item)
         {
-            PropertyOSDescription = item;
+            PropOSDescription = item;
         }
 
         public OSDescriptionViewModel(int computerId)
         {
-            PropertyOSDescription = MainViewModel.Instance.ExternalDataContext.PropOSDescriptionTable.AddNewItem();
-            PropertyOSDescription.PropComputerId = computerId;
+            PropOSDescription = MainViewModel.Instance.ExternalDataContext.PropOSDescriptionTable.AddNewItem();
+            PropOSDescription.PropComputerId = computerId;
         }
     }
 }

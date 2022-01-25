@@ -4,46 +4,46 @@ namespace ViewModels.External
 {
     public sealed class CompanyViewModel : ViewModel
     {
-        #region property Company
+        #region PropeCompany
         private Company _company;
 
-        public Company PropertyCompany
+        public Company PropCompany
         {
             get { return _company; }
-            set { _company = value; NotifyPropertyChanged(nameof(_company)); }
+            set { _company = value; NotifyPropertyChanged(nameof(PropCompany)); }
         }
 
         #endregion
 
-        #region property ComputerTableViewModel
+        #region PropComputerTableViewModel
         private ComputerTableViewModel _computerTableViewModel;
 
-        public ComputerTableViewModel PropertyComputerTableViewModel
+        public ComputerTableViewModel PropComputerTableViewModel
         {
             get { return _computerTableViewModel; }
-            set { _computerTableViewModel = value; NotifyPropertyChanged(nameof(PropertyComputerTableViewModel)); }
+            set { _computerTableViewModel = value; NotifyPropertyChanged(nameof(PropComputerTableViewModel)); }
         }
 
         #endregion
 
-        #region property StuffTableViewModel
-        private UserTableViewModel _stuffTableViewModel;
+        #region PropUserTableViewModel
+        private UserTableViewModel _userTableViewModel;
 
-        public UserTableViewModel PropertyStuffTableViewModel
+        public UserTableViewModel PropUserTableViewModel
         {
-            get { return _stuffTableViewModel; }
-            set { _stuffTableViewModel = value; NotifyPropertyChanged(nameof(PropertyStuffTableViewModel)); }
+            get { return _userTableViewModel; }
+            set { _userTableViewModel = value; NotifyPropertyChanged(nameof(PropUserTableViewModel)); }
         }
 
         #endregion
 
         #region PropServiceRequestViewModelCollection
-        private ServiceRequestViewModelCollection _serviceRequestViewModelCollection;
+        private ServiceRequestTableViewModel _serviceRequestTableViewModel;
 
-        public ServiceRequestViewModelCollection PropServiceRequestViewModelCollection
+        public ServiceRequestTableViewModel PropServiceRequestTableViewModel
         {
-            get { return _serviceRequestViewModelCollection; }
-            set { _serviceRequestViewModelCollection = value; NotifyPropertyChanged(nameof(PropServiceRequestViewModelCollection)); }
+            get { return _serviceRequestTableViewModel; }
+            set { _serviceRequestTableViewModel = value; NotifyPropertyChanged(nameof(PropServiceRequestTableViewModel)); }
         }
 
         #endregion
@@ -57,9 +57,9 @@ namespace ViewModels.External
         {
             _company = company;
 
-            PropertyComputerTableViewModel = new ComputerTableViewModel(_company.PropId);
-            PropertyStuffTableViewModel = new UserTableViewModel(this);
-            PropServiceRequestViewModelCollection = new ServiceRequestViewModelCollection(_company.PropId);
+            PropComputerTableViewModel = new ComputerTableViewModel(_company.PropId);
+            PropUserTableViewModel = new UserTableViewModel(this);
+            PropServiceRequestTableViewModel = new ServiceRequestTableViewModel(_company.PropId);
         }
     }
 }

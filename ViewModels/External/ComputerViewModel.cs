@@ -7,35 +7,17 @@ namespace ViewModels.External
 {
     public sealed class ComputerViewModel : ViewModel
     {
-        #region command SendToTabContol
-        private ICommand _sendToTabControl;
-        public ICommand CommandSendToTabControl
-        {
-            get
-            {
-                if (_sendToTabControl == null) _sendToTabControl = new Command(this.SendToTabControlE, this.CSendToTabContol, false);
-                return _sendToTabControl;
-            }
-        }
-        private void SendToTabControlE(object obj)
-        {
-            
-        }
-        private bool CSendToTabContol(object arg) => true;
-        #endregion
-
-
-        #region property Computer
+        #region PropComputer
         private Computer _computer;
 
-        public Computer PropertyComputer
+        public Computer PropComputer
         {
             get { return _computer; }
-            set { _computer = value; NotifyPropertyChanged(nameof(PropertyComputer)); }
+            set { _computer = value; NotifyPropertyChanged(nameof(PropComputer)); }
         }
         #endregion
 
-        #region property RemoteViewModel
+        #region PropRemoteViewModel
         private RemoteViewModel _remoteViewModel;
 
         public RemoteViewModel PropRemoteViewModel
@@ -46,18 +28,18 @@ namespace ViewModels.External
 
         #endregion
 
-        #region property ServiceTaskViewModel
+        #region PropServiceTaskTableViewModel
         private ServiceTaskTableViewModel _serviceTaskTableViewModel;
 
-        public ServiceTaskTableViewModel PropertyServiceTaskTableViewModel
+        public ServiceTaskTableViewModel PropServiceTaskTableViewModel
         {
             get { return _serviceTaskTableViewModel; }
-            set { _serviceTaskTableViewModel = value; NotifyPropertyChanged(nameof(PropertyServiceTaskTableViewModel)); }
+            set { _serviceTaskTableViewModel = value; NotifyPropertyChanged(nameof(PropServiceTaskTableViewModel)); }
         }
 
         #endregion
 
-        #region MyRegion
+        #region PropComputerUsageTypeCollection
         private ObservableCollection<string> _computerUsageType;
 
         public ObservableCollection<string> PropComputerUsageTypeCollection
@@ -82,9 +64,9 @@ namespace ViewModels.External
         {
             var anyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.GetById(computer.PropId);
 
-            PropertyComputer = computer;
+            PropComputer = computer;
             PropRemoteViewModel = new RemoteViewModel(computer);
-            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable, PropertyComputer.PropId);
+            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable, PropComputer.PropId);
             PropComputerUsageTypeCollection = new ObservableCollection<string>
             {
                 Consts.ComputerTypePersonal,
@@ -99,10 +81,10 @@ namespace ViewModels.External
             var anyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.AddNew(computer.PropId);
             var computerServiceTable = MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable;
 
-            PropertyComputer = computer;
-            PropertyComputer.PropCompanyId = companyId;
+            PropComputer = computer;
+            PropComputer.PropCompanyId = companyId;
             PropRemoteViewModel = new RemoteViewModel(computer);
-            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(computerServiceTable, PropertyComputer.PropId);
+            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(computerServiceTable, PropComputer.PropId);
             PropComputerUsageTypeCollection = new ObservableCollection<string>
             {
                 Consts.ComputerTypePersonal,

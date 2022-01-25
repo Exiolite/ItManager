@@ -4,13 +4,13 @@ namespace ViewModels.External
 {
     public sealed class ServiceTaskViewModel : ViewModel
     {
-        #region property Server
-        private ServiceTask _server;
+        #region PropServiceTask
+        private ServiceTask _serviceTask;
 
-        public ServiceTask PropertyServiceTask
+        public ServiceTask PropServiceTask
         {
-            get { return _server; }
-            set { _server = value; NotifyPropertyChanged(nameof(PropertyServiceTask)); }
+            get { return _serviceTask; }
+            set { _serviceTask = value; NotifyPropertyChanged(nameof(PropServiceTask)); }
         }
 
         #endregion
@@ -24,7 +24,7 @@ namespace ViewModels.External
 
         public ServiceTaskViewModel(ServiceTask serviceTask)
         {
-            PropertyServiceTask = serviceTask;
+            PropServiceTask = serviceTask;
         }
     }
 }

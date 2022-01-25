@@ -7,22 +7,22 @@ namespace ViewModels.External
 {
     public sealed class ServiceTaskTableViewModel : ViewModel
     {
-        #region command AddNew
-        private ICommand _commandAddNew;
-        public ICommand CommandAddNew
+        #region CMDAdd
+        private ICommand _add;
+        public ICommand CMDAdd
         {
             get
             {
-                if (_commandAddNew == null) _commandAddNew = new Command(this.AddNewE, this.CAddNew, false);
-                return _commandAddNew;
+                if (_add == null) _add = new Command(this.AddE, this.CAdd, false);
+                return _add;
             }
         }
-        private void AddNewE(object obj)
+        private void AddE(object obj)
         {
             var serviceTask = PropertyServiceTaskTable.Add(PropertyId);
             PropertyServiceTaskViewModels.Add(new ServiceTaskViewModel(serviceTask));
         }
-        private bool CAddNew(object arg) => true;
+        private bool CAdd(object arg) => true;
         #endregion
 
 

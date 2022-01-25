@@ -35,19 +35,19 @@
                    Style="{StaticResource TA}"/>
         <TextBox Grid.Row="0"
                  Grid.Column="1"
-                 Text="{Binding Path=PropertyStuff.PropFirstName}" 
+                 Text="{Binding PropUser.PropFirstName}" 
                  Style="{StaticResource TBA}"/>
         <TextBox Grid.Row="1"
                  Grid.Column="1"
-                 Text="{Binding Path=PropertyStuff.PropSecondName}"
+                 Text="{Binding PropUser.PropSecondName}"
                  Style="{StaticResource TBA}" />
         <TextBox Grid.Row="2"
                  Grid.Column="1"
-                 Text="{Binding Path=PropertyStuff.PropSureName}"
+                 Text="{Binding PropUser.PropSureName}"
                  Style="{StaticResource TBA}" />
         <TextBox Grid.Row="3"
                  Grid.Column="1"
-                 Text="{Binding Path=PropertyStuff.PropPhoneNumber}"
+                 Text="{Binding PropUser.PropPhoneNumber}"
                  Style="{StaticResource TBA}" />
     </Grid>
 </UserControl>
