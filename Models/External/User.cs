@@ -1,6 +1,6 @@
 ﻿namespace Models.External
 {
-    public class Stuff : Model
+    public class User : Model
     {
         #region property CompanyId
         private int _companyId;

@@ -2,12 +2,12 @@
 
 namespace ViewModels.External
 {
-    public sealed class StuffViewModel : ViewModel
+    public sealed class UserViewModel : ViewModel
     {
         #region property Stuff
-        private Stuff _stuff;
+        private User _stuff;
 
-        public Stuff PropertyStuff
+        public User PropertyStuff
         {
             get { return _stuff; }
             set { _stuff = value; NotifyPropertyChanged(nameof(PropertyStuff)); }
@@ -16,13 +16,13 @@ namespace ViewModels.External
         #endregion
 
 
-        public StuffViewModel()
+        public UserViewModel()
         {
 
         }
 
 
-        public StuffViewModel(Stuff stuff)
+        public UserViewModel(User stuff)
         {
             PropertyStuff = stuff;
         }

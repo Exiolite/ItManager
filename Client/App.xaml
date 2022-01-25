@@ -27,8 +27,8 @@
         <vme:ServerTableViewModel x:Key="ServerTableViewModel" />
         <vme:ServerViewModel x:Key="ServerViewModel" />
 
-        <vme:StuffTableViewModel x:Key="StuffTableViewModel" />
-        <vme:StuffViewModel x:Key="StuffViewModel" />
+        <vme:UserTableViewModel x:Key="UserTableViewModel" />
+        <vme:UserViewModel x:Key="UserViewModel" />
 
         <vme:ServiceTaskViewModel x:Key="ServiceTaskViewModel" />
         <vme:ServiceTaskTableViewModel x:Key="ServiceTaskTableViewModel" />

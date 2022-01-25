@@ -47,9 +47,9 @@
         #endregion
 
         #region property StuffTable
-        private StuffTable _stuffTable = new StuffTable();
+        private UserTable _stuffTable = new UserTable();
 
-        public StuffTable StuffTable
+        public UserTable StuffTable
         {
             get { return _stuffTable; }
             set { _stuffTable = value; NotifyPropertyChanged(nameof(StuffTable)); }

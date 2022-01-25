@@ -1,5 +1,5 @@
-﻿<Window DataContext="{StaticResource StuffViewModel}" 
-        x:Class="View.External.StuffWindow"
+﻿<Window DataContext="{StaticResource UserViewModel}" 
+        x:Class="View.External.UserWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,6 +10,6 @@
         Height="450"
         Width="800">
     <StackPanel Style="{StaticResource SPMargin}">
-        <local:StuffShortContactView DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
+        <local:UserShortContactView DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
     </StackPanel>
 </Window>

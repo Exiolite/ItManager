@@ -2,37 +2,37 @@
 
 namespace Models.External
 {
-    public sealed class StuffTable : Internal.Model
+    public sealed class UserTable : Internal.Model
     {
         #region property Companies
-        private ObservableCollection<Stuff> _content = new ObservableCollection<Stuff>();
+        private ObservableCollection<User> _content = new ObservableCollection<User>();
 
-        public ObservableCollection<Stuff> Content
+        public ObservableCollection<User> Content
         {
             get { return _content; }
             set { _content = value; NotifyPropertyChanged(nameof(Content)); }
         }
         #endregion
 
-        public Stuff AddNewItem()
+        public User AddNewItem()
         {
-            var item = new Stuff();
+            var item = new User();
             Content.Add(item);
             item.Id = Content.IndexOf(item);
             return item;
         }
 
-        public Stuff GetById(int id)
+        public User GetById(int id)
         {
             return Content.FirstOrDefault(x => x.Id == id);
         }
 
-        public Stuff Add(Stuff item)
+        public User Add(User item)
         {
             Content.Add(item);
             return item;
         }
-        public void Merge(Stuff item)
+        public void Merge(User item)
         {
             if (Content.FirstOrDefault(i => i.Id == item.Id) != null)
                 Content.Remove(Content.FirstOrDefault(i => i.Id == item.Id));

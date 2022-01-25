@@ -39,9 +39,9 @@ namespace ViewModels.External
         #endregion
 
         #region property StuffTableViewModel
-        private StuffTableViewModel _stuffTableViewModel;
+        private UserTableViewModel _stuffTableViewModel;
 
-        public StuffTableViewModel PropertyStuffTableViewModel
+        public UserTableViewModel PropertyStuffTableViewModel
         {
             get { return _stuffTableViewModel; }
             set { _stuffTableViewModel = value; NotifyPropertyChanged(nameof(PropertyStuffTableViewModel)); }
@@ -61,7 +61,7 @@ namespace ViewModels.External
 
             PropertyComputerTableViewModel = new ComputerTableViewModel(_company.Id);
             PropertyServerTableViewModel = new ServerTableViewModel(_company.Id);
-            PropertyStuffTableViewModel = new StuffTableViewModel(_company.Id);
+            PropertyStuffTableViewModel = new UserTableViewModel(_company.Id);
         }
     }
 }

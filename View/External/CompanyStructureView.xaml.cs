@@ -43,8 +43,8 @@ namespace View.External
         private void ClickOpenStuffInNewWindow(object sender, System.Windows.RoutedEventArgs e)
         {
             var control = (MenuItem)sender;
-            var viewModel = (StuffViewModel)control.DataContext;
-            var window = new StuffWindow();
+            var viewModel = (UserViewModel)control.DataContext;
+            var window = new UserWindow();
 
             window.DataContext = viewModel;
             window.Show();
