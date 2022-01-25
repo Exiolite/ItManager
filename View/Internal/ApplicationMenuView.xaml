@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d">
-    <Menu Foreground="{StaticResource MainForeground}"
+    <Menu Foreground="{StaticResource MainColor}"
           Background="{StaticResource MainBackground}">
         <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.File}"
                   DataContext="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext}"

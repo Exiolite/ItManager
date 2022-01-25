@@ -6,25 +6,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d">
     <DockPanel Background="{StaticResource MainBackground}">
-        <!--#region ElementName -->
         <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureCompanies}"
-                   FontSize="20"
-                   Foreground="{StaticResource MainForeground}"
-                   DockPanel.Dock="Top">
+                   Style="{StaticResource TH1}"
+                   DockPanel.Dock="Top"
+                   ContextMenuService.Placement="MousePoint">
             <TextBlock.ContextMenu>
-                <ContextMenu BorderThickness="0"
-                             Background="{StaticResource MainBackground}"
-                             Foreground="{StaticResource MainForeground}"
-                             Placement="Right">
+                <ContextMenu>
                     <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
                               Command="{Binding CommandAddNew}" />
                 </ContextMenu>
             </TextBlock.ContextMenu>
         </TextBlock>
-        <!--#endregion-->
-        <!--#region Element -->
-        <TreeView Name="CompanyTableView"
-                  ItemsSource="{Binding PropertyCompanyViewModels}"
+        <TreeView ItemsSource="{Binding PropertyCompanyViewModels}"
                   Background="{StaticResource Clear}"
                   BorderThickness="0">
             <TreeView.Resources>
@@ -37,39 +30,35 @@
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
                                  Color="Black" />
             </TreeView.Resources>
-
             <TreeView.ItemTemplate>
                 <DataTemplate>
-                    <TreeViewItem FontSize="28"
-                                  Foreground="{StaticResource MainForeground}">
+                    <TreeViewItem>
                         <TreeViewItem.Header>
-                            <TextBlock Text="{Binding PropertyCompany.PropertyName}">
+                            <TextBlock Text="{Binding PropertyCompany.PropertyName}"
+                                       Style="{StaticResource TH1}"
+                                       ContextMenuService.Placement="Bottom">
                                 <TextBlock.ContextMenu>
-                                    <ContextMenu BorderThickness="0"
-                                                 Background="{StaticResource MainBackground}"
-                                                 Foreground="{StaticResource MainForeground}"
-                                                 Placement="Right">
+                                    <ContextMenu>
                                         <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuOpenAsNewWindow}"
                                                   Click="ClickOpenCompanyInNewWindow" />
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
                             </TextBlock>
                         </TreeViewItem.Header>
-                        <TreeViewItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureDevices}"
-                                      FontSize="24"
-                                      Foreground="{StaticResource MainForeground}">
-                            <!--#region ComputersView -->
-                            <TreeViewItem FontSize="20"
-                                          Foreground="{StaticResource MainForeground}"
-                                          ItemsSource="{Binding PropertyComputerTableViewModel.PropertyComputerViewModels}">
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureDevices}"
+                                           Style="{StaticResource TH2}"
+                                           ContextMenuService.Placement="Bottom">
+                                </TextBlock>
+                            </TreeViewItem.Header>
+                            <TreeViewItem ItemsSource="{Binding PropertyComputerTableViewModel.PropertyComputerViewModels}">
                                 <TreeViewItem.Header>
                                     <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureDevicesComputers}"
-                                               ContextMenuService.Placement="Right">
+                                               Style="{StaticResource TH3}"
+                                               ContextMenuService.Placement="Bottom">
                                         <TextBlock.ContextMenu>
-                                            <ContextMenu BorderThickness="0"
-                                                         Background="{StaticResource MainBackground}"
-                                                         Foreground="{StaticResource MainForeground}"
-                                                         Placement="Right">
+                                            <ContextMenu>
                                                 <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
                                                           Command="{Binding PropertyComputerTableViewModel.CommandAddNew}" />
                                             </ContextMenu>
@@ -79,8 +68,8 @@
                                 <TreeViewItem.ItemTemplate>
                                     <DataTemplate>
                                         <Button Content="{Binding PropertyComputer.Name}"
-                                                Style="{StaticResource PanelButton}"
-                                                FontSize="16">
+                                                Style="{StaticResource BH4}"
+                                                ContextMenuService.Placement="Bottom">
                                             <Button.ContextMenu>
                                                 <ContextMenu>
                                                     <MenuItem Header="Open in new window"
@@ -91,18 +80,13 @@
                                     </DataTemplate>
                                 </TreeViewItem.ItemTemplate>
                             </TreeViewItem>
-                            <!--#endregion-->
-                            <!--#region ServersView -->
-                            <TreeViewItem FontSize="20"
-                                          Foreground="{StaticResource MainForeground}"
-                                          ItemsSource="{Binding PropertyServerTableViewModel.PropertyServerTable}">
+                            <TreeViewItem ItemsSource="{Binding PropertyServerTableViewModel.PropertyServerTable}">
                                 <TreeViewItem.Header>
                                     <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureDevicesServers}"
-                                               ContextMenuService.Placement="Right">
+                                               Style="{StaticResource TH3}"
+                                               ContextMenuService.Placement="Bottom">
                                         <TextBlock.ContextMenu>
-                                            <ContextMenu BorderThickness="0"
-                                                         Background="{StaticResource MainBackground}"
-                                                         Foreground="{StaticResource MainForeground}">
+                                            <ContextMenu>
                                                 <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
                                                           Command="{Binding PropertyServerTableViewModel.CommandAddNew}" />
                                             </ContextMenu>
@@ -112,8 +96,8 @@
                                 <TreeViewItem.ItemTemplate>
                                     <DataTemplate>
                                         <Button Content="{Binding PropertyServer.Name}"
-                                                Style="{StaticResource PanelButton}"
-                                                FontSize="16">
+                                                Style="{StaticResource BH4}"
+                                                ContextMenuService.Placement="Bottom">
                                             <Button.ContextMenu>
                                                 <ContextMenu>
                                                     <MenuItem Header="Open in new window"
@@ -124,20 +108,14 @@
                                     </DataTemplate>
                                 </TreeViewItem.ItemTemplate>
                             </TreeViewItem>
-                            <!--#endregion-->
                         </TreeViewItem>
-
-                        <TreeViewItem FontSize="24"
-                                      Foreground="{StaticResource MainForeground}"
-                                      ItemsSource="{Binding PropertyStuffTableViewModel.PropertyStaffViewModels}">
+                        <TreeViewItem ItemsSource="{Binding PropertyStuffTableViewModel.PropertyStaffViewModels}">
                             <TreeViewItem.Header>
                                 <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureStuff}"
-                                           ContextMenuService.Placement="Right">
+                                           Style="{StaticResource TH2}"
+                                           ContextMenuService.Placement="Bottom">
                                     <TextBlock.ContextMenu>
-                                        <ContextMenu BorderThickness="0"
-                                                     Background="{StaticResource MainBackground}"
-                                                     Foreground="{StaticResource MainForeground}"
-                                                     Placement="Right">
+                                        <ContextMenu>
                                             <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
                                                       Command="{Binding PropertyStuffTableViewModel.CommandAddNew}" />
                                         </ContextMenu>
@@ -146,7 +124,7 @@
                             </TreeViewItem.Header>
                             <TreeViewItem.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Style="{StaticResource PanelButton}">
+                                    <Button Style="{StaticResource BH4}">
                                         <Button.ContextMenu>
                                             <ContextMenu>
                                                 <MenuItem Header="Open in new window"
@@ -155,10 +133,8 @@
                                         </Button.ContextMenu>
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding PropertyStuff.PropertyFirstName}"
-                                                       FontSize="16"
                                                        Margin="0,0,4,0" />
-                                            <TextBlock Text="{Binding PropertyStuff.PropertySureName}"
-                                                       FontSize="16" />
+                                            <TextBlock Text="{Binding PropertyStuff.PropertySureName}"/>
                                         </StackPanel>
                                     </Button>
                                 </DataTemplate>
@@ -168,6 +144,5 @@
                 </DataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-        <!--#endregion-->
     </DockPanel>
 </UserControl>

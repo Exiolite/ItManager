@@ -7,23 +7,23 @@ namespace Models.Internal
 {
     public sealed class FileOperation : Model
     {
-        #region property CurentOpenedFileName
-        private string _currentOpenedFileName = string.Empty;
+        #region property CurrentFileName
+        private string _currentFileName = string.Empty;
 
-        public string CurrentOpenedFileName
+        public string PropCurrentFileName
         {
-            get { return _currentOpenedFileName; }
-            set { _currentOpenedFileName = value; NotifyPropertyChanged(nameof(CurrentOpenedFileName)); }
+            get { return _currentFileName; }
+            set { _currentFileName = value; NotifyPropertyChanged(nameof(PropCurrentFileName)); }
         }
         #endregion
 
         #region property RecentFileNames
-        private ObservableCollection<string> _recentFileNames = new ObservableCollection<string>();
+        private ObservableCollection<string> _openedFileNameCollection = new ObservableCollection<string>();
 
-        public ObservableCollection<string> RecentFileNames
+        public ObservableCollection<string> PropOpenedFileNameCollection
         {
-            get { return _recentFileNames; }
-            set { _recentFileNames = value; NotifyPropertyChanged(nameof(RecentFileNames)); }
+            get { return _openedFileNameCollection; }
+            set { _openedFileNameCollection = value; NotifyPropertyChanged(nameof(PropOpenedFileNameCollection)); }
         }
 
         #endregion
@@ -31,7 +31,7 @@ namespace Models.Internal
 
         public External.DataContext Write(External.DataContext dataContext)
         {
-            if (!string.IsNullOrEmpty(CurrentOpenedFileName))
+            if (!string.IsNullOrEmpty(PropCurrentFileName))
             {
                 var options = new JsonSerializerOptions
                 {
@@ -39,7 +39,7 @@ namespace Models.Internal
                     WriteIndented = true
                 };
                 var json = JsonSerializer.Serialize(dataContext, options);
-                File.WriteAllText(CurrentOpenedFileName, json);
+                File.WriteAllText(PropCurrentFileName, json);
                 return dataContext;
             }
             return dataContext;
@@ -47,9 +47,9 @@ namespace Models.Internal
 
         public External.DataContext Write(External.DataContext dataContext, string password)
         {
-            if (!string.IsNullOrEmpty(CurrentOpenedFileName))
+            if (!string.IsNullOrEmpty(PropCurrentFileName))
             {
-                Write(CurrentOpenedFileName, dataContext, password);
+                Write(PropCurrentFileName, dataContext, password);
                 return dataContext;
             }
             return dataContext;

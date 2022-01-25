@@ -8,12 +8,10 @@
         Title="AnyDeskWindow"
         Height="150"
         Width="400">
-    <StackPanel Margin="16">
+    <StackPanel Style="{StaticResource Margin}">
         <TextBox Text="{Binding PropertyAnyDesk.AnyDeskId}" 
-                 BorderThickness="0"
-                 FontSize="16"/>
+                 Style="{StaticResource TBH4}"/>
         <TextBox Text="{Binding PropertyAnyDesk.AnyDeskPassword}"
-                 BorderThickness="0"
-                 FontSize="16" />
+                 Style="{StaticResource TBH4}" />
     </StackPanel>
 </Window>

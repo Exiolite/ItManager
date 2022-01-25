@@ -11,7 +11,7 @@ namespace ViewModels.Internal
         #region property FileOperation
         private FileOperation _fileOperation;
 
-        public FileOperation FileOperation
+        public FileOperation PropFileOperation
         {
             get { return _fileOperation; }
             set { _fileOperation = value; }
@@ -21,17 +21,17 @@ namespace ViewModels.Internal
         #region property Password
         private string _password = "1234123412341234";
 
-        public string PropertyPassword
+        public string PropPassword
         {
             get { return _password; }
-            set { _password = value; NotifyPropertyChanged(nameof(PropertyPassword)); }
+            set { _password = value; NotifyPropertyChanged(nameof(PropPassword)); }
         }
 
         #endregion
 
         public FileViewModel()
         {
-            FileOperation = MainViewModel.Instance.InternalDataContext.FileOperation;
+            PropFileOperation = MainViewModel.Instance.InternalDataContext.FileOperation;
         }
 
         #region command FileNew
@@ -65,15 +65,15 @@ namespace ViewModels.Internal
         }
         private void FileOpenE(object obj)
         {
-            if (FileOperation.CurrentOpenedFileName == string.Empty) return;
+            if (PropFileOperation.PropCurrentFileName == string.Empty) return;
 
             var openFileDialog = new OpenFileDialog();
-            MainViewModel.Instance.ExternalDataContext = FileOperation.ReadIfExistOrNew(FileOperation.CurrentOpenedFileName, PropertyPassword);
-            if (!FileOperation.RecentFileNames.Contains(FileOperation.CurrentOpenedFileName))
+            MainViewModel.Instance.ExternalDataContext = PropFileOperation.ReadIfExistOrNew(PropFileOperation.PropCurrentFileName, PropPassword);
+            if (!PropFileOperation.PropOpenedFileNameCollection.Contains(PropFileOperation.PropCurrentFileName))
             {
-                FileOperation.RecentFileNames.Add(FileOperation.CurrentOpenedFileName);
+                PropFileOperation.PropOpenedFileNameCollection.Add(PropFileOperation.PropCurrentFileName);
             }
-            FileOperation.CurrentOpenedFileName = FileOperation.CurrentOpenedFileName;
+            PropFileOperation.PropCurrentFileName = PropFileOperation.PropCurrentFileName;
             CompanyTableViewModel.Instance.Reload();
         }
         private bool CFileOpen(object arg) => true;
@@ -94,14 +94,14 @@ namespace ViewModels.Internal
             var openFileDialog = new OpenFileDialog();
 
             Nullable<bool> result = openFileDialog.ShowDialog();
-            FileOperation.CurrentOpenedFileName = openFileDialog.FileName;
+            PropFileOperation.PropCurrentFileName = openFileDialog.FileName;
 
-            MainViewModel.Instance.ExternalDataContext = FileOperation.ReadIfExistOrNew(FileOperation.CurrentOpenedFileName, PropertyPassword);
-            if (!FileOperation.RecentFileNames.Contains(FileOperation.CurrentOpenedFileName))
+            MainViewModel.Instance.ExternalDataContext = PropFileOperation.ReadIfExistOrNew(PropFileOperation.PropCurrentFileName, PropPassword);
+            if (!PropFileOperation.PropOpenedFileNameCollection.Contains(PropFileOperation.PropCurrentFileName))
             {
-                FileOperation.RecentFileNames.Add(FileOperation.CurrentOpenedFileName);
+                PropFileOperation.PropOpenedFileNameCollection.Add(PropFileOperation.PropCurrentFileName);
             }
-            FileOperation.CurrentOpenedFileName = FileOperation.CurrentOpenedFileName;
+            PropFileOperation.PropCurrentFileName = PropFileOperation.PropCurrentFileName;
             CompanyTableViewModel.Instance.Reload();
         }
         private bool COpenAs(object arg) => true;
@@ -119,7 +119,7 @@ namespace ViewModels.Internal
         }
         private void FileSaveE(object obj)
         {
-            FileOperation.Write(MainViewModel.Instance.ExternalDataContext, PropertyPassword);
+            PropFileOperation.Write(MainViewModel.Instance.ExternalDataContext, PropPassword);
         }
         private bool CFileSave(object arg) => true;
         #endregion
@@ -138,13 +138,13 @@ namespace ViewModels.Internal
         {
             var saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
-                FileOperation.Write(saveFileDialog.FileName, MainViewModel.Instance.ExternalDataContext, PropertyPassword);
+                PropFileOperation.Write(saveFileDialog.FileName, MainViewModel.Instance.ExternalDataContext, PropPassword);
 
-            if (!FileOperation.RecentFileNames.Contains(saveFileDialog.FileName))
+            if (!PropFileOperation.PropOpenedFileNameCollection.Contains(saveFileDialog.FileName))
             {
-                FileOperation.RecentFileNames.Add(saveFileDialog.FileName);
+                PropFileOperation.PropOpenedFileNameCollection.Add(saveFileDialog.FileName);
             }
-            FileOperation.CurrentOpenedFileName = saveFileDialog.FileName;
+            PropFileOperation.PropCurrentFileName = saveFileDialog.FileName;
         }
         private bool CFileSaveAs(object arg) => true;
         #endregion

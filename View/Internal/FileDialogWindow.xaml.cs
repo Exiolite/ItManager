@@ -17,7 +17,7 @@ namespace View.Internal
             var listBox = (ListBox)sender;
             var viewModel = (FileViewModel)listBox.DataContext;
             var selectedItem = (string)listBox.SelectedItem;
-            viewModel.FileOperation.CurrentOpenedFileName = selectedItem;
+            viewModel.PropFileOperation.PropCurrentFileName = selectedItem;
         }
     }
 }

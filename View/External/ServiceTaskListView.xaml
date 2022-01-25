@@ -7,7 +7,7 @@
              mc:Ignorable="d">
     <StackPanel>
         <TextBlock Text="Service"
-                   FontSize="20">
+                   Style="{StaticResource TH3}">
             <TextBlock.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Add New Task"
@@ -16,8 +16,8 @@
             </TextBlock.ContextMenu>
         </TextBlock>
         <ListBox ItemsSource="{Binding PropertyServiceTaskViewModels}"
-                 BorderThickness="0"
-                 Background="{StaticResource Clear}">
+                 Background="{StaticResource Clear}"
+                 BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="2,-2,2,-2 "
@@ -30,10 +30,9 @@
                                   IsChecked="{Binding PropertyServiceTask.PropertyIsEnded}"
                                   VerticalAlignment="Center"
                                   Background="{StaticResource Clear}" />
-                        <TextBox Margin="0,0,0,2.35 "
+                        <TextBox 
                                  Text="{Binding PropertyServiceTask.PropertyName}"
-                                 FontSize="18.85"
-                                 BorderThickness="0"
+                                 Style="{StaticResource TBH3}"
                                  VerticalAlignment="Center"
                                  Background="{StaticResource Clear}" />
                     </StackPanel>

@@ -6,64 +6,236 @@
              xmlns:vme="clr-namespace:ViewModels.External;assembly=ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <!--#region ViewModels -->
         <vms:MainViewModel x:Key="MainViewModel" />
+
+        <vmi:FileViewModel x:Key="FileViewModel" />
 
         <vme:AnyDeskTableViewModel x:Key="AnyDeskTableViewModel" />
         <vme:AnyDeskViewModel x:Key="AnyDeskViewModel" />
+
         <vme:CompanyTableViewModel x:Key="CompanyTableViewModel" />
         <vme:CompanyViewModel x:Key="CompanyViewModel" />
+
         <vme:ComputerTableViewModel x:Key="ComputerTableViewModel" />
         <vme:ComputerViewModel x:Key="ComputerViewModel" />
+
         <vme:OSDescriptionTableViewModel x:Key="OSDescriptionTableViewModel" />
         <vme:OSDescriptionViewModel x:Key="OSDescriptionViewModel" />
+
         <vme:ServerTableViewModel x:Key="ServerTableViewModel" />
         <vme:ServerViewModel x:Key="ServerViewModel" />
+
         <vme:StuffTableViewModel x:Key="StuffTableViewModel" />
         <vme:StuffViewModel x:Key="StuffViewModel" />
-        
+
         <vme:ServiceTaskViewModel x:Key="ServiceTaskViewModel" />
         <vme:ServiceTaskTableViewModel x:Key="ServiceTaskTableViewModel" />
+        <!--#endregion-->
 
-        
-        
-        <vmi:FileViewModel x:Key="FileViewModel" />
+
+
 
         <SolidColorBrush x:Key="Clear"
                          Opacity="0" />
-
-
-        <SolidColorBrush x:Key="MainForeground"
+        <SolidColorBrush x:Key="MainColor"
                          Color="Black" />
         <SolidColorBrush x:Key="MainBackground"
                          Color="#ffffff" />
 
-        <SolidColorBrush x:Key="PanelBackground"
-                         Color="#e1e1e1" />
-        <SolidColorBrush x:Key="PanelDomainBackground"
-                         Color="#425053" />
-        <SolidColorBrush x:Key="PanelUsersBackground"
-                         Color="#424c53" />
-        <SolidColorBrush x:Key="PanelForeground"
-                         Color="#ffffff" />
-
-        <Style x:Key="PanelButton"
-               TargetType="Button">
-            <Setter Property="BorderThickness"
-                    Value="0" />
-            <Setter Property="Background"
-                    Value="{StaticResource Clear}" />
-            <Setter Property="Foreground"
-                    Value="{StaticResource MainForeground}" />
+        <Style x:Key="Margin"
+               TargetType="StackPanel">
+            <Setter Property="Margin"
+                    Value="8" />
         </Style>
 
-        <Style x:Key="MainTextBox"
+        <Style x:Key="TBH1"
                TargetType="TextBox">
             <Setter Property="Background"
                     Value="{StaticResource Clear}" />
             <Setter Property="Foreground"
-                    Value="{StaticResource MainForeground}" />
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="FontSize"
+                    Value="28" />
             <Setter Property="BorderThickness"
                     Value="0" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
         </Style>
+        <Style x:Key="TBH2"
+               TargetType="TextBox">
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="FontSize"
+                    Value="24" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="TBH3"
+               TargetType="TextBox">
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="TBH4"
+               TargetType="TextBox">
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="TBA"
+               TargetType="TextBox">
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="TH1"
+               TargetType="TextBlock">
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="FontSize"
+                    Value="28" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="TH2"
+               TargetType="TextBlock">
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="FontSize"
+                    Value="24" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="TH3"
+               TargetType="TextBlock">
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="TH4"
+               TargetType="TextBlock">
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="TA"
+               TargetType="TextBlock">
+            <Setter Property="Background"
+                    Value="{StaticResource Clear}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+
+        <Style x:Key="BH1"
+               TargetType="Button">
+            <Setter Property="Background"
+                    Value="{StaticResource MainBackground}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="FontSize"
+                    Value="28" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="BH2"
+               TargetType="Button">
+            <Setter Property="Background"
+                    Value="{StaticResource MainBackground}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="FontSize"
+                    Value="24" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="BH3"
+               TargetType="Button">
+            <Setter Property="Background"
+                    Value="{StaticResource MainBackground}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="BH4"
+               TargetType="Button">
+            <Setter Property="Background"
+                    Value="{StaticResource MainBackground}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+        <Style x:Key="BA"
+               TargetType="Button">
+            <Setter Property="Background"
+                    Value="{StaticResource MainBackground}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource MainColor}" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+
     </Application.Resources>
 </Application>

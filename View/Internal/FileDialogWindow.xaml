@@ -14,9 +14,8 @@
                     Margin="4">
             <StackPanel Margin="8">
                 <TextBlock Text="Recent opened"
-                           FontSize="20"
-                           Foreground="{StaticResource MainForeground}" />
-                <ListBox ItemsSource="{Binding FileOperation.RecentFileNames}"
+                           Style="{StaticResource TH3}"/>
+                <ListBox ItemsSource="{Binding PropFileOperation.PropOpenedFileNameCollection}"
                          Margin="1.8"
                          BorderThickness="0"
                          SelectionChanged="ListBox_SelectionChanged" />
@@ -30,44 +29,43 @@
                         Orientation="Horizontal">
                 <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileNew}"
                         Command="{Binding CmdFileNew}"
-                        Style="{StaticResource PanelButton}" />
+                        Style="{StaticResource BA}" 
+                        Margin="8,0,8,0"/>
                 <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpen}"
                         Command="{Binding CmdFileOpen}"
-                        Style="{StaticResource PanelButton}" />
+                        Style="{StaticResource BA}"
+                        Margin="8,0,8,0" />
                 <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpenAs}"
                         Command="{Binding CommandOpenAs}"
-                        Style="{StaticResource PanelButton}" />
+                        Style="{StaticResource BA}"
+                        Margin="8,0,8,0" />
                 <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSave}"
                         Command="{Binding CmdFileSave}"
-                        Style="{StaticResource PanelButton}" />
+                        Style="{StaticResource BA}"
+                        Margin="8,0,8,0" />
                 <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSaveAs}"
                         Command="{Binding CmdFileSaveAs}"
-                        Style="{StaticResource PanelButton}" />
+                        Style="{StaticResource BA}"
+                        Margin="8,0,8,0" />
                 <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSynchronizeWithServer}"
                         Command="{Binding CommandSynchronizeWithServer}"
-                        Style="{StaticResource PanelButton}" /> 
+                        Style="{StaticResource BA}"
+                        Margin="8,0,8,0" /> 
             </StackPanel>
             <StackPanel Margin="0,4,4,4">
                 <StackPanel DockPanel.Dock="Top"
                             Margin="8">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="File: "
-                                   FontSize="20"
-                                   Foreground="{StaticResource MainForeground}" />
-                        <TextBlock Text="{Binding FileOperation.CurrentOpenedFileName}"
-                                   FontSize="20"
-                                   VerticalAlignment="Bottom"/>
+                                   Style="{StaticResource TH3}"/>
+                        <TextBlock Text="{Binding PropFileOperation.PropCurrentFileName}"
+                                   Style="{StaticResource TH3}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Password: "
-                                   FontSize="20"
-                                   Foreground="{StaticResource MainForeground}" />
-                        <TextBox Text="{Binding PropertyPassword}"
-                                 Background="{StaticResource Clear}"
-                                 BorderThickness="0"
-                                 VerticalAlignment="Bottom"
-                                 FontSize="20"
-                                 FontFamily="TeamViewer15" />
+                                   Style="{StaticResource TH3}"/>
+                        <TextBox Text="{Binding PropPassword}"
+                                 Style="{StaticResource TBH3}"  />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
