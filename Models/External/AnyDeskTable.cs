@@ -7,50 +7,50 @@ namespace Models.External
         #region property Content
         private ObservableCollection<AnyDesk> _content = new ObservableCollection<AnyDesk>();
 
-        public ObservableCollection<AnyDesk> Content
+        public ObservableCollection<AnyDesk> PropContent
         {
             get { return _content; }
-            set { _content = value; NotifyPropertyChanged(nameof(Content)); }
+            set { _content = value; NotifyPropertyChanged(nameof(PropContent)); }
         }
         #endregion
 
         public AnyDesk AddNew(int computeId)
         {
-            var item = new AnyDesk() { ComputerId = computeId };
-            Content.Add(item);
-            item.Id = Content.IndexOf(item);
+            var item = new AnyDesk() { PropComputerId = computeId };
+            PropContent.Add(item);
+            item.PropId = PropContent.IndexOf(item);
             return item;
         }
 
         public AnyDesk GetById(int id)
         {
-            return Content.FirstOrDefault(x => x.Id == id);
+            return PropContent.FirstOrDefault(x => x.PropId == id);
         }
 
         public AnyDesk GetOrCreateByComputer(int id)
         {
-            var anyDesk = Content.FirstOrDefault(x => x.ComputerId == id);
-            if (anyDesk == null) return new AnyDesk() { ComputerId = id};
+            var anyDesk = PropContent.FirstOrDefault(x => x.PropComputerId == id);
+            if (anyDesk == null) return new AnyDesk() { PropComputerId = id};
             return anyDesk;
         }
 
         public AnyDesk Add(AnyDesk item)
         {
-            Content.Add(item);
+            PropContent.Add(item);
             return item;
         }
 
         public void Merge(AnyDesk item)
         {
-            if (Content.FirstOrDefault(i => i.Id == item.Id) != null)
-                Content.Remove(Content.FirstOrDefault(i => i.Id == item.Id));
-            Content.Add(item);
-            item.PropertyIsEdited = false;
+            if (PropContent.FirstOrDefault(i => i.PropId == item.PropId) != null)
+                PropContent.Remove(PropContent.FirstOrDefault(i => i.PropId == item.PropId));
+            PropContent.Add(item);
+            item.PropIsEdited = false;
         }
 
         public void Drop()
         {
-            Content.Clear();
+            PropContent.Clear();
         }
     }
 }

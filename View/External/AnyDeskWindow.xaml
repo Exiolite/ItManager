@@ -10,9 +10,9 @@
         WindowStartupLocation="CenterOwner"
         Width="400">
     <StackPanel Style="{StaticResource SPMargin}">
-        <TextBox Text="{Binding PropertyAnyDesk.AnyDeskId}" 
+        <TextBox Text="{Binding PropertyAnyDesk.PropAnyDeskId}" 
                  Style="{StaticResource TBH4}"/>
-        <TextBox Text="{Binding PropertyAnyDesk.AnyDeskPassword}"
+        <TextBox Text="{Binding PropertyAnyDesk.PropAnyDeskPassword}"
                  Style="{StaticResource TBH4}" />
     </StackPanel>
 </Window>

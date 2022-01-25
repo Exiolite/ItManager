@@ -29,8 +29,8 @@ namespace ViewModels.External
 
         public OSDescriptionViewModel(int computerId)
         {
-            PropertyOSDescription = MainViewModel.Instance.ExternalDataContext.OSDescriptionTable.AddNewItem();
-            PropertyOSDescription.ComputerId = computerId;
+            PropertyOSDescription = MainViewModel.Instance.ExternalDataContext.PropOSDescriptionTable.AddNewItem();
+            PropertyOSDescription.PropComputerId = computerId;
         }
     }
 }

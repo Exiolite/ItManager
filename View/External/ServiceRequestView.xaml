@@ -11,11 +11,11 @@
                 DataContext="{Binding PropertyServiceTask}">
         <StackPanel>
             <TextBox Style="{StaticResource TBH1}"
-                     Text="{Binding PropertyName}" />
+                     Text="{Binding PropName}" />
             <TextBox Style="{StaticResource TBH3}"
-                     Text="{Binding PropertyDescription}" />
-            <CheckBox IsChecked="{Binding PropertyIsStarted}" />
-            <CheckBox IsChecked="{Binding PropertyIsEnded}" />
+                     Text="{Binding PropDescription}" />
+            <CheckBox IsChecked="{Binding PropIsStarted}" />
+            <CheckBox IsChecked="{Binding PropIsEnded}" />
         </StackPanel>
     </StackPanel>
 </UserControl>

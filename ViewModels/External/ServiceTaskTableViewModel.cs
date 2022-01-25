@@ -72,7 +72,7 @@ namespace ViewModels.External
             PropertyId = id;
 
             PropertyServiceTaskViewModels = new ObservableCollection<ServiceTaskViewModel>();
-            foreach (var item in PropertyServiceTaskTable.Content.Where(s => s.PropertyTargetId == _id))
+            foreach (var item in PropertyServiceTaskTable.PropContent.Where(s => s.PropTargetId == _id))
             {
                 PropertyServiceTaskViewModels.Add(new ServiceTaskViewModel(item));
             }

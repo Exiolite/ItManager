@@ -25,7 +25,7 @@ namespace ViewModels.External
             await System.Threading.Tasks.Task.Delay(1);
 
             var path = @"C:\AnyDesk.exe";
-            var args = $"/C echo {PropertyAnyDesk.AnyDeskPassword} | {path} {PropertyAnyDesk.AnyDeskId} --with-password";
+            var args = $"/C echo {PropertyAnyDesk.PropAnyDeskPassword} | {path} {PropertyAnyDesk.PropAnyDeskId} --with-password";
 
             var startInfo = new ProcessStartInfo
             {
@@ -72,7 +72,7 @@ namespace ViewModels.External
 
         public AnyDeskViewModel(Computer computer)
         {
-            PropertyAnyDesk = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.GetOrCreateByComputer(computer.Id);
+            PropertyAnyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.GetOrCreateByComputer(computer.PropId);
         }
     }
 }

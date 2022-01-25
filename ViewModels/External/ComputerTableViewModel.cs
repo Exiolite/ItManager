@@ -57,7 +57,7 @@ namespace ViewModels.External
         {
             var computerViewModel = new ComputerViewModel(_companyId);
             computerViewModel.PropertyComputer.PropUsageType = Consts.ComputerTypeServer;
-            computerViewModel.PropertyComputer.Name = Consts.ServerName;
+            computerViewModel.PropertyComputer.PropName = Consts.ServerName;
             PropertyServerViewModels.Add(computerViewModel);
         }
         private bool CAddServer(object arg) => true;
@@ -86,7 +86,7 @@ namespace ViewModels.External
 
             PropertyComputerViewModels = new ObservableCollection<ComputerViewModel>();
             PropertyServerViewModels = new ObservableCollection<ComputerViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.ComputerTable.Content.Where(c => c.CompanyId == _companyId))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropComputerTable.PropContent.Where(c => c.PropCompanyId == _companyId))
             {
                 if (item.PropUsageType == Consts.ComputerTypePersonal) PropertyComputerViewModels.Add(new ComputerViewModel(item));
                 if (item.PropUsageType == Consts.ComputerTypeServer) PropertyServerViewModels.Add(new ComputerViewModel(item));

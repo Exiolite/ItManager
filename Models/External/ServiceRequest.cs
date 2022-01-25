@@ -2,57 +2,57 @@
 {
     public sealed class ServiceRequest : Model
     {
-        #region property CompanyId
+        #region PropCompanyId
         private int _companyId = -1;
 
         public int PropCompanyId
         {
             get { return _companyId; }
-            set { _companyId = value; NotifyPropertyChanged(nameof(PropCompanyId)); PropertyIsEdited = true; }
+            set { _companyId = value; NotifyPropertyChanged(nameof(PropCompanyId)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property Name
+        #region PropName
         private string _name = Consts.Request;
 
-        public string PropertyName
+        public string PropName
         {
             get { return _name; }
-            set { _name = value; NotifyPropertyChanged(nameof(PropertyName)); PropertyIsEdited = true; }
+            set { _name = value; NotifyPropertyChanged(nameof(PropName)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property Description
+        #region PropDescription
         private string _description = "Description";
 
-        public string PropertyDescription
+        public string PropDescription
         {
             get { return _description; }
-            set { _description = value; NotifyPropertyChanged(nameof(PropertyDescription)); PropertyIsEdited = true; }
+            set { _description = value; NotifyPropertyChanged(nameof(PropDescription)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property IsStarted
+        #region PropIsStarted
         private bool _isStarted;
 
-        public bool PropertyIsStarted
+        public bool PropIsStarted
         {
             get { return _isStarted; }
-            set { _isStarted = value; NotifyPropertyChanged(nameof(PropertyIsStarted)); PropertyIsEdited = true; }
+            set { _isStarted = value; NotifyPropertyChanged(nameof(PropIsStarted)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property IsEnded
+        #region PropIsEnded
         private bool _isEnded;
 
-        public bool PropertyIsEnded
+        public bool PropIsEnded
         {
             get { return _isEnded; }
-            set { _isEnded = value; NotifyPropertyChanged(nameof(PropertyIsEnded)); PropertyIsEdited = true; }
+            set { _isEnded = value; NotifyPropertyChanged(nameof(PropIsEnded)); PropIsEdited = true; }
         }
 
         #endregion

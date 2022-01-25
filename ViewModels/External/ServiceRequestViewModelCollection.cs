@@ -63,7 +63,7 @@ namespace ViewModels.External
             PropServiceReuqestTable = MainViewModel.Instance.ExternalDataContext.PropServiceRequestTable;
 
             PropServiceRequestViewModelCollection = new ObservableCollection<ServiceRequestViewModel>();
-            foreach (var item in PropServiceReuqestTable.Content.Where(s => s.PropCompanyId == targetId))
+            foreach (var item in PropServiceReuqestTable.PropContent.Where(s => s.PropCompanyId == targetId))
             {
                 PropServiceRequestViewModelCollection.Add(new ServiceRequestViewModel(item));
             }

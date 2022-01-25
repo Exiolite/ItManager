@@ -57,9 +57,9 @@ namespace ViewModels.External
         {
             _company = company;
 
-            PropertyComputerTableViewModel = new ComputerTableViewModel(_company.Id);
+            PropertyComputerTableViewModel = new ComputerTableViewModel(_company.PropId);
             PropertyStuffTableViewModel = new UserTableViewModel(this);
-            PropServiceRequestViewModelCollection = new ServiceRequestViewModelCollection(_company.Id);
+            PropServiceRequestViewModelCollection = new ServiceRequestViewModelCollection(_company.PropId);
         }
     }
 }

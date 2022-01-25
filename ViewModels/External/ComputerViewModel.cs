@@ -80,11 +80,11 @@ namespace ViewModels.External
 
         public ComputerViewModel(Computer computer)
         {
-            var anyDesk = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.GetById(computer.Id);
+            var anyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.GetById(computer.PropId);
 
             PropertyComputer = computer;
             PropRemoteViewModel = new RemoteViewModel(computer);
-            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.ComputerServiceTaskTable, PropertyComputer.Id);
+            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable, PropertyComputer.PropId);
             PropComputerUsageTypeCollection = new ObservableCollection<string>
             {
                 Consts.ComputerTypePersonal,
@@ -95,14 +95,14 @@ namespace ViewModels.External
 
         public ComputerViewModel(int companyId)
         {
-            var computer = MainViewModel.Instance.ExternalDataContext.ComputerTable.AddNewItem();
-            var anyDesk = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.AddNew(computer.Id);
-            var computerServiceTable = MainViewModel.Instance.ExternalDataContext.ComputerServiceTaskTable;
+            var computer = MainViewModel.Instance.ExternalDataContext.PropComputerTable.AddNewItem();
+            var anyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.AddNew(computer.PropId);
+            var computerServiceTable = MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable;
 
             PropertyComputer = computer;
-            PropertyComputer.CompanyId = companyId;
+            PropertyComputer.PropCompanyId = companyId;
             PropRemoteViewModel = new RemoteViewModel(computer);
-            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(computerServiceTable, PropertyComputer.Id);
+            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(computerServiceTable, PropertyComputer.PropId);
             PropComputerUsageTypeCollection = new ObservableCollection<string>
             {
                 Consts.ComputerTypePersonal,

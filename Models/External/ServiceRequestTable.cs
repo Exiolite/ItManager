@@ -4,41 +4,41 @@ namespace Models.External
 {
     public sealed class ServiceRequestTable : Internal.Model
     {
-        #region property Companies
+        #region PropContent
         private ObservableCollection<ServiceRequest> _content = new ObservableCollection<ServiceRequest>();
 
-        public ObservableCollection<ServiceRequest> Content
+        public ObservableCollection<ServiceRequest> PropContent
         {
             get { return _content; }
-            set { _content = value; NotifyPropertyChanged(nameof(Content)); }
+            set { _content = value; NotifyPropertyChanged(nameof(PropContent)); }
         }
         #endregion
 
         public ServiceRequest AddAsCompany(int targetId)
         {
             var item = new ServiceRequest();
-            Content.Add(item);
-            item.Id = Content.IndexOf(item);
+            PropContent.Add(item);
+            item.PropId = PropContent.IndexOf(item);
             item.PropCompanyId = targetId;
             return item;
         }
 
         public ServiceRequest GetByCompanyId(int id)
         {
-            return Content.FirstOrDefault(x => x.PropCompanyId == id);
+            return PropContent.FirstOrDefault(x => x.PropCompanyId == id);
         }
 
         public void Merge(ServiceRequest item)
         {
-            if (Content.FirstOrDefault(i => i.Id == item.Id) != null)
-                Content.Remove(Content.FirstOrDefault(i => i.Id == item.Id));
-            Content.Add(item);
-            item.PropertyIsEdited = false;
+            if (PropContent.FirstOrDefault(i => i.PropId == item.PropId) != null)
+                PropContent.Remove(PropContent.FirstOrDefault(i => i.PropId == item.PropId));
+            PropContent.Add(item);
+            item.PropIsEdited = false;
         }
 
         public void Drop()
         {
-            Content.Clear();
+            PropContent.Clear();
         }
     }
 }

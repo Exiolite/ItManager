@@ -51,7 +51,7 @@ namespace ViewModels.External
 
 
             PropertyOSDescriptionViewModels = new ObservableCollection<OSDescriptionViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.OSDescriptionTable.Content.Where(ad => ad.ComputerId == _computerId))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropOSDescriptionTable.Content.Where(ad => ad.PropComputerId == _computerId))
             {
                 PropertyOSDescriptionViewModels.Add(new OSDescriptionViewModel(item));
             }

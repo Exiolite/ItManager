@@ -19,7 +19,7 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            var company = MainViewModel.Instance.ExternalDataContext.CompanyTable.AddNewCompany();
+            var company = MainViewModel.Instance.ExternalDataContext.PropCompanyTable.AddNewCompany();
             var companyViewModel = new CompanyViewModel(company);
 
             PropertyCompanyViewModels.Add(companyViewModel);
@@ -49,7 +49,7 @@ namespace ViewModels.External
         public void Reload()
         {
             PropertyCompanyViewModels.Clear();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.CompanyTable.Content)
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropCompanyTable.PropContent)
             {
                 PropertyCompanyViewModels.Add(new CompanyViewModel(item));
             }

@@ -38,7 +38,7 @@
                 <DataTemplate>
                     <TreeViewItem>
                         <TreeViewItem.Header>
-                            <TextBlock Text="{Binding PropertyCompany.PropertyName}"
+                            <TextBlock Text="{Binding PropertyCompany.PropName}"
                                        Style="{StaticResource TH1}"
                                        ContextMenuService.Placement="Bottom">
                                 <TextBlock.ContextMenu>
@@ -71,7 +71,7 @@
                                 </TreeViewItem.Header>
                                 <TreeViewItem.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding PropertyComputer.Name}"
+                                        <Button Content="{Binding PropertyComputer.PropName}"
                                                 Style="{StaticResource BH4}"
                                                 ContextMenuService.Placement="Bottom"
                                                 Click="ClickOpenComputerInNewWindow">
@@ -94,7 +94,7 @@
                                 </TreeViewItem.Header>
                                 <TreeViewItem.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding PropertyComputer.Name}"
+                                        <Button Content="{Binding PropertyComputer.PropName}"
                                                 Style="{StaticResource BH4}"
                                                 Click="ClickOpenComputerInNewWindow">
                                         </Button>
@@ -102,7 +102,7 @@
                                 </TreeViewItem.ItemTemplate>
                             </TreeViewItem>
                         </TreeViewItem>
-                        <TreeViewItem ItemsSource="{Binding PropertyStuffTableViewModel.PropertyStaffViewModels}">
+                        <TreeViewItem ItemsSource="{Binding PropertyStuffTableViewModel.PropUserViewModelCollection}">
                             <TreeViewItem.Header>
                                 <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureStuff}"
                                            Style="{StaticResource TH2}"
@@ -120,9 +120,9 @@
                                     <Button Style="{StaticResource BH4}"
                                             Click="ClickOpenUserInNewWindow">
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding PropertyStuff.PropertyFirstName}"
+                                            <TextBlock Text="{Binding PropertyStuff.PropFirstName}"
                                                        Margin="0,0,4,0" />
-                                            <TextBlock Text="{Binding PropertyStuff.PropertySureName}" />
+                                            <TextBlock Text="{Binding PropertyStuff.PropSureName}" />
                                         </StackPanel>
                                     </Button>
                                 </DataTemplate>
@@ -146,7 +146,7 @@
                                     <Button Style="{StaticResource BH4}"
                                             Click="ClickOpenServiceRequestInNewWindow">
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding PropertyServiceTask.PropertyName}" />
+                                            <TextBlock Text="{Binding PropertyServiceTask.PropName}" />
                                         </StackPanel>
                                     </Button>
                                 </DataTemplate>

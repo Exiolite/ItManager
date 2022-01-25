@@ -29,15 +29,15 @@
                     <StackPanel Margin="2,-2,2,-2 "
                                 Orientation="Horizontal"
                                 VerticalAlignment="Center">
-                        <CheckBox IsChecked="{Binding PropertyServiceTask.PropertyIsStarted}"
+                        <CheckBox IsChecked="{Binding PropertyServiceTask.PropIsStarted}"
                                   VerticalAlignment="Center"
                                   Background="{StaticResource Clear}" />
                         <CheckBox HorizontalAlignment="Right"
-                                  IsChecked="{Binding PropertyServiceTask.PropertyIsEnded}"
+                                  IsChecked="{Binding PropertyServiceTask.PropIsEnded}"
                                   VerticalAlignment="Center"
                                   Background="{StaticResource Clear}" />
                         <TextBox 
-                                 Text="{Binding PropertyServiceTask.PropertyName}"
+                                 Text="{Binding PropertyServiceTask.PropName}"
                                  Style="{StaticResource TBH3}"
                                  VerticalAlignment="Center"
                                  Background="{StaticResource Clear}" />
