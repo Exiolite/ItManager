@@ -64,14 +64,28 @@ namespace ViewModels.External
 
         #endregion
 
+        #region PropComputerViewModel
+        private ComputerViewModel _computerViewModel;
+
+        public ComputerViewModel PropComputerViewModel
+        {
+            get { return _computerViewModel; }
+            set { _computerViewModel = value; NotifyPropertyChanged(nameof(PropComputerViewModel)); }
+        }
+
+        #endregion
+
+        public string PropTitle { get => "AnyDesk Editor: "; }
+
         public AnyDeskViewModel()
         {
 
         }
 
-        public AnyDeskViewModel(Computer computer)
+        public AnyDeskViewModel(ComputerViewModel computerViewModel)
         {
-            PropAnyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.GetOrCreateByComputer(computer.PropId);
+            PropComputerViewModel = computerViewModel;
+            PropAnyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.GetOrCreateByComputer(computerViewModel.PropComputer.PropId);
         }
     }
 }

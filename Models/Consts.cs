@@ -23,12 +23,12 @@ namespace Models
         public const string CompanyName = "Новая Компания";
         public const string Description = "Описание";
         public const string DomainName = "domain";
-        public const string ComputerName = "PC";
+        public const string ComputerName = "PC-";
         public const string ServerName = "Новый Сервер";
         public const string StaffSureName = "Фамилия";
         public const string StaffFirstName = "Имя";
         public const string StaffSecondName = "Отчество";
-        public const string UserPhoneNumber= "+79990001122";
+        public const string UserPhoneNumber= "+7 999 000 1122";
         #endregion
 
         #region View.Localization

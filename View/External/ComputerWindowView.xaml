@@ -6,13 +6,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View.External"
         mc:Ignorable="d"
-        Title="{Binding PropComputer.PropName}"
         Width="400"
         ResizeMode="NoResize">
+    <Window.Title>
+        <MultiBinding StringFormat=" {0}\{1}">
+            <Binding Path="PropCompanyViewModel.PropCompany.PropDomainName" />
+            <Binding Path="PropComputer.PropName" />
+        </MultiBinding>
+    </Window.Title>
     <StackPanel>
         <StackPanel Style="{StaticResource SPMarginBlock}">
             <StackPanel Style="{StaticResource SPMargin}">
-                <TextBox Text="{Binding PropComputer.PropName}"
+                <TextBox Text="{Binding PropComputer.PropName, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource TBH1}" />
                 <TextBox Text="{Binding PropComputer.PropDescription}"
                          Style="{StaticResource TBA}"

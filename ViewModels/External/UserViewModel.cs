@@ -64,7 +64,7 @@ namespace ViewModels.External
             PropUser = user;
 
             var attachedComputer = MainViewModel.Instance.ExternalDataContext.PropComputerTable.PropContent.FirstOrDefault(c => c.PropId == PropUser.PropComputerId);
-            if (attachedComputer != null) PropComputerViewModel = new ComputerViewModel(attachedComputer, PropCompanyViewModel.PropComputerTableViewModel);
+            if (attachedComputer != null) PropComputerViewModel = new ComputerViewModel(attachedComputer, PropCompanyViewModel.PropComputerTableViewModel, PropCompanyViewModel);
         }
 
         public UserViewModel(ComputerViewModel computerViewModel)

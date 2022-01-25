@@ -57,7 +57,7 @@ namespace ViewModels.External
         {
             _company = company;
 
-            PropComputerTableViewModel = new ComputerTableViewModel(_company.PropId);
+            PropComputerTableViewModel = new ComputerTableViewModel(this);
             PropUserTableViewModel = new UserTableViewModel(this);
             PropServiceRequestTableViewModel = new ServiceRequestTableViewModel(_company.PropId);
         }

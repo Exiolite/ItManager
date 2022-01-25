@@ -1,11 +1,7 @@
-﻿using Models.External;
-
-namespace ViewModels.External
+﻿namespace ViewModels.External
 {
     public class RemoteViewModel : ViewModel
     {
-        public Computer AttachedComputer { get; set; }
-
         #region PropAnyDeskViewModel
         private AnyDeskViewModel _remoteViewModelCollection;
 
@@ -17,15 +13,26 @@ namespace ViewModels.External
 
         #endregion
 
+        #region PropComputerViewModel
+        private ComputerViewModel _computerViewModel;
+
+        public ComputerViewModel PropComputerViewModel
+        {
+            get { return _computerViewModel; }
+            set { _computerViewModel = value; NotifyPropertyChanged(nameof(PropComputerViewModel)); }
+        }
+
+        #endregion
+
         public RemoteViewModel()
         {
             
         }
 
-        public RemoteViewModel(Computer computer)
+        public RemoteViewModel(ComputerViewModel computerViewModel)
         {
-            AttachedComputer = computer;
-            PropAnyDeskViewModel = new AnyDeskViewModel(computer);
+            PropComputerViewModel = computerViewModel;
+            PropAnyDeskViewModel = new AnyDeskViewModel(computerViewModel);
         }
     }
 }
