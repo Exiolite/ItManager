@@ -16,7 +16,7 @@
                 <TextBlock.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                                  Command="{Binding CMDAddNew}" />
+                                  Command="{Binding CMDAdd}" />
                     </ContextMenu>
                 </TextBlock.ContextMenu>
             </TextBlock>
@@ -110,7 +110,7 @@
                                     <TextBlock.ContextMenu>
                                         <ContextMenu>
                                             <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                                                      Command="{Binding PropStuffTableViewModel.CMDAddNew}" />
+                                                      Command="{Binding PropUserTableViewModel.CMDAdd}" />
                                         </ContextMenu>
                                     </TextBlock.ContextMenu>
                                 </TextBlock>
@@ -128,15 +128,15 @@
                                 </DataTemplate>
                             </TreeViewItem.ItemTemplate>
                         </TreeViewItem>
-                        <TreeViewItem ItemsSource="{Binding PropServiceRequestViewModelCollection.PropServiceRequestViewModelCollection}">
+                        <TreeViewItem ItemsSource="{Binding PropServiceRequestTableViewModel.PropServiceRequestViewModelCollection}">
                             <TreeViewItem.Header>
-                                <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureStuff}"
+                                <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.Requests}"
                                            Style="{StaticResource TH2}"
                                            ContextMenuService.Placement="Bottom">
                                     <TextBlock.ContextMenu>
                                         <ContextMenu>
                                             <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                                                      Command="{Binding PropServiceRequestViewModelCollection.CommandAddNew}" />
+                                                      Command="{Binding PropServiceRequestTableViewModel.CMDAdd}" />
                                         </ContextMenu>
                                     </TextBlock.ContextMenu>
                                 </TextBlock>

@@ -56,5 +56,16 @@
         }
 
         #endregion
+
+        #region PropCreationDate
+        private DateTime _creationDate = DateTime.Now;
+
+        public DateTime PropCreationDate
+        {
+            get { return _creationDate; }
+            set { _creationDate = value; NotifyPropertyChanged(nameof(PropCreationDate)); }
+        }
+
+        #endregion
     }
 }

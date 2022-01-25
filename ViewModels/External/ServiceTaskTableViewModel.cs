@@ -20,19 +20,19 @@ namespace ViewModels.External
         private void AddE(object obj)
         {
             var serviceTask = PropertyServiceTaskTable.Add(PropertyId);
-            PropertyServiceTaskViewModels.Add(new ServiceTaskViewModel(serviceTask));
+            PropServiceTaskViewModels.Add(new ServiceTaskViewModel(serviceTask));
         }
         private bool CAdd(object arg) => true;
         #endregion
 
 
-        #region property ServiceTaskViewModels
+        #region PropServiceTaskViewModels
         private ObservableCollection<ServiceTaskViewModel> _serviceTaskViewModels;
 
-        public ObservableCollection<ServiceTaskViewModel> PropertyServiceTaskViewModels
+        public ObservableCollection<ServiceTaskViewModel> PropServiceTaskViewModels
         {
             get { return _serviceTaskViewModels; }
-            set { _serviceTaskViewModels = value; NotifyPropertyChanged(nameof(PropertyServiceTaskViewModels)); }
+            set { _serviceTaskViewModels = value; NotifyPropertyChanged(nameof(PropServiceTaskViewModels)); }
         }
 
         #endregion
@@ -71,10 +71,10 @@ namespace ViewModels.External
             PropertyServiceTaskTable = taskTable;
             PropertyId = id;
 
-            PropertyServiceTaskViewModels = new ObservableCollection<ServiceTaskViewModel>();
+            PropServiceTaskViewModels = new ObservableCollection<ServiceTaskViewModel>();
             foreach (var item in PropertyServiceTaskTable.PropContent.Where(s => s.PropTargetId == _id))
             {
-                PropertyServiceTaskViewModels.Add(new ServiceTaskViewModel(item));
+                PropServiceTaskViewModels.Add(new ServiceTaskViewModel(item));
             }
         }
     }

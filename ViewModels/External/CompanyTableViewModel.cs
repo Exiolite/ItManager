@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace ViewModels.External
@@ -49,6 +50,7 @@ namespace ViewModels.External
         public void Reload()
         {
             PropCompanyViewModelCollection.Clear();
+
             foreach (var item in MainViewModel.Instance.ExternalDataContext.PropCompanyTable.PropContent)
             {
                 PropCompanyViewModelCollection.Add(new CompanyViewModel(item));

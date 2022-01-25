@@ -1,7 +1,6 @@
 ﻿using Models;
 using Models.External;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace ViewModels.External
 {
@@ -15,6 +14,17 @@ namespace ViewModels.External
             get { return _computer; }
             set { _computer = value; NotifyPropertyChanged(nameof(PropComputer)); }
         }
+        #endregion
+
+        #region PropComputerTableViewModel
+        private ComputerTableViewModel _computerTableViewModel;
+
+        public ComputerTableViewModel PropComputerTableViewModel
+        {
+            get { return _computerTableViewModel; }
+            set { _computerTableViewModel = value; NotifyPropertyChanged(nameof(PropComputerTableViewModel)); }
+        }
+
         #endregion
 
         #region PropRemoteViewModel
@@ -50,6 +60,19 @@ namespace ViewModels.External
 
         #endregion
 
+        #region PropUserViewModel
+        private UserViewModel _userViewModel;
+
+        public UserViewModel PropUserViewModel
+        {
+            get { return _userViewModel; }
+            set { _userViewModel = value; NotifyPropertyChanged(nameof(PropUserViewModel)); }
+        }
+
+        #endregion
+
+
+
         public ComputerViewModel()
         {
             PropComputerUsageTypeCollection = new ObservableCollection<string>
@@ -60,13 +83,14 @@ namespace ViewModels.External
             };
         }
 
-        public ComputerViewModel(Computer computer)
+        public ComputerViewModel(Computer computer, ComputerTableViewModel computerTableViewModel)
         {
-            var anyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.GetById(computer.PropId);
-
+            PropComputerTableViewModel = computerTableViewModel;
             PropComputer = computer;
             PropRemoteViewModel = new RemoteViewModel(computer);
             PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable, PropComputer.PropId);
+            PropUserViewModel = new UserViewModel(this);
+
             PropComputerUsageTypeCollection = new ObservableCollection<string>
             {
                 Consts.ComputerTypePersonal,

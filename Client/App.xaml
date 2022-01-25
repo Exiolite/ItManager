@@ -49,6 +49,9 @@
                          Color="#779ea4" />
         <SolidColorBrush x:Key="HService"
                          Color="#dac584" />
+        <SolidColorBrush x:Key="HAttachedUser"
+                         Color="#b6d7a8" />
+
 
         <Style x:Key="SPMargin"
                TargetType="StackPanel">
@@ -68,7 +71,17 @@
         <Style x:Key="DPMargin"
                TargetType="DockPanel">
             <Setter Property="Margin"
-                    Value="8" />
+                    Value="8,0,8,8" />
+        </Style>
+        <Style x:Key="DPMarginBlock"
+               TargetType="DockPanel">
+            <Setter Property="Margin"
+                    Value="0,0,0,8" />
+        </Style>
+        <Style x:Key="DPMarginHeader"
+               TargetType="DockPanel">
+            <Setter Property="Margin"
+                    Value="0,0,0,8" />
         </Style>
 
         <Style x:Key="TBH1"

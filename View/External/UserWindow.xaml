@@ -9,7 +9,36 @@
         Title="StuffWindow"
         Height="500"
         Width="400">
-    <StackPanel Style="{StaticResource SPMargin}">
-        <local:UserShortContactView DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
+    <StackPanel>
+        <StackPanel Style="{StaticResource SPMargin}">
+            <local:UserFullView DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Style="{StaticResource SPMarginHeader}">
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBlock Text="Attached Computer"
+                               Style="{StaticResource TH4}"
+                               Foreground="{StaticResource MainBackground}"
+                               Background="{StaticResource HService}">
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <DockPanel Style="{StaticResource DPMargin}">
+                <ComboBox ItemsSource="{Binding PropCompanyViewModel.PropComputerTableViewModel.PropComputerViewModelCollection}"
+                          SelectedItem="{Binding PropComputerViewModel}"
+                          BorderThickness="0"
+                          Width="75"
+                          Height="16"
+                          DockPanel.Dock="Right">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding PropComputer.PropName}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Text="{Binding PropComputerViewModel.PropComputer.PropName}" 
+                           Style="{StaticResource TH4}"/>
+            </DockPanel>
+        </StackPanel>
     </StackPanel>
 </Window>

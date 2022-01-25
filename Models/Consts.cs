@@ -54,6 +54,7 @@ namespace Models
         public static string CompanyDomain { get => "Домен"; }
         public static string CompanyDomainName { get => "Доменное имя: "; }
         public static string Request { get => "Запрос"; }
+        public static string Requests { get => "Запросы"; }
 
         #endregion
     }

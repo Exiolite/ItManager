@@ -10,6 +10,7 @@
     <StackPanel Style="{StaticResource SPMargin}"
                 DataContext="{Binding PropServiceTask}">
         <StackPanel>
+            <TextBlock Text="{Binding PropCreationDate}" />
             <TextBox Style="{StaticResource TBH1}"
                      Text="{Binding PropName}" />
             <TextBox Style="{StaticResource TBH3}"
