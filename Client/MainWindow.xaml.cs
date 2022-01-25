@@ -8,7 +8,6 @@ namespace Client
         public MainWindow()
         {
             DataContext = new MainViewModel();
-            InitializeComponent();
         }
     }
 }

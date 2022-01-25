@@ -9,5 +9,7 @@
         Title="StuffWindow"
         Height="450"
         Width="800">
-    <local:StuffShortContactView DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
+    <StackPanel Style="{StaticResource SPMargin}">
+        <local:StuffShortContactView DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
+    </StackPanel>
 </Window>

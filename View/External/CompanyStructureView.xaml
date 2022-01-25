@@ -134,7 +134,8 @@
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding PropertyStuff.PropertyFirstName}"
                                                        Margin="0,0,4,0" />
-                                            <TextBlock Text="{Binding PropertyStuff.PropertySureName}"/>
+                                            <TextBlock Text="{Binding PropertyStuff.PropertySureName}"
+                                                       Style="{StaticResource TH4}" />
                                         </StackPanel>
                                     </Button>
                                 </DataTemplate>

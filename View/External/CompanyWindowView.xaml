@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Width="400">
-    <StackPanel Style="{StaticResource Margin}">
+    <StackPanel Style="{StaticResource SPMargin}">
         <StackPanel>
             <TextBox Text="{Binding PropertyCompany.PropertyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Style="{StaticResource TBH1}" />

@@ -10,36 +10,31 @@
         Width="400"
         ResizeMode="NoResize">
     <StackPanel>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                <Button Content="AnyDesk"
-                        Style="{StaticResource BA}"
-                        Command="{Binding PropertyAnyDeskViewModel.ConnectViaAnyDeskCommand}"
-                        MouseRightButtonDown="Button_AnyDeskEdit"
-                        Background="#ff0000"
-                        Foreground="{StaticResource MainBackground}"
-                        FontWeight="Medium"
-                        Padding="4"/>
-                <Button Content="TeamViewer"
-                        Style="{StaticResource BA}"
-                        Background="#4a89c2"
-                        Foreground="{StaticResource MainBackground}"
-                        FontWeight="Medium"
-                        Padding="4" />
+        <Menu Background="{StaticResource Clear}">
+            <MenuItem Header="AnyDesk"
+                      Command="{Binding PropertyAnyDeskViewModel.ConnectViaAnyDeskCommand}"
+                      MouseRightButtonDown="Button_AnyDeskEdit"
+                      FontSize="16"
+                      Background="#ff0000" 
+                      Foreground="{StaticResource MainBackground}"
+                      BorderThickness="0"/>
+            <MenuItem Header="TeamViewer"
+                      FontSize="16"
+                      Background="#4a89c2"
+                      Foreground="{StaticResource MainBackground}"
+                      BorderThickness="0" />
+        </Menu>
+        <StackPanel Style="{StaticResource SPMargin}">
+            <!--#region ComputerDescription -->
+            <StackPanel>
+                <TextBox Text="{Binding PropertyComputer.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource TBH1}" />
+                <TextBox Text="{Binding PropertyComputer.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource TBA}"
+                         TextWrapping="Wrap" />
             </StackPanel>
-        </StackPanel>        
-    <StackPanel Style="{StaticResource Margin}">
-        <!--#region ComputerDescription -->
-        <StackPanel>
-            <TextBox Text="{Binding PropertyComputer.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Style="{StaticResource TBH1}" />
-            <TextBox Text="{Binding PropertyComputer.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Style="{StaticResource TBA}"
-                     TextWrapping="Wrap" />
+            <!--#endregion-->
+            <local:ServiceTaskListView DataContext="{Binding PropertyServiceTaskTableViewModel}" />
         </StackPanel>
-        <!--#endregion-->
-        <local:ServiceTaskListView DataContext="{Binding PropertyServiceTaskTableViewModel}" />
-    </StackPanel>
     </StackPanel>
 </Window>

@@ -10,25 +10,22 @@
         Width="400"
         ResizeMode="NoResize">
     <StackPanel>
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Left"
-                    Background="AliceBlue">
-            <Button Content="RDP"
-                    Style="{StaticResource BA}"
-                    Background="#5f9597"
-                    Foreground="{StaticResource MainBackground}"
-                    FontWeight="Medium"
-                    Padding="4" />
-        </StackPanel>        
-     <StackPanel Style="{StaticResource Margin}">
-        <StackPanel DataContext="{Binding PropertyServer}">
-            <TextBox Text="{Binding Name}"
-                     Style="{StaticResource TBH1}" />
-            <TextBox Text="{Binding Description}"
-                     Style="{StaticResource TBA}"
-                     TextWrapping="Wrap" />
+        <Menu Background="{StaticResource Clear}">
+            <MenuItem Header="RDP"
+                      FontSize="16"
+                      Background="#5f9597"
+                      Foreground="{StaticResource MainBackground}"
+                      BorderThickness="0"/>
+        </Menu>
+        <StackPanel Style="{StaticResource SPMargin}">
+            <StackPanel DataContext="{Binding PropertyServer}">
+                <TextBox Text="{Binding Name}"
+                         Style="{StaticResource TBH1}" />
+                <TextBox Text="{Binding Description}"
+                         Style="{StaticResource TBA}"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+            <local:ServiceTaskListView DataContext="{Binding PropertyServiceTaskTableViewModel}" />
         </StackPanel>
-        <local:ServiceTaskListView DataContext="{Binding PropertyServiceTaskTableViewModel}" />
-    </StackPanel>
     </StackPanel>
 </Window>
