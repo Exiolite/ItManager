@@ -1,0 +1,58 @@
+﻿<Window DataContext="{Binding Source={StaticResource MainViewModel}, Path=PropFileViewModel}"
+        x:Class="View.Internal.FileDialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="File Dialog"
+        WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <StackPanel Style="{StaticResource SPMargin}"
+                    DockPanel.Dock="Bottom"
+                    Orientation="Horizontal">
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileNew}"
+                    Command="{Binding CmdFileNew}"
+                    Style="{StaticResource BA}" />
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpen}"
+                    Command="{Binding CmdFileOpen}"
+                    Style="{StaticResource BA}" />
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpenAs}"
+                    Command="{Binding CommandOpenAs}"
+                    Style="{StaticResource BA}" />
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSave}"
+                    Command="{Binding CmdFileSave}"
+                    Style="{StaticResource BA}" />
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSaveAs}"
+                    Command="{Binding CmdFileSaveAs}"
+                    Style="{StaticResource BA}" />
+            <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSynchronizeWithServer}"
+                    Command="{Binding CommandSynchronizeWithServer}"
+                    Style="{StaticResource BA}" />
+        </StackPanel>
+        <StackPanel Style="{StaticResource SPMargin}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="File: "
+                           Style="{StaticResource TH3}" />
+                <TextBox Text="{Binding PropFileOperation.PropCurrentFileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource TBH3}">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Return"
+                                    Command="{Binding CmdFileOpen}" />
+                    </TextBox.InputBindings>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Password: "
+                           Style="{StaticResource TH3}" />
+                <TextBox Text="{Binding PropPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource TBH3}">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Return"
+                                    Command="{Binding CmdFileOpen}" />
+                    </TextBox.InputBindings>
+                </TextBox>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>
