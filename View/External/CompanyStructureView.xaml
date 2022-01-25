@@ -1,0 +1,136 @@
+﻿<UserControl DataContext="{Binding Source={StaticResource CompanyTableViewModel}}"
+             x:Class="View.External.CompanyStructureView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <DockPanel Background="{StaticResource MainBackground}">
+        <StackPanel HorizontalAlignment="Left"
+                    DockPanel.Dock="Top"
+                    Style="{StaticResource SPMarginHeader}">
+            <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureCompanies}"
+                       Style="{StaticResource TH1}"
+                       Foreground="{StaticResource MainBackground}"
+                       Background="{StaticResource MainColor2}">
+                <TextBlock.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
+                                  Command="{Binding CommandAddNew}" />
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
+            </TextBlock>
+        </StackPanel>
+        <TreeView ItemsSource="{Binding PropertyCompanyViewModels}"
+                  Background="{StaticResource Clear}"
+                  BorderThickness="0">
+            <TreeView.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                                 Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                                 Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                                 Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                                 Color="Black" />
+            </TreeView.Resources>
+            <TreeView.ItemTemplate>
+                <DataTemplate>
+                    <TreeViewItem>
+                        <TreeViewItem.Header>
+                            <TextBlock Text="{Binding PropertyCompany.PropertyName}"
+                                       Style="{StaticResource TH1}"
+                                       ContextMenuService.Placement="Bottom">
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuOpenAsNewWindow}"
+                                                  Click="ClickOpenCompanyInNewWindow" />
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
+                        </TreeViewItem.Header>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureDevices}"
+                                           Style="{StaticResource TH2}"
+                                           ContextMenuService.Placement="Bottom">
+                                </TextBlock>
+                            </TreeViewItem.Header>
+                            <TreeViewItem ItemsSource="{Binding PropertyComputerTableViewModel.PropertyComputerViewModels}">
+                                <TreeViewItem.Header>
+                                    <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureDevicesComputers}"
+                                               Style="{StaticResource TH3}"
+                                               ContextMenuService.Placement="Bottom">
+                                        <TextBlock.ContextMenu>
+                                            <ContextMenu>
+                                                <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
+                                                          Command="{Binding PropertyComputerTableViewModel.CMDAddComputer}" />
+                                            </ContextMenu>
+                                        </TextBlock.ContextMenu>
+                                    </TextBlock>
+                                </TreeViewItem.Header>
+                                <TreeViewItem.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding PropertyComputer.Name}"
+                                                Style="{StaticResource BH4}"
+                                                ContextMenuService.Placement="Bottom"
+                                                Click="ClickOpenComputerInNewWindow">
+                                        </Button>
+                                    </DataTemplate>
+                                </TreeViewItem.ItemTemplate>
+                            </TreeViewItem>
+                            <TreeViewItem ItemsSource="{Binding PropertyComputerTableViewModel.PropertyServerViewModels}">
+                                <TreeViewItem.Header>
+                                    <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureDevicesServers}"
+                                               Style="{StaticResource TH3}"
+                                               ContextMenuService.Placement="Bottom">
+                                        <TextBlock.ContextMenu>
+                                            <ContextMenu>
+                                                <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
+                                                          Command="{Binding PropertyComputerTableViewModel.CMDAddServer}" />
+                                            </ContextMenu>
+                                        </TextBlock.ContextMenu>
+                                    </TextBlock>
+                                </TreeViewItem.Header>
+                                <TreeViewItem.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding PropertyComputer.Name}"
+                                                Style="{StaticResource BH4}"
+                                                Click="ClickOpenComputerInNewWindow">
+                                        </Button>
+                                    </DataTemplate>
+                                </TreeViewItem.ItemTemplate>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem ItemsSource="{Binding PropertyStuffTableViewModel.PropertyStaffViewModels}">
+                            <TreeViewItem.Header>
+                                <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureStuff}"
+                                           Style="{StaticResource TH2}"
+                                           ContextMenuService.Placement="Bottom">
+                                    <TextBlock.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
+                                                      Command="{Binding PropertyStuffTableViewModel.CommandAddNew}" />
+                                        </ContextMenu>
+                                    </TextBlock.ContextMenu>
+                                </TextBlock>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource BH4}"
+                                            Click="ClickOpenUserInNewWindow">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding PropertyStuff.PropertyFirstName}"
+                                                       Margin="0,0,4,0" />
+                                            <TextBlock Text="{Binding PropertyStuff.PropertySureName}" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </TreeViewItem.ItemTemplate>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </DataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </DockPanel>
+</UserControl>
