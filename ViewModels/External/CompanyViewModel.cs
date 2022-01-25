@@ -5,9 +5,9 @@ namespace ViewModels.External
     public sealed class CompanyViewModel : ViewModel
     {
         #region property Company
-        private Company _company;
+        private Models.External.CompanyViewModel _company;
 
-        public Company PropertyCompany
+        public Models.External.CompanyViewModel PropertyCompany
         {
             get { return _company; }
             set { _company = value; NotifyPropertyChanged(nameof(_company)); }
@@ -37,6 +37,16 @@ namespace ViewModels.External
 
         #endregion
 
+        #region PropServiceRequestViewModelCollection
+        private ServiceRequestViewModelCollection _serviceRequestViewModelCollection;
+
+        public ServiceRequestViewModelCollection PropServiceRequestViewModelCollection
+        {
+            get { return _serviceRequestViewModelCollection; }
+            set { _serviceRequestViewModelCollection = value; NotifyPropertyChanged(nameof(PropServiceRequestViewModelCollection)); }
+        }
+
+        #endregion
 
         public CompanyViewModel()
         {
@@ -47,8 +57,9 @@ namespace ViewModels.External
         {
             _company = company;
 
-            PropertyComputerTableViewModel = new ComputerTableViewModel(_company.Id);
-            PropertyStuffTableViewModel = new UserTableViewModel(_company.Id);
+            PropertyComputerTableViewModel = new ComputerTableViewModel(_company);
+            PropertyStuffTableViewModel = new UserTableViewModel(_company);
+            PropServiceRequestViewModelCollection = new ServiceRequestViewModelCollection(_company);
         }
     }
 }

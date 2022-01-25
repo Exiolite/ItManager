@@ -6,7 +6,7 @@ namespace ViewModels.External
     {
         public Computer AttachedComputer { get; set; }
 
-        #region property AnyDeskViewModel
+        #region PropAnyDeskViewModel
         private AnyDeskViewModel _remoteViewModelCollection;
 
         public AnyDeskViewModel PropAnyDeskViewModel

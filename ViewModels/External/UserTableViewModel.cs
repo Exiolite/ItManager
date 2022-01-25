@@ -19,8 +19,8 @@ namespace ViewModels.External
         }
         private void AddNewE(object obj)
         {
-            var stuff = PropertyStuffTable.Add(new User() { PropertyCompanyId = PropertyId });
-            PropertyStaffViewModels.Add(new UserViewModel(stuff));
+            var stuff = PropertyStuffTable.Add(new User() { PropertyCompanyId = PropCompanyViewModel });
+            PropUserViewModelCollection.Add(new UserViewModel(stuff));
         }
         private bool CAddNew(object arg) => true;
         #endregion
@@ -37,24 +37,24 @@ namespace ViewModels.External
 
         #endregion
 
-        #region property StaffViewModels
-        private ObservableCollection<UserViewModel> _stuffViewModels;
+        #region PropUserViewModelCollection
+        private ObservableCollection<UserViewModel> _userViewModelCollection;
 
-        public ObservableCollection<UserViewModel> PropertyStaffViewModels
+        public ObservableCollection<UserViewModel> PropUserViewModelCollection
         {
-            get { return _stuffViewModels; }
-            set { _stuffViewModels = value; NotifyPropertyChanged(nameof(PropertyStaffViewModels)); }
+            get { return _userViewModelCollection; }
+            set { _userViewModelCollection = value; NotifyPropertyChanged(nameof(PropUserViewModelCollection)); }
         }
 
         #endregion
 
         #region property Id
-        private int _id;
+        private CompanyViewModel _company;
 
-        public int PropertyId
+        public CompanyViewModel PropCompanyViewModel
         {
-            get { return _id; }
-            set { _id = value; NotifyPropertyChanged(nameof(PropertyId)); }
+            get { return _company; }
+            set { _company = value; NotifyPropertyChanged(nameof(PropCompanyViewModel)); }
         }
 
         #endregion
@@ -66,16 +66,14 @@ namespace ViewModels.External
 
 
 
-        public UserTableViewModel(int companyId)
+        public UserTableViewModel(CompanyViewModel companyViewModel)
         {
-            PropertyStuffTable = MainViewModel.Instance.ExternalDataContext.StuffTable;
-            PropertyId = companyId;
+            PropCompanyViewModel = companyViewModel;
 
-
-            PropertyStaffViewModels = new ObservableCollection<UserViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.StuffTable.Content.Where(c => c.PropertyCompanyId == PropertyId))
+            PropUserViewModelCollection = new ObservableCollection<UserViewModel>();
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.StuffTable.Content.Where(c => c.PropertyCompanyId == PropCompanyViewModel))
             {
-                PropertyStaffViewModels.Add(new UserViewModel(item));
+                PropUserViewModelCollection.Add(new UserViewModel(item));
             }
         }
     }

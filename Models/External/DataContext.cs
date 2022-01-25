@@ -57,8 +57,6 @@
 
         #endregion
 
-        #region property ServiceTaskTables
-
         #region property ComputerServiceTaskTable
         private ServiceTaskTable _computerServiceTaskTable = new ServiceTaskTable();
 
@@ -70,16 +68,14 @@
 
         #endregion
 
-        #region property ServerServiceTaskTable
-        private ServiceTaskTable _serverServiceTaskTable = new ServiceTaskTable();
+        #region PropServiceRequestTable
+        private ServiceRequestTable _serviceRequestTable = new ServiceRequestTable();
 
-        public ServiceTaskTable ServerServiceTaskTable
+        public ServiceRequestTable PropServiceRequestTable
         {
-            get { return _serverServiceTaskTable; }
-            set { _serverServiceTaskTable = value; NotifyPropertyChanged(nameof(ServerServiceTaskTable)); }
+            get { return _serviceRequestTable; }
+            set { _serviceRequestTable = value; NotifyPropertyChanged(nameof(PropServiceRequestTable)); }
         }
-
-        #endregion
 
         #endregion
 
@@ -109,9 +105,9 @@
             {
                 ComputerServiceTaskTable.Merge(item);
             }
-            foreach (var item in dataContext.ServerServiceTaskTable.Content.Where(i => i.PropertyIsEdited == true))
+            foreach (var item in dataContext.PropServiceRequestTable.Content.Where(i => i.PropertyIsEdited == true))
             {
-                ServerServiceTaskTable.Merge(item);
+                PropServiceRequestTable.Merge(item);
             }
 
             return this;
