@@ -64,15 +64,16 @@ namespace ViewModels.External
             PropUser = user;
 
             var attachedComputer = MainViewModel.Instance.ExternalDataContext.PropComputerTable.PropContent.FirstOrDefault(c => c.PropId == PropUser.PropComputerId);
-            if (attachedComputer != null) PropComputerViewModel = new ComputerViewModel(attachedComputer, PropCompanyViewModel.PropComputerTableViewModel, PropCompanyViewModel);
+            if (attachedComputer != null) PropComputerViewModel = new ComputerViewModel(attachedComputer, PropCompanyViewModel.PropComputerTableViewModel);
         }
 
         public UserViewModel(ComputerViewModel computerViewModel)
         {
             PropComputerViewModel = computerViewModel;
+            PropCompanyViewModel = computerViewModel.PropCompanyViewModel;
 
-            var attacherUser = MainViewModel.Instance.ExternalDataContext.PropUserTable.PropContent.FirstOrDefault(c => c.PropComputerId == PropComputerViewModel.PropComputer.PropId);
-            if (attacherUser != null) PropUser = attacherUser;
+            var user = MainViewModel.Instance.ExternalDataContext.PropUserTable.PropContent.FirstOrDefault(c => c.PropComputerId == PropComputerViewModel.PropComputer.PropId);
+            if (user != null) PropUser = user;
         }
     }
 }

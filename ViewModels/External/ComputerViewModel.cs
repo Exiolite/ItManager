@@ -95,14 +95,15 @@ namespace ViewModels.External
             };
         }
 
-        public ComputerViewModel(Computer computer, ComputerTableViewModel computerTableViewModel, CompanyViewModel companyViewModel)
+        public ComputerViewModel(Computer computer, ComputerTableViewModel computerTableViewModel)
         {
-            PropComputerTableViewModel = computerTableViewModel;
             PropComputer = computer;
+            PropComputerTableViewModel = computerTableViewModel;
+            PropCompanyViewModel = computerTableViewModel.PropCompanyViewModel;
+
             PropRemoteViewModel = new RemoteViewModel(this);
             PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable, PropComputer.PropId);
             PropUserViewModel = new UserViewModel(this);
-            PropCompanyViewModel = companyViewModel;
 
             PropComputerUsageTypeCollection = new ObservableCollection<string>
             {

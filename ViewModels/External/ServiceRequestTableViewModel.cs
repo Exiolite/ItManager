@@ -7,8 +7,6 @@ namespace ViewModels.External
 {
     public sealed class ServiceRequestTableViewModel : ViewModel
     {
-        private int _targetId;
-
         #region CMDAdd
         private ICommand _add;
         public ICommand CMDAdd
@@ -50,6 +48,17 @@ namespace ViewModels.External
 
         #endregion
 
+        #region PropCompanyViewModel
+        private CompanyViewModel _companyViewModel;
+
+        public CompanyViewModel PropCompanyViewModel
+        {
+            get { return _companyViewModel; }
+            set { _companyViewModel = value; NotifyPropertyChanged(nameof(PropCompanyViewModel)); }
+        }
+
+        #endregion
+
 
         public ServiceRequestTableViewModel()
         {
@@ -57,13 +66,13 @@ namespace ViewModels.External
         }
 
 
-        public ServiceRequestTableViewModel(int targetId)
+        public ServiceRequestTableViewModel(CompanyViewModel companyViewModel)
         {
-            _targetId = targetId;
+            PropCompanyViewModel = companyViewModel;
             PropServiceReuqestTable = MainViewModel.Instance.ExternalDataContext.PropServiceRequestTable;
 
             PropServiceRequestViewModelCollection = new ObservableCollection<ServiceRequestViewModel>();
-            foreach (var item in PropServiceReuqestTable.PropContent.Where(s => s.PropCompanyId == targetId))
+            foreach (var item in PropServiceReuqestTable.PropContent.Where(s => s.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
             {
                 PropServiceRequestViewModelCollection.Add(new ServiceRequestViewModel(item));
             }

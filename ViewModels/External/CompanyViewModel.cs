@@ -59,7 +59,7 @@ namespace ViewModels.External
 
             PropComputerTableViewModel = new ComputerTableViewModel(this);
             PropUserTableViewModel = new UserTableViewModel(this);
-            PropServiceRequestTableViewModel = new ServiceRequestTableViewModel(_company.PropId);
+            PropServiceRequestTableViewModel = new ServiceRequestTableViewModel(this);
         }
     }
 }
