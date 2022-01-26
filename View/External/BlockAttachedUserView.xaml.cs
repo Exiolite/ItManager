@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace View.External
 {
     /// <summary>
-    /// Interaction logic for ServiceTaskListView.xaml
+    /// Interaction logic for BlockUserView.xaml
     /// </summary>
-    public partial class ServiceTaskListView : UserControl
+    public partial class BlockAttachedUserView : UserControl
     {
-        public ServiceTaskListView()
+        public BlockAttachedUserView()
         {
             InitializeComponent();
         }

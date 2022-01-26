@@ -5,14 +5,43 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="AnyDeskWindow"
-        Height="150"
         WindowStartupLocation="CenterOwner"
-        Width="400">
+        Width="400"
+        Height="150">
+    <Window.Title>
+        <MultiBinding StringFormat=" {0} {1}">
+            <Binding Path="PropTitle" />
+            <Binding Path="PropComputerViewModel.PropComputer.PropName" />
+        </MultiBinding>
+    </Window.Title>
     <StackPanel Style="{StaticResource SPMargin}">
-        <TextBox Text="{Binding PropertyAnyDesk.AnyDeskId}" 
-                 Style="{StaticResource TBH4}"/>
-        <TextBox Text="{Binding PropertyAnyDesk.AnyDeskPassword}"
-                 Style="{StaticResource TBH4}" />
+        <Grid>
+            <!--#region <Grid.Definitions> -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--#endregion-->
+            <TextBlock Text="Id: "
+                       Style="{StaticResource TH3}"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+            <TextBox  Text="{Binding PropAnyDesk.PropAnyDeskId}"
+                       Style="{StaticResource TBH3}"
+                       Grid.Row="0"
+                       Grid.Column="1" />
+            <TextBlock Text="Password: "
+                       Style="{StaticResource TH3}"
+                       Grid.Row="1"
+                       Grid.Column="0" />
+            <TextBox Text="{Binding PropAnyDesk.PropAnyDeskPassword}"
+                       Style="{StaticResource TBH3}"
+                       Grid.Row="1"
+                       Grid.Column="1" />
+        </Grid>
     </StackPanel>
 </Window>

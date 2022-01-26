@@ -9,10 +9,7 @@ namespace ViewModels.External
     {
         public static ComputerTableViewModel Instance { get; set; }
 
-        private int _companyId;
-
-
-        #region command AddComputer
+        #region CMDAddComputer
         private ICommand _addComputer;
         public ICommand CMDAddComputer
         {
@@ -24,20 +21,31 @@ namespace ViewModels.External
         }
         private void AddComputerE(object obj)
         {
-            var computerViewModel = new ComputerViewModel(_companyId);
-            computerViewModel.PropertyComputer.PropUsageType = Consts.ComputerTypePersonal;
-            PropertyComputerViewModels.Add(computerViewModel);
+            var computerViewModel = new ComputerViewModel(PropCompanyViewModel);
+            computerViewModel.PropComputer.PropUsageType = Consts.ComputerTypePersonal;
+            PropComputerViewModelCollection.Add(computerViewModel);
         }
         private bool CAddComputer(object arg) => true;
         #endregion
 
-        #region property ComputerViewModels
-        private ObservableCollection<ComputerViewModel> _computerViewModels;
+        #region PropCompanyViewModel
+        private CompanyViewModel _companyViewModel;
 
-        public ObservableCollection<ComputerViewModel> PropertyComputerViewModels
+        public CompanyViewModel PropCompanyViewModel
         {
-            get { return _computerViewModels; }
-            set { _computerViewModels = value; NotifyPropertyChanged(nameof(PropertyComputerViewModels));}
+            get { return _companyViewModel; }
+            set { _companyViewModel = value; NotifyPropertyChanged(nameof(PropCompanyViewModel)); }
+        }
+
+        #endregion
+
+        #region PropComputerViewModelCollection
+        private ObservableCollection<ComputerViewModel> _computerViewModelCollection;
+
+        public ObservableCollection<ComputerViewModel> PropComputerViewModelCollection
+        {
+            get { return _computerViewModelCollection; }
+            set { _computerViewModelCollection = value; NotifyPropertyChanged(nameof(PropComputerViewModelCollection));}
         }
 
         #endregion
@@ -55,21 +63,21 @@ namespace ViewModels.External
         }
         private void AddServerE(object obj)
         {
-            var computerViewModel = new ComputerViewModel(_companyId);
-            computerViewModel.PropertyComputer.PropUsageType = Consts.ComputerTypeServer;
-            computerViewModel.PropertyComputer.Name = Consts.ServerName;
-            PropertyServerViewModels.Add(computerViewModel);
+            var computerViewModel = new ComputerViewModel(PropCompanyViewModel);
+            computerViewModel.PropComputer.PropUsageType = Consts.ComputerTypeServer;
+            computerViewModel.PropComputer.PropName = Consts.ServerName;
+            PropServerViewModelCollection.Add(computerViewModel);
         }
         private bool CAddServer(object arg) => true;
         #endregion
 
-        #region property ComputerViewModels
-        private ObservableCollection<ComputerViewModel> _serverViewModels;
+        # region PropServerViewModelCollection
+        private ObservableCollection<ComputerViewModel> _serverViewModelCollection;
 
-        public ObservableCollection<ComputerViewModel> PropertyServerViewModels
+        public ObservableCollection<ComputerViewModel> PropServerViewModelCollection
         {
-            get { return _serverViewModels; }
-            set { _serverViewModels = value; NotifyPropertyChanged(nameof(PropertyComputerViewModels)); }
+            get { return _serverViewModelCollection; }
+            set { _serverViewModelCollection = value; NotifyPropertyChanged(nameof(PropComputerViewModelCollection)); }
         }
 
         #endregion
@@ -80,16 +88,16 @@ namespace ViewModels.External
 
         }
 
-        public ComputerTableViewModel(int companyId)
+        public ComputerTableViewModel(CompanyViewModel companyViewModel)
         {
-            _companyId = companyId;
+            PropCompanyViewModel = companyViewModel;
 
-            PropertyComputerViewModels = new ObservableCollection<ComputerViewModel>();
-            PropertyServerViewModels = new ObservableCollection<ComputerViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.ComputerTable.Content.Where(c => c.CompanyId == _companyId))
+            PropComputerViewModelCollection = new ObservableCollection<ComputerViewModel>();
+            PropServerViewModelCollection = new ObservableCollection<ComputerViewModel>();
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropComputerTable.PropContent.Where(c => c.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
             {
-                if (item.PropUsageType == Consts.ComputerTypePersonal) PropertyComputerViewModels.Add(new ComputerViewModel(item));
-                if (item.PropUsageType == Consts.ComputerTypeServer) PropertyServerViewModels.Add(new ComputerViewModel(item));
+                if (item.PropUsageType == Consts.ComputerTypePersonal) PropComputerViewModelCollection.Add(new ComputerViewModel(item, this, companyViewModel));
+                if (item.PropUsageType == Consts.ComputerTypeServer) PropServerViewModelCollection.Add(new ComputerViewModel(item, this, companyViewModel));
             }
         }
     }

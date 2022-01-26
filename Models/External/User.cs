@@ -2,68 +2,68 @@
 {
     public class User : Model
     {
-        #region property CompanyId
+        #region PropCompanyId
         private int _companyId;
 
-        public int PropertyCompanyId
+        public int PropCompanyId
         {
             get { return _companyId; }
-            set { _companyId = value; PropertyIsEdited = true; }
+            set { _companyId = value; PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property ComputerId
+        #region PropComputerId
         private int _computerId = -1;
 
-        public int PropertyComputerId
+        public int PropComputerId
         {
             get { return _computerId; }
-            set { _computerId = value; NotifyPropertyChanged(nameof(PropertyComputerId)); PropertyIsEdited = true; }
+            set { _computerId = value; NotifyPropertyChanged(nameof(PropComputerId)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property FirstName
+        #region PropFirstName
         private string _firstName = Consts.StaffFirstName;
 
-        public string PropertyFirstName
+        public string PropFirstName
         {
             get { return _firstName; }
-            set { _firstName = value; NotifyPropertyChanged(nameof(PropertyFirstName)); PropertyIsEdited = true; }
+            set { _firstName = value; NotifyPropertyChanged(nameof(PropFirstName)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property SureName
+        #region PropSureName
         private string _sureName = Consts.StaffSureName;
 
-        public string PropertySureName
+        public string PropSureName
         {
             get { return _sureName; }
-            set { _sureName = value; NotifyPropertyChanged(nameof(PropertySureName)); PropertyIsEdited = true; }
+            set { _sureName = value; NotifyPropertyChanged(nameof(PropSureName)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property SecondName
+        #region PropSecondName
         private string _secondName = Consts.StaffSecondName;
 
-        public string PropertySecondName
+        public string PropSecondName
         {
             get { return _secondName; }
-            set { _secondName = value; NotifyPropertyChanged(nameof(PropertySecondName)); PropertyIsEdited = true; }
+            set { _secondName = value; NotifyPropertyChanged(nameof(PropSecondName)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property PhoneNumber
+        #region PropPhoneNumber
         private string _phoneNumber = Consts.UserPhoneNumber;
 
-        public string PropertyPhoneNumber
+        public string PropPhoneNumber
         {
             get { return _phoneNumber; }
-            set { _phoneNumber = value; NotifyPropertyChanged(nameof(PropertyPhoneNumber)); PropertyIsEdited = true; }
+            set { _phoneNumber = value; NotifyPropertyChanged(nameof(PropPhoneNumber)); PropIsEdited = true; }
         }
 
         #endregion

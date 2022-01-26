@@ -16,12 +16,12 @@
                 <TextBlock.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                                  Command="{Binding CommandAddNew}" />
+                                  Command="{Binding CMDAdd}" />
                     </ContextMenu>
                 </TextBlock.ContextMenu>
             </TextBlock>
         </StackPanel>
-        <TreeView ItemsSource="{Binding PropertyCompanyViewModels}"
+        <TreeView ItemsSource="{Binding PropCompanyViewModelCollection}"
                   Background="{StaticResource Clear}"
                   BorderThickness="0">
             <TreeView.Resources>
@@ -38,7 +38,7 @@
                 <DataTemplate>
                     <TreeViewItem>
                         <TreeViewItem.Header>
-                            <TextBlock Text="{Binding PropertyCompany.PropertyName}"
+                            <TextBlock Text="{Binding PropCompany.PropName}"
                                        Style="{StaticResource TH1}"
                                        ContextMenuService.Placement="Bottom">
                                 <TextBlock.ContextMenu>
@@ -56,7 +56,7 @@
                                            ContextMenuService.Placement="Bottom">
                                 </TextBlock>
                             </TreeViewItem.Header>
-                            <TreeViewItem ItemsSource="{Binding PropertyComputerTableViewModel.PropertyComputerViewModels}">
+                            <TreeViewItem ItemsSource="{Binding PropComputerTableViewModel.PropComputerViewModelCollection}">
                                 <TreeViewItem.Header>
                                     <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureDevicesComputers}"
                                                Style="{StaticResource TH3}"
@@ -64,14 +64,14 @@
                                         <TextBlock.ContextMenu>
                                             <ContextMenu>
                                                 <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                                                          Command="{Binding PropertyComputerTableViewModel.CMDAddComputer}" />
+                                                          Command="{Binding PropComputerTableViewModel.CMDAddComputer}" />
                                             </ContextMenu>
                                         </TextBlock.ContextMenu>
                                     </TextBlock>
                                 </TreeViewItem.Header>
                                 <TreeViewItem.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding PropertyComputer.Name}"
+                                        <Button Content="{Binding PropComputer.PropName}"
                                                 Style="{StaticResource BH4}"
                                                 ContextMenuService.Placement="Bottom"
                                                 Click="ClickOpenComputerInNewWindow">
@@ -79,7 +79,7 @@
                                     </DataTemplate>
                                 </TreeViewItem.ItemTemplate>
                             </TreeViewItem>
-                            <TreeViewItem ItemsSource="{Binding PropertyComputerTableViewModel.PropertyServerViewModels}">
+                            <TreeViewItem ItemsSource="{Binding PropComputerTableViewModel.PropServerViewModelCollection}">
                                 <TreeViewItem.Header>
                                     <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureDevicesServers}"
                                                Style="{StaticResource TH3}"
@@ -87,14 +87,14 @@
                                         <TextBlock.ContextMenu>
                                             <ContextMenu>
                                                 <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                                                          Command="{Binding PropertyComputerTableViewModel.CMDAddServer}" />
+                                                          Command="{Binding PropComputerTableViewModel.CMDAddServer}" />
                                             </ContextMenu>
                                         </TextBlock.ContextMenu>
                                     </TextBlock>
                                 </TreeViewItem.Header>
                                 <TreeViewItem.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding PropertyComputer.Name}"
+                                        <Button Content="{Binding PropComputer.PropName}"
                                                 Style="{StaticResource BH4}"
                                                 Click="ClickOpenComputerInNewWindow">
                                         </Button>
@@ -102,7 +102,7 @@
                                 </TreeViewItem.ItemTemplate>
                             </TreeViewItem>
                         </TreeViewItem>
-                        <TreeViewItem ItemsSource="{Binding PropertyStuffTableViewModel.PropertyStaffViewModels}">
+                        <TreeViewItem ItemsSource="{Binding PropUserTableViewModel.PropUserViewModelCollection}">
                             <TreeViewItem.Header>
                                 <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.StructureStuff}"
                                            Style="{StaticResource TH2}"
@@ -110,7 +110,7 @@
                                     <TextBlock.ContextMenu>
                                         <ContextMenu>
                                             <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                                                      Command="{Binding PropertyStuffTableViewModel.CommandAddNew}" />
+                                                      Command="{Binding PropUserTableViewModel.CMDAdd}" />
                                         </ContextMenu>
                                     </TextBlock.ContextMenu>
                                 </TextBlock>
@@ -120,9 +120,33 @@
                                     <Button Style="{StaticResource BH4}"
                                             Click="ClickOpenUserInNewWindow">
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding PropertyStuff.PropertyFirstName}"
+                                            <TextBlock Text="{Binding PropUser.PropFirstName}"
                                                        Margin="0,0,4,0" />
-                                            <TextBlock Text="{Binding PropertyStuff.PropertySureName}" />
+                                            <TextBlock Text="{Binding PropUser.PropSureName}" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </TreeViewItem.ItemTemplate>
+                        </TreeViewItem>
+                        <TreeViewItem ItemsSource="{Binding PropServiceRequestTableViewModel.PropServiceRequestViewModelCollection}">
+                            <TreeViewItem.Header>
+                                <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.Requests}"
+                                           Style="{StaticResource TH2}"
+                                           ContextMenuService.Placement="Bottom">
+                                    <TextBlock.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
+                                                      Command="{Binding PropServiceRequestTableViewModel.CMDAdd}" />
+                                        </ContextMenu>
+                                    </TextBlock.ContextMenu>
+                                </TextBlock>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource BH4}"
+                                            Click="ClickOpenServiceRequestInNewWindow">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding PropServiceTask.PropName}" />
                                         </StackPanel>
                                     </Button>
                                 </DataTemplate>

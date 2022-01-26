@@ -6,10 +6,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View.External"
         mc:Ignorable="d"
-        Title="StuffWindow"
         Height="500"
         Width="400">
-    <StackPanel Style="{StaticResource SPMargin}">
-        <local:UserShortContactView DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
+    <Window.Title>
+        <MultiBinding StringFormat=" {0} - {1} {2}">
+            <Binding Path="PropCompanyViewModel.PropCompany.PropName" />
+            <Binding Path="PropUser.PropFirstName" />
+            <Binding Path="PropUser.PropSureName" />
+        </MultiBinding>
+    </Window.Title>
+    <StackPanel>
+        <local:UserFullView DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
+        <local:BlockAttachedComputer DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
     </StackPanel>
 </Window>

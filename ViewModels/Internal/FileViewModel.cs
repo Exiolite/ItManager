@@ -8,7 +8,7 @@ namespace ViewModels.Internal
 {
     public sealed class FileViewModel : ViewModel
     {
-        #region property FileOperation
+        #region PropFileOperation
         public FileOperation PropFileOperation
         {
             get { return MainViewModel.Instance.InternalDataContext.PropFileOperation; }
@@ -16,8 +16,8 @@ namespace ViewModels.Internal
         }
         #endregion
 
-        #region property Password
-        private string _password = "1234123412341234";
+        #region PropPassword
+        private string _password = "________________";
 
         public string PropPassword
         {
@@ -27,9 +27,9 @@ namespace ViewModels.Internal
 
         #endregion
 
-        #region command FileNew
+        #region CMDFileNew
         private ICommand _cmdFileNew;
-        public ICommand CmdFileNew
+        public ICommand CMDFileNew
         {
             get
             {
@@ -48,7 +48,7 @@ namespace ViewModels.Internal
 
         #region command FileOpen
         private ICommand _cmdFileOpen;
-        public ICommand CmdFileOpen
+        public ICommand CMDFileOpen
         {
             get
             {
@@ -72,7 +72,7 @@ namespace ViewModels.Internal
 
         #region command OpenAs
         private ICommand _commandOpenAs;
-        public ICommand CommandOpenAs
+        public ICommand CMDOpenAs
         {
             get
             {
@@ -96,7 +96,7 @@ namespace ViewModels.Internal
 
         #region command FileSave
         private ICommand _cmdFileSave;
-        public ICommand CmdFileSave
+        public ICommand CMDFileSave
         {
             get
             {
@@ -114,7 +114,7 @@ namespace ViewModels.Internal
 
         #region command FileSaveAs
         private ICommand _cmdFileSaveAs;
-        public ICommand CmdFileSaveAs
+        public ICommand CMDFileSaveAs
         {
             get
             {
@@ -136,7 +136,7 @@ namespace ViewModels.Internal
 
         #region command SynchronizeWithServer
         private ICommand _synchronizeWithServer;
-        public ICommand CommandSynchronizeWithServer
+        public ICommand CMDSynchronizeWithServer
         {
             get
             {

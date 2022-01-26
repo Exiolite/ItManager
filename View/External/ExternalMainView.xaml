@@ -6,9 +6,6 @@
              xmlns:local="clr-namespace:View.External"
              mc:Ignorable="d">
     <DockPanel>
-        <local:CompanyStructureView DockPanel.Dock="Left"/>
-        <StackPanel>
-            
-        </StackPanel>
+        <local:CompanyStructureView DockPanel.Dock="Left" />
     </DockPanel>
 </UserControl>

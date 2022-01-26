@@ -1,41 +1,45 @@
 ﻿using Models;
 using Models.External;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+using System.Linq;
 
 namespace ViewModels.External
 {
     public sealed class ComputerViewModel : ViewModel
     {
-        #region command SendToTabContol
-        private ICommand _sendToTabControl;
-        public ICommand CommandSendToTabControl
-        {
-            get
-            {
-                if (_sendToTabControl == null) _sendToTabControl = new Command(this.SendToTabControlE, this.CSendToTabContol, false);
-                return _sendToTabControl;
-            }
-        }
-        private void SendToTabControlE(object obj)
-        {
-            
-        }
-        private bool CSendToTabContol(object arg) => true;
-        #endregion
-
-
-        #region property Computer
+        #region PropComputer
         private Computer _computer;
 
-        public Computer PropertyComputer
+        public Computer PropComputer
         {
             get { return _computer; }
-            set { _computer = value; NotifyPropertyChanged(nameof(PropertyComputer)); }
+            set { _computer = value; NotifyPropertyChanged(nameof(PropComputer)); }
         }
         #endregion
 
-        #region property RemoteViewModel
+        #region PropComputerTableViewModel
+        private ComputerTableViewModel _computerTableViewModel;
+
+        public ComputerTableViewModel PropComputerTableViewModel
+        {
+            get { return _computerTableViewModel; }
+            set { _computerTableViewModel = value; NotifyPropertyChanged(nameof(PropComputerTableViewModel)); }
+        }
+
+        #endregion
+
+        #region PropCompanyViewModel
+        private CompanyViewModel _companyViewModel;
+
+        public CompanyViewModel PropCompanyViewModel
+        {
+            get { return _companyViewModel; }
+            set { _companyViewModel = value; NotifyPropertyChanged(nameof(PropCompanyViewModel)); }
+        }
+
+        #endregion
+
+        #region PropRemoteViewModel
         private RemoteViewModel _remoteViewModel;
 
         public RemoteViewModel PropRemoteViewModel
@@ -46,18 +50,18 @@ namespace ViewModels.External
 
         #endregion
 
-        #region property ServiceTaskViewModel
+        #region PropServiceTaskTableViewModel
         private ServiceTaskTableViewModel _serviceTaskTableViewModel;
 
-        public ServiceTaskTableViewModel PropertyServiceTaskTableViewModel
+        public ServiceTaskTableViewModel PropServiceTaskTableViewModel
         {
             get { return _serviceTaskTableViewModel; }
-            set { _serviceTaskTableViewModel = value; NotifyPropertyChanged(nameof(PropertyServiceTaskTableViewModel)); }
+            set { _serviceTaskTableViewModel = value; NotifyPropertyChanged(nameof(PropServiceTaskTableViewModel)); }
         }
 
         #endregion
 
-        #region MyRegion
+        #region PropComputerUsageTypeCollection
         private ObservableCollection<string> _computerUsageType;
 
         public ObservableCollection<string> PropComputerUsageTypeCollection
@@ -67,6 +71,19 @@ namespace ViewModels.External
         }
 
         #endregion
+
+        #region PropUserViewModel
+        private UserViewModel _userViewModel;
+
+        public UserViewModel PropUserViewModel
+        {
+            get { return _userViewModel; }
+            set { _userViewModel = value; NotifyPropertyChanged(nameof(PropUserViewModel)); }
+        }
+
+        #endregion
+
+
 
         public ComputerViewModel()
         {
@@ -78,13 +95,15 @@ namespace ViewModels.External
             };
         }
 
-        public ComputerViewModel(Computer computer)
+        public ComputerViewModel(Computer computer, ComputerTableViewModel computerTableViewModel, CompanyViewModel companyViewModel)
         {
-            var anyDesk = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.GetById(computer.Id);
+            PropComputerTableViewModel = computerTableViewModel;
+            PropComputer = computer;
+            PropRemoteViewModel = new RemoteViewModel(this);
+            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable, PropComputer.PropId);
+            PropUserViewModel = new UserViewModel(this);
+            PropCompanyViewModel = companyViewModel;
 
-            PropertyComputer = computer;
-            PropRemoteViewModel = new RemoteViewModel(computer);
-            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.ComputerServiceTaskTable, PropertyComputer.Id);
             PropComputerUsageTypeCollection = new ObservableCollection<string>
             {
                 Consts.ComputerTypePersonal,
@@ -93,16 +112,17 @@ namespace ViewModels.External
             };
         }
 
-        public ComputerViewModel(int companyId)
+        public ComputerViewModel(CompanyViewModel companyViewModel)
         {
-            var computer = MainViewModel.Instance.ExternalDataContext.ComputerTable.AddNewItem();
-            var anyDesk = MainViewModel.Instance.ExternalDataContext.AnyDeskTable.AddNew(computer.Id);
-            var computerServiceTable = MainViewModel.Instance.ExternalDataContext.ComputerServiceTaskTable;
+            var computer = MainViewModel.Instance.ExternalDataContext.PropComputerTable.AddNewItem();
+            var anyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.AddNew(computer.PropId);
+            var computerServiceTable = MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable;
 
-            PropertyComputer = computer;
-            PropertyComputer.CompanyId = companyId;
-            PropRemoteViewModel = new RemoteViewModel(computer);
-            PropertyServiceTaskTableViewModel = new ServiceTaskTableViewModel(computerServiceTable, PropertyComputer.Id);
+            PropComputer = computer;
+            PropComputer.PropCompanyId = companyViewModel.PropCompany.PropId;
+            PropRemoteViewModel = new RemoteViewModel(this);
+            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(computerServiceTable, PropComputer.PropId);
+            PropCompanyViewModel = companyViewModel;
             PropComputerUsageTypeCollection = new ObservableCollection<string>
             {
                 Consts.ComputerTypePersonal,
