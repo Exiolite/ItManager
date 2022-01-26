@@ -18,9 +18,9 @@ namespace View.External
     /// <summary>
     /// Interaction logic for BlockUserView.xaml
     /// </summary>
-    public partial class BlockUserView : UserControl
+    public partial class BlockAttachedUserView : UserControl
     {
-        public BlockUserView()
+        public BlockAttachedUserView()
         {
             InitializeComponent();
         }

@@ -8,11 +8,9 @@
              mc:Ignorable="d">
     <StackPanel Orientation="Horizontal">
         <TextBlock Text="{Binding PropUser.PropFirstName}"
-                   Style="{StaticResource TH4}" 
-                   Margin="0,0,4,0"/>
+                   Style="{StaticResource TH4}"/>
         <TextBlock Text="{Binding PropUser.PropSureName}"
-                   Style="{StaticResource TH4}"
-                   Margin="0,0,4,0" />
+                   Style="{StaticResource TH4}" />
         <TextBlock Text="{Binding PropUser.PropPhoneNumber}"
                    Style="{StaticResource TH4}" />
     </StackPanel>

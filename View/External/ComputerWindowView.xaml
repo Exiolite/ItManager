@@ -15,19 +15,9 @@
         </MultiBinding>
     </Window.Title>
     <StackPanel>
-        <StackPanel Style="{StaticResource SPMarginBlock}">
-            <StackPanel Style="{StaticResource SPMargin}">
-                <TextBox Text="{Binding PropComputer.PropName, UpdateSourceTrigger=PropertyChanged}"
-                         Style="{StaticResource TBH1}" />
-                <TextBox Text="{Binding PropComputer.PropDescription}"
-                         Style="{StaticResource TBA}"
-                         TextWrapping="Wrap" />
-                <ComboBox ItemsSource="{Binding PropComputerUsageTypeCollection}"
-                          SelectedItem="{Binding PropComputer.PropUsageType}" />
-            </StackPanel>
-        </StackPanel>
+        <local:BlockComputerInfo DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
         <local:BlockRemoteView DataContext="{Binding PropRemoteViewModel}" />
+        <local:BlockAttachedUserView DataContext="{Binding PropUserViewModel}" />
         <local:BlockServiceTaskListView DataContext="{Binding PropServiceTaskTableViewModel}" />
-        <local:BlockUserView DataContext="{Binding PropUserViewModel}" />
     </StackPanel>
 </Window>
