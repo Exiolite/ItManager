@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.External;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -21,7 +22,7 @@ namespace ViewModels.External
         }
         private void AddComputerE(object obj)
         {
-            var computerViewModel = new ComputerViewModel(PropCompanyViewModel);
+            var computerViewModel = new ComputerViewModel(NewComputer(), this);
             computerViewModel.PropComputer.PropUsageType = Consts.ComputerTypePersonal;
             PropComputerViewModelCollection.Add(computerViewModel);
         }
@@ -63,7 +64,7 @@ namespace ViewModels.External
         }
         private void AddServerE(object obj)
         {
-            var computerViewModel = new ComputerViewModel(PropCompanyViewModel);
+            var computerViewModel = new ComputerViewModel(NewComputer(), this);
             computerViewModel.PropComputer.PropUsageType = Consts.ComputerTypeServer;
             computerViewModel.PropComputer.PropName = Consts.ServerName;
             PropServerViewModelCollection.Add(computerViewModel);
@@ -99,6 +100,15 @@ namespace ViewModels.External
                 if (item.PropUsageType == Consts.ComputerTypePersonal) PropComputerViewModelCollection.Add(new ComputerViewModel(item, this));
                 if (item.PropUsageType == Consts.ComputerTypeServer) PropServerViewModelCollection.Add(new ComputerViewModel(item, this));
             }
+        }
+
+        public Computer NewComputer()
+        {
+            var item = new Computer();
+            MainViewModel.Instance.ExternalDataContext.PropComputerCollection.Add(item);
+            item.PropId = MainViewModel.Instance.ExternalDataContext.PropComputerCollection.IndexOf(item);
+            item.PropCompanyId = PropCompanyViewModel.PropCompany.PropId;
+            return item;
         }
     }
 }

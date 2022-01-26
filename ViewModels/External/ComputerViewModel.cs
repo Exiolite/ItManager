@@ -99,38 +99,5 @@ namespace ViewModels.External
                 Consts.ComputerTypeVirtual
             };
         }
-
-        public ComputerViewModel(ComputerViewModel computerViewModel)
-        {
-            PropComputer = computerViewModel.PropComputer;
-            PropComputerTableViewModel = computerViewModel.PropComputerTableViewModel;
-
-            PropRemoteViewModel = new RemoteViewModel(this);
-            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(this);
-            PropUserViewModel = new UserViewModel(this);
-
-            PropComputerUsageTypeCollection = new ObservableCollection<string>
-            {
-                Consts.ComputerTypePersonal,
-                Consts.ComputerTypeServer,
-                Consts.ComputerTypeVirtual
-            };
-        }
-
-        public ComputerViewModel(CompanyViewModel companyViewModel)
-        {
-            PropComputer = new Computer();
-            PropComputer.PropCompanyId = companyViewModel.PropCompany.PropId;
-
-            PropRemoteViewModel = new RemoteViewModel(this);
-            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(this);
-
-            PropComputerUsageTypeCollection = new ObservableCollection<string>
-            {
-                Consts.ComputerTypePersonal,
-                Consts.ComputerTypeServer,
-                Consts.ComputerTypeVirtual
-            };
-        }
     }
 }

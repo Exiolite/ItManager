@@ -87,7 +87,12 @@ namespace ViewModels.External
         {
             PropComputerViewModel = computerViewModel;
             var anyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskCollection.FirstOrDefault(x => x.PropComputerId == computerViewModel.PropComputer.PropId);
-            if (anyDesk == null) PropAnyDesk = new AnyDesk() { PropComputerId = computerViewModel.PropComputer.PropId };
+            if (anyDesk == null)
+            {
+                PropAnyDesk = new AnyDesk() { PropComputerId = computerViewModel.PropComputer.PropId }; 
+                MainViewModel.Instance.ExternalDataContext.PropAnyDeskCollection.Add(PropAnyDesk);
+                return;
+            }
             PropAnyDesk = anyDesk;
         }
     }

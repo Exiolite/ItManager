@@ -21,7 +21,7 @@ namespace ViewModels.External
         }
         private void AddE(object obj)
         {
-            PropCompanyViewModelCollection.Add(new CompanyViewModel(AddNewCompany()));
+            PropCompanyViewModelCollection.Add(new CompanyViewModel(NewCompany()));
         }
         private bool CAdd(object arg) => true;
         #endregion
@@ -55,7 +55,7 @@ namespace ViewModels.External
             }
         }
 
-        public Company AddNewCompany()
+        public static Company NewCompany()
         {
             var item = new Company();
             MainViewModel.Instance.ExternalDataContext.PropCompanyCollection.Add(item);
