@@ -2,43 +2,43 @@
 {
     public class DataContext : Internal.Model
     {
-        #region property AnyDeskTable
+        #region PropAnyDeskTable
         private AnyDeskTable _anyDeskTable = new AnyDeskTable();
 
-        public AnyDeskTable AnyDeskTable
+        public AnyDeskTable PropAnyDeskTable
         {
             get { return _anyDeskTable; }
-            set { _anyDeskTable = value; NotifyPropertyChanged(nameof(AnyDeskTable)); }
+            set { _anyDeskTable = value; NotifyPropertyChanged(nameof(PropAnyDeskTable)); }
         }
 
         #endregion
 
-        #region property CompanyTable
+        #region PropCompanyTable
         private CompanyTable _companyTable = new CompanyTable();
 
-        public CompanyTable CompanyTable
+        public CompanyTable PropCompanyTable
         {
             get { return _companyTable; }
-            set { _companyTable = value; NotifyPropertyChanged(nameof(CompanyTable)); }
+            set { _companyTable = value; NotifyPropertyChanged(nameof(PropCompanyTable)); }
         }
 
         #endregion
 
-        #region property ComputerTable
+        #region PropComputerTable
         private ComputerTable _computerTable = new ComputerTable();
 
-        public ComputerTable ComputerTable
+        public ComputerTable PropComputerTable
         {
             get { return _computerTable; }
-            set { _computerTable = value; NotifyPropertyChanged(nameof(ComputerTable)); }
+            set { _computerTable = value; NotifyPropertyChanged(nameof(PropComputerTable)); }
         }
 
         #endregion
 
-        #region property OSDescriptionTable
+        #region PropOSDescriptionTable
         private OSDescriptionTable _oSDescription = new OSDescriptionTable();
 
-        public OSDescriptionTable OSDescriptionTable
+        public OSDescriptionTable PropOSDescriptionTable
         {
             get { return _oSDescription; }
             set { _oSDescription = value; NotifyPropertyChanged(nameof(OSDescription)); }
@@ -46,72 +46,68 @@
 
         #endregion
 
-        #region property StuffTable
-        private UserTable _stuffTable = new UserTable();
+        #region PropUserTable
+        private UserTable _userTable = new UserTable();
 
-        public UserTable StuffTable
+        public UserTable PropUserTable
         {
-            get { return _stuffTable; }
-            set { _stuffTable = value; NotifyPropertyChanged(nameof(StuffTable)); }
+            get { return _userTable; }
+            set { _userTable = value; NotifyPropertyChanged(nameof(PropUserTable)); }
         }
 
         #endregion
 
-        #region property ServiceTaskTables
-
-        #region property ComputerServiceTaskTable
+        #region PropComputerServiceTaskTable
         private ServiceTaskTable _computerServiceTaskTable = new ServiceTaskTable();
 
-        public ServiceTaskTable ComputerServiceTaskTable
+        public ServiceTaskTable PropComputerServiceTaskTable
         {
             get { return _computerServiceTaskTable; }
-            set { _computerServiceTaskTable = value; NotifyPropertyChanged(nameof(ComputerServiceTaskTable)); }
+            set { _computerServiceTaskTable = value; NotifyPropertyChanged(nameof(PropComputerServiceTaskTable)); }
         }
 
         #endregion
 
-        #region property ServerServiceTaskTable
-        private ServiceTaskTable _serverServiceTaskTable = new ServiceTaskTable();
+        #region PropServiceRequestTable
+        private ServiceRequestTable _serviceRequestTable = new ServiceRequestTable();
 
-        public ServiceTaskTable ServerServiceTaskTable
+        public ServiceRequestTable PropServiceRequestTable
         {
-            get { return _serverServiceTaskTable; }
-            set { _serverServiceTaskTable = value; NotifyPropertyChanged(nameof(ServerServiceTaskTable)); }
+            get { return _serviceRequestTable; }
+            set { _serviceRequestTable = value; NotifyPropertyChanged(nameof(PropServiceRequestTable)); }
         }
-
-        #endregion
 
         #endregion
 
         public DataContext Merge(DataContext dataContext)
         {
-            foreach (var item in dataContext.AnyDeskTable.Content.Where(i => i.PropertyIsEdited == true))
+            foreach (var item in dataContext.PropAnyDeskTable.PropContent.Where(i => i.PropIsEdited == true))
             {
-                AnyDeskTable.Merge(item);
+                PropAnyDeskTable.Merge(item);
             }
-            foreach (var item in dataContext.CompanyTable.Content.Where(i => i.PropertyIsEdited == true))
+            foreach (var item in dataContext.PropCompanyTable.PropContent.Where(i => i.PropIsEdited == true))
             {
-                CompanyTable.Merge(item);
+                PropCompanyTable.Merge(item);
             }
-            foreach (var item in dataContext.ComputerTable.Content.Where(i => i.PropertyIsEdited == true))
+            foreach (var item in dataContext.PropComputerTable.PropContent.Where(i => i.PropIsEdited == true))
             {
-                ComputerTable.Merge(item);
+                PropComputerTable.Merge(item);
             }
-            foreach (var item in dataContext.OSDescriptionTable.Content.Where(i => i.PropertyIsEdited == true))
+            foreach (var item in dataContext.PropOSDescriptionTable.Content.Where(i => i.PropIsEdited == true))
             {
-                OSDescriptionTable.Merge(item);
+                PropOSDescriptionTable.Merge(item);
             }
-            foreach (var item in dataContext.StuffTable.Content.Where(i => i.PropertyIsEdited == true))
+            foreach (var item in dataContext.PropUserTable.PropContent.Where(i => i.PropIsEdited == true))
             {
-                StuffTable.Merge(item);
+                PropUserTable.Merge(item);
             }
-            foreach (var item in dataContext.ComputerServiceTaskTable.Content.Where(i => i.PropertyIsEdited == true))
+            foreach (var item in dataContext.PropComputerServiceTaskTable.PropContent.Where(i => i.PropIsEdited == true))
             {
-                ComputerServiceTaskTable.Merge(item);
+                PropComputerServiceTaskTable.Merge(item);
             }
-            foreach (var item in dataContext.ServerServiceTaskTable.Content.Where(i => i.PropertyIsEdited == true))
+            foreach (var item in dataContext.PropServiceRequestTable.PropContent.Where(i => i.PropIsEdited == true))
             {
-                ServerServiceTaskTable.Merge(item);
+                PropServiceRequestTable.Merge(item);
             }
 
             return this;

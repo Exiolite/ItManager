@@ -18,13 +18,13 @@ namespace Models.External
         {
             var item = new OSDescription();
             Content.Add(item);
-            item.Id = Content.IndexOf(item);
+            item.PropId = Content.IndexOf(item);
             return item;
         }
 
         public OSDescription GetById(int id)
         {
-            return Content.FirstOrDefault(x => x.Id == id);
+            return Content.FirstOrDefault(x => x.PropId == id);
         }
 
         public OSDescription Add(OSDescription item)
@@ -35,10 +35,10 @@ namespace Models.External
 
         public void Merge(OSDescription item)
         {
-            if (Content.FirstOrDefault(i => i.Id == item.Id) != null)
-                Content.Remove(Content.FirstOrDefault(i => i.Id == item.Id));
+            if (Content.FirstOrDefault(i => i.PropId == item.PropId) != null)
+                Content.Remove(Content.FirstOrDefault(i => i.PropId == item.PropId));
             Content.Add(item);
-            item.PropertyIsEdited = false;
+            item.PropIsEdited = false;
         }
 
         public void Drop()

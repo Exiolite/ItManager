@@ -5,29 +5,29 @@ namespace Models.External
     public class Computer : Model
     {
 
-        #region property Name
+        #region PropName
         private string _name = Consts.ComputerName;
 
-        public string Name
+        public string PropName
         {
             get { return _name; }
-            set { _name = value; NotifyPropertyChanged(nameof(Name)); PropertyIsEdited = true; }
+            set { _name = value; NotifyPropertyChanged(nameof(PropName)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property Description
+        #region PropDescription
         private string _description = new string(Consts.Description);
 
-        public string Description
+        public string PropDescription
         {
             get { return _description; }
-            set { _description = value; NotifyPropertyChanged(nameof(Description)); PropertyIsEdited = true; }
+            set { _description = value; NotifyPropertyChanged(nameof(PropDescription)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property PropUsageType
+        #region PropUsageType
         private string _usageType = Consts.ComputerTypePersonal;
 
         public string PropUsageType
@@ -38,13 +38,13 @@ namespace Models.External
 
         #endregion
 
-        #region property CompanyId
+        #region PropCompanyId
         private int _companyId = -1;
 
-        public int CompanyId
+        public int PropCompanyId
         {
             get { return _companyId; }
-            set { _companyId = value; NotifyPropertyChanged(nameof(CompanyId)); PropertyIsEdited = true; }
+            set { _companyId = value; NotifyPropertyChanged(nameof(PropCompanyId)); PropIsEdited = true; }
         }
 
         #endregion

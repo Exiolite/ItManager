@@ -12,22 +12,22 @@
                     DockPanel.Dock="Bottom"
                     Orientation="Horizontal">
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileNew}"
-                    Command="{Binding CmdFileNew}"
+                    Command="{Binding CMDFileNew}"
                     Style="{StaticResource BA}" />
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpen}"
-                    Command="{Binding CmdFileOpen}"
+                    Command="{Binding CMDFileOpen}"
                     Style="{StaticResource BA}" />
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpenAs}"
-                    Command="{Binding CommandOpenAs}"
+                    Command="{Binding CMDOpenAs}"
                     Style="{StaticResource BA}" />
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSave}"
-                    Command="{Binding CmdFileSave}"
+                    Command="{Binding CMDFileSave}"
                     Style="{StaticResource BA}" />
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSaveAs}"
-                    Command="{Binding CmdFileSaveAs}"
+                    Command="{Binding CMDFileSaveAs}"
                     Style="{StaticResource BA}" />
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSynchronizeWithServer}"
-                    Command="{Binding CommandSynchronizeWithServer}"
+                    Command="{Binding CMDSynchronizeWithServer}"
                     Style="{StaticResource BA}" />
         </StackPanel>
         <StackPanel Style="{StaticResource SPMargin}">
@@ -38,7 +38,7 @@
                          Style="{StaticResource TBH3}">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Return"
-                                    Command="{Binding CmdFileOpen}" />
+                                    Command="{Binding CMDFileOpen}" />
                     </TextBox.InputBindings>
                 </TextBox>
             </StackPanel>
@@ -49,7 +49,7 @@
                          Style="{StaticResource TBH3}">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Return"
-                                    Command="{Binding CmdFileOpen}" />
+                                    Command="{Binding CMDFileOpen}" />
                     </TextBox.InputBindings>
                 </TextBox>
             </StackPanel>

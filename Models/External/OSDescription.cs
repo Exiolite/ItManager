@@ -2,13 +2,13 @@
 {
     public class OSDescription : Model
     {
-        #region property ComputerId
+        #region PropComputerId
         private int _computerId;
 
-        public int ComputerId
+        public int PropComputerId
         {
             get { return _computerId; }
-            set { _computerId = value; NotifyPropertyChanged(nameof(ComputerId)); PropertyIsEdited = true; }
+            set { _computerId = value; NotifyPropertyChanged(nameof(PropComputerId)); PropIsEdited = true; }
         }
 
         #endregion

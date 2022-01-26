@@ -20,7 +20,7 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">
             <Button Style="{StaticResource BH3}"
-                    Command="{Binding PropAnyDeskViewModel.ConnectViaAnyDeskCommand}"
+                    Command="{Binding PropAnyDeskViewModel.CMDConnect}"
                     MouseRightButtonDown="AnyDeskClicked">
                 <Button.Content>
                     <TextBlock Text="AnyDesk"

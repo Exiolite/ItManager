@@ -14,23 +14,23 @@ namespace Models.External
         }
         #endregion
 
-        #region property Id
+        #region PropId
         private int _id = -1;
 
-        public int Id
+        public int PropId
         {
             get { return _id; }
-            set { _id = value; NotifyPropertyChanged(nameof(Id)); }
+            set { _id = value; NotifyPropertyChanged(nameof(PropId)); }
         }
         #endregion
 
-        #region property IsEdited
+        #region PropIsEdited
         private bool _isEdited = true;
 
-        public bool PropertyIsEdited
+        public bool PropIsEdited
         {
             get { return _isEdited; }
-            set { _isEdited = value; NotifyPropertyChanged(nameof(PropertyIsEdited)); }
+            set { _isEdited = value; NotifyPropertyChanged(nameof(PropIsEdited)); }
         }
 
         #endregion
