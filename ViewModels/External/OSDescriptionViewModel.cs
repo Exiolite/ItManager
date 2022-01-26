@@ -29,8 +29,16 @@ namespace ViewModels.External
 
         public OSDescriptionViewModel(int computerId)
         {
-            PropOSDescription = MainViewModel.Instance.ExternalDataContext.PropOSDescriptionTable.AddNewItem();
+            PropOSDescription = AddNewItem();
             PropOSDescription.PropComputerId = computerId;
+        }
+
+        public OSDescription AddNewItem()
+        {
+            var item = new OSDescription();
+            MainViewModel.Instance.ExternalDataContext.PropOSDescriptionCollection.Add(item);
+            item.PropId = MainViewModel.Instance.ExternalDataContext.PropOSDescriptionCollection.IndexOf(item);
+            return item;
         }
     }
 }

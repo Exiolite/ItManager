@@ -1,7 +1,6 @@
 ﻿using Models;
 using Models.External;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace ViewModels.External
 {
@@ -24,17 +23,6 @@ namespace ViewModels.External
         {
             get { return _computerTableViewModel; }
             set { _computerTableViewModel = value; NotifyPropertyChanged(nameof(PropComputerTableViewModel)); }
-        }
-
-        #endregion
-
-        #region PropCompanyViewModel
-        private CompanyViewModel _companyViewModel;
-
-        public CompanyViewModel PropCompanyViewModel
-        {
-            get { return _companyViewModel; }
-            set { _companyViewModel = value; NotifyPropertyChanged(nameof(PropCompanyViewModel)); }
         }
 
         #endregion
@@ -99,10 +87,26 @@ namespace ViewModels.External
         {
             PropComputer = computer;
             PropComputerTableViewModel = computerTableViewModel;
-            PropCompanyViewModel = computerTableViewModel.PropCompanyViewModel;
 
             PropRemoteViewModel = new RemoteViewModel(this);
-            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable, PropComputer.PropId);
+            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(this);
+            PropUserViewModel = new UserViewModel(this);
+
+            PropComputerUsageTypeCollection = new ObservableCollection<string>
+            {
+                Consts.ComputerTypePersonal,
+                Consts.ComputerTypeServer,
+                Consts.ComputerTypeVirtual
+            };
+        }
+
+        public ComputerViewModel(ComputerViewModel computerViewModel)
+        {
+            PropComputer = computerViewModel.PropComputer;
+            PropComputerTableViewModel = computerViewModel.PropComputerTableViewModel;
+
+            PropRemoteViewModel = new RemoteViewModel(this);
+            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(this);
             PropUserViewModel = new UserViewModel(this);
 
             PropComputerUsageTypeCollection = new ObservableCollection<string>
@@ -115,15 +119,12 @@ namespace ViewModels.External
 
         public ComputerViewModel(CompanyViewModel companyViewModel)
         {
-            var computer = MainViewModel.Instance.ExternalDataContext.PropComputerTable.AddNewItem();
-            var anyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.AddNew(computer.PropId);
-            var computerServiceTable = MainViewModel.Instance.ExternalDataContext.PropComputerServiceTaskTable;
-
-            PropComputer = computer;
+            PropComputer = new Computer();
             PropComputer.PropCompanyId = companyViewModel.PropCompany.PropId;
+
             PropRemoteViewModel = new RemoteViewModel(this);
-            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(computerServiceTable, PropComputer.PropId);
-            PropCompanyViewModel = companyViewModel;
+            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(this);
+
             PropComputerUsageTypeCollection = new ObservableCollection<string>
             {
                 Consts.ComputerTypePersonal,

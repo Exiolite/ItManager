@@ -19,20 +19,10 @@ namespace ViewModels.External
         }
         private void AddE(object obj)
         {
-            var user = PropUserTable.Add(new User() { PropCompanyId = PropCompanyViewModel.PropCompany.PropId });
+            var user = Add(new User() { PropCompanyId = PropCompanyViewModel.PropCompany.PropId });
             PropUserViewModelCollection.Add(new UserViewModel(user, PropCompanyViewModel));
         }
         private bool CAdd(object arg) => true;
-        #endregion
-
-
-        #region PropUserTable
-        public UserTable PropUserTable
-        {
-            get { return MainViewModel.Instance.ExternalDataContext.PropUserTable; }
-            set { MainViewModel.Instance.ExternalDataContext.PropUserTable = value; NotifyPropertyChanged(nameof(PropUserTable)); }
-        }
-
         #endregion
 
         #region PropCompanyViewModel
@@ -70,10 +60,16 @@ namespace ViewModels.External
             PropCompanyViewModel = companyViewModel;
 
             PropUserViewModelCollection = new ObservableCollection<UserViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropUserTable.PropContent.Where(c => c.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropUserCollection.Where(c => c.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
             {
                 PropUserViewModelCollection.Add(new UserViewModel(item, PropCompanyViewModel));
             }
+        }
+
+        public User Add(User item)
+        {
+            MainViewModel.Instance.ExternalDataContext.PropUserCollection.Add(item);
+            return item;
         }
     }
 }

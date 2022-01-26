@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Models.External;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace ViewModels.External
@@ -20,10 +21,7 @@ namespace ViewModels.External
         }
         private void AddE(object obj)
         {
-            var company = MainViewModel.Instance.ExternalDataContext.PropCompanyTable.AddNewCompany();
-            var companyViewModel = new CompanyViewModel(company);
-
-            PropCompanyViewModelCollection.Add(companyViewModel);
+            PropCompanyViewModelCollection.Add(new CompanyViewModel(AddNewCompany()));
         }
         private bool CAdd(object arg) => true;
         #endregion
@@ -51,10 +49,18 @@ namespace ViewModels.External
         {
             PropCompanyViewModelCollection.Clear();
 
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropCompanyTable.PropContent)
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropCompanyCollection)
             {
                 PropCompanyViewModelCollection.Add(new CompanyViewModel(item));
             }
+        }
+
+        public Company AddNewCompany()
+        {
+            var item = new Company();
+            MainViewModel.Instance.ExternalDataContext.PropCompanyCollection.Add(item);
+            item.PropId = MainViewModel.Instance.ExternalDataContext.PropCompanyCollection.IndexOf(item);
+            return item;
         }
     }
 }

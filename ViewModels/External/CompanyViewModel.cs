@@ -4,7 +4,7 @@ namespace ViewModels.External
 {
     public sealed class CompanyViewModel : ViewModel
     {
-        #region PropeCompany
+        #region PropCompany
         private Company _company;
 
         public Company PropCompany

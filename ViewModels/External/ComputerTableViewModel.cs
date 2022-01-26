@@ -94,10 +94,10 @@ namespace ViewModels.External
 
             PropComputerViewModelCollection = new ObservableCollection<ComputerViewModel>();
             PropServerViewModelCollection = new ObservableCollection<ComputerViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropComputerTable.PropContent.Where(c => c.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropComputerCollection.Where(c => c.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
             {
-                if (item.PropUsageType == Consts.ComputerTypePersonal) PropComputerViewModelCollection.Add(new ComputerViewModel(item, this, companyViewModel));
-                if (item.PropUsageType == Consts.ComputerTypeServer) PropServerViewModelCollection.Add(new ComputerViewModel(item, this, companyViewModel));
+                if (item.PropUsageType == Consts.ComputerTypePersonal) PropComputerViewModelCollection.Add(new ComputerViewModel(item, this));
+                if (item.PropUsageType == Consts.ComputerTypeServer) PropServerViewModelCollection.Add(new ComputerViewModel(item, this));
             }
         }
     }

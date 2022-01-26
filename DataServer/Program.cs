@@ -13,7 +13,7 @@ namespace DataServer
 
         public static void Merge(DataContext dataContext)
         {
-            DataContext.Merge(dataContext);
+            //DataContext.Merge(dataContext);
         }
     }
 }

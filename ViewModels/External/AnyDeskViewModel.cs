@@ -1,6 +1,7 @@
 ﻿using Models.External;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
 
 namespace ViewModels.External
@@ -85,7 +86,9 @@ namespace ViewModels.External
         public AnyDeskViewModel(ComputerViewModel computerViewModel)
         {
             PropComputerViewModel = computerViewModel;
-            PropAnyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskTable.GetOrCreateByComputer(computerViewModel.PropComputer.PropId);
+            var anyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskCollection.FirstOrDefault(x => x.PropComputerId == computerViewModel.PropComputer.PropId);
+            if (anyDesk == null) PropAnyDesk = new AnyDesk() { PropComputerId = computerViewModel.PropComputer.PropId };
+            PropAnyDesk = anyDesk;
         }
     }
 }

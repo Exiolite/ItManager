@@ -19,7 +19,7 @@ namespace ViewModels.External
         }
         private void AddE(object obj)
         {
-            var serviceTask = PropertyServiceTaskTable.Add(PropertyId);
+            var serviceTask = Add(PropComputerViewModel);
             PropServiceTaskViewModels.Add(new ServiceTaskViewModel(serviceTask));
         }
         private bool CAdd(object arg) => true;
@@ -37,24 +37,13 @@ namespace ViewModels.External
 
         #endregion
 
-        #region property ServiceTaskTable
-        private ServiceTaskTable _content;
+        #region PropComputerViewModel
+        private ComputerViewModel _computerViewModel;
 
-        public ServiceTaskTable PropertyServiceTaskTable
+        public ComputerViewModel PropComputerViewModel
         {
-            get { return _content; }
-            set { _content = value; NotifyPropertyChanged(nameof(PropertyServiceTaskTable)); }
-        }
-
-        #endregion
-
-        #region property Id
-        private int _id;
-
-        public int PropertyId
-        {
-            get { return _id; }
-            set { _id = value; NotifyPropertyChanged(nameof(PropertyId)); }
+            get { return _computerViewModel; }
+            set { _computerViewModel = value; NotifyPropertyChanged(nameof(PropComputerViewModel)); }
         }
 
         #endregion
@@ -66,16 +55,24 @@ namespace ViewModels.External
         }
 
 
-        public ServiceTaskTableViewModel(ServiceTaskTable taskTable, int id)
+        public ServiceTaskTableViewModel(ComputerViewModel computerViewModel)
         {
-            PropertyServiceTaskTable = taskTable;
-            PropertyId = id;
+            PropComputerViewModel = computerViewModel;
 
             PropServiceTaskViewModels = new ObservableCollection<ServiceTaskViewModel>();
-            foreach (var item in PropertyServiceTaskTable.PropContent.Where(s => s.PropTargetId == _id))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropServiceTaskCollection.Where(s => s.PropTargetId == _computerViewModel.PropComputer.PropId))
             {
                 PropServiceTaskViewModels.Add(new ServiceTaskViewModel(item));
             }
+        }
+
+        public ServiceTask Add(ComputerViewModel computerViewModel)
+        {
+            var item = new ServiceTask();
+            MainViewModel.Instance.ExternalDataContext.PropServiceTaskCollection.Add(item);
+            item.PropId = MainViewModel.Instance.ExternalDataContext.PropServiceTaskCollection.IndexOf(item);
+            item.PropTargetId = computerViewModel.PropComputer.PropId;
+            return item;
         }
     }
 }

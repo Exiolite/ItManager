@@ -1,44 +1,45 @@
-﻿namespace Models.External
+﻿using System.Collections.ObjectModel;
+
+namespace Models.External
 {
     public class DataContext : Internal.Model
     {
         #region PropAnyDeskTable
-        private AnyDeskTable _anyDeskTable = new AnyDeskTable();
+        private ObservableCollection<AnyDesk> _anyDeskTable = new ObservableCollection<AnyDesk>();
 
-        public AnyDeskTable PropAnyDeskTable
+        public ObservableCollection<AnyDesk> PropAnyDeskCollection
         {
             get { return _anyDeskTable; }
-            set { _anyDeskTable = value; NotifyPropertyChanged(nameof(PropAnyDeskTable)); }
+            set { _anyDeskTable = value; NotifyPropertyChanged(nameof(PropAnyDeskCollection)); }
         }
 
         #endregion
 
-        #region PropCompanyTable
-        private CompanyTable _companyTable = new CompanyTable();
+        #region PropCompanyCollection
+        private ObservableCollection<Company> _content = new ObservableCollection<Company>();
 
-        public CompanyTable PropCompanyTable
+        public ObservableCollection<Company> PropCompanyCollection
         {
-            get { return _companyTable; }
-            set { _companyTable = value; NotifyPropertyChanged(nameof(PropCompanyTable)); }
+            get { return _content; }
+            set { _content = value; NotifyPropertyChanged(nameof(PropCompanyCollection)); }
         }
-
         #endregion
 
         #region PropComputerTable
-        private ComputerTable _computerTable = new ComputerTable();
+        private ObservableCollection<Computer> _computerTable = new ObservableCollection<Computer>();
 
-        public ComputerTable PropComputerTable
+        public ObservableCollection<Computer> PropComputerCollection
         {
             get { return _computerTable; }
-            set { _computerTable = value; NotifyPropertyChanged(nameof(PropComputerTable)); }
+            set { _computerTable = value; NotifyPropertyChanged(nameof(PropComputerCollection)); }
         }
 
         #endregion
 
         #region PropOSDescriptionTable
-        private OSDescriptionTable _oSDescription = new OSDescriptionTable();
+        private ObservableCollection<OSDescription> _oSDescription = new ObservableCollection<OSDescription>();
 
-        public OSDescriptionTable PropOSDescriptionTable
+        public ObservableCollection<OSDescription> PropOSDescriptionCollection
         {
             get { return _oSDescription; }
             set { _oSDescription = value; NotifyPropertyChanged(nameof(OSDescription)); }
@@ -47,70 +48,36 @@
         #endregion
 
         #region PropUserTable
-        private UserTable _userTable = new UserTable();
+        private ObservableCollection<User> _userTable = new ObservableCollection<User>();
 
-        public UserTable PropUserTable
+        public ObservableCollection<User> PropUserCollection
         {
             get { return _userTable; }
-            set { _userTable = value; NotifyPropertyChanged(nameof(PropUserTable)); }
+            set { _userTable = value; NotifyPropertyChanged(nameof(PropUserCollection)); }
         }
 
         #endregion
 
         #region PropComputerServiceTaskTable
-        private ServiceTaskTable _computerServiceTaskTable = new ServiceTaskTable();
+        private ObservableCollection<ServiceTask> _computerServiceTaskTable = new ObservableCollection<ServiceTask>();
 
-        public ServiceTaskTable PropComputerServiceTaskTable
+        public ObservableCollection<ServiceTask> PropServiceTaskCollection
         {
             get { return _computerServiceTaskTable; }
-            set { _computerServiceTaskTable = value; NotifyPropertyChanged(nameof(PropComputerServiceTaskTable)); }
+            set { _computerServiceTaskTable = value; NotifyPropertyChanged(nameof(PropServiceTaskCollection)); }
         }
 
         #endregion
 
         #region PropServiceRequestTable
-        private ServiceRequestTable _serviceRequestTable = new ServiceRequestTable();
+        private ObservableCollection<ServiceRequest> _serviceRequestTable = new ObservableCollection<ServiceRequest>();
 
-        public ServiceRequestTable PropServiceRequestTable
+        public ObservableCollection<ServiceRequest> PropServiceRequestCollection
         {
             get { return _serviceRequestTable; }
-            set { _serviceRequestTable = value; NotifyPropertyChanged(nameof(PropServiceRequestTable)); }
+            set { _serviceRequestTable = value; NotifyPropertyChanged(nameof(PropServiceRequestCollection)); }
         }
 
         #endregion
-
-        public DataContext Merge(DataContext dataContext)
-        {
-            foreach (var item in dataContext.PropAnyDeskTable.PropContent.Where(i => i.PropIsEdited == true))
-            {
-                PropAnyDeskTable.Merge(item);
-            }
-            foreach (var item in dataContext.PropCompanyTable.PropContent.Where(i => i.PropIsEdited == true))
-            {
-                PropCompanyTable.Merge(item);
-            }
-            foreach (var item in dataContext.PropComputerTable.PropContent.Where(i => i.PropIsEdited == true))
-            {
-                PropComputerTable.Merge(item);
-            }
-            foreach (var item in dataContext.PropOSDescriptionTable.Content.Where(i => i.PropIsEdited == true))
-            {
-                PropOSDescriptionTable.Merge(item);
-            }
-            foreach (var item in dataContext.PropUserTable.PropContent.Where(i => i.PropIsEdited == true))
-            {
-                PropUserTable.Merge(item);
-            }
-            foreach (var item in dataContext.PropComputerServiceTaskTable.PropContent.Where(i => i.PropIsEdited == true))
-            {
-                PropComputerServiceTaskTable.Merge(item);
-            }
-            foreach (var item in dataContext.PropServiceRequestTable.PropContent.Where(i => i.PropIsEdited == true))
-            {
-                PropServiceRequestTable.Merge(item);
-            }
-
-            return this;
-        }
     }
 }

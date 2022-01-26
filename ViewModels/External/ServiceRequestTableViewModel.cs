@@ -19,7 +19,7 @@ namespace ViewModels.External
         }
         private void AddE(object obj)
         {
-            var serviceRequest = PropServiceReuqestTable.AddAsCompany(_targetId);
+            var serviceRequest = AddAsCompany(PropCompanyViewModel.PropCompany.PropId);
             PropServiceRequestViewModelCollection.Add(new ServiceRequestViewModel(serviceRequest));
         }
         private bool CAdd(object arg) => true;
@@ -33,17 +33,6 @@ namespace ViewModels.External
         {
             get { return _serviceRequestViewModelCollection; }
             set { _serviceRequestViewModelCollection = value; NotifyPropertyChanged(nameof(PropServiceRequestViewModelCollection)); }
-        }
-
-        #endregion
-
-        #region property ServiceTaskTable
-        private ServiceRequestTable _content;
-
-        public ServiceRequestTable PropServiceReuqestTable
-        {
-            get { return _content; }
-            set { _content = value; NotifyPropertyChanged(nameof(PropServiceReuqestTable)); }
         }
 
         #endregion
@@ -69,13 +58,21 @@ namespace ViewModels.External
         public ServiceRequestTableViewModel(CompanyViewModel companyViewModel)
         {
             PropCompanyViewModel = companyViewModel;
-            PropServiceReuqestTable = MainViewModel.Instance.ExternalDataContext.PropServiceRequestTable;
 
             PropServiceRequestViewModelCollection = new ObservableCollection<ServiceRequestViewModel>();
-            foreach (var item in PropServiceReuqestTable.PropContent.Where(s => s.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropServiceRequestCollection.Where(s => s.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
             {
                 PropServiceRequestViewModelCollection.Add(new ServiceRequestViewModel(item));
             }
+        }
+
+        public ServiceRequest AddAsCompany(int targetId)
+        {
+            var item = new ServiceRequest();
+            MainViewModel.Instance.ExternalDataContext.PropServiceRequestCollection.Add(item);
+            item.PropId = MainViewModel.Instance.ExternalDataContext.PropServiceRequestCollection.IndexOf(item);
+            item.PropCompanyId = targetId;
+            return item;
         }
     }
 }

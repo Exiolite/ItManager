@@ -51,7 +51,7 @@ namespace ViewModels.External
 
 
             PropOSDescriptionViewModelCollection = new ObservableCollection<OSDescriptionViewModel>();
-            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropOSDescriptionTable.Content.Where(ad => ad.PropComputerId == _computerId))
+            foreach (var item in MainViewModel.Instance.ExternalDataContext.PropOSDescriptionCollection.Where(ad => ad.PropComputerId == _computerId))
             {
                 PropOSDescriptionViewModelCollection.Add(new OSDescriptionViewModel(item));
             }
