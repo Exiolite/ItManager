@@ -18,6 +18,17 @@ namespace Models.External
 
         #endregion
 
+        #region PropTeamViewerTable
+        private ObservableCollection<TeamViewer> _teamViewerCollection = new ObservableCollection<TeamViewer>();
+
+        public ObservableCollection<TeamViewer> PropTeamViewerCollection
+        {
+            get { return _teamViewerCollection; }
+            set { _teamViewerCollection = value; NotifyPropertyChanged(nameof(PropTeamViewerCollection)); }
+        }
+
+        #endregion
+
         #region PropCompanyCollection
         private ObservableCollection<Company> _content = new ObservableCollection<Company>();
 

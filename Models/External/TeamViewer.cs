@@ -1,6 +1,6 @@
 ﻿namespace Models.External
 {
-    public class AnyDesk :  Model
+    public class TeamViewer : Model
     {
         #region PropComputerId
         private int _computerId = -1;
@@ -13,24 +13,24 @@
 
         #endregion
 
-        #region PropAnyDeskId
-        private string _anyDeskId = "123456789";
+        #region PropTeamViewerId
+        private string _teamViewerId = "123456789";
 
-        public string PropAnyDeskId
+        public string PropTeamViewerId
         {
-            get { return _anyDeskId; }
-            set { _anyDeskId = value; NotifyPropertyChanged(nameof(PropAnyDeskId)); PropIsEdited = true; }
+            get { return _teamViewerId; }
+            set { _teamViewerId = value; NotifyPropertyChanged(nameof(PropTeamViewerId)); PropIsEdited = true; }
         }
 
         #endregion
 
-        #region property AnyDeskPassword
-        private string _anyDeskPassword = "Password";
+        #region PropTeamViewerPassword
+        private string _teamviewerPassword = "Password";
 
-        public string PropAnyDeskPassword
+        public string PropTeamViewerPassword
         {
-            get { return _anyDeskPassword; }
-            set { _anyDeskPassword = value; NotifyPropertyChanged(nameof(PropAnyDeskPassword)); PropIsEdited = true; }
+            get { return _teamviewerPassword; }
+            set { _teamviewerPassword = value; NotifyPropertyChanged(nameof(PropTeamViewerPassword)); PropIsEdited = true; }
         }
 
         #endregion

@@ -13,6 +13,17 @@
 
         #endregion
 
+        #region PropTeamViewer
+        private TeamViewerViewModel _teamViewerViewModel;
+
+        public TeamViewerViewModel PropTeamViewerViewModel
+        {
+            get { return _teamViewerViewModel; }
+            set { _teamViewerViewModel = value; NotifyPropertyChanged(nameof(PropTeamViewerViewModel)); }
+        }
+
+        #endregion
+
         #region PropComputerViewModel
         private ComputerViewModel _computerViewModel;
 
@@ -33,6 +44,7 @@
         {
             PropComputerViewModel = computerViewModel;
             PropAnyDeskViewModel = new AnyDeskViewModel(computerViewModel);
+            PropTeamViewerViewModel = new TeamViewerViewModel(computerViewModel);
         }
     }
 }

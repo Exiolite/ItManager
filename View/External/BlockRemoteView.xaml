@@ -19,7 +19,9 @@
                                FontWeight="Bold"/>
                 </Button.Content>
             </Button>
-            <Button Style="{StaticResource BH3}">
+            <Button Style="{StaticResource BH3}"
+                    Command="{Binding PropTeamViewerViewModel.CMDConnect}"
+                    Visibility="{Binding PropTeamViewerViewModel.PropButtonVisibility}">
                 <Button.Content>
                     <TextBlock Text="TeamViewer"
                                Margin="4,0,4,0"

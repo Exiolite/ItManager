@@ -47,6 +47,10 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <!--#endregion-->
+                            <CheckBox Content="IsEnabled"
+                                      IsChecked="{Binding PropRemoteViewModel.PropAnyDeskViewModel.PropIsEnabled}"
+                                      Grid.Row="0"
+                                      Grid.Column="0" />
                             <TextBlock Text="Id: "
                                        Style="{StaticResource TH3}"
                                        Grid.Row="1"
@@ -63,10 +67,6 @@
                                      Style="{StaticResource TBH3}"
                                      Grid.Row="2"
                                      Grid.Column="1" />
-                            <CheckBox Content="IsEnabled"
-                                      IsChecked="{Binding PropRemoteViewModel.PropAnyDeskViewModel.PropIsEnabled}"
-                                      Grid.Row="0"
-                                      Grid.Column="0" />
                         </Grid>
                     </StackPanel>
                 </StackPanel>
@@ -81,27 +81,32 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <!--#endregion-->
-                            <TextBlock Text="Id: "
-                                       Style="{StaticResource TH3}"
-                                       Grid.Row="0"
-                                       Grid.Column="0" />
-                            <TextBox  Text="InDevelop"
-                                      Style="{StaticResource TBH3}"
+                            <CheckBox Content="IsEnabled"
+                                      IsChecked="{Binding PropRemoteViewModel.PropTeamViewerViewModel.PropIsEnabled}"
                                       Grid.Row="0"
-                                      Grid.Column="1" />
-                            <TextBlock Text="Password: "
+                                      Grid.Column="0" />
+                            <TextBlock Text="Id: "
                                        Style="{StaticResource TH3}"
                                        Grid.Row="1"
                                        Grid.Column="0" />
-                            <TextBox Text="InDevelop"
+                            <TextBox  Text="{Binding PropRemoteViewModel.PropTeamViewerViewModel.PropTeamViewer.PropTeamViewerId}"
+                                      Style="{StaticResource TBH3}"
+                                      Grid.Row="1"
+                                      Grid.Column="1" />
+                            <TextBlock Text="Password: "
+                                       Style="{StaticResource TH3}"
+                                       Grid.Row="2"
+                                       Grid.Column="0" />
+                            <TextBox Text="{Binding PropRemoteViewModel.PropTeamViewerViewModel.PropTeamViewer.PropTeamViewerPassword}"
                                      Style="{StaticResource TBH3}"
-                                     Grid.Row="1"
+                                     Grid.Row="2"
                                      Grid.Column="1" />
                         </Grid>
                     </StackPanel>

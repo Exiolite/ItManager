@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace ViewModels.External
 {
-    public sealed class AnyDeskViewModel : ViewModel
+    public class TeamViewerViewModel : ViewModel
     {
         #region CMDConnect
         private ICommand _cmdConnect;
@@ -26,8 +26,8 @@ namespace ViewModels.External
         {
             await System.Threading.Tasks.Task.Delay(1);
 
-            var path = @"C:\AnyDesk.exe";
-            var args = $"/C echo {PropAnyDesk.PropAnyDeskPassword} | {path} {PropAnyDesk.PropAnyDeskId} --with-password";
+            var path = "\"C:\\Program Files (x86)\\TeamViewer\\TeamViewer.exe\"";
+            var args = $"/C {path} --id {PropTeamViewer.PropTeamViewerId} --Password {PropTeamViewer.PropTeamViewerPassword}";
 
             var startInfo = new ProcessStartInfo
             {
@@ -56,12 +56,12 @@ namespace ViewModels.External
         #endregion
 
         #region PropAnyDesk
-        private AnyDesk _anyDesk;
+        private TeamViewer _teamViewer;
 
-        public AnyDesk PropAnyDesk
+        public TeamViewer PropTeamViewer
         {
-            get { return _anyDesk; }
-            set { _anyDesk = value; NotifyPropertyChanged(nameof(PropAnyDesk)); }
+            get { return _teamViewer; }
+            set { _teamViewer = value; NotifyPropertyChanged(nameof(PropTeamViewer)); }
         }
 
         #endregion
@@ -93,14 +93,14 @@ namespace ViewModels.External
         {
             get
             {
-                if (PropAnyDesk.PropIsEnabled == true) PropButtonVisibility = Visibility.Visible;
+                if (PropTeamViewer.PropIsEnabled == true) PropButtonVisibility = Visibility.Visible;
                 else PropButtonVisibility = Visibility.Collapsed;
-                return PropAnyDesk.PropIsEnabled;
+                return PropTeamViewer.PropIsEnabled;
             }
-            set 
+            set
             {
-                PropAnyDesk.PropIsEnabled = value;
-                if (PropAnyDesk.PropIsEnabled == true) PropButtonVisibility = Visibility.Visible;
+                PropTeamViewer.PropIsEnabled = value;
+                if (PropTeamViewer.PropIsEnabled == true) PropButtonVisibility = Visibility.Visible;
                 else PropButtonVisibility = Visibility.Collapsed;
                 NotifyPropertyChanged(nameof(PropIsEnabled));
             }
@@ -108,22 +108,22 @@ namespace ViewModels.External
 
         #endregion
 
-        public AnyDeskViewModel()
+        public TeamViewerViewModel()
         {
 
         }
 
-        public AnyDeskViewModel(ComputerViewModel computerViewModel)
+        public TeamViewerViewModel(ComputerViewModel computerViewModel)
         {
             PropComputerViewModel = computerViewModel;
-            var anyDesk = MainViewModel.Instance.ExternalDataContext.PropAnyDeskCollection.FirstOrDefault(x => x.PropComputerId == computerViewModel.PropComputer.PropId);
+            var anyDesk = MainViewModel.Instance.ExternalDataContext.PropTeamViewerCollection.FirstOrDefault(x => x.PropComputerId == computerViewModel.PropComputer.PropId);
             if (anyDesk == null)
             {
-                PropAnyDesk = new AnyDesk() { PropComputerId = computerViewModel.PropComputer.PropId }; 
-                MainViewModel.Instance.ExternalDataContext.PropAnyDeskCollection.Add(PropAnyDesk);
+                PropTeamViewer = new TeamViewer() { PropComputerId = computerViewModel.PropComputer.PropId };
+                MainViewModel.Instance.ExternalDataContext.PropTeamViewerCollection.Add(PropTeamViewer);
                 return;
             }
-            PropAnyDesk = anyDesk;
+            PropTeamViewer = anyDesk;
         }
     }
 }
