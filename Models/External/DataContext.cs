@@ -29,6 +29,17 @@ namespace Models.External
 
         #endregion
 
+        #region PropRDP
+        private ObservableCollection<RDP> _rDPCollection = new ObservableCollection<RDP>();
+
+        public ObservableCollection<RDP> PropRDPCollection
+        {
+            get { return _rDPCollection; }
+            set { _rDPCollection = value; NotifyPropertyChanged(nameof(PropRDPCollection)); }
+        }
+
+        #endregion
+
         #region PropCompanyCollection
         private ObservableCollection<Company> _content = new ObservableCollection<Company>();
 

@@ -29,7 +29,9 @@
                                FontWeight="Bold" />
                 </Button.Content>
             </Button>
-            <Button Style="{StaticResource BH3}">
+            <Button Style="{StaticResource BH3}"
+                    Command="{Binding PropRDPViewModel.CMDConnect}"
+                    Visibility="{Binding PropRDPViewModel.PropButtonVisibility}">
                 <Button.Content>
                     <TextBlock Text="RDP"
                                Margin="4,0,4,0"

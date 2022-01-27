@@ -24,6 +24,17 @@
 
         #endregion
 
+        #region PropRDP
+        private RDPViewModel _rdpViewModel;
+
+        public RDPViewModel PropRDPViewModel
+        {
+            get { return _rdpViewModel; }
+            set { _rdpViewModel = value; NotifyPropertyChanged(nameof(PropRDPViewModel)); }
+        }
+
+        #endregion
+
         #region PropComputerViewModel
         private ComputerViewModel _computerViewModel;
 
@@ -45,6 +56,7 @@
             PropComputerViewModel = computerViewModel;
             PropAnyDeskViewModel = new AnyDeskViewModel(computerViewModel);
             PropTeamViewerViewModel = new TeamViewerViewModel(computerViewModel);
+            PropRDPViewModel = new RDPViewModel(computerViewModel);
         }
     }
 }

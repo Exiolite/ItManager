@@ -121,38 +121,25 @@
                             <!--#region <Grid.Definitions> -->
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <!--#endregion-->
-                            <TextBlock Text="Ip: "
-                                       Style="{StaticResource TH3}"
-                                       Grid.Row="0"
-                                       Grid.Column="0" />
-                            <TextBox  Text="InDevelop"
-                                      Style="{StaticResource TBH3}"
+                            <CheckBox Content="IsEnabled"
+                                      IsChecked="{Binding PropRemoteViewModel.PropRDPViewModel.PropIsEnabled}"
                                       Grid.Row="0"
-                                      Grid.Column="1" />
-                            <TextBlock Text="Id: "
+                                      Grid.Column="0" />
+                            <TextBlock Text="Ip: "
                                        Style="{StaticResource TH3}"
                                        Grid.Row="1"
                                        Grid.Column="0" />
-                            <TextBox  Text="InDevelop"
+                            <TextBox  Text="{Binding PropRemoteViewModel.PropRDPViewModel.PropRDP.PropIp}"
                                       Style="{StaticResource TBH3}"
                                       Grid.Row="1"
                                       Grid.Column="1" />
-                            <TextBlock Text="Password: "
-                                       Style="{StaticResource TH3}"
-                                       Grid.Row="2"
-                                       Grid.Column="0" />
-                            <TextBox Text="InDevelop"
-                                     Style="{StaticResource TBH3}"
-                                     Grid.Row="2"
-                                     Grid.Column="1" />
                         </Grid>
                     </StackPanel>
                 </StackPanel>
