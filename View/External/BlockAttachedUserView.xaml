@@ -8,17 +8,10 @@
              mc:Ignorable="d" 
              d:DesignWidth="400">
     <StackPanel>
-        <StackPanel Style="{StaticResource SPMarginHeader}">
-            <StackPanel HorizontalAlignment="Left">
-                <TextBlock Text="Attached User"
-                           Style="{StaticResource TH4}"
-                           Foreground="{StaticResource MainBackground}"
-                           Background="{StaticResource HAttachedUser}">
-                </TextBlock>
-            </StackPanel>
-        </StackPanel>
         <StackPanel Style="{StaticResource SPMargin}">
-            <local:UserShortContactView DataContext="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext}"/>
+            <Border>
+                <local:UserShortContactView DataContext="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext}" />
+            </Border>
         </StackPanel>
     </StackPanel>
 </UserControl>

@@ -6,22 +6,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:View.External"
              mc:Ignorable="d">
-    <StackPanel Style="{StaticResource SPMarginBlock}">
-        <StackPanel Style="{StaticResource SPMarginHeader}">
-            <StackPanel HorizontalAlignment="Left">
-                <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.HRemote}"
-                           Style="{StaticResource TH4}"
-                           Foreground="{StaticResource MainBackground}"
-                           Background="{StaticResource HRemote}" />
-            </StackPanel>
-        </StackPanel>
-        
-        <StackPanel Style="{StaticResource SPMargin}"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
+    <StackPanel Style="{StaticResource SPMargin}">
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right">
             <Button Style="{StaticResource BH3}"
                     Command="{Binding PropAnyDeskViewModel.CMDConnect}"
-                    MouseRightButtonDown="AnyDeskClicked">
+                    Visibility="{Binding PropAnyDeskViewModel.PropButtonVisibility}">
                 <Button.Content>
                     <TextBlock Text="AnyDesk"
                                Margin="4,0,4,0"

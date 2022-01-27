@@ -22,6 +22,7 @@ namespace ViewModels.External
         private bool CDelete(object arg) => true;
         #endregion
 
+
         #region PropADUser
         private ADUser _aDUser;
 

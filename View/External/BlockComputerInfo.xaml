@@ -14,8 +14,6 @@
             <TextBox Text="{Binding PropComputer.PropDescription}"
                      Style="{StaticResource TBA}"
                      TextWrapping="Wrap" />
-            <ComboBox ItemsSource="{Binding PropComputerUsageTypeCollection}"
-                      SelectedItem="{Binding PropComputer.PropUsageType}" />
         </StackPanel>
     </StackPanel>
 </UserControl>

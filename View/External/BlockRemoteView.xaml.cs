@@ -9,15 +9,5 @@ namespace View.External
         {
             InitializeComponent();
         }
-
-        private void AnyDeskClicked(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            var control = (Button)sender;
-            var dataContext = (RemoteViewModel)control.DataContext;
-            var anyDeskWindow = new AnyDeskWindow();
-
-            anyDeskWindow.DataContext = dataContext.PropAnyDeskViewModel;
-            anyDeskWindow.Show();
-        }
     }
 }

@@ -9,24 +9,6 @@ namespace ViewModels.External
         private int _computerId;
 
 
-        #region CMDAdd
-        private ICommand _add;
-        public ICommand CMDAdd
-        {
-            get
-            {
-                if (_add == null) _add = new Command(this.AddE, this.CAdd, false);
-                return _add;
-            }
-        }
-        private void AddE(object obj)
-        {
-            PropOSDescriptionViewModelCollection.Add(new OSDescriptionViewModel(_computerId));
-        }
-        private bool CAdd(object arg) => true;
-        #endregion
-
-
         #region PropOSDescriptionViewModelCollection
         private ObservableCollection<OSDescriptionViewModel> _oSDescriptionViewModelCollection;
 

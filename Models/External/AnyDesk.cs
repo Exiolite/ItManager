@@ -34,5 +34,16 @@
         }
 
         #endregion
+
+        #region PropIsEnabled
+        private bool _isEnabled;
+
+        public bool PropIsEnabled
+        {
+            get { return _isEnabled; }
+            set { _isEnabled = value; NotifyPropertyChanged(nameof(PropIsEnabled)); }
+        }
+
+        #endregion
     }
 }

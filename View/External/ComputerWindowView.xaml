@@ -7,17 +7,236 @@
         xmlns:local="clr-namespace:View.External"
         mc:Ignorable="d"
         Width="400"
+        Height="500"
         ResizeMode="NoResize">
     <Window.Title>
         <MultiBinding StringFormat=" {0}\{1}">
-            <Binding Path="PropCompanyViewModel.PropCompany.PropDomainName" />
+            <Binding Path="PropComputerTableViewModel.PropCompanyViewModel.PropCompany.PropDomainName" />
             <Binding Path="PropComputer.PropName" />
         </MultiBinding>
     </Window.Title>
-    <StackPanel>
-        <local:BlockComputerInfo DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
-        <local:BlockRemoteView DataContext="{Binding PropRemoteViewModel}" />
-        <local:BlockAttachedUserView DataContext="{Binding PropUserViewModel}" />
-        <local:BlockServiceTaskListView DataContext="{Binding PropServiceTaskTableViewModel}" />
-    </StackPanel>
+    <TabControl>
+        <TabItem Header="Info">
+            <DockPanel>
+                <local:BlockRemoteView DataContext="{Binding PropRemoteViewModel}" DockPanel.Dock="Bottom"/>
+                <StackPanel>
+                    <local:BlockComputerInfo DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
+                    <local:BlockAttachedUserView DataContext="{Binding PropUserViewModel}" />
+                    <local:BlockServiceTaskListView DataContext="{Binding PropServiceTaskTableViewModel}" />
+                </StackPanel>
+            </DockPanel>
+        </TabItem>
+        <TabItem Header="Remote">
+            <StackPanel Style="{StaticResource SPMargin}">
+                <!--#region AnyDesk -->
+                <StackPanel>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="AnyDesk"
+                                       Style="{StaticResource TH1}" />
+                        </StackPanel>
+                        <Grid>
+                            <!--#region <Grid.Definitions> -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+                            <TextBlock Text="Id: "
+                                       Style="{StaticResource TH3}"
+                                       Grid.Row="1"
+                                       Grid.Column="0" />
+                            <TextBox  Text="{Binding PropRemoteViewModel.PropAnyDeskViewModel.PropAnyDesk.PropAnyDeskId}"
+                                      Style="{StaticResource TBH3}"
+                                      Grid.Row="1"
+                                      Grid.Column="1" />
+                            <TextBlock Text="Password: "
+                                       Style="{StaticResource TH3}"
+                                       Grid.Row="2"
+                                       Grid.Column="0" />
+                            <TextBox Text="{Binding PropRemoteViewModel.PropAnyDeskViewModel.PropAnyDesk.PropAnyDeskPassword}"
+                                     Style="{StaticResource TBH3}"
+                                     Grid.Row="2"
+                                     Grid.Column="1" />
+                            <CheckBox Content="IsEnabled"
+                                      IsChecked="{Binding PropRemoteViewModel.PropAnyDeskViewModel.PropIsEnabled}"
+                                      Grid.Row="0"
+                                      Grid.Column="0" />
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region TeamViewer -->
+                <StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="TeamViewer"
+                                   Style="{StaticResource TH1}" />
+                        <Grid>
+                            <!--#region <Grid.Definitions> -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+                            <TextBlock Text="Id: "
+                                       Style="{StaticResource TH3}"
+                                       Grid.Row="0"
+                                       Grid.Column="0" />
+                            <TextBox  Text="InDevelop"
+                                      Style="{StaticResource TBH3}"
+                                      Grid.Row="0"
+                                      Grid.Column="1" />
+                            <TextBlock Text="Password: "
+                                       Style="{StaticResource TH3}"
+                                       Grid.Row="1"
+                                       Grid.Column="0" />
+                            <TextBox Text="InDevelop"
+                                     Style="{StaticResource TBH3}"
+                                     Grid.Row="1"
+                                     Grid.Column="1" />
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region RDP -->
+                <StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="RDP"
+                                   Style="{StaticResource TH1}" />
+                        <Grid>
+                            <!--#region <Grid.Definitions> -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+                            <TextBlock Text="Ip: "
+                                       Style="{StaticResource TH3}"
+                                       Grid.Row="0"
+                                       Grid.Column="0" />
+                            <TextBox  Text="InDevelop"
+                                      Style="{StaticResource TBH3}"
+                                      Grid.Row="0"
+                                      Grid.Column="1" />
+                            <TextBlock Text="Id: "
+                                       Style="{StaticResource TH3}"
+                                       Grid.Row="1"
+                                       Grid.Column="0" />
+                            <TextBox  Text="InDevelop"
+                                      Style="{StaticResource TBH3}"
+                                      Grid.Row="1"
+                                      Grid.Column="1" />
+                            <TextBlock Text="Password: "
+                                       Style="{StaticResource TH3}"
+                                       Grid.Row="2"
+                                       Grid.Column="0" />
+                            <TextBox Text="InDevelop"
+                                     Style="{StaticResource TBH3}"
+                                     Grid.Row="2"
+                                     Grid.Column="1" />
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+                <!--#endregion-->
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="OS Description">
+            <StackPanel Style="{StaticResource SPMargin}">
+                <TextBlock Text="Main"
+                           Style="{StaticResource TH1}" />
+                <Grid>
+                    <!--#region <Grid.Definitions> -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!--#endregion-->
+                    <TextBlock Text="CPU: "
+                               Style="{StaticResource TH3}"
+                               Grid.Row="0"
+                               Grid.Column="0" />
+                    <TextBox  Text="{Binding PropOSDescriptionViewModel.PropOSDescription.PropCPUName}"
+                              Style="{StaticResource TBH3}"
+                              Grid.Row="0"
+                              Grid.Column="1" />
+                    <TextBlock Text="PSU: "
+                               Style="{StaticResource TH3}"
+                               Grid.Row="1"
+                               Grid.Column="0" />
+                    <TextBox  Text="{Binding PropOSDescriptionViewModel.PropOSDescription.PropPSUName}"
+                              Style="{StaticResource TBH3}"
+                              Grid.Row="1"
+                              Grid.Column="1" />
+                    <TextBlock Text="MB: "
+                               Style="{StaticResource TH3}"
+                               Grid.Row="2"
+                               Grid.Column="0" />
+                    <TextBox  Text="{Binding PropOSDescriptionViewModel.PropOSDescription.PropMotherboardName}"
+                              Style="{StaticResource TBH3}"
+                              Grid.Row="2"
+                              Grid.Column="1" />
+                    <TextBlock Text="GPU: "
+                               Style="{StaticResource TH3}"
+                               Grid.Row="3"
+                               Grid.Column="0" />
+                    <TextBox  Text="{Binding PropOSDescriptionViewModel.PropOSDescription.PropGPUName}"
+                              Style="{StaticResource TBH3}"
+                              Grid.Row="3"
+                              Grid.Column="1" />
+                    <TextBlock Text="RAM: "
+                               Style="{StaticResource TH3}"
+                               Grid.Row="4"
+                               Grid.Column="0" />
+                    <TextBox  Text="{Binding PropOSDescriptionViewModel.PropOSDescription.PropRAMAmmount}"
+                              Style="{StaticResource TBH3}"
+                              Grid.Row="4"
+                              Grid.Column="1" />
+                </Grid>
+                <TextBlock Text="Storage"
+                           Style="{StaticResource TH1}">
+                    <TextBlock.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Add Storage Drive"
+                                      Command="{Binding PropOSDescriptionViewModel.CMDAddStorageDrive}" />
+                        </ContextMenu>
+                    </TextBlock.ContextMenu>
+                </TextBlock>
+                <ListBox ItemsSource="{Binding PropOSDescriptionViewModel.PropOSDescription.PropStorageDriveCollection}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding PropName}"
+                                         Style="{StaticResource TBH3}"/>
+                                <TextBox Text="{Binding PropStorageInGb}"
+                                         Style="{StaticResource TBH3}" />
+                                <TextBlock Text="Gb"
+                                         Style="{StaticResource TH3}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </TabItem>
+    </TabControl>
 </Window>

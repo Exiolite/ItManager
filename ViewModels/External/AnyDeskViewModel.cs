@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ViewModels.External
@@ -76,7 +77,31 @@ namespace ViewModels.External
 
         #endregion
 
-        public string PropTitle { get => "AnyDesk Editor: "; }
+        #region PropVisibility
+        private Visibility _visibility;
+
+        public Visibility PropButtonVisibility
+        {
+            get { return _visibility; }
+            set { _visibility = value; NotifyPropertyChanged(nameof(PropButtonVisibility)); }
+        }
+
+        #endregion
+
+        #region PropIsEnabled
+        public bool PropIsEnabled
+        {
+            get { return PropAnyDesk.PropIsEnabled; }
+            set 
+            {
+                PropAnyDesk.PropIsEnabled = value;
+                if (PropAnyDesk.PropIsEnabled == true) PropButtonVisibility = Visibility.Visible;
+                else PropButtonVisibility = Visibility.Collapsed;
+                NotifyPropertyChanged(nameof(PropIsEnabled));
+            }
+        }
+
+        #endregion
 
         public AnyDeskViewModel()
         {
@@ -94,6 +119,9 @@ namespace ViewModels.External
                 return;
             }
             PropAnyDesk = anyDesk;
+
+            if (PropIsEnabled == true) PropButtonVisibility = Visibility.Visible;
+            else PropButtonVisibility = Visibility.Collapsed;
         }
     }
 }

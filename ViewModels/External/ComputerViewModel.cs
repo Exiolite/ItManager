@@ -6,16 +6,6 @@ namespace ViewModels.External
 {
     public sealed class ComputerViewModel : ViewModel
     {
-        #region PropComputer
-        private Computer _computer;
-
-        public Computer PropComputer
-        {
-            get { return _computer; }
-            set { _computer = value; NotifyPropertyChanged(nameof(PropComputer)); }
-        }
-        #endregion
-
         #region PropComputerTableViewModel
         private ComputerTableViewModel _computerTableViewModel;
 
@@ -25,6 +15,16 @@ namespace ViewModels.External
             set { _computerTableViewModel = value; NotifyPropertyChanged(nameof(PropComputerTableViewModel)); }
         }
 
+        #endregion
+
+        #region PropComputer
+        private Computer _computer;
+
+        public Computer PropComputer
+        {
+            get { return _computer; }
+            set { _computer = value; NotifyPropertyChanged(nameof(PropComputer)); }
+        }
         #endregion
 
         #region PropRemoteViewModel
@@ -71,6 +71,17 @@ namespace ViewModels.External
 
         #endregion
 
+        #region PropOSDescriptionViewModel
+        private OSDescriptionViewModel _oSDescriptionViewModel;
+
+        public OSDescriptionViewModel PropOSDescriptionViewModel
+        {
+            get { return _oSDescriptionViewModel; }
+            set { _oSDescriptionViewModel = value; NotifyPropertyChanged(nameof(PropOSDescriptionViewModel)); }
+        }
+
+        #endregion
+
 
 
         public ComputerViewModel()
@@ -91,6 +102,7 @@ namespace ViewModels.External
             PropRemoteViewModel = new RemoteViewModel(this);
             PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(this);
             PropUserViewModel = new UserViewModel(this);
+            PropOSDescriptionViewModel = new OSDescriptionViewModel(this);
 
             PropComputerUsageTypeCollection = new ObservableCollection<string>
             {
