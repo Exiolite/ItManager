@@ -19,8 +19,7 @@ namespace ViewModels.External
         }
         private void AddE(object obj)
         {
-            var serviceRequest = AddAsCompany(PropCompanyViewModel.PropCompany.PropId);
-            PropServiceRequestViewModelCollection.Add(new ServiceRequestViewModel(serviceRequest));
+            Add();
         }
         private bool CAdd(object arg) => true;
         #endregion
@@ -66,13 +65,13 @@ namespace ViewModels.External
             }
         }
 
-        public ServiceRequest AddAsCompany(int targetId)
+        public void Add()
         {
             var item = new ServiceRequest();
             MainViewModel.Instance.ExternalDataContext.PropServiceRequestCollection.Add(item);
             item.PropId = MainViewModel.Instance.ExternalDataContext.PropServiceRequestCollection.IndexOf(item);
-            item.PropCompanyId = targetId;
-            return item;
+            item.PropCompanyId = PropCompanyViewModel.PropCompany.PropId;
+            PropServiceRequestViewModelCollection.Add(new ServiceRequestViewModel(item));
         }
     }
 }

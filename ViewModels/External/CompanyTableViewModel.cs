@@ -1,6 +1,7 @@
-﻿using Models.External;
+using Models.External;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ViewModels.External
@@ -41,11 +42,11 @@ namespace ViewModels.External
         public CompanyTableViewModel()
         {
             Instance = this;
-            Reload();
+            Initialize();
         }
 
 
-        public void Reload()
+        public void Initialize()
         {
             PropCompanyViewModelCollection.Clear();
 

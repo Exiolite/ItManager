@@ -146,7 +146,7 @@
                                     <Button Style="{StaticResource BH4}"
                                             Click="ClickOpenServiceRequestInNewWindow">
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding PropServiceTask.PropName}" />
+                                            <TextBlock Text="{Binding PropServiceRequest.PropName}" />
                                         </StackPanel>
                                     </Button>
                                 </DataTemplate>

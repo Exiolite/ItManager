@@ -1,4 +1,6 @@
 ﻿using Models;
+using System.Windows.Input;
+using ViewModels.External;
 using ViewModels.Internal;
 
 namespace ViewModels
@@ -48,6 +50,23 @@ namespace ViewModels
             set { _externalDataContext = value; NotifyPropertyChanged(nameof(ExternalDataContext)); }
         }
 
+        #endregion
+
+        #region CMDReload
+        private ICommand _reload;
+        public ICommand CMDReload
+        {
+            get
+            {
+                if (_reload == null) _reload = new Command(this.ReloadE, this.CReload, false);
+                return _reload;
+            }
+        }
+        private void ReloadE(object obj)
+        {
+            CompanyTableViewModel.Instance.Initialize();
+        }
+        private bool CReload(object arg) => true;
         #endregion
     }
 }

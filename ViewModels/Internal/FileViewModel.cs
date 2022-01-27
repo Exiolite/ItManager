@@ -41,7 +41,7 @@ namespace ViewModels.Internal
         private void FileNewE(object obj)
         {
             MainViewModel.Instance.ExternalDataContext = new Models.External.DataContext();
-            CompanyTableViewModel.Instance.Reload();
+            CompanyTableViewModel.Instance.Initialize();
         }
         private bool CFileNew(object arg) => true;
         #endregion
@@ -65,7 +65,7 @@ namespace ViewModels.Internal
             PropFileOperation.PropCurrentFileName = PropFileOperation.PropCurrentFileName;
             PropFileOperation.WriteInternalData(MainViewModel.Instance.InternalDataContext);
 
-            CompanyTableViewModel.Instance.Reload();
+            CompanyTableViewModel.Instance.Initialize();
         }
         private bool CFileOpen(object arg) => true;
         #endregion
@@ -88,7 +88,7 @@ namespace ViewModels.Internal
             PropFileOperation.PropCurrentFileName = openFileDialog.FileName;
             MainViewModel.Instance.ExternalDataContext = PropFileOperation.ReadIfExistOrNew(PropFileOperation.PropCurrentFileName, PropPassword);
             PropFileOperation.PropCurrentFileName = PropFileOperation.PropCurrentFileName;
-            CompanyTableViewModel.Instance.Reload();
+            CompanyTableViewModel.Instance.Initialize();
             PropFileOperation.WriteInternalData(MainViewModel.Instance.InternalDataContext);
         }
         private bool COpenAs(object arg) => true;
@@ -140,14 +140,14 @@ namespace ViewModels.Internal
         {
             get
             {
-                if (_synchronizeWithServer == null) _synchronizeWithServer = new Command(this.SynchronizeWithServerE, this.CSynchronizeWithServer, false);
+                if (_synchronizeWithServer == null) _synchronizeWithServer = new Command(this.SendUpdateData, this.CSynchronizeWithServer, false);
                 return _synchronizeWithServer;
             }
         }
-        private void SynchronizeWithServerE(object obj)
+        private void SendUpdateData(object obj)
         {
-           MainViewModel.Instance.ExternalDataContext = ClientSocket.SendToServer(MainViewModel.Instance.ExternalDataContext);
-           CompanyTableViewModel.Instance.Reload();
+           //MainViewModel.Instance.ExternalDataContext = ClientSocket.UpdateDataOnServer(MainViewModel.Instance.ExternalDataContext);
+           CompanyTableViewModel.Instance.Initialize();
            PropFileOperation.WriteInternalData(MainViewModel.Instance.InternalDataContext);
         }
         private bool CSynchronizeWithServer(object arg) => true;

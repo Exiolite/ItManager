@@ -7,16 +7,15 @@
              mc:Ignorable="d"
              d:DesignHeight="200"
              d:DesignWidth="400">
-    <StackPanel Style="{StaticResource SPMargin}"
-                DataContext="{Binding PropServiceTask}">
+    <StackPanel Style="{StaticResource SPMargin}">
         <StackPanel>
-            <TextBlock Text="{Binding PropCreationDate}" />
+            <TextBlock Text="{Binding PropServiceRequest.PropCreationDate}" />
             <TextBox Style="{StaticResource TBH1}"
-                     Text="{Binding PropName}" />
+                     Text="{Binding PropServiceRequest.PropName}" />
             <TextBox Style="{StaticResource TBH3}"
-                     Text="{Binding PropDescription}" />
-            <CheckBox IsChecked="{Binding PropIsStarted}" />
-            <CheckBox IsChecked="{Binding PropIsEnded}" />
+                     Text="{Binding PropServiceRequest.PropDescription}" />
+            <CheckBox IsChecked="{Binding PropServiceRequest.PropIsStarted}" />
+            <CheckBox IsChecked="{Binding PropServiceRequest.PropIsEnded}" />
         </StackPanel>
     </StackPanel>
 </UserControl>
