@@ -1,9 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using Models.Internal;
+using System.Collections.ObjectModel;
 
 namespace Models.External
 {
     public class DataContext : Internal.Model
     {
+        #region PropExternal
+
         #region PropAnyDeskTable
         private ObservableCollection<AnyDesk> _anyDeskTable = new ObservableCollection<AnyDesk>();
 
@@ -59,12 +62,12 @@ namespace Models.External
         #endregion
 
         #region PropComputerServiceTaskTable
-        private ObservableCollection<ServiceTask> _computerServiceTaskTable = new ObservableCollection<ServiceTask>();
+        private ObservableCollection<ServiceTask> _serviceTaskCollection = new ObservableCollection<ServiceTask>();
 
         public ObservableCollection<ServiceTask> PropServiceTaskCollection
         {
-            get { return _computerServiceTaskTable; }
-            set { _computerServiceTaskTable = value; NotifyPropertyChanged(nameof(PropServiceTaskCollection)); }
+            get { return _serviceTaskCollection; }
+            set { _serviceTaskCollection = value; NotifyPropertyChanged(nameof(PropServiceTaskCollection)); }
         }
 
         #endregion
@@ -77,6 +80,19 @@ namespace Models.External
             get { return _serviceRequestTable; }
             set { _serviceRequestTable = value; NotifyPropertyChanged(nameof(PropServiceRequestCollection)); }
         }
+
+        #endregion
+
+        #region PropADUserCollection
+        private ObservableCollection<ADUser> _aDUserCollection;
+
+        public ObservableCollection<ADUser> PropADUserCollection
+        {
+            get { return _aDUserCollection; }
+            set { _aDUserCollection = value; NotifyPropertyChanged(nameof(PropADUserCollection)); }
+        }
+
+        #endregion
 
         #endregion
     }

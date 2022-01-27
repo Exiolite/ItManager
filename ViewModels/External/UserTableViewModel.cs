@@ -19,8 +19,7 @@ namespace ViewModels.External
         }
         private void AddE(object obj)
         {
-            var user = Add(new User() { PropCompanyId = PropCompanyViewModel.PropCompany.PropId });
-            PropUserViewModelCollection.Add(new UserViewModel(user, PropCompanyViewModel));
+            Add();
         }
         private bool CAdd(object arg) => true;
         #endregion
@@ -66,10 +65,11 @@ namespace ViewModels.External
             }
         }
 
-        public User Add(User item)
+        public void Add()
         {
-            MainViewModel.Instance.ExternalDataContext.PropUserCollection.Add(item);
-            return item;
+            var user = new User() { PropCompanyId = PropCompanyViewModel.PropCompany.PropId };
+            MainViewModel.Instance.ExternalDataContext.PropUserCollection.Add(user);
+            PropUserViewModelCollection.Add(new UserViewModel(user, PropCompanyViewModel));
         }
     }
 }

@@ -55,6 +55,7 @@ namespace Models
         public static string CompanyDomainName { get => "Доменное имя: "; }
         public static string Request { get => "Запрос"; }
         public static string Requests { get => "Запросы"; }
+        public static string OpenTemplateEditor { get => "Открыть редактор шаблонов"; }
 
         #endregion
     }
