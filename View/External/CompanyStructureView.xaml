@@ -128,6 +128,36 @@
                                 </DataTemplate>
                             </TreeViewItem.ItemTemplate>
                         </TreeViewItem>
+                        <TreeViewItem ItemsSource="{Binding PropADUserCollectionViewModel.PropADUserViewModelCollection}">
+                            <TreeViewItem.Header>
+                                <TextBlock Text="ActiveDirectory"
+                                           Style="{StaticResource TH2}"
+                                           ContextMenuService.Placement="Bottom">
+                                    <TextBlock.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
+                                                      Command="{Binding PropADUserCollectionViewModel.CMDAdd}" />
+                                        </ContextMenu>
+                                    </TextBlock.ContextMenu>
+                                </TextBlock>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource BH4}"
+                                            Click="ClickOpenADUserInNewWindow">
+                                        <Button.ContextMenu>
+                                            <ContextMenu>
+                                                <MenuItem Header="Delete"
+                                                          Command="{Binding CMDDelete}" />
+                                            </ContextMenu>
+                                        </Button.ContextMenu>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding PropADUser.PropUserName}" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </TreeViewItem.ItemTemplate>
+                        </TreeViewItem>
                         <TreeViewItem ItemsSource="{Binding PropServiceRequestTableViewModel.PropServiceRequestViewModelCollection}">
                             <TreeViewItem.Header>
                                 <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.Requests}"

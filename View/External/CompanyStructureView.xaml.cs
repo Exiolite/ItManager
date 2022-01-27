@@ -49,5 +49,15 @@ namespace View.External
             window.DataContext = viewModel;
             window.Show();
         }
+
+        private void ClickOpenADUserInNewWindow(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var control = (Button)sender;
+            var viewModel = (ADUserViewModel)control.DataContext;
+            var window = new ADUserWindow();
+
+            window.DataContext = viewModel;
+            window.Show();
+        }
     }
 }

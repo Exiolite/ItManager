@@ -71,7 +71,17 @@ namespace ViewModels.External
         {
             var aDUser = new ADUser() { PropCompanyId = PropCompanyViewModel.PropCompany.PropId };
             MainViewModel.Instance.ExternalDataContext.PropADUserCollection.Add(aDUser);
+            aDUser.PropId = MainViewModel.Instance.ExternalDataContext.PropADUserCollection.IndexOf(aDUser);
             PropADUserViewModelCollection.Add(new ADUserViewModel(aDUser, this));
+        }
+
+        public void Delete(ADUserViewModel aDUserViewModel)
+        {
+            var aDUser = MainViewModel.Instance.ExternalDataContext.PropADUserCollection[aDUserViewModel.PropADUser.PropId];
+            aDUser.PropCompanyId = -1;
+            aDUser.PropId= -1;
+            aDUser.PropComputerId = -1;
+            PropADUserViewModelCollection.Remove(aDUserViewModel);
         }
     }
 }

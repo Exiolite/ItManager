@@ -37,6 +37,17 @@ namespace ViewModels.External
 
         #endregion
 
+        #region PropADUserCollectionViewModel
+        private ADUserCollectionViewModel _aDUserCollectionViewModel;
+
+        public ADUserCollectionViewModel PropADUserCollectionViewModel
+        {
+            get { return _aDUserCollectionViewModel; }
+            set { _aDUserCollectionViewModel = value; NotifyPropertyChanged(nameof(PropADUserCollectionViewModel)); }
+        }
+
+        #endregion
+
         #region PropServiceRequestViewModelCollection
         private ServiceRequestTableViewModel _serviceRequestTableViewModel;
 
@@ -60,6 +71,7 @@ namespace ViewModels.External
             PropComputerTableViewModel = new ComputerTableViewModel(this);
             PropUserTableViewModel = new UserTableViewModel(this);
             PropServiceRequestTableViewModel = new ServiceRequestTableViewModel(this);
+            PropADUserCollectionViewModel = new ADUserCollectionViewModel(this);
         }
     }
 }

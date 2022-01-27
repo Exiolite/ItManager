@@ -84,7 +84,7 @@ namespace Models.External
         #endregion
 
         #region PropADUserCollection
-        private ObservableCollection<ADUser> _aDUserCollection;
+        private ObservableCollection<ADUser> _aDUserCollection = new ObservableCollection<ADUser>();
 
         public ObservableCollection<ADUser> PropADUserCollection
         {

@@ -16,6 +16,9 @@
 
         <vme:AnyDeskViewModel x:Key="AnyDeskViewModel" />
 
+        <vme:ADUserCollectionViewModel x:Key="ADUserCollectionViewModel" />
+        <vme:ADUserViewModel x:Key="ADUserViewModel" />
+
         <vme:CompanyTableViewModel x:Key="CompanyTableViewModel" />
         <vme:CompanyViewModel x:Key="CompanyViewModel" />
 
