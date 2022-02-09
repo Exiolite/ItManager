@@ -50,9 +50,9 @@ namespace ViewModels.External
         }
 
 
-        public ServiceRequestViewModel(ServiceRequest serviceRequest, ServiceRequestCollectionViewModel serviceRequestTableViewModel)
+        public ServiceRequestViewModel(ServiceRequest serviceRequest, ServiceRequestCollectionViewModel serviceRequestCollectionViewModel)
         {
-            PropServiceRequestCollectionViewModel = serviceRequestTableViewModel;
+            PropServiceRequestCollectionViewModel = serviceRequestCollectionViewModel;
             PropServiceRequest = serviceRequest;
         }
     }

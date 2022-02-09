@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace ViewModels.External
 {
-    public sealed class OSDescriptionTableViewModel : ViewModel
+    public sealed class OSDescriptionCollectionViewModel : ViewModel
     {
         private int _computerId;
 
@@ -21,13 +21,13 @@ namespace ViewModels.External
         #endregion
 
 
-        public OSDescriptionTableViewModel()
+        public OSDescriptionCollectionViewModel()
         {
 
         }
 
 
-        public OSDescriptionTableViewModel(int remoteDesktopServiceId)
+        public OSDescriptionCollectionViewModel(int remoteDesktopServiceId)
         {
             _computerId = remoteDesktopServiceId;
 

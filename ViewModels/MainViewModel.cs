@@ -64,7 +64,7 @@ namespace ViewModels
         }
         private void ReloadE(object obj)
         {
-            CompanyTableViewModel.Instance.Initialize();
+            CompanyCollectionViewModel.Instance.Initialize();
         }
         private bool CReload(object arg) => true;
         #endregion

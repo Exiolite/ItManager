@@ -11,7 +11,7 @@
         ResizeMode="NoResize">
     <Window.Title>
         <MultiBinding StringFormat=" {0}\{1}">
-            <Binding Path="PropComputerTableViewModel.PropCompanyViewModel.PropCompany.PropDomainName" />
+            <Binding Path="PropComputerCollectionViewModel.PropCompanyViewModel.PropCompany.PropDomainName" />
             <Binding Path="PropComputer.PropName" />
         </MultiBinding>
     </Window.Title>
@@ -22,7 +22,7 @@
                 <StackPanel>
                     <local:BlockComputerInfo DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
                     <local:BlockAttachedUserView DataContext="{Binding PropUserViewModel}" />
-                    <local:BlockServiceTaskListView DataContext="{Binding PropServiceTaskTableViewModel}" />
+                    <local:BlockServiceTaskListView DataContext="{Binding PropServiceTaskCollectionViewModel}" />
                 </StackPanel>
             </DockPanel>
         </TabItem>

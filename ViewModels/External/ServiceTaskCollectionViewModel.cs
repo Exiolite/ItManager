@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace ViewModels.External
 {
-    public sealed class ServiceTaskTableViewModel : ViewModel
+    public sealed class ServiceTaskCollectionViewModel : ViewModel
     {
         #region CMDAdd
         private ICommand _add;
@@ -48,13 +48,13 @@ namespace ViewModels.External
         #endregion
 
 
-        public ServiceTaskTableViewModel()
+        public ServiceTaskCollectionViewModel()
         {
 
         }
 
 
-        public ServiceTaskTableViewModel(ComputerViewModel computerViewModel)
+        public ServiceTaskCollectionViewModel(ComputerViewModel computerViewModel)
         {
             PropComputerViewModel = computerViewModel;
             

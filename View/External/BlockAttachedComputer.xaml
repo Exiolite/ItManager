@@ -18,7 +18,7 @@
             </StackPanel>
         </StackPanel>
         <DockPanel Style="{StaticResource DPMargin}">
-            <ComboBox ItemsSource="{Binding PropCompanyViewModel.PropComputerTableViewModel.PropComputerViewModelCollection}"
+            <ComboBox ItemsSource="{Binding PropCompanyViewModel.PropComputerCollectionViewModel.PropComputerViewModelCollection}"
                       SelectedItem="{Binding PropComputerViewModel}"
                       BorderThickness="0"
                       Width="75"

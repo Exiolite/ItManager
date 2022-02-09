@@ -6,9 +6,10 @@ using System.Windows.Input;
 
 namespace ViewModels.External
 {
-    public sealed class CompanyTableViewModel : ViewModel
+    public sealed class CompanyCollectionViewModel
+        : ViewModel
     {
-        public static CompanyTableViewModel Instance { get; set; }
+        public static CompanyCollectionViewModel Instance { get; set; }
 
         #region CMDAdd
         private ICommand _cmdAdd;
@@ -50,7 +51,7 @@ namespace ViewModels.External
         #endregion
 
 
-        public CompanyTableViewModel()
+        public CompanyCollectionViewModel()
         {
             Instance = this;
             Initialize();

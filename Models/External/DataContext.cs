@@ -7,18 +7,18 @@ namespace Models.External
     {
         #region PropExternal
 
-        #region PropAnyDeskTable
-        private ObservableCollection<AnyDesk> _anyDeskTable = new ObservableCollection<AnyDesk>();
+        #region PropAnyDeskCollection
+        private ObservableCollection<AnyDesk> _anyDeskCollection = new ObservableCollection<AnyDesk>();
 
         public ObservableCollection<AnyDesk> PropAnyDeskCollection
         {
-            get { return _anyDeskTable; }
-            set { _anyDeskTable = value; NotifyPropertyChanged(nameof(PropAnyDeskCollection)); }
+            get { return _anyDeskCollection; }
+            set { _anyDeskCollection = value; NotifyPropertyChanged(nameof(PropAnyDeskCollection)); }
         }
 
         #endregion
 
-        #region PropTeamViewerTable
+        #region PropTeamViewerCollection
         private ObservableCollection<TeamViewer> _teamViewerCollection = new ObservableCollection<TeamViewer>();
 
         public ObservableCollection<TeamViewer> PropTeamViewerCollection
@@ -50,18 +50,18 @@ namespace Models.External
         }
         #endregion
 
-        #region PropComputerTable
-        private ObservableCollection<Computer> _computerTable = new ObservableCollection<Computer>();
+        #region PropComputerCollection
+        private ObservableCollection<Computer> _computerCollection = new ObservableCollection<Computer>();
 
         public ObservableCollection<Computer> PropComputerCollection
         {
-            get { return _computerTable; }
-            set { _computerTable = value; NotifyPropertyChanged(nameof(PropComputerCollection)); }
+            get { return _computerCollection; }
+            set { _computerCollection = value; NotifyPropertyChanged(nameof(PropComputerCollection)); }
         }
 
         #endregion
 
-        #region PropOSDescriptionTable
+        #region PropOSDescriptionCollection
         private ObservableCollection<OSDescription> _oSDescription = new ObservableCollection<OSDescription>();
 
         public ObservableCollection<OSDescription> PropOSDescriptionCollection
@@ -72,18 +72,18 @@ namespace Models.External
 
         #endregion
 
-        #region PropUserTable
-        private ObservableCollection<User> _userTable = new ObservableCollection<User>();
+        #region PropUserCollection
+        private ObservableCollection<User> _userCollection = new ObservableCollection<User>();
 
         public ObservableCollection<User> PropUserCollection
         {
-            get { return _userTable; }
-            set { _userTable = value; NotifyPropertyChanged(nameof(PropUserCollection)); }
+            get { return _userCollection; }
+            set { _userCollection = value; NotifyPropertyChanged(nameof(PropUserCollection)); }
         }
 
         #endregion
 
-        #region PropComputerServiceTaskTable
+        #region PropComputerServiceTaskCollection
         private ObservableCollection<ServiceTask> _serviceTaskCollection = new ObservableCollection<ServiceTask>();
 
         public ObservableCollection<ServiceTask> PropServiceTaskCollection
@@ -94,13 +94,13 @@ namespace Models.External
 
         #endregion
 
-        #region PropServiceRequestTable
-        private ObservableCollection<ServiceRequest> _serviceRequestTable = new ObservableCollection<ServiceRequest>();
+        #region PropServiceRequestCollection
+        private ObservableCollection<ServiceRequest> _serviceRequestCollection = new ObservableCollection<ServiceRequest>();
 
         public ObservableCollection<ServiceRequest> PropServiceRequestCollection
         {
-            get { return _serviceRequestTable; }
-            set { _serviceRequestTable = value; NotifyPropertyChanged(nameof(PropServiceRequestCollection)); }
+            get { return _serviceRequestCollection; }
+            set { _serviceRequestCollection = value; NotifyPropertyChanged(nameof(PropServiceRequestCollection)); }
         }
 
         #endregion

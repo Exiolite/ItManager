@@ -42,7 +42,7 @@ namespace ViewModels.Internal
         private void FileNewE(object obj)
         {
             MainViewModel.Instance.ExternalDataContext = new Models.External.DataContext();
-            CompanyTableViewModel.Instance.Initialize();
+            CompanyCollectionViewModel.Instance.Initialize();
         }
         private bool CFileNew(object arg) => true;
         #endregion
@@ -68,7 +68,7 @@ namespace ViewModels.Internal
             PropFileOperation.PropCurrentFileName = PropFileOperation.PropCurrentFileName;
             PropFileOperation.WriteInternalData(MainViewModel.Instance.InternalDataContext);
 
-            CompanyTableViewModel.Instance.Initialize();
+            CompanyCollectionViewModel.Instance.Initialize();
         }
         private bool CFileOpen(object arg) => true;
         #endregion
@@ -91,7 +91,7 @@ namespace ViewModels.Internal
             PropFileOperation.PropCurrentFileName = openFileDialog.FileName;
             MainViewModel.Instance.ExternalDataContext = PropFileOperation.ReadIfExistOrNew(PropFileOperation.PropCurrentFileName, PropPassword);
             PropFileOperation.PropCurrentFileName = PropFileOperation.PropCurrentFileName;
-            CompanyTableViewModel.Instance.Initialize();
+            CompanyCollectionViewModel.Instance.Initialize();
             PropFileOperation.WriteInternalData(MainViewModel.Instance.InternalDataContext);
         }
         private bool COpenAs(object arg) => true;
@@ -150,7 +150,7 @@ namespace ViewModels.Internal
         private void SendUpdateData(object obj)
         {
            //MainViewModel.Instance.ExternalDataContext = ClientSocket.UpdateDataOnServer(MainViewModel.Instance.ExternalDataContext);
-           CompanyTableViewModel.Instance.Initialize();
+           CompanyCollectionViewModel.Instance.Initialize();
            PropFileOperation.WriteInternalData(MainViewModel.Instance.InternalDataContext);
         }
         private bool CSynchronizeWithServer(object arg) => true;

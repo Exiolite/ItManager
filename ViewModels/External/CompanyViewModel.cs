@@ -15,24 +15,24 @@ namespace ViewModels.External
 
         #endregion
 
-        #region PropComputerTableViewModel
-        private ComputerTableViewModel _computerTableViewModel;
+        #region PropComputerCollectionViewModel
+        private ComputerCollectionViewModel _computerCollectionViewModel;
 
-        public ComputerTableViewModel PropComputerTableViewModel
+        public ComputerCollectionViewModel PropComputerCollectionViewModel
         {
-            get { return _computerTableViewModel; }
-            set { _computerTableViewModel = value; NotifyPropertyChanged(nameof(PropComputerTableViewModel)); }
+            get { return _computerCollectionViewModel; }
+            set { _computerCollectionViewModel = value; NotifyPropertyChanged(nameof(PropComputerCollectionViewModel)); }
         }
 
         #endregion
 
-        #region PropUserTableViewModel
-        private UserTableViewModel _userTableViewModel;
+        #region PropUserCollectionViewModel
+        private UserCollectionViewModel _userCollectionViewModel;
 
-        public UserTableViewModel PropUserTableViewModel
+        public UserCollectionViewModel PropUserCollectionViewModel
         {
-            get { return _userTableViewModel; }
-            set { _userTableViewModel = value; NotifyPropertyChanged(nameof(PropUserTableViewModel)); }
+            get { return _userCollectionViewModel; }
+            set { _userCollectionViewModel = value; NotifyPropertyChanged(nameof(PropUserCollectionViewModel)); }
         }
 
         #endregion
@@ -68,8 +68,8 @@ namespace ViewModels.External
         {
             _company = company;
 
-            PropComputerTableViewModel = new ComputerTableViewModel(this);
-            PropUserTableViewModel = new UserTableViewModel(this);
+            PropComputerCollectionViewModel = new ComputerCollectionViewModel(this);
+            PropUserCollectionViewModel = new UserCollectionViewModel(this);
             PropServiceRequestCollectionViewModel = new ServiceRequestCollectionViewModel(this);
             PropADUserCollectionViewModel = new ADUserCollectionViewModel(this);
         }

@@ -19,18 +19,18 @@ namespace ViewModels.External
         }
         private void DeleteE(object obj)
         {
-            PropComputerTableViewModel.Delete(this);
+            PropComputerCollectionViewModel.Delete(this);
         }
         private bool CDelete(object arg) => true;
         #endregion
 
-        #region PropComputerTableViewModel
-        private ComputerTableViewModel _computerTableViewModel;
+        #region PropComputerCollectionViewModel
+        private ComputerCollectionViewModel _computerCollectionViewModel;
 
-        public ComputerTableViewModel PropComputerTableViewModel
+        public ComputerCollectionViewModel PropComputerCollectionViewModel
         {
-            get { return _computerTableViewModel; }
-            set { _computerTableViewModel = value; NotifyPropertyChanged(nameof(PropComputerTableViewModel)); }
+            get { return _computerCollectionViewModel; }
+            set { _computerCollectionViewModel = value; NotifyPropertyChanged(nameof(PropComputerCollectionViewModel)); }
         }
 
         #endregion
@@ -56,13 +56,13 @@ namespace ViewModels.External
 
         #endregion
 
-        #region PropServiceTaskTableViewModel
-        private ServiceTaskTableViewModel _serviceTaskTableViewModel;
+        #region PropServiceTaskCollectionViewModel
+        private ServiceTaskCollectionViewModel _serviceTaskCollectionViewModel;
 
-        public ServiceTaskTableViewModel PropServiceTaskTableViewModel
+        public ServiceTaskCollectionViewModel PropServiceTaskCollectionViewModel
         {
-            get { return _serviceTaskTableViewModel; }
-            set { _serviceTaskTableViewModel = value; NotifyPropertyChanged(nameof(PropServiceTaskTableViewModel)); }
+            get { return _serviceTaskCollectionViewModel; }
+            set { _serviceTaskCollectionViewModel = value; NotifyPropertyChanged(nameof(PropServiceTaskCollectionViewModel)); }
         }
 
         #endregion
@@ -112,13 +112,13 @@ namespace ViewModels.External
             };
         }
 
-        public ComputerViewModel(Computer computer, ComputerTableViewModel computerTableViewModel)
+        public ComputerViewModel(Computer computer, ComputerCollectionViewModel computerCollectionViewModel)
         {
             PropComputer = computer;
-            PropComputerTableViewModel = computerTableViewModel;
+            PropComputerCollectionViewModel = computerCollectionViewModel;
 
             PropRemoteViewModel = new RemoteViewModel(this);
-            PropServiceTaskTableViewModel = new ServiceTaskTableViewModel(this);
+            PropServiceTaskCollectionViewModel = new ServiceTaskCollectionViewModel(this);
             PropUserViewModel = new UserViewModel(this);
             PropOSDescriptionViewModel = new OSDescriptionViewModel(this);
 

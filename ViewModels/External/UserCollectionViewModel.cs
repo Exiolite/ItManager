@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace ViewModels.External
 {
-    public sealed class UserTableViewModel : ViewModel
+    public sealed class UserCollectionViewModel : ViewModel
     {
         #region CMDAdd
         private ICommand _add;
@@ -47,21 +47,21 @@ namespace ViewModels.External
         #endregion
 
 
-        public UserTableViewModel()
+        public UserCollectionViewModel()
         {
 
         }
 
 
 
-        public UserTableViewModel(CompanyViewModel companyViewModel)
+        public UserCollectionViewModel(CompanyViewModel companyViewModel)
         {
             PropCompanyViewModel = companyViewModel;
 
             PropUserViewModelCollection = new ObservableCollection<UserViewModel>();
             foreach (var item in MainViewModel.Instance.ExternalDataContext.PropUserCollection.Where(c => c.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
             {
-                PropUserViewModelCollection.Add(new UserViewModel(item, PropCompanyViewModel));
+                PropUserViewModelCollection.Add(new UserViewModel(item, this));
             }
         }
 
@@ -69,7 +69,15 @@ namespace ViewModels.External
         {
             var user = new User() { PropCompanyId = PropCompanyViewModel.PropCompany.PropId };
             MainViewModel.Instance.ExternalDataContext.PropUserCollection.Add(user);
-            PropUserViewModelCollection.Add(new UserViewModel(user, PropCompanyViewModel));
+            PropUserViewModelCollection.Add(new UserViewModel(user, this));
+        }
+
+        public void Delete(UserViewModel userViewModel)
+        {
+            var user = MainViewModel.Instance.ExternalDataContext.PropUserCollection.FirstOrDefault(userViewModel.PropUser);
+            user.PropCompanyId = -1;
+            user.PropId = -1;
+            PropUserViewModelCollection.Remove(userViewModel);
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Windows.Input;
 
 namespace ViewModels.External
 {
-    public sealed class ComputerTableViewModel : ViewModel
+    public sealed class ComputerCollectionViewModel : ViewModel
     {
-        public static ComputerTableViewModel Instance { get; set; }
+        public static ComputerCollectionViewModel Instance { get; set; }
 
         #region PropCompanyViewModel
         private CompanyViewModel _companyViewModel;
@@ -89,12 +89,12 @@ namespace ViewModels.External
         #endregion
 
 
-        public ComputerTableViewModel()
+        public ComputerCollectionViewModel()
         {
 
         }
 
-        public ComputerTableViewModel(CompanyViewModel companyViewModel)
+        public ComputerCollectionViewModel(CompanyViewModel companyViewModel)
         {
             PropCompanyViewModel = companyViewModel;
 

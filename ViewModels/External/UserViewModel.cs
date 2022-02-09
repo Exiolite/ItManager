@@ -1,11 +1,29 @@
 ﻿using System.Collections.ObjectModel;
 using Models.External;
 using System.Linq;
+using System.Windows.Input;
 
 namespace ViewModels.External
 {
     public sealed class UserViewModel : ViewModel
     {
+        #region CMDDelete
+        private ICommand _delete;
+        public ICommand CMDDelete
+        {
+            get
+            {
+                if (_delete == null) _delete = new Command(this.DeleteE, this.CDelete, false);
+                return _delete;
+            }
+        }
+        private void DeleteE(object obj)
+        {
+            PropUserCollectionViewModel.Delete(this);
+        }
+        private bool CDelete(object arg) => true;
+        #endregion
+
         #region PropUser
         private User _user;
 
@@ -17,13 +35,13 @@ namespace ViewModels.External
 
         #endregion
 
-        #region PropCompanyViewModel
-        private CompanyViewModel _companyViewModel;
+        #region PropUserCollectionViewModel
+        private UserCollectionViewModel _userCollectionViewModel;
 
-        public CompanyViewModel PropCompanyViewModel
+        public UserCollectionViewModel PropUserCollectionViewModel
         {
-            get { return _companyViewModel; }
-            set { _companyViewModel = value; NotifyPropertyChanged(nameof(PropCompanyViewModel)); }
+            get { return _userCollectionViewModel; }
+            set { _userCollectionViewModel = value; NotifyPropertyChanged(nameof(PropUserCollectionViewModel)); }
         }
 
         #endregion
@@ -76,19 +94,19 @@ namespace ViewModels.External
             PropUser = user;
         }
 
-        public UserViewModel(User user, CompanyViewModel companyViewModel)
+        public UserViewModel(User user, UserCollectionViewModel userCollectionViewModel)
         {
-            PropCompanyViewModel = companyViewModel;
+            PropUserCollectionViewModel = userCollectionViewModel;
             PropUser = user;
 
             var attachedComputer = MainViewModel.Instance.ExternalDataContext.PropComputerCollection.FirstOrDefault(c => c.PropId == PropUser.PropComputerId);
-            if (attachedComputer != null) PropComputerViewModel = new ComputerViewModel(attachedComputer, companyViewModel.PropComputerTableViewModel);
+            if (attachedComputer != null) PropComputerViewModel = new ComputerViewModel(attachedComputer, userCollectionViewModel.PropCompanyViewModel.PropComputerCollectionViewModel);
         }
 
         public UserViewModel(ComputerViewModel computerViewModel)
         {
             PropComputerViewModel = computerViewModel;
-            PropCompanyViewModel = computerViewModel.PropComputerTableViewModel.PropCompanyViewModel;
+            PropUserCollectionViewModel = computerViewModel.PropComputerCollectionViewModel.PropCompanyViewModel.PropUserCollectionViewModel;
 
             var user = MainViewModel.Instance.ExternalDataContext.PropUserCollection.FirstOrDefault(c => c.PropComputerId == PropComputerViewModel.PropComputer.PropId);
             if (user != null) PropUser = user;

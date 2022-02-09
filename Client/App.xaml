@@ -10,29 +10,30 @@
         <!--#region ViewModels -->
         <vms:MainViewModel x:Key="MainViewModel" />
 
+
         <vmi:FileViewModel x:Key="FileViewModel" />
 
-        <vme:RemoteViewModel x:Key="RemoteViewModel" />
 
+        <vme:RemoteViewModel x:Key="RemoteViewModel" />
         <vme:AnyDeskViewModel x:Key="AnyDeskViewModel" />
 
         <vme:ADUserCollectionViewModel x:Key="ADUserCollectionViewModel" />
         <vme:ADUserViewModel x:Key="ADUserViewModel" />
 
-        <vme:CompanyTableViewModel x:Key="CompanyTableViewModel" />
+        <vme:CompanyCollectionViewModel x:Key="CompanyCollectionViewModel" />
         <vme:CompanyViewModel x:Key="CompanyViewModel" />
 
-        <vme:ComputerTableViewModel x:Key="ComputerTableViewModel" />
+        <vme:ComputerCollectionViewModel x:Key="ComputerCollectionViewModel" />
         <vme:ComputerViewModel x:Key="ComputerViewModel" />
 
-        <vme:OSDescriptionTableViewModel x:Key="OSDescriptionTableViewModel" />
+        <vme:OSDescriptionCollectionViewModel x:Key="OSDescriptionCollectionViewModel" />
         <vme:OSDescriptionViewModel x:Key="OSDescriptionViewModel" />
 
-        <vme:UserTableViewModel x:Key="UserTableViewModel" />
+        <vme:UserCollectionViewModel x:Key="UserCollectionViewModel" />
         <vme:UserViewModel x:Key="UserViewModel" />
 
         <vme:ServiceTaskViewModel x:Key="ServiceTaskViewModel" />
-        <vme:ServiceTaskTableViewModel x:Key="ServiceTaskTableViewModel" />
+        <vme:ServiceTaskCollectionViewModel x:Key="ServiceTaskCollectionViewModel" />
 
         <vme:ServiceRequestViewModel x:Key="ServiceRequestViewModel" />
         <vme:ServiceRequestCollectionViewModel x:Key="ServiceRequestCollectionViewModel" />
