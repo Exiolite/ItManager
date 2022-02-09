@@ -1,11 +1,29 @@
 ﻿using Models;
 using Models.External;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace ViewModels.External
 {
     public sealed class ComputerViewModel : ViewModel
     {
+        #region CMDDelete
+        private ICommand _delete;
+        public ICommand CMDDelete
+        {
+            get
+            {
+                if (_delete == null) _delete = new Command(this.DeleteE, this.CDelete, false);
+                return _delete;
+            }
+        }
+        private void DeleteE(object obj)
+        {
+            PropComputerTableViewModel.Delete(this);
+        }
+        private bool CDelete(object arg) => true;
+        #endregion
+
         #region PropComputerTableViewModel
         private ComputerTableViewModel _computerTableViewModel;
 

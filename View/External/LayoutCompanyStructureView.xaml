@@ -9,7 +9,7 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
     <Grid>
-
+        <!--#region <Grid.Definitions> -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
@@ -22,7 +22,9 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <!--#endregion-->
 
+        <!--#region Companies -->
         <TextBlock Text="Companies"
                    Grid.Column="0"
                    Grid.Row="0"
@@ -44,12 +46,13 @@
                  BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding PropCompany.PropName}" 
-                               Style="{StaticResource TH3}"/>
+                    <TextBlock Text="{Binding PropCompany.PropName}"
+                               Style="{StaticResource TH3}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        
+        <!--#endregion-->
+        <!--#region Computers -->
         <TextBlock Text="Computers"
                    Grid.Column="1"
                    Grid.Row="0"
@@ -58,7 +61,7 @@
             <TextBlock.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Add"
-                              Command="{Binding PropCompanyViewModel.PropComputerTableViewModel.CMDAddServer}" />
+                              Command="{Binding PropCompanyViewModel.PropComputerTableViewModel.CMDAddComputer}" />
                 </ContextMenu>
             </TextBlock.ContextMenu>
         </TextBlock>
@@ -70,11 +73,19 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding PropComputer.PropName}"
-                               Style="{StaticResource TH3}" />
+                               Style="{StaticResource TH3}">
+                        <TextBlock.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete"
+                                          Command="{Binding CMDDelete}" />
+                            </ContextMenu>
+                        </TextBlock.ContextMenu>
+                    </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        
+        <!--#endregion-->
+        <!--#region Servers -->
         <TextBlock Text="Servers"
                    Grid.Column="2"
                    Grid.Row="0"
@@ -83,7 +94,7 @@
             <TextBlock.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Add"
-                              Command="{Binding PropCompanyViewModel.PropComputerTableViewModel.CMDAddComputer}" />
+                              Command="{Binding PropCompanyViewModel.PropComputerTableViewModel.CMDAddServer}" />
                 </ContextMenu>
             </TextBlock.ContextMenu>
         </TextBlock>
@@ -95,11 +106,19 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding PropComputer.PropName}"
-                               Style="{StaticResource TH3}" />
+                               Style="{StaticResource TH3}">
+                        <TextBlock.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete"
+                                          Command="{Binding CMDDelete}" />
+                            </ContextMenu>
+                        </TextBlock.ContextMenu>
+                    </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
+        <!--#endregion-->
+        <!--#region Users -->
         <TextBlock Text="Users"
                    Grid.Column="3"
                    Grid.Row="0"
@@ -128,7 +147,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
+        <!--#endregion-->
+        <!--#region AD Users -->
         <TextBlock Text="AD Users"
                    Grid.Column="4"
                    Grid.Row="0"
@@ -153,7 +173,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
+        <!--#endregion-->
+        <!--#region Requests -->
         <TextBlock Text="Requests"
                    Grid.Column="5"
                    Grid.Row="0"
@@ -178,5 +199,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <!--#endregion-->
     </Grid>
 </UserControl>

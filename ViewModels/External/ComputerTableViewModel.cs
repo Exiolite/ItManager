@@ -10,6 +10,18 @@ namespace ViewModels.External
     {
         public static ComputerTableViewModel Instance { get; set; }
 
+        #region PropCompanyViewModel
+        private CompanyViewModel _companyViewModel;
+
+        public CompanyViewModel PropCompanyViewModel
+        {
+            get { return _companyViewModel; }
+            set { _companyViewModel = value; NotifyPropertyChanged(nameof(PropCompanyViewModel)); }
+        }
+
+        #endregion
+
+
         #region CMDAddComputer
         private ICommand _addComputer;
         public ICommand CMDAddComputer
@@ -27,17 +39,6 @@ namespace ViewModels.External
             PropComputerViewModelCollection.Add(computerViewModel);
         }
         private bool CAddComputer(object arg) => true;
-        #endregion
-
-        #region PropCompanyViewModel
-        private CompanyViewModel _companyViewModel;
-
-        public CompanyViewModel PropCompanyViewModel
-        {
-            get { return _companyViewModel; }
-            set { _companyViewModel = value; NotifyPropertyChanged(nameof(PropCompanyViewModel)); }
-        }
-
         #endregion
 
         #region PropComputerViewModelCollection
@@ -72,7 +73,11 @@ namespace ViewModels.External
         private bool CAddServer(object arg) => true;
         #endregion
 
-        # region PropServerViewModelCollection
+        #region CMDDeleteServer
+
+        #endregion
+
+        #region PropServerViewModelCollection
         private ObservableCollection<ComputerViewModel> _serverViewModelCollection;
 
         public ObservableCollection<ComputerViewModel> PropServerViewModelCollection
@@ -109,6 +114,15 @@ namespace ViewModels.External
             item.PropId = MainViewModel.Instance.ExternalDataContext.PropComputerCollection.IndexOf(item);
             item.PropCompanyId = PropCompanyViewModel.PropCompany.PropId;
             return item;
+        }
+
+        public void Delete(ComputerViewModel computerViewModel)
+        {
+            var computer = MainViewModel.Instance.ExternalDataContext.PropComputerCollection.FirstOrDefault(computerViewModel.PropComputer);
+            computer.PropCompanyId = -1;
+            computer.PropId = -1;
+            PropComputerViewModelCollection.Remove(computerViewModel);
+            PropServerViewModelCollection.Remove(computerViewModel);
         }
     }
 }
