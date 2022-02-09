@@ -46,7 +46,7 @@ namespace ViewModels.External
 
         #endregion
 
-        #region PropComputer
+        #region PropComputerViewModel
         private ComputerViewModel _computerViewModel;
 
         public ComputerViewModel PropComputerViewModel
@@ -99,8 +99,11 @@ namespace ViewModels.External
             PropUserCollectionViewModel = userCollectionViewModel;
             PropUser = user;
 
-            var attachedComputer = MainViewModel.Instance.ExternalDataContext.PropComputerCollection.FirstOrDefault(c => c.PropId == PropUser.PropComputerId);
-            if (attachedComputer != null) PropComputerViewModel = new ComputerViewModel(attachedComputer, userCollectionViewModel.PropCompanyViewModel.PropComputerCollectionViewModel);
+            var attachedComputer = userCollectionViewModel
+                .PropCompanyViewModel
+                .PropComputerCollectionViewModel
+                .PropComputerViewModelCollection.FirstOrDefault(c => c.PropComputer.PropId == PropUser.PropComputerId);
+            if (attachedComputer != null) PropComputerViewModel = attachedComputer;
         }
 
         public UserViewModel(ComputerViewModel computerViewModel)

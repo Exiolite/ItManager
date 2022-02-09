@@ -5,28 +5,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View.External"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock Text="Attached Computer"
-                   Style="{StaticResource TH4}"
-                   Foreground="{StaticResource MainColor}"> 
-        </TextBlock>
-        <DockPanel Style="{StaticResource DPMargin}">
+             mc:Ignorable="d" >
+    <StackPanel Style="{StaticResource SPMargin}">
+        <DockPanel>
+            <TextBlock Text="Attached Computer"
+                       Style="{StaticResource TH2}"
+                       Foreground="{StaticResource MainColor}"
+                       DockPanel.Dock="Left">
+            </TextBlock>
             <ComboBox ItemsSource="{Binding PropUserCollectionViewModel.PropCompanyViewModel.PropComputerCollectionViewModel.PropComputerViewModelCollection}"
                       SelectedItem="{Binding PropComputerViewModel}"
                       BorderThickness="0"
-                      Width="75"
-                      Height="16"
+                      MaxDropDownHeight="400"
                       DockPanel.Dock="Right">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding PropComputer.PropName}" />
+                        <TextBlock Text="{Binding PropComputer.PropName}" 
+                                   Style="{StaticResource TH4}"
+                                   VerticalAlignment="Bottom"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBlock Text="{Binding PropComputerViewModel.PropComputer.PropName}"
-                       Style="{StaticResource TH4}" />
         </DockPanel>
     </StackPanel>
 </UserControl>
