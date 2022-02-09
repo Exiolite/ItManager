@@ -8,13 +8,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Style="{StaticResource SPMarginBlock}">
-        <StackPanel HorizontalAlignment="Left"
-                    Style="{StaticResource SPMarginHeader}">
-            <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.HDomain}"
-                       Style="{StaticResource TH4}"
-                       Foreground="{StaticResource MainBackground}"
-                       Background="{StaticResource HRemote}" />
-        </StackPanel>
+        <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.HDomain}"
+                   Style="{StaticResource TH4}"
+                   Foreground="{StaticResource MainColor}"/>
         <StackPanel Style="{StaticResource SPMargin}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding Source={StaticResource MainViewModel}, Path=Consts.CompanyDomainName}"

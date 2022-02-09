@@ -7,29 +7,24 @@
              xmlns:local="clr-namespace:View.External"
              mc:Ignorable="d">
     <StackPanel>
-        <StackPanel Style="{StaticResource SPMarginHeader}">
-            <StackPanel HorizontalAlignment="Left">
-                <TextBlock Text="Service"
-                           Style="{StaticResource TH4}"
-                           Foreground="{StaticResource MainBackground}"
-                           Background="{StaticResource HService}">
-                    <TextBlock.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
-                                      Command="{Binding CMDAdd}" />
-                            <MenuItem Header="Service Templates">
-                                <MenuItem Header="Personal"
-                                          Command="{Binding SetComputerServiceTemplateCommand}" />
-                                <MenuItem Header="HyperV Server"
-                                          Command="{Binding SetHyperVServerServiceTemplateCommand}" />
-                                <MenuItem Header="Domain Server"
-                                          Command="{Binding SetDomainServerServiceTemplateCommand}" />
-                            </MenuItem>
-                        </ContextMenu>
-                    </TextBlock.ContextMenu>
-                </TextBlock>
-            </StackPanel>
-        </StackPanel>
+        <TextBlock Text="Service"
+                   Style="{StaticResource TH4}"
+                   Foreground="{StaticResource MainColor}">
+            <TextBlock.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{Binding Source={StaticResource MainViewModel}, Path=Consts.ContextMenuAdd}"
+                              Command="{Binding CMDAdd}" />
+                    <MenuItem Header="Service Templates">
+                        <MenuItem Header="Personal"
+                                  Command="{Binding SetComputerServiceTemplateCommand}" />
+                        <MenuItem Header="HyperV Server"
+                                  Command="{Binding SetHyperVServerServiceTemplateCommand}" />
+                        <MenuItem Header="Domain Server"
+                                  Command="{Binding SetDomainServerServiceTemplateCommand}" />
+                    </MenuItem>
+                </ContextMenu>
+            </TextBlock.ContextMenu>
+        </TextBlock>
         <StackPanel Style="{StaticResource SPMargin}">
             <ListBox ItemsSource="{Binding PropServiceTaskViewModels}"
                      Background="{StaticResource Clear}"

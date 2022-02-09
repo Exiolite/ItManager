@@ -10,7 +10,7 @@
         Width="400">
     <Window.Title>
         <MultiBinding StringFormat=" {0} - {1} {2}">
-            <Binding Path="PropCompanyViewModel.PropCompany.PropName" />
+            <Binding Path="PropUserCollectionViewModel.PropCompanyViewModel.PropCompany.PropName" />
             <Binding Path="PropUser.PropFirstName" />
             <Binding Path="PropUser.PropSureName" />
         </MultiBinding>
