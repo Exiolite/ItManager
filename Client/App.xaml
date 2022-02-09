@@ -35,7 +35,7 @@
         <vme:ServiceTaskTableViewModel x:Key="ServiceTaskTableViewModel" />
 
         <vme:ServiceRequestViewModel x:Key="ServiceRequestViewModel" />
-        <vme:ServiceRequestTableViewModel x:Key="ServiceRequestTableViewModel" />
+        <vme:ServiceRequestCollectionViewModel x:Key="ServiceRequestCollectionViewModel" />
         <!--#endregion-->
 
         

@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace ViewModels.External
 {
-    public sealed class ServiceRequestTableViewModel : ViewModel
+    public sealed class ServiceRequestCollectionViewModel : ViewModel
     {
         #region CMDAdd
         private ICommand _add;
@@ -48,20 +48,20 @@ namespace ViewModels.External
         #endregion
 
 
-        public ServiceRequestTableViewModel()
+        public ServiceRequestCollectionViewModel()
         {
 
         }
 
 
-        public ServiceRequestTableViewModel(CompanyViewModel companyViewModel)
+        public ServiceRequestCollectionViewModel(CompanyViewModel companyViewModel)
         {
             PropCompanyViewModel = companyViewModel;
 
             PropServiceRequestViewModelCollection = new ObservableCollection<ServiceRequestViewModel>();
             foreach (var item in MainViewModel.Instance.ExternalDataContext.PropServiceRequestCollection.Where(s => s.PropCompanyId == PropCompanyViewModel.PropCompany.PropId))
             {
-                PropServiceRequestViewModelCollection.Add(new ServiceRequestViewModel(item));
+                PropServiceRequestViewModelCollection.Add(new ServiceRequestViewModel(item, this));
             }
         }
 
@@ -71,7 +71,15 @@ namespace ViewModels.External
             MainViewModel.Instance.ExternalDataContext.PropServiceRequestCollection.Add(item);
             item.PropId = MainViewModel.Instance.ExternalDataContext.PropServiceRequestCollection.IndexOf(item);
             item.PropCompanyId = PropCompanyViewModel.PropCompany.PropId;
-            PropServiceRequestViewModelCollection.Add(new ServiceRequestViewModel(item));
+            PropServiceRequestViewModelCollection.Add(new ServiceRequestViewModel(item, this));
+        }
+
+        public void Delete(ServiceRequestViewModel serviceRequestViewModel)
+        {
+            var computer = MainViewModel.Instance.ExternalDataContext.PropServiceRequestCollection.FirstOrDefault(serviceRequestViewModel.PropServiceRequest);
+            computer.PropCompanyId = -1;
+            computer.PropId = -1;
+            PropServiceRequestViewModelCollection.Remove(serviceRequestViewModel);
         }
     }
 }

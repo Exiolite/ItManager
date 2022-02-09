@@ -48,13 +48,13 @@ namespace ViewModels.External
 
         #endregion
 
-        #region PropServiceRequestViewModelCollection
-        private ServiceRequestTableViewModel _serviceRequestTableViewModel;
+        #region PropServiceRequestCollectionViewModel
+        private ServiceRequestCollectionViewModel _serviceRequestCollectionViewModel;
 
-        public ServiceRequestTableViewModel PropServiceRequestTableViewModel
+        public ServiceRequestCollectionViewModel PropServiceRequestCollectionViewModel
         {
-            get { return _serviceRequestTableViewModel; }
-            set { _serviceRequestTableViewModel = value; NotifyPropertyChanged(nameof(PropServiceRequestTableViewModel)); }
+            get { return _serviceRequestCollectionViewModel; }
+            set { _serviceRequestCollectionViewModel = value; NotifyPropertyChanged(nameof(PropServiceRequestCollectionViewModel)); }
         }
 
         #endregion
@@ -70,7 +70,7 @@ namespace ViewModels.External
 
             PropComputerTableViewModel = new ComputerTableViewModel(this);
             PropUserTableViewModel = new UserTableViewModel(this);
-            PropServiceRequestTableViewModel = new ServiceRequestTableViewModel(this);
+            PropServiceRequestCollectionViewModel = new ServiceRequestCollectionViewModel(this);
             PropADUserCollectionViewModel = new ADUserCollectionViewModel(this);
         }
     }

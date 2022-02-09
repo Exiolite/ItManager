@@ -174,7 +174,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <!--#endregion-->
-        <!--#region Requests -->
+        <!--#region Service Requests -->
         <TextBlock Text="Requests"
                    Grid.Column="5"
                    Grid.Row="0"
@@ -183,19 +183,26 @@
             <TextBlock.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Add"
-                              Command="{Binding PropCompanyViewModel.PropServiceRequestTableViewModel.CMDAdd}" />
+                              Command="{Binding PropCompanyViewModel.PropServiceRequestCollectionViewModel.CMDAdd}" />
                 </ContextMenu>
             </TextBlock.ContextMenu>
         </TextBlock>
         <ListBox Grid.Column="5"
                  Grid.Row="1"
-                 ItemsSource="{Binding PropCompanyViewModel.PropServiceRequestTableViewModel.PropServiceRequestViewModelCollection}"
+                 ItemsSource="{Binding PropCompanyViewModel.PropServiceRequestCollectionViewModel.PropServiceRequestViewModelCollection}"
                  MouseDoubleClick="ClickOpenServiceRequestInNewWindow"
                  BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding PropServiceRequest.PropName}"
-                               Style="{StaticResource TH3}" />
+                               Style="{StaticResource TH3}">
+                        <TextBlock.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete"
+                                          Command="{Binding CMDDelete}" />
+                            </ContextMenu>
+                        </TextBlock.ContextMenu>
+                    </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
