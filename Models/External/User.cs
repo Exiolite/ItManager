@@ -67,5 +67,16 @@
         }
 
         #endregion
+
+        #region PropWorkPosition
+        private string _workPosition = string.Empty;
+
+        public string PropWorkPosition
+        {
+            get { return _workPosition; }
+            set { _workPosition = value; NotifyPropertyChanged(nameof(PropWorkPosition)); }
+        }
+
+        #endregion
     }
 }

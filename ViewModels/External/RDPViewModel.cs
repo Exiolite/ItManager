@@ -69,7 +69,7 @@ namespace ViewModels.External
                             gatewaybrokeringtype:i:0
                             use redirection server name:i:0
                             rdgiskdcproxy:i:0
-                            kdcproxyname:s:";
+                            kdcproxyname:s:0";
             System.Diagnostics.Process.Start("mstsc.exe", strText);
         }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using Models.Internal;
 using System;
+using System.Windows;
 using System.Windows.Input;
 using ViewModels.External;
 
@@ -17,7 +18,7 @@ namespace ViewModels.Internal
         #endregion
 
         #region PropPassword
-        private string _password = "________________";
+        private string _password = "";
 
         public string PropPassword
         {
@@ -58,6 +59,8 @@ namespace ViewModels.Internal
         }
         private void FileOpenE(object obj)
         {
+            var window = (Window)obj;
+            window.Close();
             if (string.IsNullOrEmpty(MainViewModel.Instance.PropFileViewModel.PropFileOperation.PropCurrentFileName)) return;
 
             MainViewModel.Instance.ExternalDataContext = PropFileOperation.ReadIfExistOrNew(MainViewModel.Instance.PropFileViewModel.PropFileOperation.PropCurrentFileName, PropPassword);

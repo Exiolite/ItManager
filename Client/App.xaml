@@ -94,7 +94,7 @@
             <Setter Property="Foreground"
                     Value="{StaticResource MainColor}" />
             <Setter Property="FontSize"
-                    Value="28" />
+                    Value="24" />
             <Setter Property="BorderThickness"
                     Value="0" />
             <Setter Property="VerticalAlignment"
@@ -109,7 +109,7 @@
             <Setter Property="Foreground"
                     Value="{StaticResource MainColor}" />
             <Setter Property="FontSize"
-                    Value="24" />
+                    Value="20" />
             <Setter Property="BorderThickness"
                     Value="0" />
             <Setter Property="VerticalAlignment"
@@ -124,7 +124,7 @@
             <Setter Property="Foreground"
                     Value="{StaticResource MainColor}" />
             <Setter Property="FontSize"
-                    Value="20" />
+                    Value="18" />
             <Setter Property="BorderThickness"
                     Value="0" />
             <Setter Property="VerticalAlignment"
@@ -170,7 +170,7 @@
             <Setter Property="Foreground"
                     Value="{StaticResource MainColor}" />
             <Setter Property="FontSize"
-                    Value="28" />
+                    Value="24" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
             <Setter Property="Padding"
@@ -183,7 +183,7 @@
             <Setter Property="Foreground"
                     Value="{StaticResource MainColor}" />
             <Setter Property="FontSize"
-                    Value="24" />
+                    Value="20" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
             <Setter Property="Padding"
@@ -196,7 +196,7 @@
             <Setter Property="Foreground"
                     Value="{StaticResource MainColor}" />
             <Setter Property="FontSize"
-                    Value="20" />
+                    Value="18" />
             <Setter Property="VerticalAlignment"
                     Value="Bottom" />
             <Setter Property="Padding"
@@ -238,7 +238,7 @@
             <Setter Property="BorderThickness"
                     Value="0" />
             <Setter Property="FontSize"
-                    Value="28" />
+                    Value="24" />
             <Setter Property="Margin"
                     Value="0,0,8,0" />
             <Setter Property="VerticalAlignment"
@@ -253,7 +253,7 @@
             <Setter Property="BorderThickness"
                     Value="0" />
             <Setter Property="FontSize"
-                    Value="24" />
+                    Value="20" />
             <Setter Property="Margin"
                     Value="0,0,8,0" />
             <Setter Property="VerticalAlignment"
@@ -268,7 +268,7 @@
             <Setter Property="BorderThickness"
                     Value="0" />
             <Setter Property="FontSize"
-                    Value="20" />
+                    Value="18" />
             <Setter Property="Margin"
                     Value="0,0,8,0" />
             <Setter Property="VerticalAlignment"

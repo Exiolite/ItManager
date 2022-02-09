@@ -13,29 +13,36 @@
                     Orientation="Horizontal">
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileNew}"
                     Command="{Binding CMDFileNew}"
-                    Style="{StaticResource BA}" />
+                    Style="{StaticResource BA}"
+                    Focusable="False" />
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpen}"
                     Command="{Binding CMDFileOpen}"
-                    Style="{StaticResource BA}" />
+                    Style="{StaticResource BA}"
+                    Focusable="False" />
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileOpenAs}"
                     Command="{Binding CMDOpenAs}"
-                    Style="{StaticResource BA}" />
+                    Style="{StaticResource BA}"
+                    Focusable="False" />
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSave}"
                     Command="{Binding CMDFileSave}"
-                    Style="{StaticResource BA}" />
+                    Style="{StaticResource BA}"
+                    Focusable="False" />
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSaveAs}"
                     Command="{Binding CMDFileSaveAs}"
-                    Style="{StaticResource BA}" />
+                    Style="{StaticResource BA}"
+                    Focusable="False" />
             <Button Content="{Binding Source={StaticResource MainViewModel}, Path=Consts.FileSynchronizeWithServer}"
                     Command="{Binding CMDSynchronizeWithServer}"
-                    Style="{StaticResource BA}" />
+                    Style="{StaticResource BA}"
+                    Focusable="False" />
         </StackPanel>
         <StackPanel Style="{StaticResource SPMargin}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="File: "
                            Style="{StaticResource TH3}" />
                 <TextBox Text="{Binding PropFileOperation.PropCurrentFileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Style="{StaticResource TBH3}">
+                         Style="{StaticResource TBH3}"
+                         Focusable="False">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Return"
                                     Command="{Binding CMDFileOpen}" />
@@ -49,7 +56,8 @@
                          Style="{StaticResource TBH3}">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Return"
-                                    Command="{Binding CMDFileOpen}" />
+                                    Command="{Binding CMDFileOpen}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
                     </TextBox.InputBindings>
                 </TextBox>
             </StackPanel>

@@ -5,7 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:View.External"
              mc:Ignorable="d">
-    <DockPanel>
-        <local:CompanyStructureView DockPanel.Dock="Left" />
-    </DockPanel>
+    <TabControl>
+        <TabItem Header="Companies"
+                 FontSize="24">
+            <local:LayoutCompanyStructureView DockPanel.Dock="Left" />
+        </TabItem>
+        <TabItem Header="Dashboard"
+                 FontSize="24">
+            <local:DashboardView />
+        </TabItem>
+    </TabControl>
 </UserControl>

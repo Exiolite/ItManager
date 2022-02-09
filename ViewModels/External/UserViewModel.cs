@@ -1,4 +1,5 @@
-﻿using Models.External;
+﻿using System.Collections.ObjectModel;
+using Models.External;
 using System.Linq;
 
 namespace ViewModels.External
@@ -43,6 +44,23 @@ namespace ViewModels.External
                     PropComputerViewModel.PropUserViewModel = this;
                 }
             }
+        }
+
+        #endregion
+
+        #region PropUserWorkPositionCollection
+        private ObservableCollection<string> _userWorkPositionCollection = new ObservableCollection<string>()
+        {
+            "",
+            "Бухгалтер",
+            "Сотрудник",
+            "Директор",
+            "Секретарь"
+        };
+
+        public ObservableCollection<string> PropUserWorkPositionCollection
+        {
+            get { return _userWorkPositionCollection; }
         }
 
         #endregion

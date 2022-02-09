@@ -38,6 +38,17 @@ namespace ViewModels.External
 
         #endregion
 
+        #region PropCompanyViewModel
+        private CompanyViewModel _companyViewModel;
+
+        public CompanyViewModel PropCompanyViewModel
+        {
+            get { return _companyViewModel; }
+            set { _companyViewModel = value; NotifyPropertyChanged(nameof(PropCompanyViewModel)); }
+        }
+
+        #endregion
+
 
         public CompanyTableViewModel()
         {
