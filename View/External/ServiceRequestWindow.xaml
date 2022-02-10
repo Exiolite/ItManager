@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:View.External"
         mc:Ignorable="d"
         Title="ServiceRequestWindow"
-        Height="200"
+        Height="500"
         Width="400">
     <local:ServiceRequestView DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
 </Window>

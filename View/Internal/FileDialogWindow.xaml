@@ -57,7 +57,7 @@
                     <TextBox.InputBindings>
                         <KeyBinding Key="Return"
                                     Command="{Binding CMDFileOpen}"
-                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
                     </TextBox.InputBindings>
                 </TextBox>
             </StackPanel>

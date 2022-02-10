@@ -35,4 +35,3 @@ namespace Models.External
 
         #endregion
     }
-}

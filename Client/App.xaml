@@ -39,7 +39,7 @@
         <vme:ServiceRequestCollectionViewModel x:Key="ServiceRequestCollectionViewModel" />
         <!--#endregion-->
 
-        
+
 
         <SolidColorBrush x:Key="Clear"
                          Opacity="0" />
@@ -163,7 +163,7 @@
             <Setter Property="Padding"
                     Value="4" />
         </Style>
-        
+
         <Style x:Key="TH1"
                TargetType="TextBlock">
             <Setter Property="Background"

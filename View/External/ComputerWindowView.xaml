@@ -7,8 +7,7 @@
         xmlns:local="clr-namespace:View.External"
         mc:Ignorable="d"
         Width="400"
-        Height="500"
-        ResizeMode="NoResize">
+        Height="500">
     <Window.Title>
         <MultiBinding StringFormat=" {0}\{1}">
             <Binding Path="PropComputerCollectionViewModel.PropCompanyViewModel.PropCompany.PropDomainName" />
@@ -18,7 +17,8 @@
     <TabControl>
         <TabItem Header="Info">
             <DockPanel>
-                <local:BlockRemoteView DataContext="{Binding PropRemoteViewModel}" DockPanel.Dock="Bottom"/>
+                <local:BlockRemoteView DataContext="{Binding PropRemoteViewModel}"
+                                       DockPanel.Dock="Bottom" />
                 <StackPanel>
                     <local:BlockComputerInfo DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
                     <local:BlockAttachedUserView DataContext="{Binding PropUserViewModel}" />
@@ -219,11 +219,11 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBox Text="{Binding PropName}"
-                                         Style="{StaticResource TBH3}"/>
+                                         Style="{StaticResource TBH3}" />
                                 <TextBox Text="{Binding PropStorageInGb}"
                                          Style="{StaticResource TBH3}" />
                                 <TextBlock Text="Gb"
-                                         Style="{StaticResource TH3}"/>
+                                           Style="{StaticResource TH3}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

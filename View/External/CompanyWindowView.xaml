@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="{Binding PropCompany.PropName}"
         WindowStartupLocation="CenterOwner"
+        Height="500"
         Width="400">
     <StackPanel>
         <local:BlockCompanyInfo DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />

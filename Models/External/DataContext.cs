@@ -5,8 +5,6 @@ namespace Models.External
 {
     public class DataContext : Internal.Model
     {
-        #region PropExternal
-
         #region PropAnyDeskCollection
         private ObservableCollection<AnyDesk> _anyDeskCollection = new ObservableCollection<AnyDesk>();
 
@@ -113,8 +111,6 @@ namespace Models.External
             get { return _aDUserCollection; }
             set { _aDUserCollection = value; NotifyPropertyChanged(nameof(PropADUserCollection)); }
         }
-
-        #endregion
 
         #endregion
     }
